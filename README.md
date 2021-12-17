@@ -1,4 +1,4 @@
-# Game
+# Game: Berzerk
 
 Information on:
 - the usage of design patterns in your project;
