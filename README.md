@@ -1,4 +1,4 @@
-#Game
+# Game
 
 Information on:
 - the usage of design patterns in your project;
