@@ -1,5 +1,6 @@
-package Entity;
+package Entity.Hero;
 
+import Entity.Element;
 import Properties.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;

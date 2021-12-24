@@ -4,55 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Application/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Application/Arena.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Application/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Coin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Element.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Wall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Properties/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ldts-project-assignment-g1007.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DESAFIOS.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/dependencies-accessors/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel5.png" beforeDir="false" />
+    <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="Commit de Estabilidade Do Projeto">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Brun_oLeema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Expert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/OahnaramIur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Speedy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Tanky.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DESAFIOS.md" beforeDir="false" afterPath="$PROJECT_DIR$/DESAFIOS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Arena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/Arena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Element.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Hero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,8 +92,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640352427703</updated>
-      <workItem from="1640352429445" duration="1735000" />
+      <workItem from="1640352429445" duration="3808000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit de Estabilidade Do Projeto">
+      <created>1640356033271</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640356033271</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,5 +117,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit de Estabilidade Do Projeto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit de Estabilidade Do Projeto" />
   </component>
 </project>

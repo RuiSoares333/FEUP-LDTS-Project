@@ -1,6 +1,7 @@
 package Application;
 
 import Entity.*;
+import Entity.Hero.Hero;
 import Properties.Position;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;

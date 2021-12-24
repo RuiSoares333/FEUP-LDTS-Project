@@ -16,7 +16,7 @@
         - Tanky : mais pontos de vida
         - Perito : mais velocidade de disparo
         - oahnaraM iuR : Omnipotent God, para testes de Terreno
-        - Brun-o Li-ma : Omnipotent God, para testes de Inimigos
+        - Brun-o Leema : Omnipotent God, para testes de Inimigos
 
 - ### Inimigos
     - Deve ser capaz de:

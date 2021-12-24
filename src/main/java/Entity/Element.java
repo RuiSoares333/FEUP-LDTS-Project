@@ -3,7 +3,7 @@ package Entity;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import Properties.Position;
 
-abstract class Element {
+public abstract class Element {
     private Position position;
 
     public Element(Position position){
