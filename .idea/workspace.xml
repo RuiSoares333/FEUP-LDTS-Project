@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Application/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Application/Arena.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Application/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Coin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Element.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Monster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Wall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Properties/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ldts-project-assignment-g1007.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DESAFIOS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/7.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT-BERZERK/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/mockups/nivel5.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="22jYNcE3SkqNcukiNOZf9QYfpGm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/Application" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Desktop\Rui\FACULDADE\FEUP\LDTS\Berzerk\ldts-project-assignment-g1007\src\main\java\Application" />
+      <recent name="C:\Users\ASUS\Desktop\Rui\FACULDADE\FEUP\LDTS\Berzerk\ldts-project-assignment-g1007\src\main\java\Entity" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Application.Application" />
+      <module name="ldts-project-assignment-g1007.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="" />
+      <created>1640352427703</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1640352427703</updated>
+      <workItem from="1640352429445" duration="1735000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
