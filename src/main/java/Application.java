@@ -1,5 +1,5 @@
 import java.io.IOException;
-import Application.Game;
+import control.Game;
 
 public class Application {
     public static void main(String[] args) {
