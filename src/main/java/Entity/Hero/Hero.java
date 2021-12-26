@@ -1,26 +1,33 @@
 package Entity.Hero;
 
+import Constants.Characters;
 import Entity.Element;
 import Properties.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.BasicTextImage;
 import com.googlecode.lanterna.graphics.TextGraphics;
+
+import java.util.Arrays;
 
 public class Hero extends Element {
 
-    public Hero(int x, int y){
+    private int bulMult;
+    private int hp;
+
+    public Hero(int x, int y, int bulMult, int hp){
         super(new Position(x, y));
+        this.bulMult = bulMult;
+        this.hp = hp;
     }
 
     public void draw(TextGraphics graphics){
-//        screen.clear();
-//        screen.setCharacter(position.getX(), position.getY(), TextCharacter.fromCharacter('X')[0]);
-//        screen.refresh();
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(super.getPosition().getX(), super.getPosition().getY()), "X");
     }
+
 
     public void setPosition(Position position) {
         super.setPosition(position);
@@ -41,5 +48,21 @@ public class Hero extends Element {
     public Position moveDown(){
         return new Position(super.getPosition().getX(), super.getPosition().getY()+1);
     }
-}
 
+
+    public double getBulMult() {
+        return bulMult;
+    }
+
+    public void setBulMult(int bulMult) {
+        this.bulMult = bulMult;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+}

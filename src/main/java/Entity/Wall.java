@@ -13,7 +13,8 @@ public class Wall extends Element{
     }
 
     public void draw(TextGraphics graphics){
-        graphics.setForegroundColor(TextColor.Factory.fromString("#d60909"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#5C62F7"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#5C62F7"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(super.getPosition().getX(), super.getPosition().getY()), "H");
     }

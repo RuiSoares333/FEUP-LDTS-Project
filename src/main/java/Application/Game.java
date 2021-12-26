@@ -16,8 +16,8 @@ public class Game {
 
     private boolean flag = true;
 
-    private final int width = 78;
-    private final int height = 23;
+    private final int width = 101;
+    private final int height = 22;
 
     private final Arena arena = new Arena(width, height);
 
