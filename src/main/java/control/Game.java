@@ -9,7 +9,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
-import java.util.Timer;
 
 public class Game {
 
@@ -17,7 +16,7 @@ public class Game {
 
     private boolean flag = true;
 
-    private final int width = 101;
+    private final int width = 100;
     private final int height = 22;
 
     private final Arena arena = new Arena(width, height);
@@ -42,7 +41,7 @@ public class Game {
             key = screen.readInput();
             arena.moveMonsters();
             processKey(key);
-            // Reações dos Monstros
+
         }while (key.getKeyType() != KeyType.EOF && flag);
 
         screen.close();
@@ -57,5 +56,6 @@ public class Game {
     private void processKey(KeyStroke key) {
         flag = arena.processKey(key);
     }
+
 
 }
