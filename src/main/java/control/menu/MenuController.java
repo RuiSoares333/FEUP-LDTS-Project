@@ -85,9 +85,9 @@ public class MenuController extends Controller{
                  running = false;
                  break;
          }
-    }
+     }
 
-    private int getPosition(MenuModel.Opcao selected){
+    public int getPosition(MenuModel.Opcao selected){
         return switch (selected) {
             case SETT -> 12;
             case RANKS -> 14;
