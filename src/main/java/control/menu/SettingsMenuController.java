@@ -18,9 +18,7 @@ import java.io.IOException;
 
 public class SettingsMenuController extends Controller{
 
-    private final SettingsModel settingsModel;
-    private boolean running = true;
-
+    protected SettingsModel settingsModel = new SettingsModel();
 
     public SettingsMenuController(SettingsModel settingsModel) throws IOException {
         this.settingsModel = settingsModel;
@@ -65,19 +63,11 @@ public class SettingsMenuController extends Controller{
         switch (key.getCommandEnum()) {
             case LEFT -> model.previousSelected();
             case RIGHT -> model.nextSelected();
-            case SELECT -> {
-                switch (model.getSelected()) {
-                    case RECRUIT -> settingsModel.setSelected(SettingsModel.Heroi.RECRUIT);
-                    case TANKY -> settingsModel.setSelected(SettingsModel.Heroi.TANKY);
-                    case EXPERT -> settingsModel.setSelected(SettingsModel.Heroi.EXPERT);
-                }
-                running = false;
-            }
-            case QUIT -> running = false;
+            case SELECT, QUIT -> running = false;
         }
     }
 
-    private int getPosition(SettingsModel.Heroi selected){
+    public int getPosition(SettingsModel.Heroi selected){
         return switch (selected) {
             case TANKY -> 336;
             case EXPERT -> 560;
