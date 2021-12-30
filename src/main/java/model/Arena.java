@@ -1,4 +1,4 @@
-package control;
+package model;
 
 import model.Entity.Hero.Expert;
 import model.Entity.Hero.Hero;
