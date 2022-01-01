@@ -25,6 +25,7 @@ public class MenuView extends Menu{
         TextGraphics graphics = screen.newTextGraphics();
         graphicSettings(graphics);
 
+
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
         drawGameName(graphics);
         drawOptions(graphics);
@@ -40,17 +41,18 @@ public class MenuView extends Menu{
         graphics.setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
     }
 
-    private void drawOptions(TextGraphics graphics){
+    public void drawOptions(TextGraphics graphics){
         graphics.putString(new TerminalPosition(48, 11), "PLAY");
         graphics.putString(new TerminalPosition(46, 13), "SETTINGS");
         graphics.putString(new TerminalPosition(45, 15), "LEADERBOARD");
         graphics.putString(new TerminalPosition(48, 19), "EXIT");
     }
 
-    private void drawGameName(TextGraphics graphics){
+    public void drawGameName(TextGraphics graphics){
         for(int y=0; y<Constants.GAME_NAME.length; y++){
             graphics.putString(new TerminalPosition(27, 1+y), Constants.GAME_NAME[y]);
         }
     }
+
 
 }

@@ -37,7 +37,7 @@ public class SettingsMenuView extends Menu{
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH*8, Constants.HEIGHT*8), ' ');
     }
 
-    private void drawAll(TextGraphics graphics){
+    protected void drawAll(TextGraphics graphics){
         drawHeader(graphics);
         drawExpertNome(graphics);
         drawTankyNome(graphics);
@@ -47,7 +47,7 @@ public class SettingsMenuView extends Menu{
         drawExpert(graphics);
     }
 
-    private void drawHeader(TextGraphics graphics){
+    protected void drawHeader(TextGraphics graphics){
         for (int y = 0; y < Constants.CHOOSE_YOUR_HERO.length; y++) {
             char[] blocos = Constants.CHOOSE_YOUR_HERO[y].toCharArray();
             for (int x = 0; x < blocos.length; x++) {
@@ -61,7 +61,7 @@ public class SettingsMenuView extends Menu{
         }
     }
 
-    private void drawRecruit(TextGraphics graphics) {
+    protected void drawRecruit(TextGraphics graphics) {
         for (int y = 0; y < Constants.RECRUTA_SIM.length; y++) {
             char[] blocos = Constants.RECRUTA_SIM[y].toCharArray();
             for (int x = 0; x < blocos.length; x++) {
@@ -82,7 +82,7 @@ public class SettingsMenuView extends Menu{
         }
     }
 
-    private void drawTanky(TextGraphics graphics){
+    protected void drawTanky(TextGraphics graphics){
 
         for(int y=0; y<Constants.TANKY_SIM.length; y++){
             char [] blocos = Constants.TANKY_SIM[y].toCharArray();
@@ -99,7 +99,7 @@ public class SettingsMenuView extends Menu{
         }
     }
 
-    private void drawExpert(TextGraphics graphics){
+    protected void drawExpert(TextGraphics graphics){
 
         for(int y=0; y<Constants.EXPERT_SIM.length; y++){
             char [] blocos = Constants.EXPERT_SIM[y].toCharArray();
@@ -118,7 +118,7 @@ public class SettingsMenuView extends Menu{
     }
 
 
-    private void drawRecruitNome(TextGraphics graphics) {
+    protected void drawRecruitNome(TextGraphics graphics) {
         for (int y = 0; y < Constants.RECRUTA_NOME.length; y++) {
             char[] blocos = Constants.RECRUTA_NOME[y].toCharArray();
             for (int x = 0; x < blocos.length; x++) {
@@ -132,7 +132,7 @@ public class SettingsMenuView extends Menu{
         }
     }
 
-    private void drawTankyNome(TextGraphics graphics) {
+    protected void drawTankyNome(TextGraphics graphics) {
         for (int y = 0; y < Constants.TANKY_NOME.length; y++) {
             char[] blocos = Constants.TANKY_NOME[y].toCharArray();
             for (int x = 0; x < blocos.length; x++) {
@@ -147,7 +147,7 @@ public class SettingsMenuView extends Menu{
     }
 
 
-    private void drawExpertNome(TextGraphics graphics) {
+    protected void drawExpertNome(TextGraphics graphics) {
         for (int y = 0; y < Constants.EXPERT_NOME.length; y++) {
             char[] blocos = Constants.EXPERT_NOME[y].toCharArray();
             for (int x = 0; x < blocos.length; x++) {

@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 public class RankingMenuView extends Menu{
-    @Override
+
     public void draw(Screen screen, int position) throws IOException {
         screen.clear();
         TextGraphics graphics = screen.newTextGraphics();
@@ -34,7 +34,7 @@ public class RankingMenuView extends Menu{
         graphics.setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
     }
 
-    private void drawTopScorers(TextGraphics graphics){
+    protected void drawTopScorers(TextGraphics graphics){
         graphics.putString(new TerminalPosition(46, 6), "TOP SCORERS");
 
         InputStream is = ClassLoader.getSystemResourceAsStream("ranking.txt");

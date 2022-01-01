@@ -2,7 +2,7 @@ package model;
 
 public final class Constants {
     public static final int WIDTH = 100;
-    public static final int HEIGHT = 22;
+    public static final int HEIGHT = 40;
 
     public static final String MENU_BACKGROUND_COLOR = "#270F41";
     public static final String MENU_LETTER_COLOR = "#F6C370";

@@ -11,6 +11,7 @@ public abstract class Indicador {
     protected TextGraphics graphics;
 
     public Indicador(int width, int height, TextGraphics graphics){
+        assert graphics!=null;
         this.width = width;
         this.height = height;
         this.graphics = graphics;
