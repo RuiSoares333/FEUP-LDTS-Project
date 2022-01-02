@@ -1,10 +1,12 @@
 package view;
 
 import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import control.MenuCommand;
+import model.Constants;
 import model.Model;
 
 import java.io.IOException;
@@ -12,18 +14,14 @@ import java.io.IOException;
 public abstract class View<T extends Model> {
 
     protected T model;
-    private Screen screen;
+    protected Screen screen;
     protected TextGraphics graphics;
 
     protected View(T model){
         this.model = model;
     }
 
-    abstract void initScreen();
-
-    public TextGraphics initGraphics() {
-        return screen.newTextGraphics();
-    }
+    public abstract void initScreen() throws IOException;
 
     public TextGraphics getGraphics() {
         return graphics;
@@ -41,17 +39,17 @@ public abstract class View<T extends Model> {
         screen.close();
     }
 
-//    protected void clear(int col, int row) {
-//        screen.clear();
-//        graphics.setBackgroundColor(TextColor.Factory.fromString(BACKGROUND_COLOUR));
-//        graphics.fillRectangle(new TerminalPosition(col, row), getSize(), ' ');
-//    }
+    protected void clear(int col, int row) {
+        screen.clear();
+        graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
+        graphics.fillRectangle(new TerminalPosition(col, row), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
+    }
 
     protected void refresh() throws IOException {
         screen.refresh();
     }
 
-    public abstract void draw(int col, int row) throws IOException;
+    public abstract void draw(int position) throws IOException;
 
     protected int getStringLine(int pos) {
         return 10 + pos * 2;

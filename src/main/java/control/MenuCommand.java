@@ -13,10 +13,6 @@ public class MenuCommand {
         this.command = COMMAND.NONE;
     }
 
-//    public Character getKey() {
-//        return key;
-//    }
-
     public COMMAND getCommandEnum() {
         return command;
     }

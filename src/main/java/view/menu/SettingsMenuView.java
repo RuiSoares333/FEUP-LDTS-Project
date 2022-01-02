@@ -4,31 +4,43 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 import model.Constants;
+import model.settings.SettingsModel;
 import view.Indicador;
 import view.IndicadorBigView;
+import view.View;
 
+import java.awt.*;
 import java.io.IOException;
 
-public class SettingsMenuView extends Menu{
+public class SettingsMenuView extends View<SettingsModel> {
 
     Indicador indicador;
 
-    public SettingsMenuView(TextGraphics graphics){
+    public SettingsMenuView(SettingsModel model) throws IOException {
+        super(model);
+        initScreen();
         indicador = new IndicadorBigView(116, 100, graphics);
     }
 
     @Override
-    public void draw(Screen screen, int position) throws IOException {
-        screen.clear();
-        TextGraphics graphics = screen.newTextGraphics();
+    public void initScreen() throws IOException {
+        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true,
+                AWTTerminalFontConfiguration.BoldMode.NOTHING, new Font(Font.MONOSPACED,Font.PLAIN, 2));
+        Terminal terminal = new DefaultTerminalFactory()
+                .setInitialTerminalSize(new TerminalSize(Constants.WIDTH*8, Constants.HEIGHT*8))
+                .setTerminalEmulatorFontConfiguration(cfg)
+                .createTerminal();
+        screen = new TerminalScreen(terminal);
 
-        graphicSettings(graphics);
-        drawAll(graphics);
-
-        indicador.draw(position, 38);
-        screen.refresh();
+        screen.setCursorPosition(null); // we don't need a cursor
+        screen.startScreen(); // screens must be started
+        screen.doResizeIfNecessary(); // resize screen if necessary
     }
 
 
@@ -37,7 +49,8 @@ public class SettingsMenuView extends Menu{
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH*8, Constants.HEIGHT*8), ' ');
     }
 
-    protected void drawAll(TextGraphics graphics){
+    @Override
+    public void draw(int position) throws IOException {
         drawHeader(graphics);
         drawExpertNome(graphics);
         drawTankyNome(graphics);
@@ -160,4 +173,6 @@ public class SettingsMenuView extends Menu{
             }
         }
     }
+
+
 }
