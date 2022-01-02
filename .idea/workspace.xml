@@ -4,47 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="Simplificação do Jogo para ter Apenas Jogador e Inimigos">
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/Constants/Characters.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/nivel1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/nivel2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Constants/Characters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/nivel1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/nivel2.txt" afterDir="false" />
+    <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="Aplicação do Padrão MVC">
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Arena$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Arena.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Bullet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Element.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Brun_oLeema.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Expert.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Hero.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/OahnaramIur.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Speedy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Tanky.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Monster.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Properties/Position.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Wall.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Arena$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application/Arena$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Arena.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application/Arena.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Coin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Coin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Brun_oLeema.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Brun_oLeema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Expert.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Expert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Hero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/OahnaramIur.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/OahnaramIur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Speedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Speedy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Tanky.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Tanky.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Monster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Entity/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Arena$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Arena.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Constants/Characters.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Coin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Element.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Brun_oLeema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Expert.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Hero.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/OahnaramIur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Speedy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Tanky.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Monster.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Wall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Properties/Position.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Arena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/Arena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Coin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Brun_oLeema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Brun_oLeema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Expert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/OahnaramIur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/OahnaramIur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Speedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Speedy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Tanky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hero/Tanky.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Arena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/control/Arena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/control/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Constants/Characters.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Coin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Element.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Brun_oLeema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Brun_oLeema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Expert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/OahnaramIur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/OahnaramIur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Speedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Speedy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Tanky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Tanky.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Properties/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Properties/Position.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +141,7 @@
       <updated>1640352427703</updated>
       <workItem from="1640352429445" duration="10814000" />
       <workItem from="1640466037477" duration="64000" />
-      <workItem from="1640466123275" duration="15514000" />
+      <workItem from="1640466123275" duration="22303000" />
     </task>
     <task id="LOCAL-00001" summary="Commit de Estabilidade Do Projeto">
       <created>1640356033271</created>
@@ -141,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640358655994</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Simplificação do Jogo para ter Apenas Jogador e Inimigos">
+      <created>1640536258611</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1640536258611</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +185,7 @@
     <MESSAGE value="Commit de Estabilidade Do Projeto" />
     <MESSAGE value="Commit de Conceitos Pré-Adquiridos no projeto Hero" />
     <MESSAGE value="Simplificação do Jogo para ter Apenas Jogador e Inimigos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplificação do Jogo para ter Apenas Jogador e Inimigos" />
+    <MESSAGE value="Aplicação do Padrão MVC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aplicação do Padrão MVC" />
   </component>
 </project>

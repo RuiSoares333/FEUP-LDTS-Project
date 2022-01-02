@@ -1,14 +1,15 @@
 import java.io.IOException;
-import Application.Game;
+
+import control.menu.MenuController;
 
 public class Application {
     public static void main(String[] args) {
         try
         {
-            Game game = new Game();
-            game.run();
+            MenuController menuController = new MenuController();
+            menuController.run();
         }
-        catch (IOException e)
+        catch (IOException | InterruptedException e)
         {
             e.printStackTrace();
         }
