@@ -21,7 +21,7 @@ public class RankingMenuState extends ControllerState<RankingMenuModel>  {
         return processKey(view.getCommand());
     }
 
-    ControllerState<?> processKey(MenuCommand key) throws IOException {
+    public ControllerState<?> processKey(MenuCommand key) throws IOException {
         return manageCommand(state.genMenuState(soldado));
     }
 
