@@ -96,7 +96,7 @@ public class Arena {
     private boolean moveHero(Position position) {
         if(canEntityMove(position)) {
             hero.setPosition(position);
-            if(!verifyMonsterCollision(position)){
+            if(!verifyMonsterCollision(position) || !verifyHeroWallCollision(position)){
                 System.out.println("Game Over!");
                 return true;
             }
@@ -128,7 +128,7 @@ public class Arena {
 
                             Position novaPosicao = monster.move();
 
-                            if(canEntityMove(novaPosicao))
+                            if(canMonsterMove(novaPosicao))
                                 monster.setPosition(novaPosicao);
 
                             screen.clear();
@@ -149,10 +149,17 @@ public class Arena {
     public boolean canEntityMove(Position position){
         for(Wall wall : walls){
             if(wall.getPosition().equals(position)) {
-                if(position.equals(hero.getPosition())) {
-                    System.out.println("Game Over!");
-                    positionHero();
-                }
+                System.out.println("Game Over!");
+                positionHero();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean canMonsterMove(Position position){
+        for(Wall wall : walls){
+            if(wall.getPosition().equals(position)) {
                 return false;
             }
         }
