@@ -87,7 +87,7 @@ public class Arena {
         return true;
     }
 
-    public void moveMonsters(){
+    /*public void moveMonsters(){
         for (Monster monster: monsters) {
 
             Position novaPosicao = monster.move();
@@ -96,9 +96,9 @@ public class Arena {
                 monster.setPosition(novaPosicao);
 
         }
-    }
+    }*/
     
-        public void moveMonsters(Screen screen, Arena arena){
+        public void moveMonstersRandom(Screen screen, Arena arena){
         // And From your main() method or any other method
         Timer timer = new Timer();
 
