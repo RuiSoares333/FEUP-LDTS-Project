@@ -2,7 +2,8 @@ package control.menu.state;
 
 import control.MenuCommand;
 import model.Menu.MenuModel;
-import view.menu.MenuView;
+import model.Soldado;
+import view.View;
 
 import java.io.IOException;
 
@@ -10,11 +11,11 @@ import java.io.IOException;
 
 public class MenuState extends ControllerState<MenuModel> {
 
-    MenuModel model = new MenuModel();
-    MenuView view = new MenuView(model);
+    MenuModel model;
 
-    public MenuState(FactoryState state) throws IOException {
-        super(state);
+    public MenuState(FactoryState state, Soldado soldado, View view){
+        super(state, soldado, view);
+        model = (MenuModel) view.getModel();
     }
 
 
@@ -26,7 +27,7 @@ public class MenuState extends ControllerState<MenuModel> {
     }
 
 
-     public ControllerState<?> processKey(MenuModel model, MenuCommand key) throws IOException, InterruptedException {
+     public ControllerState<?> processKey(MenuModel model, MenuCommand key) throws IOException{
         ControllerState<?> newState = this;
         switch (key.getCommandEnum()) {
              case UP:
@@ -38,14 +39,13 @@ public class MenuState extends ControllerState<MenuModel> {
              case SELECT:
                  switch (model.getSelected()) {
                      case PLAY -> {
-//                         System.out.println(settingsModel.getSelected());
                          // newState = jogo
-//                         screen.close();
+                         System.out.println(soldado.getSelected());
                      }
 
-                     case RANKS -> newState = state.genRankingMenuState();
+                     case RANKS -> newState = state.genRankingMenuState(soldado);
 
-//                     case SETT -> newState = state.genSettingsMenuState(settingsModel);
+                     case SETT -> newState = state.genSettingsMenuState(soldado);
 
                      case EXIT -> newState = null;
 
@@ -55,8 +55,11 @@ public class MenuState extends ControllerState<MenuModel> {
                  newState = null;
                  break;
          }
+         manageCommand(newState);
          return newState;
      }
+
+
 
     public int getPosition(MenuModel.Opcao selected){
         return switch (selected) {

@@ -20,14 +20,6 @@ public final class Constants {
             "|____/         |_||_| ------        |_||_| |_||_|"
     };
 
-    public static final String[] CHOOSE_YOUR_HERO= {
-            "CCC C C CCC CCC CCC CCC   C C CCC C C CCC   C C CCC CCC CCC",
-            "C   C C C C C C C   C      C  C C C C C C   C C C   C C C C",
-            "C   CCC C C C C CCC CC     C  C C C C CC    CCC CC  CC  C C",
-            "C   C C C C C C   C C      C  C C C C C C   C C C   C C C C",
-            "CCC C C CCC CCC CCC CCC    C  CCC CCC C C   C C CCC C C CCC"
-    };
-
     public static final String[] RECRUTA_SIM= {
             "     pppppp     ",
             "   ppggggggpp   ",
@@ -45,14 +37,6 @@ public final class Constants {
             "    cssppssc    ",
             "    cssssssc    ",
             "     cccccc     "
-    };
-
-    public static final String[] RECRUTA_NOME= {
-            "rrr rrr rrr rrr r r rrr rrr",
-            "r r r   r   r r r r  r   r ",
-            "rr  rr  r   r r r r  r   r ",
-            "r r r   r   rr  r r  r   r ",
-            "r r rrr rrr r r rrr rrr  r "
     };
 
     public static final String[] TANKY_SIM= {
@@ -74,14 +58,6 @@ public final class Constants {
             "      pppp      "
     };
 
-    public static final String[] TANKY_NOME= {
-            "TTT TTT T T T T T T",
-            " T  T T T T TT   T ",
-            " T  TTT TTT T    T ",
-            " T  T T T T TT   T ",
-            " T  T T T T T T  T"
-    };
-
     public static final String[] EXPERT_SIM= {
             "    pppppppp    ",
             "  ppccccccccpp  ",
@@ -99,14 +75,6 @@ public final class Constants {
             "   pcpccccpcp   ",
             "    ppccccpp    ",
             "      pppp      "
-    };
-
-    public static final String[] EXPERT_NOME= {
-            "EEE E E EEE EEE EEE EEE",
-            "E   E E E E E   E E  E ",
-            "EE  EEE EEE EE  EE   E ",
-            "E   E E E   E   E E  E ",
-            "EEE E E E   EEE E E  E"
     };
 
 }

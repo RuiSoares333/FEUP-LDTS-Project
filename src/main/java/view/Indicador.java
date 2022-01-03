@@ -1,10 +1,12 @@
 package view;
 
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import model.Constants;
 
-public abstract class Indicador {
+public class Indicador {
 
     protected int width;
     protected int height;
@@ -23,11 +25,21 @@ public abstract class Indicador {
         graphics.setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
     }
 
-    abstract void drawTop(int colBegin, int lineBegin);
-    abstract void drawBottom(int colBegin, int lineBegin);
-    abstract void drawLeft(int colBegin, int lineBegin);
-    abstract void drawRight(int colBegin, int lineBegin);
-    abstract void drawCorners(int colBegin, int lineBegin);
-    public abstract void draw(int colBegin, int lineBegin);
+    protected void drawTop(int colBegin, int lineBegin) {
+        TerminalPosition startLine = new TerminalPosition(colBegin, lineBegin);
+        TerminalPosition endLine = new TerminalPosition(colBegin + width - 1, lineBegin);
+        if(graphics != null) graphics.drawLine(startLine, endLine, '-');
+    }
+
+    protected void drawBottom(int colBegin, int lineBegin) {
+        TerminalPosition startLine = new TerminalPosition(colBegin, lineBegin + height - 1);
+        TerminalPosition endLine = new TerminalPosition(colBegin + width - 1, lineBegin + height - 1);
+        if(graphics != null) graphics.drawLine(startLine, endLine, '-');
+    }
+
+    public void draw(int colBegin, int lineBegin) {
+        drawTop(colBegin, lineBegin);
+        drawBottom(colBegin, lineBegin);
+    }
 
 }

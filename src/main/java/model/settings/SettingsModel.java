@@ -1,62 +1,53 @@
 package model.settings;
 
 import model.Model;
+import model.Soldado;
 
 public class SettingsModel implements Model {
-    public enum Heroi{RECRUIT, TANKY, EXPERT}
 
-    public String[] nomesHerois = {"RECRUIT", "TANKY", "EXPERT"};
+    private final Soldado soldado;
 
-    private Heroi selected;
-    private final Heroi[] opc = Heroi.values();
-
-
-    public SettingsModel() {
-        this.selected = Heroi.RECRUIT;
+    public SettingsModel(Soldado soldado) {
+        this.soldado = soldado;
     }
 
-
-    public String enumToString(Heroi availHero) {
-        int position = getPosicaoOpcao(availHero);
-        return nomesHerois[position];
-    }
-
-    public int getPosicaoOpcao(Heroi target) {
-        for(int i=0; i<opc.length; i++){
-            if(opc[i] == target){
+    public int getPosicaoOpcao(Soldado.Heroi target) {
+        Soldado.Heroi[] opcoes = soldado.getHerois();
+        for(int i=0; i<opcoes.length; i++){
+            if(opcoes[i] == target){
                 return i;
             }
         }
         return -1;
     }
 
-    public Heroi getSelected() {
-        return selected;
+    public Soldado.Heroi getSelected() {
+        return soldado.getSelected();
     }
 
-    public void setSelected(Heroi selected) {
-        this.selected = selected;
+    public void setSelected(Soldado.Heroi selected) {
+        soldado.setSelected(selected);
     }
 
     public void nextSelected() {
-        if (selected == Heroi.EXPERT){
-            selected = Heroi.RECRUIT;
+        if (soldado.getSelected() == Soldado.Heroi.EXPERT){
+            soldado.setSelected(Soldado.Heroi.RECRUIT);
         }
         else {
-            int i = getPosicaoOpcao(selected);
+            int i = getPosicaoOpcao(soldado.getSelected());
             i++;
-            setSelected(opc[i]);
+            setSelected(soldado.getHerois()[i]);
         }
     }
 
     public void previousSelected() {
-        if (selected == Heroi.RECRUIT){
-            selected = Heroi.EXPERT;
+        if (soldado.getSelected() == Soldado.Heroi.RECRUIT){
+            soldado.setSelected( Soldado.Heroi.EXPERT);
         }
         else {
-            int i = getPosicaoOpcao(selected);
+            int i = getPosicaoOpcao(soldado.getSelected());
             i--;
-            setSelected(opc[i]);
+            setSelected(soldado.getHerois()[i]);
         }
     }
 }

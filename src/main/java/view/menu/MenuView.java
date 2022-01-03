@@ -13,7 +13,6 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import model.Constants;
 import model.Menu.MenuModel;
 import view.Indicador;
-import view.IndicadorView;
 import view.View;
 
 import java.awt.*;
@@ -30,7 +29,7 @@ public class MenuView extends View<MenuModel> {
     public MenuView(MenuModel model) throws IOException {
         super(model);
         initScreen();
-        indicador = new IndicadorView(13, 3, graphics);
+        indicador = new Indicador(13, 3, graphics);
     }
 
     public void draw(int position) throws IOException {

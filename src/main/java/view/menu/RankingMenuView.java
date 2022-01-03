@@ -34,7 +34,6 @@ public class RankingMenuView extends View<RankingMenuModel> {
 
     public void draw(int position) throws IOException {
         screen.clear();
-        TextGraphics graphics = screen.newTextGraphics();
 
         graphicSettings(graphics);
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
@@ -54,6 +53,7 @@ public class RankingMenuView extends View<RankingMenuModel> {
         graphics.putString(new TerminalPosition(46, 6), "TOP SCORERS");
 
         InputStream is = ClassLoader.getSystemResourceAsStream("ranking.txt");
+        assert is != null;
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
         BufferedReader reader = new BufferedReader(streamReader);
         try {

@@ -3,18 +3,19 @@ package control.menu.state;
 
 import control.MenuCommand;
 
+import model.Soldado;
 import model.settings.SettingsModel;
-import view.menu.SettingsMenuView;
+import view.View;
 
 import java.io.IOException;
 
-public class SettingsMenuControllerState extends ControllerState<SettingsModel> {
+public class SettingsMenuState extends ControllerState<SettingsModel> {
 
-    SettingsModel model = new SettingsModel();
-    SettingsMenuView view = new SettingsMenuView(model);
+    SettingsModel model;
 
-    public SettingsMenuControllerState(SettingsModel settingsModel, FactoryState state) throws IOException {
-        super(state);
+    public SettingsMenuState(FactoryState state, Soldado soldado, View view){
+        super(state, soldado, view);
+        model = (SettingsModel) view.getModel();
     }
 
     public ControllerState<?> run() throws IOException {
@@ -29,17 +30,18 @@ public class SettingsMenuControllerState extends ControllerState<SettingsModel> 
         switch (key.getCommandEnum()) {
             case LEFT -> model.previousSelected();
             case RIGHT -> model.nextSelected();
-            case SELECT, QUIT -> newState = state.genMenuState();
+            case SELECT, QUIT -> newState = state.genMenuState(soldado);
         }
+        manageCommand(newState);
         return newState;
     }
 
 
-    public int getPosition(SettingsModel.Heroi selected){
+    public int getPosition(Soldado.Heroi selected){
         return switch (selected) {
-            case TANKY -> 336;
-            case EXPERT -> 560;
-            default -> 112;
+            case TANKY -> 39;
+            case EXPERT -> 63;
+            default -> 14;
         };
     }
 }

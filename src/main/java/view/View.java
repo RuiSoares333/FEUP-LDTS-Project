@@ -49,6 +49,10 @@ public abstract class View<T extends Model> {
         screen.refresh();
     }
 
+    public T getModel() {
+        return model;
+    }
+
     public abstract void draw(int position) throws IOException;
 
     protected int getStringLine(int pos) {

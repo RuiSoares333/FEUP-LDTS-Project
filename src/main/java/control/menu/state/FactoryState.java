@@ -1,21 +1,32 @@
 package control.menu.state;
 
-import com.googlecode.lanterna.screen.Screen;
+import model.Menu.MenuModel;
+import model.Soldado;
+import model.ranking.RankingMenuModel;
 import model.settings.SettingsModel;
+import view.menu.MenuView;
+import view.menu.RankingMenuView;
+import view.menu.SettingsMenuView;
 
 import java.io.IOException;
 
 public class FactoryState {
 
-    public ControllerState genMenuState() throws IOException {
-        return new MenuState(this);
+    public MenuState genMenuState(Soldado soldado) throws IOException {
+        MenuModel model = new MenuModel();
+        MenuView view = new MenuView(model);
+        return new MenuState(this, soldado, view);
     }
 
-    public ControllerState genRankingMenuState() throws IOException {
-        return new RankingMenuControllerState(this);
+    public RankingMenuState genRankingMenuState(Soldado soldado) throws IOException {
+        RankingMenuModel model = new RankingMenuModel();
+        RankingMenuView view = new RankingMenuView(model);
+        return new RankingMenuState(this, soldado, view);
     }
 
-    public ControllerState genSettingsMenuState(SettingsModel model) throws IOException {
-        return new SettingsMenuControllerState(model, this);
+    public SettingsMenuState genSettingsMenuState(Soldado soldado) throws IOException {
+        SettingsModel model = new SettingsModel(soldado);
+        SettingsMenuView view = new SettingsMenuView(model);
+        return new SettingsMenuState(this, soldado, view);
     }
 }
