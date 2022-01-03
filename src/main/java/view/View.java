@@ -59,6 +59,10 @@ public abstract class View<T extends Model> {
         return 10 + pos * 2;
     }
 
+    public Screen getScreen() {
+        return screen;
+    }
+
 //    //Column to the string be at the center of the screen
 //    public int getCol(String s) {
 //        return (COLS_MENU - s.length()) / 2;

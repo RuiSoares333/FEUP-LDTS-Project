@@ -204,7 +204,7 @@ public class Arena {
 
     public void carregarFich() {
         // java.io.InputStream
-        InputStream is = ClassLoader.getSystemResourceAsStream("nivel1.txt");
+        InputStream is = ClassLoader.getSystemResourceAsStream("nivel2.txt");
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
         BufferedReader reader = new BufferedReader(streamReader);
         try {

@@ -22,7 +22,7 @@ public class Game {
     private final Arena arena = new Arena(width, height);
 
 
-    public void run() throws IOException{
+    public void run(Screen screen) throws IOException{
 
 //        TerminalSize terminalSize = new TerminalSize(width, height);
 //        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
@@ -37,7 +37,7 @@ public class Game {
 
         do {
 
-            draw();
+            draw(screen);
             key = screen.readInput();
 //            arena.moveMonsters();
             processKey(key);
@@ -47,7 +47,7 @@ public class Game {
         screen.close();
     }
 
-    private void draw() throws IOException {
+    private void draw(Screen screen) throws IOException {
         screen.clear();
         arena.draw(screen.newTextGraphics());
         screen.refresh();

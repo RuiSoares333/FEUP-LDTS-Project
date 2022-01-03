@@ -1,6 +1,7 @@
 package control.menu.state;
 
 import control.MenuCommand;
+import model.Game;
 import model.Menu.MenuModel;
 import model.Soldado;
 import view.View;
@@ -35,7 +36,8 @@ public class MenuState extends ControllerState<MenuModel> {
              case SELECT -> {
                  switch (model.getSelected()) {
                      case PLAY -> {
-                         // newState = jogo
+                         Game game = new Game();
+                         game.run(view.getScreen());
                          System.out.println(soldado.getSelected());
                      }
 
