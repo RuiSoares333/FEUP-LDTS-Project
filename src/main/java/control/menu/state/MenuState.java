@@ -19,24 +19,20 @@ public class MenuState extends ControllerState<MenuModel> {
     }
 
 
-    public ControllerState<?> run() throws IOException, InterruptedException {
+    public ControllerState<?> run() throws IOException{
 
         view.draw(getPosition(model.getSelected()));
-        return processKey(model, view.getCommand());
+        return processKey(view.getCommand());
 
     }
 
 
-     public ControllerState<?> processKey(MenuModel model, MenuCommand key) throws IOException{
+     public ControllerState<?> processKey(MenuCommand key) throws IOException{
         ControllerState<?> newState = this;
         switch (key.getCommandEnum()) {
-             case UP:
-                 model.previousSelected();
-                 break;
-             case DOWN:
-                 model.nextSelected();
-                 break;
-             case SELECT:
+             case UP -> model.previousSelected();
+             case DOWN -> model.nextSelected();
+             case SELECT -> {
                  switch (model.getSelected()) {
                      case PLAY -> {
                          // newState = jogo
@@ -50,16 +46,16 @@ public class MenuState extends ControllerState<MenuModel> {
                      case EXIT -> newState = null;
 
                  }
-                 break;
-             case QUIT:
-                 newState = null;
-                 break;
+             }
+             case QUIT -> newState = null;
          }
          manageCommand(newState);
          return newState;
      }
 
-
+     public MenuModel getModel(){
+        return model;
+     }
 
     public int getPosition(MenuModel.Opcao selected){
         return switch (selected) {

@@ -12,8 +12,6 @@ public abstract class ControllerState <T extends Model>{
     FactoryState state;
     Soldado soldado;
 
-    protected boolean running = true;
-
     protected View view;
     protected MenuCommand command = new MenuCommand();
 
