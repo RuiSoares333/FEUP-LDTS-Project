@@ -25,6 +25,9 @@ public class Arena {
 
     private final int width;
     private final int height;
+    
+    int n = 0;
+    Position initialPosition;
 
     Hero hero = new Expert(10, 10);
 
@@ -46,12 +49,22 @@ public class Arena {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
 
         hero.draw(graphics);            // draw the mighty hero
+        
+        initiatePositionHero(n);
+        n++;
+        
         for (Wall wall : walls)         // draw the imposing walls
             wall.draw(graphics);
         for(Monster monster: monsters)  // draw the fierce monsters
             monster.draw(graphics);
 //        moveMonsters();
 
+    }
+    
+    public void initiatePositionHero(int n){
+        if(n<1){
+            initialPosition = hero.getPosition();
+        }
     }
 
     public boolean processKey(KeyStroke key) {
@@ -82,7 +95,10 @@ public class Arena {
     private boolean moveHero(Position position) {
         if(canEntityMove(position)) {
             hero.setPosition(position);
-            return verifyMonsterCollision(position);
+            if(!verifyMonsterCollision(position)){
+                System.out.println("Game Over!");
+                return true;
+            }
         }
         return true;
     }
@@ -123,10 +139,13 @@ public class Arena {
 
     }
 
-    private boolean canEntityMove(Position position){
+    public boolean canEntityMove(Position position){
         for(Wall wall : walls){
-            if(wall.getPosition().equals(position))
+            if(wall.getPosition().equals(position)) {
+                System.out.println("Game Over!");
+                positionHero();
                 return false;
+            }
         }
         return true;
     }
@@ -150,13 +169,37 @@ public class Arena {
     }
 
     public boolean verifyMonsterCollision(Position position){
-        for(Monster monster: monsters)
-            if(position.equals(monster.getPosition())) {
-                System.out.println("Application.Game Over!");
+        for(Monster monster: monsters) {
+            if (position.equals(monster.getPosition())) {
+                positionHero();
                 return false;
             }
-            return true;
+        }
+        return true;
+
     }
+    
+    public boolean verifyHeroWallCollision(Position position){
+        for(Wall wall : walls){
+            if(wall.getPosition().equals(position)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public void positionHero(){
+        hero.setPosition(initialPosition);
+    }
+
+    public Hero getHero(){
+        return hero;
+    }
+
+    public List<Monster> getMonsters(){
+        return monsters;
+    }
+
 
     public void carregarFich() {
         // java.io.InputStream
