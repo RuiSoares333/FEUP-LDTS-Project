@@ -24,18 +24,9 @@ public class Game {
 
     public void run(Screen screen) throws IOException{
 
-//        TerminalSize terminalSize = new TerminalSize(width, height);
-//        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-//        Terminal terminal = terminalFactory.createTerminal();
-//
-//        screen = new TerminalScreen(terminal);
-//        screen.setCursorPosition(null); // we don't need a cursor
-//        screen.startScreen(); // screens must be started
-//        screen.doResizeIfNecessary(); // resize screen if necessary
-
         KeyStroke key;
 
-        arena.moveMonsters(screen, arena);
+        arena.moveMonstersRandom(screen, arena);
         do {
 
             draw(screen);

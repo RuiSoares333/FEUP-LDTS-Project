@@ -149,8 +149,10 @@ public class Arena {
     public boolean canEntityMove(Position position){
         for(Wall wall : walls){
             if(wall.getPosition().equals(position)) {
-                System.out.println("Game Over!");
-                positionHero();
+                if(position.equals(hero.getPosition())) {
+                    System.out.println("Game Over!");
+                    positionHero();
+                }
                 return false;
             }
         }

@@ -30,7 +30,7 @@ public final class Constants {
             "ppVVVVVVVVVVVVpp",
             " pppppppppppppp ",
             "  chhhhhhhhhhc  ",
-            "  chhhhhhbbhhc  ",
+            "  chhbbhhbbhhc  ",
             "  chhhhhhhhhhc  ",
             "   cssssssssc   ",
             "   cssssssssc   ",
