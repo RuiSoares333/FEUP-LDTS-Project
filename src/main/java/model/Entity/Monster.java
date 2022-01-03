@@ -19,7 +19,7 @@ public class Monster extends Element{
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#24A120"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(super.getPosition().getX(), super.getPosition().getY()), "M");
+        graphics.putString(new TerminalPosition(super.getPosition().getX(), super.getPosition().getY()), "@");
     }
 
     public Position move(){
