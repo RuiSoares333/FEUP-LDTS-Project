@@ -35,6 +35,7 @@ public class Game {
 
         KeyStroke key;
 
+        arena.moveMonsters(screen, arena);
         do {
 
             draw(screen);
