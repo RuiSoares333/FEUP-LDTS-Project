@@ -23,6 +23,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 public class RankingMenuView extends View<RankingMenuModel> {
 
@@ -50,65 +51,29 @@ public class RankingMenuView extends View<RankingMenuModel> {
     }
 
     protected void drawTopScorers(TextGraphics graphics){
-        graphics.putString(new TerminalPosition(46, 6), "TOP SCORERS");
+        graphics.putString(new TerminalPosition(43, 6), "TOP SCORERS");
 
-        InputStream is = ClassLoader.getSystemResourceAsStream("ranking.txt");
-        assert is != null;
-        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        BufferedReader reader = new BufferedReader(streamReader);
-        try {
-            int i = 8;
-            for (String line; (line = reader.readLine()) != null; i+=1) {
-                String[] scorer = line.split(" ");
-                graphics.putString(new TerminalPosition(45, i), scorer[0] + "......" + scorer[1]);
-            }
-            graphics.putString(new TerminalPosition(40, 15), "Press Any Key To Continue");
-        } catch (IOException e) {
-            e.printStackTrace();
+        int i=15;
+        for (Map.Entry<String, String> jogador: model.getJogadores().entrySet()) {
+            String nome = jogador.getKey();
+            String pontuacao = jogador.getValue();
+            graphics.putString(new TerminalPosition(40, i), nome + numPontos(nome.length(), pontuacao.length()) + pontuacao);
+            i+=3;
         }
+
+        graphics.putString(new TerminalPosition(38, 30), "Press Any Key To Continue");
+
     }
 
 
-    public void initScreen() throws IOException {
-        try {
-            screen = new TerminalScreen(getTerminal());
-        } catch (URISyntaxException | FontFormatException e) {
-            e.printStackTrace();
+    protected String numPontos(int tamNome, int tamPont){
+        int total = 20 - tamNome - tamPont;
+        if(total>0) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(".".repeat(Math.max(0, total)));
+            return stringBuilder.toString();
         }
-        screen.setCursorPosition(null); // we don't need a cursor
-
-        screen.startScreen(); // screens must be started
-        screen.doResizeIfNecessary(); // resize screen if necessary
-
-        graphics = screen.newTextGraphics();
-    }
-
-
-    public Terminal getTerminal() throws IOException, URISyntaxException, FontFormatException {
-        URL resource = getClass().getClassLoader().getResource("Font Berzerk.ttf");
-        assert resource != null;
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-
-        DefaultTerminalFactory factory = new DefaultTerminalFactory();
-
-        Font loadedFont = font.deriveFont(Font.PLAIN, 15);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        factory.setTerminalEmulatorFontConfiguration(fontConfig);
-        factory.setForceAWTOverSwing(true);
-        factory.setInitialTerminalSize(new TerminalSize(Constants.WIDTH, Constants.HEIGHT));
-
-        Terminal terminal = factory.createTerminal();
-        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                e.getWindow().dispose();
-            }
-        });
-        return terminal;
+        return ".....";
     }
 
 }

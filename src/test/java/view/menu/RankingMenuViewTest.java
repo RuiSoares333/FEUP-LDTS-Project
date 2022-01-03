@@ -1,42 +1,42 @@
-//package view.menu;
-//
-//import com.googlecode.lanterna.TerminalSize;
-//import com.googlecode.lanterna.graphics.TextGraphics;
-//import com.googlecode.lanterna.screen.Screen;
-//import com.googlecode.lanterna.screen.TerminalScreen;
-//import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-//import com.googlecode.lanterna.terminal.Terminal;
-//import model.Constants;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-//import org.mockito.Mockito;
-//
-//import java.io.IOException;
-//
-//public class RankingMenuViewTest {
-//
-//    RankingMenuView view;
-//    Screen screen;
-//    TextGraphics graphics;
-//
-//    @BeforeEach
-//    public void initView() throws IOException {
-//        TerminalSize terminalSize = new TerminalSize(Constants.WIDTH, Constants.HEIGHT);
-//        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-//        Terminal terminal = terminalFactory.createTerminal();
-//
-//        screen = new TerminalScreen(terminal);
-//        graphics = screen.newTextGraphics();
-//        view = Mockito.spy(new RankingMenuView());
-//    }
-//
-//
-//    @Test
-//    public void drawTest() throws IOException {
-//        view.draw(screen, 10);
-//        Mockito.verify(view, Mockito.times(1)).graphicSettings(Mockito.any());
-//        Mockito.verify(view, Mockito.times(1)).drawTopScorers(Mockito.any());
-//    }
-//
-//
-//}
+package view.menu;
+
+import model.ranking.RankingMenuModel;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import view.View;
+
+import java.io.IOException;
+
+public class RankingMenuViewTest {
+
+    View view;
+    RankingMenuModel model;
+
+    @BeforeEach
+    public void initView() throws IOException {
+        model = new RankingMenuModel();
+        view = Mockito.spy(new RankingMenuView(model));
+    }
+
+
+    @Test
+    public void drawTest() throws IOException {
+        view.draw(0);
+        Mockito.verify((RankingMenuView) view, Mockito.times(1)).graphicSettings(Mockito.any());
+        Mockito.verify((RankingMenuView) view, Mockito.times(1)).drawTopScorers(Mockito.any());
+    }
+
+    @Test
+    public void numPontos(){
+        RankingMenuView vieew = (RankingMenuView) view;
+
+        Assertions.assertEquals("..........", vieew.numPontos(5, 5));
+        Assertions.assertEquals("..............", vieew.numPontos(3, 3));
+        Assertions.assertEquals("..................", vieew.numPontos(1, 1));
+        Assertions.assertEquals(".....", vieew.numPontos(10, 10));
+    }
+
+
+}
