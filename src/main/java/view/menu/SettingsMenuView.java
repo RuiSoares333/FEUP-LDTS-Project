@@ -4,40 +4,89 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import model.Constants;
+import model.settings.SettingsModel;
 import view.Indicador;
-import view.IndicadorBigView;
+import view.View;
 
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
-public class SettingsMenuView extends Menu{
+public class SettingsMenuView extends View<SettingsModel> {
 
     Indicador indicador;
 
-    public SettingsMenuView(TextGraphics graphics){
-        indicador = new IndicadorBigView(116, 100, graphics);
+    public SettingsMenuView(SettingsModel model) throws IOException {
+        super(model);
+        initScreen();
+        indicador = new Indicador(18, 18, graphics);
     }
 
     @Override
-    public void draw(Screen screen, int position) throws IOException {
-        screen.clear();
-        TextGraphics graphics = screen.newTextGraphics();
+    public void initScreen() throws IOException {
 
-        graphicSettings(graphics);
-        drawAll(graphics);
+        try {
+            screen = new TerminalScreen(getTerminal());
+        } catch (URISyntaxException | FontFormatException e) {
+            e.printStackTrace();
+        }
 
-        indicador.draw(position, 38);
-        screen.refresh();
+        screen.setCursorPosition(null); // we don't need a cursor
+
+        screen.startScreen(); // screens must be started
+        screen.doResizeIfNecessary(); // resize screen if necessary
+
+        graphics = screen.newTextGraphics();
+    }
+
+    private Terminal getTerminal() throws IOException, URISyntaxException, FontFormatException {
+        URL resource = getClass().getClassLoader().getResource("Font Berzerk.ttf");
+        assert resource != null;
+        File fontFile = new File(resource.toURI());
+        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
+        DefaultTerminalFactory factory = new DefaultTerminalFactory();
+
+        Font loadedFont = font.deriveFont(Font.PLAIN, 15);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+        factory.setTerminalEmulatorFontConfiguration(fontConfig);
+        factory.setForceAWTOverSwing(true);
+        factory.setInitialTerminalSize(new TerminalSize(Constants.WIDTH, Constants.HEIGHT));
+
+        Terminal terminal = factory.createTerminal();
+        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                e.getWindow().dispose();
+            }
+        });
+        return terminal;
     }
 
 
     public void graphicSettings(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH*8, Constants.HEIGHT*8), ' ');
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
     }
 
-    protected void drawAll(TextGraphics graphics){
+    @Override
+    public void draw(int position) throws IOException {
+        screen.clear();
+
+        graphicSettings(graphics);
         drawHeader(graphics);
         drawExpertNome(graphics);
         drawTankyNome(graphics);
@@ -45,20 +94,13 @@ public class SettingsMenuView extends Menu{
         drawRecruit(graphics);
         drawTanky(graphics);
         drawExpert(graphics);
+        indicador.draw(position, 7);
+
+        screen.refresh();
     }
 
     protected void drawHeader(TextGraphics graphics){
-        for (int y = 0; y < Constants.CHOOSE_YOUR_HERO.length; y++) {
-            char[] blocos = Constants.CHOOSE_YOUR_HERO[y].toCharArray();
-            for (int x = 0; x < blocos.length; x++) {
-                if (blocos[x] == 'C') {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#943167"));
-                } else {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
-                }
-                graphics.fillRectangle(new TerminalPosition((x+28)*7+1, (y+1)*6), new TerminalSize(8, 5), ' ');
-            }
-        }
+        graphics.putString(40, 1, "CHOOSE YOUR HERO");
     }
 
     protected void drawRecruit(TextGraphics graphics) {
@@ -76,7 +118,7 @@ public class SettingsMenuView extends Menu{
                     case 'b' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#FFFFFF"));
                     default -> graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
                 }
-                graphics.fillRectangle(new TerminalPosition((x+16)*7+1, (y+7)*6), new TerminalSize(12, 6), ' ');
+                graphics.fillRectangle(new TerminalPosition(x+15, y+8), new TerminalSize(1, 1), ' ');
 
             }
         }
@@ -94,7 +136,7 @@ public class SettingsMenuView extends Menu{
                     case 's' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#FFAB91"));
                     default -> graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
                 }
-                graphics.fillRectangle(new TerminalPosition((x+48)*7+1, (y+7)*6), new TerminalSize(12, 6), ' ');
+                graphics.fillRectangle(new TerminalPosition(x+40, y+8), new TerminalSize(1, 1), ' ');
             }
         }
     }
@@ -112,52 +154,26 @@ public class SettingsMenuView extends Menu{
                     case 'r' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#E91E63"));
                     default -> graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
                 }
-                graphics.fillRectangle(new TerminalPosition((x+80)*7+1, (y+7)*6), new TerminalSize(12, 6), ' ');
+                graphics.fillRectangle(new TerminalPosition(x+64, y+8), new TerminalSize(1, 1), ' ');
             }
         }
     }
 
 
     protected void drawRecruitNome(TextGraphics graphics) {
-        for (int y = 0; y < Constants.RECRUTA_NOME.length; y++) {
-            char[] blocos = Constants.RECRUTA_NOME[y].toCharArray();
-            for (int x = 0; x < blocos.length; x++) {
-                if (blocos[x] == 'r') {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#943167"));
-                } else {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
-                }
-                graphics.fillRectangle(new TerminalPosition((x+10)*7+1, (y+24)*6), new TerminalSize(8, 5), ' ');
-            }
-        }
+        graphics.putString(20, 30, "RECRUIT");
+
     }
 
     protected void drawTankyNome(TextGraphics graphics) {
-        for (int y = 0; y < Constants.TANKY_NOME.length; y++) {
-            char[] blocos = Constants.TANKY_NOME[y].toCharArray();
-            for (int x = 0; x < blocos.length; x++) {
-                if (blocos[x] == 'T') {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#943167"));
-                } else {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
-                }
-                graphics.fillRectangle(new TerminalPosition((x+47)*7+1, (y+24)*6), new TerminalSize(8, 5), ' ');
-            }
-        }
+        graphics.putString(45, 30, "TANKY");
+
     }
 
 
     protected void drawExpertNome(TextGraphics graphics) {
-        for (int y = 0; y < Constants.EXPERT_NOME.length; y++) {
-            char[] blocos = Constants.EXPERT_NOME[y].toCharArray();
-            for (int x = 0; x < blocos.length; x++) {
-                if (blocos[x] == 'E') {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#943167"));
-                } else {
-                    graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
-                }
-                graphics.fillRectangle(new TerminalPosition((x+79)*7+1, (y+24)*6), new TerminalSize(8, 5), ' ');
-            }
-        }
+        graphics.putString(68, 30, "EXPERT");
     }
+
+
 }
