@@ -4,76 +4,21 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import model.Constants;
 import model.settings.SettingsModel;
-import view.Indicador;
+import view.IndicadorView;
 import view.View;
 
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class SettingsMenuView extends View<SettingsModel> {
 
-    Indicador indicador;
+    IndicadorView indicador;
 
     public SettingsMenuView(SettingsModel model) throws IOException {
         super(model);
         initScreen();
-        indicador = new Indicador(18, 18, graphics);
-    }
-
-    @Override
-    public void initScreen() throws IOException {
-
-        try {
-            screen = new TerminalScreen(getTerminal());
-        } catch (URISyntaxException | FontFormatException e) {
-            e.printStackTrace();
-        }
-
-        screen.setCursorPosition(null); // we don't need a cursor
-
-        screen.startScreen(); // screens must be started
-        screen.doResizeIfNecessary(); // resize screen if necessary
-
-        graphics = screen.newTextGraphics();
-    }
-
-    private Terminal getTerminal() throws IOException, URISyntaxException, FontFormatException {
-        URL resource = getClass().getClassLoader().getResource("Font Berzerk.ttf");
-        assert resource != null;
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-
-        DefaultTerminalFactory factory = new DefaultTerminalFactory();
-
-        Font loadedFont = font.deriveFont(Font.PLAIN, 15);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        factory.setTerminalEmulatorFontConfiguration(fontConfig);
-        factory.setForceAWTOverSwing(true);
-        factory.setInitialTerminalSize(new TerminalSize(Constants.WIDTH, Constants.HEIGHT));
-
-        Terminal terminal = factory.createTerminal();
-        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                e.getWindow().dispose();
-            }
-        });
-        return terminal;
+        indicador = new IndicadorView(18, 18, graphics);
     }
 
 
