@@ -116,28 +116,34 @@ public class Arena {
     }*/
     
     //Move monster in random directions
-    public void moveMonsters(Screen screen, Arena arena){
+    public void moveMonstersRandom(Screen screen, Arena arena){
         // And From your main() method or any other method
         Timer timer = new Timer();
 
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        for (Monster monster : monsters)
-                            moveMonster(monster.moveMonsters(), monster);
-                        screen.clear();
-                        try {
+
+                        for (Monster monster: monsters) {
+
+                            Position novaPosicao = monster.move();
+
+                            if(canEntityMove(novaPosicao))
+                                monster.setPosition(novaPosicao);
+
+                            screen.clear();
                             arena.draw(screen.newTextGraphics());
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                            try {
+                                screen.refresh();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        try {
-                            screen.refresh();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+
+                        draw(screen.newTextGraphics());
+
                     }
-                }, 0, 1000);
+                }, 0, 200);
     }
 
     public boolean canEntityMove(Position position){
