@@ -87,7 +87,7 @@ public class Arena {
         return true;
     }
 
-    public void moveMonsters(){
+    /*public void moveMonsters(){
         for (Monster monster: monsters) {
 
             Position novaPosicao = monster.move();
@@ -96,6 +96,31 @@ public class Arena {
                 monster.setPosition(novaPosicao);
 
         }
+    }*/
+    
+        public void moveMonstersRandom(Screen screen, Arena arena){
+        // And From your main() method or any other method
+        Timer timer = new Timer();
+
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        for (Monster monster : monsters)
+                            moveMonster(monster.moveMonsters(), monster);
+                        screen.clear();
+                        try {
+                            arena.draw(screen.newTextGraphics());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            screen.refresh();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, 0, 2000);
+
     }
 
     private boolean canEntityMove(Position position){
