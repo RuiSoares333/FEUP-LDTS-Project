@@ -39,7 +39,7 @@ public class Game {
 
             draw();
             key = screen.readInput();
-            arena.moveMonsters();
+//            arena.moveMonsters();
             processKey(key);
 
         }while (key.getKeyType() != KeyType.EOF && flag);

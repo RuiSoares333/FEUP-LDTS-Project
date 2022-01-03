@@ -1,5 +1,6 @@
 package model;
 
+import com.googlecode.lanterna.screen.Screen;
 import model.Entity.Hero.Expert;
 import model.Entity.Hero.Hero;
 import model.Entity.Properties.Position;
@@ -16,9 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 public class Arena {
@@ -29,7 +28,7 @@ public class Arena {
     int n = 0;
     Position initialPosition;
 
-    Hero hero = new Expert(10, 10);
+    Hero hero;
 
     private final List<Wall> walls = new ArrayList<>();
     private final List<Monster> monsters;
@@ -38,6 +37,8 @@ public class Arena {
         //creating the deadly arena
         this.width = width;
         this.height = height;
+
+        hero = new Expert(10, 10);
 
         carregarFich();
         monsters = createMonsters();    // creating the fierce monsters
@@ -114,30 +115,30 @@ public class Arena {
         }
     }*/
     
-        public void moveMonstersRandom(Screen screen, Arena arena){
-        // And From your main() method or any other method
-        Timer timer = new Timer();
-
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        for (Monster monster : monsters)
-                            moveMonster(monster.moveMonsters(), monster);
-                        screen.clear();
-                        try {
-                            arena.draw(screen.newTextGraphics());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        try {
-                            screen.refresh();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, 0, 2000);
-
-    }
+//    public void moveMonstersRandom(Screen screen, Arena arena){
+//        // And From your main() method or any other method
+//        Timer timer = new Timer();
+//
+//                timer.schedule(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        for (Monster monster : monsters)
+//                            moveMonster(monster.moveMonsters(), monster);
+//                        screen.clear();
+//                        try {
+//                            arena.draw(screen.newTextGraphics());
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                        try {
+//                            screen.refresh();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }, 0, 2000);
+//
+//    }
 
     public boolean canEntityMove(Position position){
         for(Wall wall : walls){
@@ -203,7 +204,7 @@ public class Arena {
 
     public void carregarFich() {
         // java.io.InputStream
-        InputStream is = ClassLoader.getSystemResourceAsStream("nivel4.txt");
+        InputStream is = ClassLoader.getSystemResourceAsStream("nivel1.txt");
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
         BufferedReader reader = new BufferedReader(streamReader);
         try {
