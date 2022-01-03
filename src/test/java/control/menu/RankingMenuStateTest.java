@@ -14,14 +14,14 @@ import java.io.IOException;
 
 public class RankingMenuStateTest {
 
-    RankingMenuState ms;
+    RankingMenuState rms;
     FactoryState factoryState;
 
     @BeforeEach
-    public void initMenuController(){
+    public void initRankingMenuState(){
         try {
             factoryState = Mockito.spy(FactoryState.class);
-            ms = Mockito.spy(factoryState.genRankingMenuState(Mockito.any()));
+            rms = Mockito.spy(factoryState.genRankingMenuState(Mockito.any()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,16 +30,16 @@ public class RankingMenuStateTest {
     @Test
     public void run() throws IOException {
         MenuCommand keyMock = Mockito.mock(MenuCommand.class);
-        Mockito.when(ms.processKey(keyMock)).thenAnswer(invocation -> MenuState.class);
+        Mockito.when(rms.processKey(keyMock)).thenAnswer(invocation -> MenuState.class);
 
-        Assertions.assertEquals(MenuState.class, ms.run().getClass());
+        Assertions.assertEquals(MenuState.class, rms.run().getClass());
     }
 
     @Test
     public void processKey() throws IOException {
         MenuCommand keyMock = Mockito.mock(MenuCommand.class);
 
-        Assertions.assertEquals(MenuState.class, ms.processKey(keyMock).getClass());
+        Assertions.assertEquals(MenuState.class, rms.processKey(keyMock).getClass());
     }
 
 }

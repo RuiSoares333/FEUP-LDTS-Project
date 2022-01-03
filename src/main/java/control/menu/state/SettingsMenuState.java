@@ -3,6 +3,7 @@ package control.menu.state;
 
 import control.MenuCommand;
 
+import model.Menu.MenuModel;
 import model.Soldado;
 import model.settings.SettingsModel;
 import view.View;
@@ -21,11 +22,11 @@ public class SettingsMenuState extends ControllerState<SettingsModel> {
     public ControllerState<?> run() throws IOException {
 
         view.draw(getPosition(model.getSelected()));
-        return processKey(model, view.getCommand());
+        return processKey(view.getCommand());
 
     }
 
-    ControllerState<?> processKey(SettingsModel model, MenuCommand key) throws IOException {
+    public ControllerState<?> processKey(MenuCommand key) throws IOException {
         ControllerState<?> newState = this;
         switch (key.getCommandEnum()) {
             case LEFT -> model.previousSelected();
@@ -43,5 +44,9 @@ public class SettingsMenuState extends ControllerState<SettingsModel> {
             case EXPERT -> 63;
             default -> 14;
         };
+    }
+
+    public SettingsModel getModel() {
+        return model;
     }
 }

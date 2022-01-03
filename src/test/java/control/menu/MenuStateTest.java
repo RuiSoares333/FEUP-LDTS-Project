@@ -19,7 +19,7 @@ public class MenuStateTest {
     FactoryState factoryState;
 
     @BeforeEach
-    public void initMenuController(){
+    public void initMenuState(){
         try {
             factoryState = Mockito.spy(FactoryState.class);
             ms = Mockito.spy(factoryState.genMenuState(Mockito.any()));
@@ -44,8 +44,10 @@ public class MenuStateTest {
         MenuModel model = ms.getModel();
 
         ms.processKey(keyMock);
-
         assertEquals(MenuModel.Opcao.EXIT, model.getSelected());
+
+        ms.processKey(keyMock);
+        assertEquals(MenuModel.Opcao.RANKS, model.getSelected());
     }
 
     @Test
@@ -56,7 +58,6 @@ public class MenuStateTest {
         MenuModel model = ms.getModel();
 
         ms.processKey(keyMock);
-
         assertEquals(MenuModel.Opcao.SETT, model.getSelected());
     }
 
