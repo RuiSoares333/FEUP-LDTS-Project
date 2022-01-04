@@ -11,7 +11,12 @@ Este projeto foi desenvolvido por Catarina Canelas (up202103631@fe.up.pt), Diogo
 
 - **Menu Principal** - Menu Inicial com as opções PLAY, SETTINGS, LEADERBOARD e EXIT. A navegação é feita através das setas do teclado e a opção a selecionar com Enter
 - **Visão da Leaderboard** - Possibilidade de ver a leaderboard, na opção settings.
-- **Escolha de Herói** - Possibilidade de escolher o herói com que se pretende jogar, na opção settings. Cada herói tem as suas particularidas. Heroi Recruit - Heroi com Estatisticas Básicas. Heroi Tanky - Heroi com pontos Extra de Vida. Heroi Specialist - Heroi com cadência de tiro mais elevada. Heroi Brun-o Leema - Heroi Imortal para testes de Inimigos. Heroi Oahnaram Iur - Heroi Imortal para testes de Terreno.
+- **Escolha de Herói** - Possibilidade de escolher o herói com que se pretende jogar, na opção settings. Cada herói tem as suas particularidas. 
+  - Heroi Recruit - Heroi com Estatisticas Básicas. 
+  - Heroi Tanky - Heroi com pontos Extra de Vida. 
+  - Heroi Specialist - Heroi com cadência de tiro mais elevada. 
+  - Heroi Brun-o Leema - Heroi Imortal para testes de Inimigos. 
+  - Heroi Oahnaram Iur - Heroi Imortal para testes de Terreno.
 - **Movimentação do Herói** - O herói movimenta-se para os quatro sentidos usando as setas do teclado.
 - **Disparos do Herói** - O herói pode disparar usando o espaço do teclado
 - **Morte do Herói em contacto com paredes e monstros** - O herói morre se tiver contacto com as paredes eletrizadas, com os monstros ou com as balas destes.
