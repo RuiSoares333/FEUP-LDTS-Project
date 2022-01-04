@@ -1,10 +1,10 @@
-package model.Entity;
+package model.entity;
 
-import model.Entity.Properties.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import model.entity.properties.Position;
 
 import java.util.Random;
 

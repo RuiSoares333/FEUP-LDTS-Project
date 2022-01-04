@@ -1,12 +1,8 @@
 package model;
 
-import model.Arena;
-import model.Entity.Monster;
-import model.Entity.Properties.Position;
+import model.entity.Monster;
+import model.entity.properties.Position;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

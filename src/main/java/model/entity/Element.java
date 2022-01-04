@@ -1,7 +1,7 @@
-package model.Entity;
+package model.entity;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-import model.Entity.Properties.Position;
+import model.entity.properties.Position;
 
 public abstract class Element {
     private Position position;

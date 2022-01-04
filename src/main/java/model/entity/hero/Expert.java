@@ -1,4 +1,4 @@
-package model.Entity.Hero;
+package model.entity.hero;
 
 public class Expert extends Hero{
     public Expert(int x, int y) {

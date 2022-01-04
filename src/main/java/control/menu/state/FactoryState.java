@@ -1,7 +1,7 @@
 package control.menu.state;
 
-import model.Menu.MenuModel;
 import model.Soldado;
+import model.menu.MenuModel;
 import model.ranking.RankingMenuModel;
 import model.settings.SettingsModel;
 import view.menu.MenuView;

@@ -1,4 +1,4 @@
-package model.Menu;
+package model.menu;
 
 import model.Model;
 

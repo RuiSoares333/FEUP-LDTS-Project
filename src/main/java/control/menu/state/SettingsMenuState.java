@@ -2,8 +2,6 @@ package control.menu.state;
 
 
 import control.MenuCommand;
-
-import model.Menu.MenuModel;
 import model.Soldado;
 import model.settings.SettingsModel;
 import view.View;

@@ -1,7 +1,7 @@
-package model.Entity;
+package model.entity;
 
-import model.Entity.Properties.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import model.entity.properties.Position;
 
 public class Bullet extends Element{
     public Bullet(Position position) {

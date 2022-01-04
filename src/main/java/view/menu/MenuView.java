@@ -5,7 +5,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import model.Constants;
-import model.Menu.MenuModel;
+import model.menu.MenuModel;
 import view.IndicadorView;
 import view.View;
 

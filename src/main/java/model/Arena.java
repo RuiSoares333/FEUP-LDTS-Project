@@ -1,16 +1,16 @@
 package model;
 
-import com.googlecode.lanterna.screen.Screen;
-import model.Entity.Hero.Expert;
-import model.Entity.Hero.Hero;
-import model.Entity.Properties.Position;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import model.Entity.Monster;
-import model.Entity.Wall;
+import com.googlecode.lanterna.screen.Screen;
+import model.entity.Monster;
+import model.entity.Wall;
+import model.entity.hero.Expert;
+import model.entity.hero.Hero;
+import model.entity.properties.Position;
 
 import java.io.BufferedReader;
 import java.io.IOException;

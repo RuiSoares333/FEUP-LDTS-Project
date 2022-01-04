@@ -1,6 +1,6 @@
 package view.menu;
 
-import model.Menu.MenuModel;
+import model.menu.MenuModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

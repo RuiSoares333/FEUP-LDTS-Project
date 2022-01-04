@@ -1,4 +1,4 @@
-package model.Entity.Hero;
+package model.entity.hero;
 
 public class Tanky extends Hero{
     public Tanky(int x, int y) {

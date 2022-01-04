@@ -1,8 +1,6 @@
 package view;
 
-import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
@@ -48,25 +46,12 @@ public abstract class View<T extends Model> {
         screen.close();
     }
 
-    protected void clear(int col, int row) {
-        screen.clear();
-        graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
-        graphics.fillRectangle(new TerminalPosition(col, row), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
-    }
-
-    protected void refresh() throws IOException {
-        screen.refresh();
-    }
 
     public T getModel() {
         return model;
     }
 
     public abstract void draw(int position) throws IOException;
-
-    protected int getStringLine(int pos) {
-        return 10 + pos * 2;
-    }
 
     public Screen getScreen() {
         return screen;
@@ -116,13 +101,4 @@ public abstract class View<T extends Model> {
         return terminal;
     }
 
-//    //Column to the string be at the center of the screen
-//    public int getCol(String s) {
-//        return (COLS_MENU - s.length()) / 2;
-//    }
-
-//    protected void drawString(String color, int row, String s) {
-//        graphics.setForegroundColor(TextColor.Factory.fromString(color));
-//        graphics.putString(getCol(s), row, s);
-//    }
 }

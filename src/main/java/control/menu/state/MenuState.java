@@ -2,8 +2,8 @@ package control.menu.state;
 
 import control.MenuCommand;
 import model.Game;
-import model.Menu.MenuModel;
 import model.Soldado;
+import model.menu.MenuModel;
 import view.View;
 
 import java.io.IOException;

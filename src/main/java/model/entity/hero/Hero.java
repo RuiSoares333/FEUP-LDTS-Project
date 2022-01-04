@@ -1,11 +1,11 @@
-package model.Entity.Hero;
+package model.entity.hero;
 
-import model.Entity.Element;
-import model.Entity.Properties.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import model.entity.Element;
+import model.entity.properties.Position;
 
 public class Hero extends Element {
 

@@ -32,23 +32,21 @@ public class SettingsMenuView extends View<SettingsModel> {
         screen.clear();
 
         graphicSettings(graphics);
-        drawHeader(graphics);
-        drawExpertNome(graphics);
-        drawTankyNome(graphics);
-        drawRecruitNome(graphics);
-        drawRecruit(graphics);
-        drawTanky(graphics);
-        drawExpert(graphics);
+        drawHeader();
+        drawNomeSoldados();
+        drawRecruit();
+        drawTanky();
+        drawExpert();
         indicador.draw(position, 7);
 
         screen.refresh();
     }
 
-    protected void drawHeader(TextGraphics graphics){
+    protected void drawHeader(){
         graphics.putString(40, 1, "CHOOSE YOUR HERO");
     }
 
-    protected void drawRecruit(TextGraphics graphics) {
+    protected void drawRecruit() {
         for (int y = 0; y < Constants.RECRUTA_SIM.length; y++) {
             char[] blocos = Constants.RECRUTA_SIM[y].toCharArray();
             for (int x = 0; x < blocos.length; x++) {
@@ -69,7 +67,7 @@ public class SettingsMenuView extends View<SettingsModel> {
         }
     }
 
-    protected void drawTanky(TextGraphics graphics){
+    protected void drawTanky(){
 
         for(int y=0; y<Constants.TANKY_SIM.length; y++){
             char [] blocos = Constants.TANKY_SIM[y].toCharArray();
@@ -86,7 +84,7 @@ public class SettingsMenuView extends View<SettingsModel> {
         }
     }
 
-    protected void drawExpert(TextGraphics graphics){
+    protected void drawExpert(){
 
         for(int y=0; y<Constants.EXPERT_SIM.length; y++){
             char [] blocos = Constants.EXPERT_SIM[y].toCharArray();
@@ -105,20 +103,12 @@ public class SettingsMenuView extends View<SettingsModel> {
     }
 
 
-    protected void drawRecruitNome(TextGraphics graphics) {
+    protected void drawNomeSoldados() {
         graphics.putString(20, 30, "RECRUIT");
-
-    }
-
-    protected void drawTankyNome(TextGraphics graphics) {
         graphics.putString(45, 30, "TANKY");
-
-    }
-
-
-    protected void drawExpertNome(TextGraphics graphics) {
         graphics.putString(68, 30, "EXPERT");
     }
+
 
 
 }

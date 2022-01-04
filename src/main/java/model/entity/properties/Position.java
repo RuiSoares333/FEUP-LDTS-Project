@@ -1,4 +1,4 @@
-package model.Entity.Properties;
+package model.entity.properties;
 
 public class Position {
     private int x;

@@ -2,7 +2,7 @@ package control.menu;
 
 import control.MenuCommand;
 import control.menu.state.*;
-import model.Menu.MenuModel;
+import model.menu.MenuModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
