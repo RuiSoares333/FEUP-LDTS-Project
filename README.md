@@ -31,4 +31,4 @@ Este projeto foi desenvolvido por Catarina Canelas (up202103631@fe.up.pt), Diogo
 
 ### Screenshots
 
-![This is an image](/images/mockups/nivel1.png)
+![This is an image](./docs/images/mockups/nivel1.png)
