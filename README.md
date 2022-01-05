@@ -1,6 +1,3 @@
-You should also have an extra simplified version of the README.md file in your
-root folder with a simple description of the game, and some screenshots.
-
 ## LDTS_1007 - Berzerk
 
 Berzerk é um jogo de ação e tiro em que o jogador tem por objetivo passar todos os niveis sem ser morto, podendo disparar e destruir monstros e tendo que ter sempre cuidado para nao bater nas paredes porque são eletrificadas. A cada nivel corresponde um mapa diferente e para alem do mapa ser mais complexo, os monstros vao ficando também mais fortes e desenvolvendo capacidade de tiro por isso, apesar de uma abordagem pacifista ser possivel, não há muito espaço para o sucesso. 
@@ -31,4 +28,34 @@ Este projeto foi desenvolvido por Catarina Canelas (up202103631@fe.up.pt), Diogo
 
 ### Screenshots
 
+## Mockups de todos os mapas 
+
+# Mapa 1
+
 ![This is an image](./docs/images/mockups/nivel1.png)
+
+# Mapa 2
+
+![This is an image](./docs/images/mockups/nivel2.png)
+
+# Mapa 3
+
+![This is an image](./docs/images/mockups/nivel3.png)
+
+# Mapa 4
+
+![This is an image](./docs/images/mockups/nivel4.png)
+
+# Mapa 5
+
+![This is an image](./docs/images/mockups/nivel5.png)
+
+## Screenshots
+
+# Menu Principal do Jogo
+
+![This is an image](./docs/images/MenuJogo.jpeg)
+
+# Exemplo do jogo
+
+![This is an image](./docs/images/ExemploRealJogo.jpeg)
