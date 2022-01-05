@@ -4,7 +4,7 @@ Berzerk é um jogo de ação e tiro em que o jogador tem por objetivo passar tod
 
 Este projeto foi desenvolvido por Catarina Canelas (up202103631@fe.up.pt), Diogo Gomes (up201505676@fe.up.pt) e Rui Soares (up202103631@fe.up.pt) para Laboratório de Desenho e Teste de Software, 2021/22.
 
-### FEATURES
+## FEATURES
 
 - **Menu Principal** - Menu Inicial com as opções PLAY, SETTINGS, LEADERBOARD e EXIT. A navegação é feita através das setas do teclado e a opção a selecionar com Enter
 - **Visão da Leaderboard** - Possibilidade de ver a leaderboard, na opção settings.
@@ -26,36 +26,36 @@ Este projeto foi desenvolvido por Catarina Canelas (up202103631@fe.up.pt), Diogo
 - **Menu de morte do heroi** - Se o heroi morrer aparece GAME OVER e um menu com as opções RESTART e EXIT.
 - **Menu de vitória** - Se o heroi morrer aparece VICTORY e o SCORE conseguido assim como um menu com as opções TRY AGAIN e EXIT.
 
-### Screenshots
+## Screenshots
 
-## Mockups de todos os mapas 
+### Mockups de todos os mapas 
 
-# Mapa 1
+#### Mapa 1
 
 ![This is an image](./docs/images/mockups/nivel1.png)
 
-# Mapa 2
+#### Mapa 2
 
 ![This is an image](./docs/images/mockups/nivel2.png)
 
-# Mapa 3
+#### Mapa 3
 
 ![This is an image](./docs/images/mockups/nivel3.png)
 
-# Mapa 4
+#### Mapa 4
 
 ![This is an image](./docs/images/mockups/nivel4.png)
 
-# Mapa 5
+#### Mapa 5
 
 ![This is an image](./docs/images/mockups/nivel5.png)
 
-## Screenshots
+### Screenshots
 
-# Menu Principal do Jogo
+#### Menu Principal do Jogo
 
 ![This is an image](./docs/images/MenuJogo.jpeg)
 
-# Exemplo do jogo
+#### Exemplo do jogo no mapa 2
 
 ![This is an image](./docs/images/ExemploRealJogo.jpeg)
