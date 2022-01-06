@@ -1,5 +1,6 @@
 package view;
 
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -47,6 +48,7 @@ public class IndicadorView {
 
 
     public void draw(int colBegin, int lineBegin) {
+        graphics.enableModifiers(SGR.BLINK, SGR.BOLD);
         drawTop(colBegin, lineBegin);
         drawBottom(colBegin, lineBegin);
     }

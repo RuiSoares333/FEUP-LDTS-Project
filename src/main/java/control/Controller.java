@@ -1,7 +1,7 @@
 package control;
 
-import control.menu.state.ControllerState;
-import control.menu.state.FactoryState;
+import control.state.ControllerState;
+import control.state.FactoryState;
 import model.Soldado;
 
 import java.io.IOException;

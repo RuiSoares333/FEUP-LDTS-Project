@@ -17,7 +17,7 @@ public class MenuView extends View<MenuModel> {
     public MenuView(MenuModel model) throws IOException {
         super(model);
         initScreen();
-        indicador = new IndicadorView(13, 3, graphics);
+        indicador = new IndicadorView(13, 3, screen.newTextGraphics());
     }
 
     public void draw(int position) throws IOException {

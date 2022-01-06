@@ -1,9 +1,9 @@
 package control.menu;
 
 import control.MenuCommand;
-import control.menu.state.FactoryState;
-import control.menu.state.MenuState;
-import control.menu.state.RankingMenuState;
+import control.state.FactoryState;
+import control.state.MenuState;
+import control.state.RankingMenuState;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

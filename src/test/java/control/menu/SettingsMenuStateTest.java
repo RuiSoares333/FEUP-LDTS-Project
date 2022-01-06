@@ -1,7 +1,10 @@
 package control.menu;
 
 import control.MenuCommand;
-import control.menu.state.*;
+import control.state.ControllerState;
+import control.state.FactoryState;
+import control.state.MenuState;
+import control.state.SettingsMenuState;
 import model.Soldado;
 import model.settings.SettingsModel;
 import org.junit.jupiter.api.Assertions;

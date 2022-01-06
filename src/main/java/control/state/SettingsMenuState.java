@@ -1,10 +1,11 @@
-package control.menu.state;
+package control.state;
 
 
 import control.MenuCommand;
 import model.Soldado;
 import model.settings.SettingsModel;
 import view.View;
+import view.menu.MenuView;
 
 import java.io.IOException;
 

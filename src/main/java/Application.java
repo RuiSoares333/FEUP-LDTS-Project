@@ -1,5 +1,5 @@
 import control.Controller;
-import control.menu.state.FactoryState;
+import control.state.FactoryState;
 
 import java.io.IOException;
 

@@ -40,22 +40,22 @@ public final class Constants {
     };
 
     public static final String[] TANKY_SIM= {
-            "       pp       ",
-            " ppp  pccp  ppp ",
-            "ppccppccccppccpp",
-            "pcccccchhhhhhccp",
-            "pcchhhhhsssshccp",
-            "pchssssssssshccp",
-            "pchsssssshsshccp",
-            "pchssshsshsshccp",
-            " phshshsshsshcp ",
-            " phshshsshsshcp ",
-            "  hhhhhhhhhhhp  ",
-            "  pcccchsssshp  ",
-            "   pccchhhhhh   ",
-            "    pccccccp    ",
-            "     pccccp     ",
-            "      pppp      "
+            "     pppppp     ",
+            "    pvvvvvvp    ",
+            "   pvvvvvvvvp   ",
+            "  pvvvvvvvvvp   ",
+            "  pppppvvvvvppp ",
+            " pacaAApvvvvpvvp",
+            " pAAAAApvvvVpvvp",
+            " pAAAAApvvvVpVvp",
+            "  pppppvvvVVpVVp",
+            "  pVvvvvvvVVpVVp",
+            "  pVvvvvvVVVppp ",
+            "  pVVVVVVVVVp   ",
+            "  pVVVVpVVVVp   ",
+            "  pVVVp pVVVp   ",
+            "  pVVVp pVVVp   ",
+            "   ppp   ppp    "
     };
 
     public static final String[] EXPERT_SIM= {

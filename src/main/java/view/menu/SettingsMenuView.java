@@ -74,9 +74,11 @@ public class SettingsMenuView extends View<SettingsModel> {
             for(int x=0; x<blocos.length; x++){
                 switch (blocos[x]) {
                     case 'p' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-                    case 'c' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#757575"));
-                    case 'h' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#795548"));
-                    case 's' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#FFAB91"));
+                    case 'v' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#b02121"));
+                    case 'V' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#781212"));
+                    case 'a' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#48a7f0"));
+                    case 'A' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#4b5bab"));
+                    case 'c' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#5ecad6"));
                     default -> graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
                 }
                 graphics.fillRectangle(new TerminalPosition(x+40, y+8), new TerminalSize(1, 1), ' ');

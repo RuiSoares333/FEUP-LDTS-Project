@@ -1,7 +1,7 @@
 package control.menu;
 
 import control.MenuCommand;
-import control.menu.state.*;
+import control.state.*;
 import model.menu.MenuModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

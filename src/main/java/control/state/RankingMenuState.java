@@ -1,4 +1,4 @@
-package control.menu.state;
+package control.state;
 
 import control.MenuCommand;
 import model.Soldado;
