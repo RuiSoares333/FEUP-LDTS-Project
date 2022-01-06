@@ -6,6 +6,27 @@ Este projeto foi desenvolvido por Catarina Canelas (up202103631@fe.up.pt), Diogo
 
 Para uma versão mais detalhada carregue [aqui](docs/README.md)
 
+## Features
+
+- [x] **Menus** - A navegação é feita através das setas do teclado e a opção a selecionar com Enter.
+    - PLAY;
+    - SETTINGS;
+    - LEADERBOARD;
+    - EXIT.
+- [x] **Leaderboard** - Possibilidade de ver o ‘top’ 5 de melhores jogadores.
+- [x] **Escolha de Herói** - Possibilidade de escolher o herói com que se pretende jogar, na opção 'SETTINGS'. Cada herói tem as suas particularidades.
+    - Herói Recruit - Herói com Estatisticas Básicas.
+    - Herói Tanky - Herói com pontos Extra de Vida.
+    - Herói Expert - Herói com cadência de tiro mais elevada.
+- [x] **Movimentação do Herói** - O herói movimenta-se para os quatro sentidos usando as setas do teclado.
+- [ ] **Morte do Herói** - O herói morre se tiver contacto com as paredes eletrizadas, com os monstros ou com as balas destes.
+- [ ] **Movimentação dos Monstros** - Os monstros movimentam-se sozinhos. Com o avançar dos niveis, podem movimentar-se mais rapidamente.
+- [ ] **Disparos do Herói** - O herói pode disparar usando o espaço do teclado.
+- [ ] **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
+- [ ] **Morte dos Monstros** - Um monstro atingido por uma bala morre. Monstros em diferentes níveis podem necessitar de mais do que uma bala para morrerem.
+- [ ] **Passagem de niveis** - A passagem de niveis dá-se com a chegada do herói à parte aberta do mapa. No último nivel, o objetivo é apanhar a taça do jogo.
+- [ ] **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome, e de seguida um menu com as opções TRY AGAIN e EXIT.
+
 
 ## Screenshots
 
