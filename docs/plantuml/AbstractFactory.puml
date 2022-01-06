@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Controller{
++Controller(FactoryState factory)
++run()
+}
+class FactoryState{
++genMenuState()
++genSettingsMenuState()
++genRankingMenuState()
++genGameOverState()
+}
+
+abstract class ControllerState{
++{abstract}run()
+}
+
+FactoryState .r.> ControllerState
+Controller -r-> "1" FactoryState
+
+
+
+note left of Controller: Context
+note top of FactoryState: Abstract Factory
+@enduml

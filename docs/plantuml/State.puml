@@ -1,0 +1,40 @@
+@startuml
+
+class Controller{
++Controller(FactoryState factory)
++run()
+}
+
+abstract class ControllerState{
++{abstract}run()
+}
+
+class MenuState{
++run()
+}
+class RankingMenuState{
++run()
+}
+class SettingsMenuState{
++run()
+}
+
+class GameOverState{
++run()
+}
+
+ControllerState <|-- MenuState
+ControllerState <|-- RankingMenuState
+ControllerState <|-- SettingsMenuState
+ControllerState <|-- GameOverState
+
+note right of ControllerState: State
+
+note "Concrete State" as N1
+N1 -u- SettingsMenuState
+
+note left of Controller : Context
+
+Controller .r.> ControllerState
+
+@enduml
