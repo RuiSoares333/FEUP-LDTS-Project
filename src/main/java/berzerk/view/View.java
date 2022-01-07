@@ -1,8 +1,10 @@
 package berzerk.view;
 
 import berzerk.control.MenuCommand;
+import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.Model;
+import com.googlecode.lanterna.TextColor;
 
 import java.io.IOException;
 
@@ -12,9 +14,11 @@ public abstract class View<T extends Model> {
     private Ecra ecra;
 
 
-    protected View(T model, Ecra ecra){
+    public View(T model, Ecra ecra){
         this.model = model;
         this.ecra = ecra;
+        this.ecra.getGraphics().setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
+        this.ecra.getGraphics().setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
     }
 
     public MenuCommand getCommand() throws IOException {
