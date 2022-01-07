@@ -1,10 +1,3 @@
-# Game: Berzerk
-
-Information on:
-- the usage of design patterns in your project;
-- which code smells are still present at the end, and
-- which refactorings could be used to fix them.
-
 # LDTS_1007 - Berzerk
 
 Pretendemos recriar o jogo Berzerk do Atari 2600, com algumas mudanças, nomeadamente, utilizar mais do que 1 Heroi (Recruit, Tanky, Expert), e dar-lhe um protótipo de história.
@@ -111,6 +104,37 @@ Este projeto foi desenvolvido por *Catarina Canelas* (*up202103631*@fe.up.pt), *
 
 [//]: # (- There are now more classes and instances to manage, but still in a reasonable number.)
 
+
+#### Estrutura Geral
+
+**Contexto do Problema**
+
+Desde o início do projeto que sabiamos que deveriamos ter uma certa estrutura.
+Sabendo que iriamos precisar de Interfaces Gráficas (tanto para menus como para o jogo), decidimos utilizar um padrão em específico para nos ajudar com a organização da estrutura do projeto.
+
+
+**O Padrão**
+
+Aplicamos especialmente o Padrão **Architectural**, específicamente o estilo **MVC** (Model-View-Controller), que nos ajuda a organizar as diferentes etapas de interação com o Utilizador.
+
+**Implementação**
+
+Agora, independentemente da implementação, podemos dividir as classes do seguinte modo:
+- Model: Guardar Dados e Informações sobre o jogo e outras interações.
+- Control: Controlam a lógica do jogo e outras interações.
+- View: Responsáveis pelos Draws na screen.
+
+Estes tipos de classes organizam-se do seguinte modo:
+
+![img](images/patterns/MVCArchPattern.svg)
+
+**Consequências**
+
+O uso do padrão no design atual concede-nos os seguintes benefícios:
+- Código bem organizado e respeitando o Single Responsability Principle
+- É fácil de adicionar novas funcionalidades ao longo do desenvolvimento do projeto.
+- Não se cria tantas disrupções durante o desenvolvimento do projeto.
+
 #### VIAJAR ENTRE MENUS
 
 **Contexto do Problema**
@@ -132,12 +156,12 @@ A seguinte imagem monstra como o Padrão foi aplicado às classes da aplicação
 
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
-- [Controller](../src/main/java/control/Controller.java)
-- [ControllerState](../src/main/java/control/state/ControllerState.java)
-- [MenuState](../src/main/java/control/state/FactoryState.java)
-- [RankingMenuState](../src/main/java/control/state/RankingMenuState.java)
-- [SettingsMenuState](../src/main/java/control/state/SettingsMenuState.java)
-- [GameOverState](../src/main/java/control/state/GameOverState.java)
+- [Controller](../src/main/java/berzerk.control/Controller.java)
+- [ControllerState](../src/main/java/berzerk.control/state/ControllerState.java)
+- [MenuState](../src/main/java/berzerk.control/state/FactoryState.java)
+- [RankingMenuState](../src/main/java/berzerk.control/state/RankingMenuState.java)
+- [SettingsMenuState](../src/main/java/berzerk.control/state/SettingsMenuState.java)
+- [GameOverState](../src/main/java/berzerk.control/state/GameOverState.java)
 
 
 **Consequências**
@@ -158,7 +182,7 @@ O jogador deve conseguir viajar entre menus sem sobre-carregar o terminal. Na so
 
 Aplicamos o Padrão **Abstract Factory**.
 
-Permite-nos facilitar a transição entre os diferentes estados mencionados no ponto anterior. É possivel criar diferentes instâncias de State para Menus e fases Jogo. Este padrão foi utilizado por tirar um peso de processamento enorme de apenas 1 terminal e redistribui-lo por vários terminais que são abertos conforme as necessidades do utilizador.
+Facilita a transição entre os diferentes estados mencionados no ponto anterior. É possivel criar diferentes instâncias de State para Menus e fases Jogo. Este padrão foi utilizado por tirar um peso de processamento enorme de apenas 1 terminal e redistribui-lo por vários terminais que são abertos conforme as necessidades do utilizador.
 
 Além disso, a aplicação termina quando, resultado da escolha do utilizador, o novo estado é null.
 
@@ -170,9 +194,9 @@ A seguinte imagem monstra como o Padrão foi aplicado às classes da aplicação
 
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
-- [Controller](../src/main/java/control/Controller.java)
-- [FactoryState](../src/main/java/control/state/FactoryState.java)
-- [ControllerState](../src/main/java/control/state/ControllerState.java)
+- [Controller](../src/main/java/berzerk.control/Controller.java)
+- [FactoryState](../src/main/java/berzerk.control/state/FactoryState.java)
+- [ControllerState](../src/main/java/berzerk.control/state/ControllerState.java)
 
 **Consequências**
 

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide circle
+hide methods
+hide empty fields
+
+package Model
+package View
+package Controller
+
+Controller --> Model : "Manipula"
+Controller --> View : "Renderiza"
+View --> Controller : "Ações"
+View -l-> Model : "Mostra"
+
+@enduml
