@@ -1,13 +1,14 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
 application {
     mainClass.set("Application")
 }
 
-group 'org.example'
+group 'berzerk'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -23,4 +24,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
 }
