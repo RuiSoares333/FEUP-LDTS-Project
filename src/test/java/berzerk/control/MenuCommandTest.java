@@ -2,9 +2,11 @@ package berzerk.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static com.googlecode.lanterna.input.KeyType.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MenuCommandTest {
     private MenuCommand command;
@@ -17,16 +19,39 @@ public class MenuCommandTest {
     @Test
     public void defaultCommand(){
         MenuCommand.COMMAND c = MenuCommand.COMMAND.NONE;
-        Assertions.assertEquals(c, command.getCommandEnum());
+        assertEquals(c, command.getCommand());
     }
+
+    KeyType[] FS= {F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19};
 
     @Test
     public void nullCommand(){
         KeyStroke key = new KeyStroke(KeyType.Unknown);
-
         MenuCommand.COMMAND c = MenuCommand.COMMAND.NONE;
+        assertEquals(c, command.getCommand(key));
 
-        Assertions.assertEquals(c, command.getCommand(key));
+        key = new KeyStroke(KeyType.Backspace);
+        assertEquals(c, command.getCommand(key));
+
+        key = new KeyStroke(KeyType.Tab);
+        assertEquals(c, command.getCommand(key));
+
+        key = new KeyStroke(KeyType.Insert);
+        assertEquals(c, command.getCommand(key));
+
+        key = new KeyStroke(KeyType.Delete);
+        assertEquals(c, command.getCommand(key));
+
+        key = new KeyStroke(KeyType.PageDown);
+        assertEquals(c, command.getCommand(key));
+
+        key = new KeyStroke(KeyType.PageUp);
+        assertEquals(c, command.getCommand(key));
+
+        for (KeyType kt: FS) {
+            key = new KeyStroke(KeyType.PageUp);
+            assertEquals(c, command.getCommand(key));
+        }
     }
 
     @Test
@@ -35,7 +60,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.QUIT;
 
-        Assertions.assertEquals(c, command.getCommand(key));
+        assertEquals(c, command.getCommand(key));
     }
     @Test
     public void arrowUpCommand(){
@@ -43,7 +68,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.UP;
 
-        Assertions.assertEquals(c, command.getCommand(key));
+        assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -52,7 +77,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.DOWN;
 
-        Assertions.assertEquals(c, command.getCommand(key));
+        assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -61,7 +86,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.RIGHT;
 
-        Assertions.assertEquals(c, command.getCommand(key));
+        assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -70,7 +95,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.LEFT;
 
-        Assertions.assertEquals(c, command.getCommand(key));
+        assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -79,7 +104,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.SELECT;
 
-        Assertions.assertEquals(c, command.getCommand(key));
+        assertEquals(c, command.getCommand(key));
     }
 
 }

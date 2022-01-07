@@ -11,7 +11,7 @@ public class MenuCommand {
         this.command = COMMAND.NONE;
     }
 
-    public COMMAND getCommandEnum() {
+    public COMMAND getCommand() {
         return command;
     }
 
@@ -25,6 +25,7 @@ public class MenuCommand {
             case ArrowRight -> command = COMMAND.RIGHT;
             case ArrowLeft -> command = COMMAND.LEFT;
             case Enter -> command = COMMAND.SELECT;
+            default -> command = COMMAND.NONE;
         }
         return command;
     }
