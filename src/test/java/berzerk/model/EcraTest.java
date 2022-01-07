@@ -23,11 +23,7 @@ public class EcraTest {
         graphics = mock(TextGraphics.class);
         terminal = mock(Terminal.class);
 
-        ecra = new Ecra();
-
-        ecra.setScreen(screen);
-        ecra.setGraphics(graphics);
-        ecra.setTerminal(terminal);
+        ecra = new Ecra(terminal, screen, graphics);
     }
 
     @Test

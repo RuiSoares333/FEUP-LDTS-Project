@@ -11,6 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.IOException;
+
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -33,7 +35,7 @@ public class SettingsViewTest {
     }
 
     @Test
-    public void drawTest() {
+    public void drawTest() throws IOException {
         when(view.getEcra().getScreen()).thenAnswer(invocation -> screen);
         when(view.getEcra().getGraphics()).thenAnswer(invocation -> graphics);
 

@@ -9,6 +9,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import org.w3c.dom.Text;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -29,6 +30,12 @@ public class Ecra {
         terminal = initTerminal();
         screen = initScreen();
         if(screen!=null) graphics = screen.newTextGraphics();
+    }
+
+    public Ecra(Terminal terminal, Screen screen, TextGraphics graphics){
+        this.terminal = terminal;
+        this.screen = screen;
+        this.graphics = graphics;
     }
 
     public Screen getScreen() {
