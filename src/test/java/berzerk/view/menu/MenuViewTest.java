@@ -40,7 +40,14 @@ public class MenuViewTest {
         when(view.getScreen()).thenReturn(screen);
         when(view.getGraphics()).thenReturn(graphics);
 
-        view.draw(0);
+        view.draw(anyInt());
         verify(graphics, Mockito.times(4+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
+
+
+        view.draw(anyInt());
+        verify(graphics, Mockito.times((4+ Constants.GAME_NAME.length)*2)).putString(any(TerminalPosition.class), anyString());
+
+        view.draw(anyInt());
+        verify(graphics, Mockito.times((4+ Constants.GAME_NAME.length)*3)).putString(any(TerminalPosition.class), anyString());
     }
 }

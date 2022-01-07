@@ -38,15 +38,20 @@ public class SettingsViewTest {
         when(view.getScreen()).thenAnswer(invocation -> screen);
         when(view.getGraphics()).thenAnswer(invocation -> graphics);
 
-        view.draw(0);
+        view.draw(anyInt());
         Mockito.verify(graphics, Mockito.times((16*16)*3)).setBackgroundColor(any(TextColor.class));
         Mockito.verify(graphics, Mockito.times((16*16)*3+1)).fillRectangle(any(TerminalPosition.class), any(TerminalSize.class), any(Character.class));
         Mockito.verify(graphics, Mockito.times(4)).putString(anyInt(), anyInt(), anyString());
 
-        view.draw(0);
+        view.draw(anyInt());
         Mockito.verify(graphics, Mockito.times((16*16)*3*2)).setBackgroundColor(any(TextColor.class));
         Mockito.verify(graphics, Mockito.times(((16*16)*3+1)*2)).fillRectangle(any(TerminalPosition.class), any(TerminalSize.class), any(Character.class));
         Mockito.verify(graphics, Mockito.times(4*2)).putString(anyInt(), anyInt(), anyString());
+
+        view.draw(anyInt());
+        Mockito.verify(graphics, Mockito.times((16*16)*3*3)).setBackgroundColor(any(TextColor.class));
+        Mockito.verify(graphics, Mockito.times(((16*16)*3+1)*3)).fillRectangle(any(TerminalPosition.class), any(TerminalSize.class), any(Character.class));
+        Mockito.verify(graphics, Mockito.times(4*3)).putString(anyInt(), anyInt(), anyString());
 
     }
 }

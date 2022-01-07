@@ -54,4 +54,21 @@ public class RankingViewTest {
         Mockito.verify(graphics, Mockito.times(1+5+1)).putString(any(TerminalPosition.class), anyString());
     }
 
+    @Test
+    public void drawNamesTest() throws IOException {
+        Map<String, String> novosJogadores = new HashMap<>();
+        novosJogadores.put("012345678901234567890", "1");
+        novosJogadores.put("0123456789012345678901", "2");
+        novosJogadores.put("01234567890123456789012", "3");
+        novosJogadores.put("012345678901234567890123", "4");
+        novosJogadores.put("0123456789012345678901234", "5");
+
+        when(view.getScreen()).thenAnswer(invocation -> screen);
+        when(view.getGraphics()).thenAnswer(invocation -> graphics);
+        when(view.getModel().getJogadores()).thenAnswer(invocation -> novosJogadores);
+
+        view.draw(0);
+        Mockito.verify(graphics, Mockito.times(1+5+1)).putString(any(TerminalPosition.class), anyString());
+    }
+
 }
