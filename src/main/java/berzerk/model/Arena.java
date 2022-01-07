@@ -24,8 +24,7 @@ public class Arena {
 
     private final int width;
     private final int height;
-    
-    int n = 0;
+
     Position initialPosition;
 
     Hero hero;
@@ -39,6 +38,7 @@ public class Arena {
         this.height = height;
 
         hero = new Expert(10, 10);
+        initialPosition = hero.getPosition();
 
         carregarFich();
         monsters = createMonsters();    // creating the fierce monsters
@@ -50,9 +50,7 @@ public class Arena {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
 
         hero.draw(graphics);            // draw the mighty hero
-        
-        initiatePositionHero(n);
-        n++;
+
         
         for (Wall wall : walls)         // draw the imposing walls
             wall.draw(graphics);
@@ -61,12 +59,7 @@ public class Arena {
 //        moveMonsters();
 
     }
-    
-    public void initiatePositionHero(int n){
-        if(n<1){
-            initialPosition = hero.getPosition();
-        }
-    }
+
 
     public boolean processKey(KeyStroke key) {
         switch (key.getKeyType()){
