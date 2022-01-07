@@ -1,16 +1,16 @@
 package berzerk.model;
 
+import berzerk.model.entity.Monster;
+import berzerk.model.entity.Wall;
+import berzerk.model.entity.hero.Expert;
+import berzerk.model.entity.hero.Hero;
+import berzerk.model.entity.properties.Position;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
-import berzerk.model.entity.Monster;
-import berzerk.model.entity.Wall;
-import berzerk.model.entity.hero.Expert;
-import berzerk.model.entity.hero.Hero;
-import berzerk.model.entity.properties.Position;
 
 import java.io.BufferedReader;
 import java.io.IOException;

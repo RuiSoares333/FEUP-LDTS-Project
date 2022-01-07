@@ -21,19 +21,13 @@ public class EcraTest {
     public void initEcra(){
         screen = mock(Screen.class);
         graphics = mock(TextGraphics.class);
-        terminal = mock(Terminal.class);
 
-        ecra = new Ecra(terminal, screen, graphics);
+        ecra = new Ecra(terminal, screen);
     }
 
     @Test
     public void getScreen(){
         Assertions.assertEquals(screen, ecra.getScreen());
-    }
-
-    @Test
-    public void getGraphics(){
-        Assertions.assertEquals(graphics, ecra.getGraphics());
     }
 
     @Test
