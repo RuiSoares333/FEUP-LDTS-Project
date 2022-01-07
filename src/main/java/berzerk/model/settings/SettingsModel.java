@@ -11,7 +11,7 @@ public class SettingsModel implements Model {
         this.soldado = soldado;
     }
 
-    public int getPosicaoOpcao(Soldado.Heroi target) {
+    private int getPosicaoOpcao(Soldado.Heroi target) {
         if(soldado.getHerois()!=null) {
             Soldado.Heroi[] opcoes = soldado.getHerois();
             for (int i = 0; i < opcoes.length; i++) {
@@ -27,19 +27,14 @@ public class SettingsModel implements Model {
         return soldado.getSelected();
     }
 
-    public void setSelected(Soldado.Heroi selected) {
-        soldado.setSelected(selected);
-    }
-
     public void nextSelected() {
         if(soldado.getHerois()!=null) {
-
             if (soldado.getSelected() == Soldado.Heroi.EXPERT) {
                 soldado.setSelected(Soldado.Heroi.RECRUIT);
             } else {
                 int i = getPosicaoOpcao(soldado.getSelected());
                 i++;
-                setSelected(soldado.getHerois()[i]);
+                soldado.setSelected(soldado.getHerois()[i]);
             }
         }
     }
@@ -51,7 +46,7 @@ public class SettingsModel implements Model {
             } else {
                 int i = getPosicaoOpcao(soldado.getSelected());
                 i--;
-                setSelected(soldado.getHerois()[i]);
+                soldado.setSelected(soldado.getHerois()[i]);
             }
         }
     }
