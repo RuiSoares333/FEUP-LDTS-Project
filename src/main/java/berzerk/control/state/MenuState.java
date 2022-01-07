@@ -4,7 +4,7 @@ import berzerk.control.MenuCommand;
 import berzerk.model.Game;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
-import berzerk.view.View;
+import berzerk.view.menu.MenuView;
 
 import java.io.IOException;
 
@@ -13,9 +13,9 @@ public class MenuState extends ControllerState<MenuModel> {
 
     private final MenuModel model;
 
-    public MenuState(FactoryState state, Soldado soldado, View view){
+    public MenuState(FactoryState state, Soldado soldado, MenuView view){
         super(state, soldado, view);
-        model = (MenuModel) view.getModel();
+        model = view.getModel();
     }
 
 
@@ -58,9 +58,6 @@ public class MenuState extends ControllerState<MenuModel> {
         return null;
      }
 
-     public MenuModel getModel(){
-        return model;
-     }
 
     private int getPosition(MenuModel.Opcao selected){
         if(selected != null)

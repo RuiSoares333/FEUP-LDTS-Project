@@ -5,19 +5,11 @@ import berzerk.model.Model;
 public class MenuModel implements Model {
     public enum Opcao {PLAY, SETT, RANKS, EXIT}
 
-    public String[] optString = {"PLAY", "SETTINGS", "RANKINGS", "EXIT"};
-
     private Opcao selected;
     private final Opcao[] opc = Opcao.values();
 
     public MenuModel() {
         this.selected = Opcao.PLAY;
-    }
-
-
-    public String enumToString(Opcao menuOption) {
-        int position = getPosicaoOpcao(menuOption);
-        return optString[position];
     }
 
     public int getPosicaoOpcao(Opcao target) {

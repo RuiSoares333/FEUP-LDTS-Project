@@ -19,8 +19,8 @@ import java.net.URL;
 
 public class Ecra {
 
-    private Screen screen;
-    private Terminal terminal;
+    private final Screen screen;
+    private final Terminal terminal;
 
     public Ecra(){
         terminal = initTerminal();
@@ -41,13 +41,6 @@ public class Ecra {
         return terminal;
     }
 
-    public void setScreen(Screen screen) {
-        this.screen = screen;
-    }
-
-    public void setTerminal(Terminal terminal) {
-        this.terminal = terminal;
-    }
 
     protected Screen initScreen(){
 
