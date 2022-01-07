@@ -51,16 +51,56 @@ public class SettingsStateTest {
 
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.RIGHT);
         assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        assertEquals(state, state.run());
     }
 
     @Test
     public void processKeySelect() throws IOException {
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.LEFT);
-        state.run();
+        doRun(1);
 
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
         when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> MenuCommand.class);
 
         assertNotNull(state.run().getClass());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.LEFT);
+        doRun(3);
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> MenuCommand.class);
+
+        assertNotNull(state.run().getClass());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.LEFT);
+        doRun(5);
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> MenuCommand.class);
+
+        assertNotNull(state.run().getClass());
+    }
+
+    private void doRun(int numVezes) throws IOException {
+        for(int i=0; i<numVezes; i++){
+            state.run();
+        }
     }
 }

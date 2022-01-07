@@ -37,9 +37,26 @@ public class RankingStateTest {
     }
 
     @Test
-    public void processKey() throws IOException, URISyntaxException, FontFormatException {
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.LEFT);
+    public void processKeyArrows() throws IOException, URISyntaxException, FontFormatException {
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        assertEquals(MenuState.class, state.run().getClass());
 
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.RIGHT);
+        assertEquals(MenuState.class, state.run().getClass());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        assertEquals(MenuState.class, state.run().getClass());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.RIGHT);
+        assertEquals(MenuState.class, state.run().getClass());
+    }
+
+    @Test
+    public void processKeyOtherSpecials() throws IOException, URISyntaxException, FontFormatException {
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        assertEquals(MenuState.class, state.run().getClass());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.NONE);
         assertEquals(MenuState.class, state.run().getClass());
     }
 }

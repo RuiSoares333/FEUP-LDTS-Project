@@ -59,13 +59,13 @@ public class MenuStateTest {
 //    public void processKeyPlay() throws IOException {
 //        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
 //
-//        assertEquals(GameState.class, state.run());
+//        assertNotNull(GameState.class, state.run());
 //    }
 
     @Test
     public void processKeySettings() throws IOException {
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
-        state.run();
+        doRun(1);
 
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
         when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
@@ -76,8 +76,7 @@ public class MenuStateTest {
     @Test
     public void processKeyRanking() throws IOException {
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
-        state.run();
-        state.run();
+        doRun(2);
 
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
         when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
@@ -89,11 +88,17 @@ public class MenuStateTest {
     @Test
     public void processKeyExit() throws IOException {
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
-        state.run();
+        doRun(1);
 
         when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
         when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
         assertNull(state.run());
+    }
+
+    private void doRun(int numVezes) throws IOException {
+        for(int i=0; i<numVezes; i++){
+            state.run();
+        }
     }
 }
