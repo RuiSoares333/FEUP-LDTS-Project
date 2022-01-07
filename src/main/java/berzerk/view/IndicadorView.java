@@ -1,10 +1,10 @@
 package berzerk.view;
 
+import berzerk.model.Constants;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import berzerk.model.Constants;
 
 public class IndicadorView {
 

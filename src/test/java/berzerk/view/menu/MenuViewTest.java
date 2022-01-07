@@ -9,14 +9,12 @@ import com.googlecode.lanterna.screen.Screen;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.internal.matchers.NotNull;
-import org.mockito.stubbing.Answer;
+
 
 import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 public class MenuViewTest {
@@ -33,15 +31,16 @@ public class MenuViewTest {
         ecra = mock(Ecra.class);
         screen = mock(Screen.class);
         graphics = mock(TextGraphics.class);
-        view = new MenuView(model, ecra);
+        view = spy(new MenuView(model, ecra));
+        view.setGraphics(graphics);
     }
 
     @Test
     public void drawTest() throws IOException {
-        when(view.getEcra().getScreen()).thenAnswer(invocation -> screen);
-        when(view.getEcra().getGraphics()).thenAnswer(invocation -> graphics);
+        when(view.getScreen()).thenReturn(screen);
+        when(view.getGraphics()).thenReturn(graphics);
 
         view.draw(0);
-        Mockito.verify(graphics, Mockito.times(4+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
+        verify(graphics, Mockito.times(4+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
     }
 }

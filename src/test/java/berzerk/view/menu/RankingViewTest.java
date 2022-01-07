@@ -17,8 +17,7 @@ import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class RankingViewTest {
 
@@ -34,7 +33,7 @@ public class RankingViewTest {
         ecra = mock(Ecra.class);
         screen = mock(Screen.class);
         graphics = mock(TextGraphics.class);
-        view = new RankingView(model, ecra);
+        view = spy(new RankingView(model, ecra));
     }
 
 
@@ -47,8 +46,8 @@ public class RankingViewTest {
         novosJogadores.put("D", "4");
         novosJogadores.put("E", "5");
 
-        when(view.getEcra().getScreen()).thenAnswer(invocation -> screen);
-        when(view.getEcra().getGraphics()).thenAnswer(invocation -> graphics);
+        when(view.getScreen()).thenAnswer(invocation -> screen);
+        when(view.getGraphics()).thenAnswer(invocation -> graphics);
         when(view.getModel().getJogadores()).thenAnswer(invocation -> novosJogadores);
 
         view.draw(0);

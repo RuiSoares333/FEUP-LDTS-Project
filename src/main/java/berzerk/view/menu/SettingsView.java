@@ -1,14 +1,14 @@
 package berzerk.view.menu;
 
+import berzerk.model.Constants;
 import berzerk.model.Ecra;
+import berzerk.model.settings.SettingsModel;
+import berzerk.view.IndicadorView;
+import berzerk.view.View;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import berzerk.model.Constants;
-import berzerk.model.settings.SettingsModel;
-import berzerk.view.IndicadorView;
-import berzerk.view.View;
 
 import java.io.IOException;
 
@@ -18,29 +18,31 @@ public class SettingsView extends View<SettingsModel> {
 
     public SettingsView(SettingsModel model, Ecra ecra){
         super(model, ecra);
-        if(getEcra().getScreen()!=null) indicador = new IndicadorView(18, 18, getEcra().getScreen().newTextGraphics());
+        if(getScreen()!=null) indicador = new IndicadorView(18, 18, getScreen().newTextGraphics());
     }
 
     @Override
     public void draw(int position) throws IOException {
-        getEcra().getScreen().clear();
+        if(getScreen()!=null && getGraphics()!=null) {
+            getScreen().clear();
 
-        TextGraphics graphics = getEcra().getGraphics();
+            TextGraphics graphics = getGraphics();
 
-        getEcra().getGraphics().fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
+            getGraphics().fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
 
-        drawHeader(graphics);
-        drawNomeSoldados(graphics);
-        drawRecruit(graphics);
-        drawTanky(graphics);
-        drawExpert(graphics);
-        if(indicador!=null) indicador.draw(position, 7);
+            drawHeader(graphics);
+            drawNomeSoldados(graphics);
+            drawRecruit(graphics);
+            drawTanky(graphics);
+            drawExpert(graphics);
+            if (indicador != null) indicador.draw(position, 7);
 
-        getEcra().getScreen().refresh();
-        try {
-            getEcra().getScreen().refresh();
-        } catch (IOException e) {
-            e.printStackTrace();
+            getScreen().refresh();
+            try {
+                getScreen().refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

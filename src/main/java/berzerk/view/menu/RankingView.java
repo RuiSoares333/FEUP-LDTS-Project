@@ -1,14 +1,12 @@
 package berzerk.view.menu;
 
-import berzerk.model.Ecra;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import berzerk.model.Constants;
+import berzerk.model.Ecra;
 import berzerk.model.ranking.RankingModel;
 import berzerk.view.View;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;
 import java.util.Map;
@@ -21,16 +19,18 @@ public class RankingView extends View<RankingModel> {
     }
 
     public void draw(int position) throws IOException {
-        getEcra().getScreen().clear();
+        if(getScreen()!=null && getGraphics()!=null) {
+            getScreen().clear();
 
-        getEcra().getGraphics().fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
-        drawTopScorers();
+            getGraphics().fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
+            drawTopScorers();
 
-        getEcra().getScreen().refresh();
+            getScreen().refresh();
+        }
     }
 
     private void drawTopScorers(){
-        TextGraphics graphics = getEcra().getGraphics();
+        TextGraphics graphics = getGraphics();
         graphics.putString(new TerminalPosition(43, 6), "TOP SCORERS");
 
         int i=15;

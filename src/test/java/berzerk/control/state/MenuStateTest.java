@@ -1,108 +1,99 @@
 package berzerk.control.state;
 
 import berzerk.control.MenuCommand;
+import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
-import org.junit.jupiter.api.Assertions;
+import berzerk.view.menu.MenuView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.awt.*;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class MenuStateTest {
 
-    MenuState ms;
+    MenuState state;
+    MenuModel model;
+    MenuView view;
     FactoryState factoryState;
     Soldado soldado;
+    Ecra ecra;
 
     @BeforeEach
     public void initMenuState(){
-        factoryState = mock(FactoryState.class);
+        factoryState = spy(new FactoryState());
+        model = spy(new MenuModel());
+        ecra = mock(Ecra.class);
+        view = spy(new MenuView(model, ecra));
         soldado = mock(Soldado.class);
-        ms = factoryState.genMenuState(soldado);
+        state = new MenuState(factoryState, soldado, view);
+    }
+
+
+    @Test
+    public void processExit() throws IOException {
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.QUIT);
+        assertNull(state.run());
+    }
+
+
+    @Test
+    public void processKey() throws IOException{
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        assertEquals(state, state.run());
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        assertEquals(state, state.run());
+    }
+
+//    @Test
+//    public void processKeyPlay() throws IOException {
+//        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+//
+//        assertEquals(GameState.class, state.run());
+//    }
+
+    @Test
+    public void processKeySettings() throws IOException {
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        state.run();
+
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+
+        assertNotNull(state.run().getClass());
     }
 
     @Test
-    public void processKeyExit() throws IOException, URISyntaxException, FontFormatException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.QUIT);
+    public void processKeyRanking() throws IOException {
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        state.run();
+        state.run();
 
-        assertNull(ms.processKey(keyMock));
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+
+        assertNotNull(state.run().getClass());
     }
 
-    @Test
-    public void processKeyUp() throws IOException, URISyntaxException, FontFormatException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
-
-        MenuModel model = ms.getModel();
-
-        ms.processKey(keyMock);
-        assertEquals(MenuModel.Opcao.EXIT, model.getSelected());
-
-        ms.processKey(keyMock);
-        assertEquals(MenuModel.Opcao.RANKS, model.getSelected());
-    }
 
     @Test
-    public void processKeyDown() throws IOException, URISyntaxException, FontFormatException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+    public void processKeyExit() throws IOException {
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        state.run();
 
-        MenuModel model = ms.getModel();
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
-        ms.processKey(keyMock);
-        assertEquals(MenuModel.Opcao.SETT, model.getSelected());
-    }
-
-    @Test
-    public void selectSettings() throws IOException, URISyntaxException, FontFormatException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
-        ms.processKey(keyMock);
-
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
-        ControllerState<?> state = ms.processKey(keyMock);
-
-        assertEquals(SettingsState.class, state.getClass());
-    }
-
-    @Test
-    public void selectRanking() throws IOException, URISyntaxException, FontFormatException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
-        ms.processKey(keyMock);
-        ms.processKey(keyMock);
-
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
-        ControllerState<?> state = ms.processKey(keyMock);
-
-        assertEquals(RankingState.class, state.getClass());
-    }
-
-    @Test
-    public void selectExit() throws IOException, URISyntaxException, FontFormatException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
-        ms.processKey(keyMock);
-
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
-
-        assertNull(ms.processKey(keyMock));
-    }
-
-    @Test
-    public void getPosition(){
-        Assertions.assertEquals(10, ms.getPosition(MenuModel.Opcao.PLAY));
-        Assertions.assertEquals(12, ms.getPosition(MenuModel.Opcao.SETT));
-        Assertions.assertEquals(14, ms.getPosition(MenuModel.Opcao.RANKS));
-        Assertions.assertEquals(18, ms.getPosition(MenuModel.Opcao.EXIT));
+        assertNull(state.run());
     }
 }

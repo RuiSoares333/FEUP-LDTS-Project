@@ -1,7 +1,7 @@
 package berzerk.model.entity;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import berzerk.model.entity.properties.Position;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class Element {
     private Position position;

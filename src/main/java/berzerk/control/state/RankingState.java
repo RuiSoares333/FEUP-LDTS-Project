@@ -23,7 +23,7 @@ public class RankingState extends ControllerState<RankingModel>  {
         return processKey(getView().getCommand());
     }
 
-    public ControllerState<?> processKey(MenuCommand key) throws IOException, URISyntaxException, FontFormatException {
+    public ControllerState<?> processKey(MenuCommand.COMMAND key) throws IOException, URISyntaxException, FontFormatException {
         return manageCommand(getState().genMenuState(getSoldado()));
     }
 

@@ -1,10 +1,10 @@
 package berzerk.model.entity;
 
+import berzerk.model.entity.properties.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import berzerk.model.entity.properties.Position;
 
 public class Wall extends Element{
 

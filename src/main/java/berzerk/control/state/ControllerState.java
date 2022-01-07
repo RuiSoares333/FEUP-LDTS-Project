@@ -29,6 +29,7 @@ public abstract class ControllerState <T extends Model>{
 
     public abstract ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException;
 
+
     public FactoryState getState() {
         return state;
     }

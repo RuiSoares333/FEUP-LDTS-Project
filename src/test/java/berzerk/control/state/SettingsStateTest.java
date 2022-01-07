@@ -1,8 +1,12 @@
 package berzerk.control.state;
 
 import berzerk.control.MenuCommand;
+import berzerk.model.Ecra;
 import berzerk.model.Soldado;
+import berzerk.model.menu.MenuModel;
 import berzerk.model.settings.SettingsModel;
+import berzerk.view.menu.MenuView;
+import berzerk.view.menu.SettingsView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,64 +15,52 @@ import org.mockito.Mockito;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 public class SettingsStateTest {
 
-    SettingsState sms;
+    SettingsState state;
+    SettingsModel model;
+    SettingsView view;
     FactoryState factoryState;
     Soldado soldado;
+    Ecra ecra;
 
     @BeforeEach
-    public void initSettingssMenuState(){
-        factoryState = mock(FactoryState.class);
+    public void initMenuState(){
+        factoryState = spy(new FactoryState());
         soldado = mock(Soldado.class);
-        sms = factoryState.genSettingsMenuState(soldado);
-
+        model = spy(new SettingsModel(soldado));
+        ecra = mock(Ecra.class);
+        view = spy(new SettingsView(model, ecra));
+        state = new SettingsState(factoryState, soldado, view);
     }
 
     @Test
-    public void processKeyLeft() throws IOException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.LEFT);
+    public void processKey() throws IOException{
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.LEFT);
+        assertEquals(state, state.run());
 
-        SettingsModel model = sms.getModel();
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.RIGHT);
+        assertEquals(state, state.run());
 
-        sms.processKey(keyMock);
-        assertEquals(Soldado.Heroi.EXPERT, model.getSelected());
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.RIGHT);
+        assertEquals(state, state.run());
 
-        sms.processKey(keyMock);
-        assertEquals(Soldado.Heroi.TANKY, model.getSelected());
-    }
-
-    @Test
-    public void processKeyRight() throws IOException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.RIGHT);
-
-        SettingsModel model = sms.getModel();
-
-        sms.processKey(keyMock);
-        assertEquals(Soldado.Heroi.TANKY, model.getSelected());
-
-        sms.processKey(keyMock);
-        assertEquals(Soldado.Heroi.EXPERT, model.getSelected());
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.RIGHT);
+        assertEquals(state, state.run());
     }
 
     @Test
     public void processKeySelect() throws IOException {
-        MenuCommand keyMock = mock(MenuCommand.class);
-        Mockito.when(keyMock.getCommandEnum()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
-        ControllerState<?> state = sms.processKey(keyMock);
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.LEFT);
+        state.run();
 
-        assertEquals(MenuState.class, state.getClass());
-    }
+        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> MenuCommand.class);
 
-
-    @Test
-    public void getPosition(){
-        Assertions.assertEquals(14, sms.getPosition(Soldado.Heroi.RECRUIT));
-        Assertions.assertEquals(39, sms.getPosition(Soldado.Heroi.TANKY));
-        Assertions.assertEquals(63, sms.getPosition(Soldado.Heroi.EXPERT));
+        assertNotNull(state.run().getClass());
     }
 }

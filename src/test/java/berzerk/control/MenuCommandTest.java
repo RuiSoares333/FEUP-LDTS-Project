@@ -26,7 +26,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.NONE;
 
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
+        Assertions.assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.QUIT;
 
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
+        Assertions.assertEquals(c, command.getCommand(key));
     }
     @Test
     public void arrowUpCommand(){
@@ -43,7 +43,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.UP;
 
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
+        Assertions.assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.DOWN;
 
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
+        Assertions.assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.RIGHT;
 
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
+        Assertions.assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.LEFT;
 
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
+        Assertions.assertEquals(c, command.getCommand(key));
     }
 
     @Test
@@ -79,15 +79,7 @@ public class MenuCommandTest {
 
         MenuCommand.COMMAND c = MenuCommand.COMMAND.SELECT;
 
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
+        Assertions.assertEquals(c, command.getCommand(key));
     }
 
-    @Test
-    public void charCommand(){
-        KeyStroke key = new KeyStroke(' ', false, false);
-
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.SELECT;
-
-        Assertions.assertEquals(c, command.getCommand(key).getCommandEnum());
-    }
 }

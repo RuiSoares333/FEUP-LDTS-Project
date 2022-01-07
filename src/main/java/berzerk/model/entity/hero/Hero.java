@@ -1,11 +1,11 @@
 package berzerk.model.entity.hero;
 
+import berzerk.model.entity.Element;
+import berzerk.model.entity.properties.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import berzerk.model.entity.Element;
-import berzerk.model.entity.properties.Position;
 
 public class Hero extends Element {
 

@@ -8,6 +8,7 @@ import berzerk.view.View;
 
 import java.io.IOException;
 
+
 public class SettingsState extends ControllerState<SettingsModel> {
 
     SettingsModel model;
@@ -24,9 +25,9 @@ public class SettingsState extends ControllerState<SettingsModel> {
 
     }
 
-    public ControllerState<?> processKey(MenuCommand key) throws IOException {
+    public ControllerState<?> processKey(MenuCommand.COMMAND key) throws IOException {
         ControllerState<?> newState = this;
-        switch (key.getCommandEnum()) {
+        switch (key) {
             case LEFT -> model.previousSelected();
             case RIGHT -> model.nextSelected();
             case SELECT, QUIT -> newState = getState().genMenuState(getSoldado());
@@ -36,15 +37,15 @@ public class SettingsState extends ControllerState<SettingsModel> {
     }
 
 
-    public int getPosition(Soldado.Heroi selected){
-        return switch (selected) {
-            case TANKY -> 39;
-            case EXPERT -> 63;
-            default -> 14;
-        };
+    private int getPosition(Soldado.Heroi selected){
+        if(selected!=null) {
+            return switch (selected) {
+                case TANKY -> 39;
+                case EXPERT -> 63;
+                default -> 14;
+            };
+        }
+        return 0;
     }
 
-    public SettingsModel getModel() {
-        return model;
-    }
 }
