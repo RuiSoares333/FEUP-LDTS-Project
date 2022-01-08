@@ -16,6 +16,7 @@ public class GameState extends ControllerState<Arena>{
     public GameState(FactoryState state, Soldado soldado, GameView view, Arena arena) {
         super(state, soldado, view);
         this.arena = arena;
+        arena.scheduleMonsterMovement();
     }
 
     @Override
@@ -24,13 +25,14 @@ public class GameState extends ControllerState<Arena>{
         return processKey(getView().getCommand());
     }
 
-    public ControllerState<?> processKey(Command.COMMAND key) throws IOException, URISyntaxException, FontFormatException {
+    public ControllerState<?> processKey(Command.COMMAND key) throws IOException {
         ControllerState<?> newState = this;
         switch (key) {
             case LEFT -> arena.moveHero(arena.getHero().moveLeft());
             case RIGHT -> arena.moveHero(arena.getHero().moveRight());
             case UP -> arena.moveHero(arena.getHero().moveUp());
             case DOWN -> arena.moveHero(arena.getHero().moveDown());
+            case SPACE -> arena.moveHero(arena.getHero().moveDown());
         }
         manageCommand(newState);
         return newState;

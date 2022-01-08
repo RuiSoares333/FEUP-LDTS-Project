@@ -33,10 +33,11 @@ public class FactoryState {
         return new SettingsState(this, soldado, view);
     }
 
-    public GameState genGameState(Soldado soldado){
+    public GameState genGameState(Soldado soldado, int nivel){
         Hero hero = new Hero(10,10, 10, 3);
-        Arena arena = new Arena(hero);
+        Arena arena = new Arena(hero, nivel);
         GameView view = new GameView(new Ecra(), arena);
+        arena.setView(view);
         return new GameState(this, soldado, view, arena);
     }
 }

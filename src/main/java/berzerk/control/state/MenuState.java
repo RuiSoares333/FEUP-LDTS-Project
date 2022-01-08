@@ -34,7 +34,7 @@ public class MenuState extends ControllerState<MenuModel> {
                 case SELECT -> {
                     if (model.getSelected() != null) {
                         switch (model.getSelected()) {
-                            case PLAY -> newState = getState().genGameState(getSoldado());
+                            case PLAY -> newState = getState().genGameState(getSoldado(), 1);
 
                             case RANKS -> newState = getState().genRankingMenuState(getSoldado());
 

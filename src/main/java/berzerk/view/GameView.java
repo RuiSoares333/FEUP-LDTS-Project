@@ -3,6 +3,7 @@ package berzerk.view;
 import berzerk.model.Arena;
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
+import berzerk.model.Model;
 import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Hero;
@@ -15,7 +16,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;
 
-public class GameView extends View {
+public class GameView extends View implements Model {
 
     Arena arena;
 

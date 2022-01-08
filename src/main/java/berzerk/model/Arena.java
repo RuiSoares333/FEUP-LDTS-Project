@@ -4,84 +4,40 @@ import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.entity.properties.Position;
+import berzerk.view.GameView;
+import berzerk.view.View;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.screen.Screen;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 public class Arena implements Model {
-
-
 
     Position initialPosition;
 
     Hero hero;
 
-    private final List<Wall> walls = new ArrayList<>();
+    private final List<Wall> walls;
     private final List<Monster> monsters;
 
-    public Arena(Hero hero){
-        //creating the deadly arena
+    private View<GameView> view;
 
-
+    public Arena(Hero hero, int nivel){
         this.hero = hero;
-        initialPosition = hero.getPosition();
 
-        carregarFich();
-        monsters = createMonsters();    // creating the fierce monsters
+        walls = carregarNivel(nivel);
+        initialPosition = hero.getPosition();
+        monsters = createMonsters();
     }
 
-//    public void draw(TextGraphics graphics){
-//        // paint the arena floor with CIN paint, not sponsored
-//        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-//        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-//
-//        hero.draw(graphics);            // draw the mighty hero
-//
-//
-//        for (Wall wall : walls)         // draw the imposing walls
-//            wall.draw(graphics);
-//        for(Monster monster: monsters)  // draw the fierce monsters
-//            monster.draw(graphics);
-////        moveMonsters();
-//
-//    }
-
-
-//    public boolean processKey(KeyStroke key) {
-//        switch (key.getKeyType()){
-//            case Character:
-//                char a = key.getCharacter();
-//                Character.toLowerCase(a);
-//                switch (a){
-//                    case 'q':
-//                        return false;
-//                    case ' ':
-//                        return moveHero(hero.moveUp());
-//                    default:
-//                        break;
-//                }
-//            case ArrowUp:
-//                return moveHero(hero.moveUp());
-//            case ArrowDown:
-//                return moveHero(hero.moveDown());
-//            case ArrowRight:
-//                return moveHero(hero.moveRight());
-//            case ArrowLeft:
-//                return moveHero(hero.moveLeft());
-//        }
-//        return true;
-//    }
-
     public boolean moveHero(Position position) {
-        if(canEntityMove(position)) {
+        if(canHeroMove(position)) {
             hero.setPosition(position);
             if(!verifyMonsterCollision(position) || !verifyHeroWallCollision(position)){
                 System.out.println("Game Over!");
@@ -91,49 +47,41 @@ public class Arena implements Model {
         return true;
     }
 
-    /*public void moveMonsters(){
+    public void moveMonsters(){
         for (Monster monster: monsters) {
 
             Position novaPosicao = monster.move();
 
-            if(canEntityMove(novaPosicao))
+            if(canMonsterMove(novaPosicao))
                 monster.setPosition(novaPosicao);
 
         }
-    }*/
-    
-    //Move monster in random directions
-//    public void moveMonstersRandom(Screen screen, Arena arena){
-//        // And From your main() method or any other method
-//        Timer timer = new Timer();
-//
-//                timer.schedule(new TimerTask() {
-//                    @Override
-//                    public void run() {
-//
-//                        for (Monster monster: monsters) {
-//
-//                            Position novaPosicao = monster.move();
-//
-//                            if(canMonsterMove(novaPosicao))
-//                                monster.setPosition(novaPosicao);
-//
-//                            screen.clear();
-//                            arena.draw(screen.newTextGraphics());
-//                            try {
-//                                screen.refresh();
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//
-//                        draw(screen.newTextGraphics());
-//
-//                    }
-//                }, 0, 200);
-//    }
+    }
 
-    public boolean canEntityMove(Position position){
+    //Move monster in random directions
+    public void scheduleMonsterMovement(){
+        // And From your main() method or any other method
+        Timer timer = new Timer();
+
+        // Agenda do procedimento
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                moveMonsters();
+
+                // desenha o monstro
+                try {
+                    view.draw(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, 0, 1000);
+    }
+
+    public boolean canHeroMove(Position position){
         for(Wall wall : walls){
             if(wall.getPosition().equals(position)) {
                 System.out.println("Game Over!");
@@ -158,7 +106,7 @@ public class Arena implements Model {
         ArrayList<Monster> monsters = new ArrayList<>();
         boolean flag;
 
-        while(monsters.size() < 4){
+        while(monsters.size() < 10){
             flag = true;
             Position novaPosicao = new Position(random.nextInt(Constants.WIDTH-1), random.nextInt(Constants.HEIGHT-1));
             for (Wall w: walls) {
@@ -181,7 +129,7 @@ public class Arena implements Model {
         return true;
 
     }
-    
+
     public boolean verifyHeroWallCollision(Position position){
         for(Wall wall : walls){
             if(wall.getPosition().equals(position)){
@@ -190,7 +138,7 @@ public class Arena implements Model {
         }
         return true;
     }
-    
+
     public void positionHero(){
         hero.setPosition(initialPosition);
     }
@@ -208,9 +156,10 @@ public class Arena implements Model {
     }
 
 
-    public void carregarFich() {
-        // java.io.InputStream
-        InputStream is = ClassLoader.getSystemResourceAsStream("nivel2.txt");
+    private List<Wall> carregarNivel(int nivel) {
+        List<Wall> paredes = new ArrayList<>();
+        String mapa = "nivel" + nivel + ".txt";
+        InputStream is = ClassLoader.getSystemResourceAsStream(mapa);
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
         BufferedReader reader = new BufferedReader(streamReader);
         try {
@@ -219,14 +168,18 @@ public class Arena implements Model {
                 int j = 0;
                 for (char c: line.toCharArray()) {
                     if(c == 'p'){
-                        walls.add(new Wall(j, i));
+                        paredes.add(new Wall(j, i));
                     }
                     j++;
                 }
-                System.out.println(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return paredes;
+    }
+
+    public void setView(View<GameView> view) {
+        this.view = view;
     }
 }
