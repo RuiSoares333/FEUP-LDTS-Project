@@ -1,6 +1,6 @@
 package berzerk.view;
 
-import berzerk.control.MenuCommand;
+import berzerk.control.Command;
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.Model;
@@ -31,9 +31,9 @@ public abstract class View<T extends Model> {
         }
     }
 
-    public MenuCommand.COMMAND getCommand() throws IOException {
-        if(screen != null) return new MenuCommand().getCommand(screen.readInput());
-        return MenuCommand.COMMAND.NONE;
+    public Command.COMMAND getCommand() throws IOException {
+        if(screen != null) return new Command().getCommand(screen.readInput());
+        return Command.COMMAND.NONE;
     }
 
     public void setModel(T model) {

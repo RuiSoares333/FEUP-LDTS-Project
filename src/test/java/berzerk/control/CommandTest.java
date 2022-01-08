@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 import static com.googlecode.lanterna.input.KeyType.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MenuCommandTest {
-    private MenuCommand command;
+public class CommandTest {
+    private Command command;
 
     @BeforeEach
     public void initMenuCommand(){
-        command = new MenuCommand();
+        command = new Command();
     }
 
     @Test
     public void defaultCommand(){
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.NONE;
+        Command.COMMAND c = Command.COMMAND.NONE;
         assertEquals(c, command.getCommand());
     }
 
@@ -27,7 +27,7 @@ public class MenuCommandTest {
     @Test
     public void nullCommand(){
         KeyStroke key = new KeyStroke(KeyType.Unknown);
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.NONE;
+        Command.COMMAND c = Command.COMMAND.NONE;
         assertEquals(c, command.getCommand(key));
 
         key = new KeyStroke(KeyType.Backspace);
@@ -58,7 +58,7 @@ public class MenuCommandTest {
     public void EOFCommand(){
         KeyStroke key = new KeyStroke(KeyType.EOF);
 
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.QUIT;
+        Command.COMMAND c = Command.COMMAND.QUIT;
 
         assertEquals(c, command.getCommand(key));
     }
@@ -66,7 +66,7 @@ public class MenuCommandTest {
     public void arrowUpCommand(){
         KeyStroke key = new KeyStroke(KeyType.ArrowUp);
 
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.UP;
+        Command.COMMAND c = Command.COMMAND.UP;
 
         assertEquals(c, command.getCommand(key));
     }
@@ -75,7 +75,7 @@ public class MenuCommandTest {
     public void arrowDownCommand(){
         KeyStroke key = new KeyStroke(KeyType.ArrowDown);
 
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.DOWN;
+        Command.COMMAND c = Command.COMMAND.DOWN;
 
         assertEquals(c, command.getCommand(key));
     }
@@ -84,7 +84,7 @@ public class MenuCommandTest {
     public void arrowRightCommand(){
         KeyStroke key = new KeyStroke(KeyType.ArrowRight);
 
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.RIGHT;
+        Command.COMMAND c = Command.COMMAND.RIGHT;
 
         assertEquals(c, command.getCommand(key));
     }
@@ -93,7 +93,7 @@ public class MenuCommandTest {
     public void arrowLeftCommand(){
         KeyStroke key = new KeyStroke(KeyType.ArrowLeft);
 
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.LEFT;
+        Command.COMMAND c = Command.COMMAND.LEFT;
 
         assertEquals(c, command.getCommand(key));
     }
@@ -102,7 +102,7 @@ public class MenuCommandTest {
     public void enterCommand(){
         KeyStroke key = new KeyStroke(KeyType.Enter);
 
-        MenuCommand.COMMAND c = MenuCommand.COMMAND.SELECT;
+        Command.COMMAND c = Command.COMMAND.SELECT;
 
         assertEquals(c, command.getCommand(key));
     }

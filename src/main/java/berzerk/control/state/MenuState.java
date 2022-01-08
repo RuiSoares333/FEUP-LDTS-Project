@@ -1,6 +1,6 @@
 package berzerk.control.state;
 
-import berzerk.control.MenuCommand;
+import berzerk.control.Command;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
 import berzerk.view.menu.MenuView;
@@ -20,12 +20,12 @@ public class MenuState extends ControllerState<MenuModel> {
 
     public ControllerState<?> run() throws IOException {
         if(model!=null) getView().draw(getPosition(model.getSelected()));
-        MenuCommand.COMMAND key = getView().getCommand();
+        Command.COMMAND key = getView().getCommand();
         return processKey(key);
     }
 
 
-     private ControllerState<?> processKey(MenuCommand.COMMAND key) throws IOException{
+     private ControllerState<?> processKey(Command.COMMAND key) throws IOException{
         if(key != null && model!=null) {
             ControllerState<?> newState = this;
             switch (key) {
