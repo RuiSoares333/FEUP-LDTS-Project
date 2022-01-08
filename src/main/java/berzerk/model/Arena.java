@@ -55,30 +55,30 @@ public class Arena implements Model {
 //    }
 
 
-    public boolean processKey(KeyStroke key) {
-        switch (key.getKeyType()){
-            case Character:
-                char a = key.getCharacter();
-                Character.toLowerCase(a);
-                switch (a){
-                    case 'q':
-                        return false;
-                    case ' ':
-                        return moveHero(hero.moveUp());
-                    default:
-                        break;
-                }
-            case ArrowUp:
-                return moveHero(hero.moveUp());
-            case ArrowDown:
-                return moveHero(hero.moveDown());
-            case ArrowRight:
-                return moveHero(hero.moveRight());
-            case ArrowLeft:
-                return moveHero(hero.moveLeft());
-        }
-        return true;
-    }
+//    public boolean processKey(KeyStroke key) {
+//        switch (key.getKeyType()){
+//            case Character:
+//                char a = key.getCharacter();
+//                Character.toLowerCase(a);
+//                switch (a){
+//                    case 'q':
+//                        return false;
+//                    case ' ':
+//                        return moveHero(hero.moveUp());
+//                    default:
+//                        break;
+//                }
+//            case ArrowUp:
+//                return moveHero(hero.moveUp());
+//            case ArrowDown:
+//                return moveHero(hero.moveDown());
+//            case ArrowRight:
+//                return moveHero(hero.moveRight());
+//            case ArrowLeft:
+//                return moveHero(hero.moveLeft());
+//        }
+//        return true;
+//    }
 
     public boolean moveHero(Position position) {
         if(canEntityMove(position)) {
