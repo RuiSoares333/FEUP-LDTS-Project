@@ -3,7 +3,7 @@ package berzerk.control;
 import com.googlecode.lanterna.input.KeyStroke;
 
 public class MenuCommand {
-    public enum COMMAND {UP, RIGHT, DOWN, LEFT, SELECT, QUIT, NONE}
+    public enum COMMAND {UP, RIGHT, DOWN, LEFT, SELECT, QUIT, NONE, SPACE}
 
     private COMMAND command;
 

@@ -2,6 +2,7 @@ package berzerk.control.state;
 
 import berzerk.model.Model;
 import berzerk.model.Soldado;
+import berzerk.view.GameView;
 import berzerk.view.View;
 
 import java.awt.*;
@@ -20,6 +21,7 @@ public abstract class ControllerState <T extends Model>{
         this.soldado = soldado;
         this.view = view;
     }
+
 
     protected ControllerState<?> manageCommand(ControllerState<?> newState) throws IOException {
         if (newState != this)
@@ -43,5 +45,7 @@ public abstract class ControllerState <T extends Model>{
     public View<T> getView(){
         return view;
     }
+
+
 
 }

@@ -20,10 +20,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
-public class Arena {
+public class Arena implements Model {
 
-    private final int width;
-    private final int height;
+
 
     Position initialPosition;
 
@@ -32,33 +31,32 @@ public class Arena {
     private final List<Wall> walls = new ArrayList<>();
     private final List<Monster> monsters;
 
-    public Arena(int width, int height){
+    public Arena(Hero hero){
         //creating the deadly arena
-        this.width = width;
-        this.height = height;
 
-        hero = new Expert(10, 10);
+
+        this.hero = hero;
         initialPosition = hero.getPosition();
 
         carregarFich();
         monsters = createMonsters();    // creating the fierce monsters
     }
 
-    public void draw(TextGraphics graphics){
-        // paint the arena floor with CIN paint, not sponsored
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-
-        hero.draw(graphics);            // draw the mighty hero
-
-        
-        for (Wall wall : walls)         // draw the imposing walls
-            wall.draw(graphics);
-        for(Monster monster: monsters)  // draw the fierce monsters
-            monster.draw(graphics);
-//        moveMonsters();
-
-    }
+//    public void draw(TextGraphics graphics){
+//        // paint the arena floor with CIN paint, not sponsored
+//        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+//        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+//
+//        hero.draw(graphics);            // draw the mighty hero
+//
+//
+//        for (Wall wall : walls)         // draw the imposing walls
+//            wall.draw(graphics);
+//        for(Monster monster: monsters)  // draw the fierce monsters
+//            monster.draw(graphics);
+////        moveMonsters();
+//
+//    }
 
 
     public boolean processKey(KeyStroke key) {
@@ -86,7 +84,7 @@ public class Arena {
         return true;
     }
 
-    private boolean moveHero(Position position) {
+    public boolean moveHero(Position position) {
         if(canEntityMove(position)) {
             hero.setPosition(position);
             if(!verifyMonsterCollision(position) || !verifyHeroWallCollision(position)){
@@ -166,7 +164,7 @@ public class Arena {
 
         while(monsters.size() < 4){
             flag = true;
-            Position novaPosicao = new Position(random.nextInt(width-1), random.nextInt(height-1));
+            Position novaPosicao = new Position(random.nextInt(Constants.WIDTH-1), random.nextInt(Constants.HEIGHT-1));
             for (Wall w: walls) {
                 if(w.getPosition() == novaPosicao) flag = false;
             }
@@ -207,6 +205,10 @@ public class Arena {
 
     public List<Monster> getMonsters(){
         return monsters;
+    }
+
+    public List<Wall> getWalls(){
+        return walls;
     }
 
 
