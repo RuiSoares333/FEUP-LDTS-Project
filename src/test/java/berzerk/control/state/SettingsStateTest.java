@@ -67,32 +67,32 @@ public class SettingsStateTest {
         assertEquals(state, state.run());
     }
 
-//    @Test
-//    public void processKeySelect() throws IOException {
-//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
-//        doRun(1);
-//
-//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-//        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
-//
-//        assertNotNull(state.run().getClass());
-//
-//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
-//        doRun(3);
-//
-//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-//        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
-//
-//        assertNotNull(state.run().getClass());
-//
-//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
-//        doRun(5);
-//
-//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-//        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
-//
-//        assertNotNull(state.run().getClass());
-//    }
+    @Test
+    public void processKeySelect() throws IOException {
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
+        doRun(1);
+
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
+
+        assertNotNull(state.run().getClass());
+
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
+        doRun(3);
+
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
+
+        assertNotNull(state.run().getClass());
+
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
+        doRun(5);
+
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
+
+        assertNotNull(state.run().getClass());
+    }
 
     private void doRun(int numVezes) throws IOException {
         for(int i=0; i<numVezes; i++){
