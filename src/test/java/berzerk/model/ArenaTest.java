@@ -16,7 +16,7 @@ public class ArenaTest {
     @BeforeEach
     public void dados(){
         hero = new Hero(10,10,10,3);
-        arena= new Arena(hero);
+        arena= new Arena(hero, 1);
     }
 
     @Test
@@ -57,15 +57,15 @@ public class ArenaTest {
         boolean result1, result2, result3, result4, result5, result6;
 
         arena.getHero().setPosition(positionFinal1);
-        result1 = arena.canEntityMove(arena.getHero().getPosition());
+        result1 = arena.canHeroMove(arena.getHero().getPosition());
         arena.getHero().setPosition(positionFinal5);
         result2 = arena.verifyHeroWallCollision(arena.getHero().getPosition());
         arena.getHero().setPosition(positionFinal2);
-        result3 = arena.canEntityMove(arena.getHero().getPosition());
+        result3 = arena.canHeroMove(arena.getHero().getPosition());
         arena.getHero().setPosition(positionFinal3);
-        result4 = arena.canEntityMove(arena.getHero().getPosition());
+        result4 = arena.canHeroMove(arena.getHero().getPosition());
         arena.getHero().setPosition(positionFinal4);
-        result5 = arena.canEntityMove(arena.getHero().getPosition());
+        result5 = arena.canHeroMove(arena.getHero().getPosition());
         result6 = arena.verifyHeroWallCollision(arena.getHero().getPosition());
 
 

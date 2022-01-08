@@ -31,7 +31,7 @@ public class MenuStateTest {
     @BeforeEach
     public void initMenuState(){
         hero = new Hero(10,10,10,3);
-        arena = new Arena(hero);
+        arena = new Arena(hero, 1);
         factoryState = spy(new FactoryState());
         model = spy(new MenuModel());
         ecra = mock(Ecra.class);
@@ -64,12 +64,12 @@ public class MenuStateTest {
         assertEquals(state, state.run());
     }
 
-//    @Test
-//    public void processKeyPlay() throws IOException {
-//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-//
-//        assertNotNull(GameState.class, state.run());
-//    }
+    @Test
+    public void processKeyPlay() throws IOException {
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+
+        assertNotNull(state.run().getClass());
+    }
 
     @Test
     public void processKeySettings() throws IOException {
@@ -110,7 +110,7 @@ public class MenuStateTest {
         when(gameView.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
         doRun(1);
 
-        when(factoryState.genGameState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+        when(factoryState.genGameState(mock(Soldado.class), 1)).thenAnswer(invocation -> SettingsState.class);
 
         assertNotNull(state.run().getClass());
     }

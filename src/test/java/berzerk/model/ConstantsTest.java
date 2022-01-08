@@ -8,12 +8,6 @@ public class ConstantsTest {
 
 
     @Test
-    public void size(){
-        assertEquals(100, Constants.WIDTH);
-        assertEquals(40, Constants.HEIGHT);
-    }
-
-    @Test
     public void gameName(){
         assertEquals(7, Constants.GAME_NAME.length);
     }
