@@ -2,12 +2,12 @@ package berzerk.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
 
-public class MenuCommand {
+public class Command {
     public enum COMMAND {UP, RIGHT, DOWN, LEFT, SELECT, QUIT, NONE, SPACE}
 
     private COMMAND command;
 
-    public MenuCommand() {
+    public Command() {
         this.command = COMMAND.NONE;
     }
 
@@ -16,7 +16,7 @@ public class MenuCommand {
     }
 
 
-    public MenuCommand.COMMAND getCommand(KeyStroke key){
+    public Command.COMMAND getCommand(KeyStroke key){
 
         switch (key.getKeyType()) {
             case EOF -> command = COMMAND.QUIT;
@@ -25,6 +25,11 @@ public class MenuCommand {
             case ArrowRight -> command = COMMAND.RIGHT;
             case ArrowLeft -> command = COMMAND.LEFT;
             case Enter -> command = COMMAND.SELECT;
+            case Character -> {
+                if(key.getCharacter() == ' '){
+                    command = COMMAND.SPACE;
+                }
+            }
             default -> command = COMMAND.NONE;
         }
         return command;

@@ -1,7 +1,7 @@
 package berzerk.control.state;
 
 
-import berzerk.control.MenuCommand;
+import berzerk.control.Command;
 import berzerk.model.Soldado;
 import berzerk.model.settings.SettingsModel;
 import berzerk.view.View;
@@ -25,7 +25,7 @@ public class SettingsState extends ControllerState<SettingsModel> {
 
     }
 
-    public ControllerState<?> processKey(MenuCommand.COMMAND key) throws IOException {
+    public ControllerState<?> processKey(Command.COMMAND key) throws IOException {
         ControllerState<?> newState = this;
         switch (key) {
             case LEFT -> model.previousSelected();

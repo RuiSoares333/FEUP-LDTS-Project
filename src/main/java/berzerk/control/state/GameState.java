@@ -1,6 +1,6 @@
 package berzerk.control.state;
 
-import berzerk.control.MenuCommand;
+import berzerk.control.Command;
 import berzerk.model.Arena;
 import berzerk.model.Soldado;
 import berzerk.view.GameView;
@@ -24,7 +24,7 @@ public class GameState extends ControllerState<Arena>{
         return processKey(getView().getCommand());
     }
 
-    public ControllerState<?> processKey(MenuCommand.COMMAND key) throws IOException, URISyntaxException, FontFormatException {
+    public ControllerState<?> processKey(Command.COMMAND key) throws IOException, URISyntaxException, FontFormatException {
         ControllerState<?> newState = this;
         switch (key) {
             case LEFT -> arena.moveHero(arena.getHero().moveLeft());

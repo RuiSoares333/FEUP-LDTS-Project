@@ -1,6 +1,6 @@
 package berzerk.control.state;
 
-import berzerk.control.MenuCommand;
+import berzerk.control.Command;
 import berzerk.model.Soldado;
 import berzerk.model.ranking.RankingModel;
 import berzerk.view.View;
@@ -23,7 +23,7 @@ public class RankingState extends ControllerState<RankingModel>  {
         return processKey(getView().getCommand());
     }
 
-    public ControllerState<?> processKey(MenuCommand.COMMAND key) throws IOException, URISyntaxException, FontFormatException {
+    public ControllerState<?> processKey(Command.COMMAND key) throws IOException, URISyntaxException, FontFormatException {
         return manageCommand(getState().genMenuState(getSoldado()));
     }
 

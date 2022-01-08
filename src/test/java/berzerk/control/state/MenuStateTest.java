@@ -1,6 +1,6 @@
 package berzerk.control.state;
 
-import berzerk.control.MenuCommand;
+import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
@@ -35,39 +35,39 @@ public class MenuStateTest {
 
     @Test
     public void processExit() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.QUIT);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.QUIT);
         assertNull(state.run());
     }
 
 
     @Test
     public void processKey() throws IOException{
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
         assertEquals(state, state.run());
 
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
         assertEquals(state, state.run());
 
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
         assertEquals(state, state.run());
 
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
         assertEquals(state, state.run());
     }
 
 //    @Test
 //    public void processKeyPlay() throws IOException {
-//        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+//        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
 //
 //        assertNotNull(GameState.class, state.run());
 //    }
 
     @Test
     public void processKeySettings() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
         doRun(1);
 
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
         when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
         assertNotNull(state.run().getClass());
@@ -75,10 +75,10 @@ public class MenuStateTest {
 
     @Test
     public void processKeyRanking() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.DOWN);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
         doRun(2);
 
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
         when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
         assertNotNull(state.run().getClass());
@@ -87,10 +87,10 @@ public class MenuStateTest {
 
     @Test
     public void processKeyExit() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.UP);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
         doRun(1);
 
-        when(view.getCommand()).thenAnswer(invocation -> MenuCommand.COMMAND.SELECT);
+        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
         when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
         assertNull(state.run());
