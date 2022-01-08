@@ -33,7 +33,7 @@ public abstract class View<T extends Model> {
 
     public MenuCommand.COMMAND getCommand() throws IOException {
         if(screen != null) return new MenuCommand().getCommand(screen.readInput());
-        return null;
+        return MenuCommand.COMMAND.NONE;
     }
 
     public void setModel(T model) {

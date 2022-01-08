@@ -2,7 +2,6 @@ package berzerk.control.state;
 
 import berzerk.model.Model;
 import berzerk.model.Soldado;
-import berzerk.view.GameView;
 import berzerk.view.View;
 
 import java.awt.*;

@@ -1,7 +1,6 @@
 package berzerk.control.state;
 
 import berzerk.control.MenuCommand;
-import berzerk.model.Game;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
 import berzerk.view.menu.MenuView;

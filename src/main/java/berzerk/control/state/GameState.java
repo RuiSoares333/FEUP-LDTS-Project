@@ -1,9 +1,8 @@
 package berzerk.control.state;
+
 import berzerk.control.MenuCommand;
 import berzerk.model.Arena;
-import berzerk.model.Constants;
 import berzerk.model.Soldado;
-import berzerk.model.entity.hero.Hero;
 import berzerk.view.GameView;
 
 import java.awt.*;

@@ -2,22 +2,18 @@ package berzerk.model;
 
 import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
-import berzerk.model.entity.hero.Expert;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.entity.properties.Position;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 public class Arena implements Model {
@@ -107,35 +103,35 @@ public class Arena implements Model {
     }*/
     
     //Move monster in random directions
-    public void moveMonstersRandom(Screen screen, Arena arena){
-        // And From your main() method or any other method
-        Timer timer = new Timer();
-
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-
-                        for (Monster monster: monsters) {
-
-                            Position novaPosicao = monster.move();
-
-                            if(canMonsterMove(novaPosicao))
-                                monster.setPosition(novaPosicao);
-
-                            screen.clear();
-                            arena.draw(screen.newTextGraphics());
-                            try {
-                                screen.refresh();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        draw(screen.newTextGraphics());
-
-                    }
-                }, 0, 200);
-    }
+//    public void moveMonstersRandom(Screen screen, Arena arena){
+//        // And From your main() method or any other method
+//        Timer timer = new Timer();
+//
+//                timer.schedule(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//
+//                        for (Monster monster: monsters) {
+//
+//                            Position novaPosicao = monster.move();
+//
+//                            if(canMonsterMove(novaPosicao))
+//                                monster.setPosition(novaPosicao);
+//
+//                            screen.clear();
+//                            arena.draw(screen.newTextGraphics());
+//                            try {
+//                                screen.refresh();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//
+//                        draw(screen.newTextGraphics());
+//
+//                    }
+//                }, 0, 200);
+//    }
 
     public boolean canEntityMove(Position position){
         for(Wall wall : walls){
