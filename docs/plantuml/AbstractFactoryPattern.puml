@@ -7,8 +7,9 @@ class Controller{
 }
 class FactoryState{
 +genMenuState()
-+genSettingsMenuState()
-+genRankingMenuState()
++genSettingsState()
++genRankingState()
++genGameState()
 +genGameOverState()
 }
 

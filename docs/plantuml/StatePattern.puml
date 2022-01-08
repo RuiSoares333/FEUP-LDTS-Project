@@ -12,10 +12,14 @@ abstract class ControllerState{
 class MenuState{
 +run()
 }
-class RankingMenuState{
+class RankingState{
 +run()
 }
-class SettingsMenuState{
+class SettingsState{
++run()
+}
+
+class GameState{
 +run()
 }
 
@@ -24,14 +28,15 @@ class GameOverState{
 }
 
 ControllerState <|-- MenuState
-ControllerState <|-- RankingMenuState
-ControllerState <|-- SettingsMenuState
+ControllerState <|-- RankingState
+ControllerState <|-- SettingsState
+ControllerState <|-- GameState
 ControllerState <|-- GameOverState
 
 note right of ControllerState: State
 
 note "Concrete State" as N1
-N1 -u- SettingsMenuState
+N1 -u- MenuState
 
 note left of Controller : Context
 
