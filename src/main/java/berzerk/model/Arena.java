@@ -5,9 +5,6 @@ import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.entity.properties.Position;
 import berzerk.view.GameView;
-import berzerk.view.View;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,37 +23,125 @@ public class Arena implements Model {
     private final List<Wall> walls;
     private final List<Monster> monsters;
 
-    private View<GameView> view;
+    private GameView view;
 
     public Arena(Hero hero, int nivel){
         this.hero = hero;
 
-        walls = carregarNivel(nivel);
+        walls = createWalls(nivel);
         initialPosition = hero.getPosition();
         monsters = createMonsters();
     }
 
-    public boolean moveHero(Position position) {
-        if(canHeroMove(position)) {
+    public void positionHero(){
+        hero.setPosition(initialPosition);
+    }
+
+    public Hero getHero(){
+        return hero;
+    }
+
+    public List<Monster> getMonsters(){
+        return monsters;
+    }
+
+    public List<Wall> getWalls(){
+        return walls;
+    }
+
+    public void setView(GameView view) {
+        this.view = view;
+    }
+
+    //---------------------------------- PAREDES -----------------------------------------------------------
+
+    private List<Wall> createWalls(int nivel) {
+        List<Wall> paredes = new ArrayList<>();
+        String mapa = "nivel" + nivel + ".txt";
+        InputStream is = ClassLoader.getSystemResourceAsStream(mapa);
+        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        BufferedReader reader = new BufferedReader(streamReader);
+        try {
+            int i = 0;
+            for (String line; (line = reader.readLine()) != null; i++) {
+                int j = 0;
+                for (char c: line.toCharArray()) {
+                    if(c == 'p'){
+                        paredes.add(new Wall(j, i));
+                    }
+                    j++;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return paredes;
+    }
+
+//---------------------------------------- HEROI --------------------------------------------------------------
+
+    public void moveHero(Position position) {
+        if(verifyWallCollision(position)) {
             hero.setPosition(position);
             if(!verifyMonsterCollision(position) || !verifyHeroWallCollision(position)){
                 System.out.println("Game Over!");
-                return true;
+            }
+        }
+    }
+
+    public boolean verifyWallCollision(Position position){
+        for(Wall wall : walls){
+            if(wall.getPosition().equals(position)) {
+                System.out.println("Game Over!");
+                positionHero();
+                return false;
             }
         }
         return true;
     }
 
-    public void moveMonsters(){
-        for (Monster monster: monsters) {
 
-            Position novaPosicao = monster.move();
-
-            if(canMonsterMove(novaPosicao))
-                monster.setPosition(novaPosicao);
-
+    public boolean verifyMonsterCollision(Position position){
+        for(Monster monster: monsters) {
+            if (position.equals(monster.getPosition())) {
+                positionHero();
+                return false;
+            }
         }
+        return true;
+
     }
+
+    public boolean verifyHeroWallCollision(Position position){
+        for(Wall wall : walls){
+            if(wall.getPosition().equals(position)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    //------------------------------------- MONSTROS -----------------------------------------------------
+
+    public List<Monster> createMonsters(){
+        Random random = new Random();
+        ArrayList<Monster> monsters = new ArrayList<>();
+        boolean flag;
+
+        while(monsters.size() < 10){
+            flag = true;
+            Position novaPosicao = new Position(random.nextInt(Constants.WIDTH-1), random.nextInt(Constants.HEIGHT-1));
+            for (Wall w: walls) {
+                if(w.getPosition() == novaPosicao) flag = false;
+            }
+
+            if(flag) monsters.add(new Monster(novaPosicao));
+        }
+
+        return monsters;
+    }
+
 
     //Move monster in random directions
     public void scheduleMonsterMovement(){
@@ -81,15 +166,15 @@ public class Arena implements Model {
         }, 0, 1000);
     }
 
-    public boolean canHeroMove(Position position){
-        for(Wall wall : walls){
-            if(wall.getPosition().equals(position)) {
-                System.out.println("Game Over!");
-                positionHero();
-                return false;
-            }
+    public void moveMonsters(){
+        for (Monster monster: monsters) {
+
+            Position novaPosicao = monster.move();
+
+            if(canMonsterMove(novaPosicao))
+                monster.setPosition(novaPosicao);
+
         }
-        return true;
     }
 
     public boolean canMonsterMove(Position position){
@@ -99,87 +184,5 @@ public class Arena implements Model {
             }
         }
         return true;
-    }
-
-    public List<Monster> createMonsters(){
-        Random random = new Random();
-        ArrayList<Monster> monsters = new ArrayList<>();
-        boolean flag;
-
-        while(monsters.size() < 10){
-            flag = true;
-            Position novaPosicao = new Position(random.nextInt(Constants.WIDTH-1), random.nextInt(Constants.HEIGHT-1));
-            for (Wall w: walls) {
-                if(w.getPosition() == novaPosicao) flag = false;
-            }
-
-            if(flag) monsters.add(new Monster(novaPosicao));
-        }
-
-        return monsters;
-    }
-
-    public boolean verifyMonsterCollision(Position position){
-        for(Monster monster: monsters) {
-            if (position.equals(monster.getPosition())) {
-                positionHero();
-                return false;
-            }
-        }
-        return true;
-
-    }
-
-    public boolean verifyHeroWallCollision(Position position){
-        for(Wall wall : walls){
-            if(wall.getPosition().equals(position)){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void positionHero(){
-        hero.setPosition(initialPosition);
-    }
-
-    public Hero getHero(){
-        return hero;
-    }
-
-    public List<Monster> getMonsters(){
-        return monsters;
-    }
-
-    public List<Wall> getWalls(){
-        return walls;
-    }
-
-
-    private List<Wall> carregarNivel(int nivel) {
-        List<Wall> paredes = new ArrayList<>();
-        String mapa = "nivel" + nivel + ".txt";
-        InputStream is = ClassLoader.getSystemResourceAsStream(mapa);
-        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        BufferedReader reader = new BufferedReader(streamReader);
-        try {
-            int i = 0;
-            for (String line; (line = reader.readLine()) != null; i++) {
-                int j = 0;
-                for (char c: line.toCharArray()) {
-                    if(c == 'p'){
-                        paredes.add(new Wall(j, i));
-                    }
-                    j++;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return paredes;
-    }
-
-    public void setView(View<GameView> view) {
-        this.view = view;
     }
 }

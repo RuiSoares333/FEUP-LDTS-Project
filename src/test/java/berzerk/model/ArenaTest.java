@@ -62,13 +62,13 @@ public class ArenaTest {
         boolean result1, result2, result3, result4, result5, result6;
 
         arena.getHero().setPosition(wall1Position);
-        result1 = arena.canHeroMove(arena.getHero().getPosition());
+        result1 = arena.verifyWallCollision(arena.getHero().getPosition());
         arena.getHero().setPosition(wall2Position);
         result2 = arena.verifyHeroWallCollision(arena.getHero().getPosition());
         arena.getHero().setPosition(wall3Position);
-        result3 = arena.canHeroMove(arena.getHero().getPosition());
+        result3 = arena.verifyWallCollision(arena.getHero().getPosition());
         arena.getHero().setPosition(notWallPosition);
-        result4 = arena.canHeroMove(arena.getHero().getPosition());
+        result4 = arena.verifyWallCollision(arena.getHero().getPosition());
         arena.getHero().setPosition(wall4Position);
         result5 = arena.verifyHeroWallCollision(arena.getHero().getPosition());
         arena.getHero().setPosition(notWallPosition);

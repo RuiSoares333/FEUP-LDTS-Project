@@ -3,11 +3,9 @@ package berzerk.view;
 import berzerk.model.Arena;
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
-import berzerk.model.Model;
 import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Hero;
-import berzerk.model.menu.MenuModel;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -16,13 +14,13 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;
 
-public class GameView extends View implements Model {
+public class GameView extends View<Arena> {
 
     Arena arena;
 
 
     public GameView(Ecra ecra, Arena arena){
-        super(new MenuModel(), ecra);
+        super(null, ecra);
         this.arena = arena;
     }
 

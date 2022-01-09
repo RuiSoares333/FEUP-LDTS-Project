@@ -2,10 +2,6 @@ package berzerk.model.entity.hero;
 
 import berzerk.model.entity.Element;
 import berzerk.model.entity.properties.Position;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Hero extends Element {
 
@@ -17,13 +13,6 @@ public class Hero extends Element {
         this.bulMult = bulMult;
         this.hp = hp;
     }
-
-    public void draw(TextGraphics graphics){
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(super.getPosition().getX(), super.getPosition().getY()), "}");
-    }
-
 
     public void setPosition(Position position) {
         super.setPosition(position);
