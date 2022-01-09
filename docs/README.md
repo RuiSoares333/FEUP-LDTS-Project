@@ -36,76 +36,7 @@ Este projeto foi desenvolvido por *Catarina Canelas* (*up202103631*@fe.up.pt), *
 
 ### DESIGN
 
-[//]: # (> This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:)
-
-[//]: # ()
-[//]: # (- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code]&#40;https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet&#41; in the appropriate version.)
-
-[//]: # (- **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.)
-
-[//]: # (- **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines &#40;these should be [relative links]&#40;https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files&#41;. When doing this, always point to the latest version of the code.)
-
-[//]: # (- **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.)
-
-[//]: # ()
-[//]: # (**Example of one of such subsections**:)
-
-[//]: # ()
-[//]: # (------)
-
-[//]: # ()
-[//]: # (#### THE JUMP ACTION OF THE KANGAROOBOY SHOULD BEHAVE DIFFERENTLY DEPENDING ON ITS STATE)
-
-[//]: # ()
-[//]: # (**Problem in Context**)
-
-[//]: # ()
-[//]: # (There was a lot of scattered conditional logic when deciding how the KangarooBoy should behave when jumping, as the jumps should be different depending on the items that came to his possession during the game &#40;an helix will alow him to fly, driking a potion will allow him to jump double the height, etc.&#41;. This is a violation of the **Single Responsability Principle**. We could concentrate all the conditional logic in the same method to circumscribe the issue to that one method but the **Single Responsability Principle** would still be violated.)
-
-[//]: # ()
-[//]: # (**The Pattern**)
-
-[//]: # ()
-[//]: # (We have applied the **State** pattern. This pattern allows you to represent different states with different subclasses. We can switch to a different state of the application by switching to another implementation &#40;i.e., another subclass&#41;. This pattern allowed to address the identified problems because […].)
-
-[//]: # ()
-[//]: # (**Implementation**)
-
-[//]: # ()
-[//]: # (The following figure shows how the pattern’s roles were mapped to the application classes.)
-
-[//]: # ()
-[//]: # (![img]&#40;https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg&#41;)
-
-[//]: # ()
-[//]: # (These classes can be found in the following files:)
-
-[//]: # ()
-[//]: # (- [Character]&#40;https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java&#41;)
-
-[//]: # (- [JumpAbilityState]&#40;https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/JumpAbilityState.java&#41;)
-
-[//]: # (- [DoubleJumpState]&#40;https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/DoubleJumpState.java&#41;)
-
-[//]: # (- [HelicopterState]&#40;https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/HelicopterState.java&#41;)
-
-[//]: # (- [IncreasedGravityState]&#40;https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/IncreasedGravityState.java&#41;)
-
-[//]: # ()
-[//]: # (**Consequences**)
-
-[//]: # ()
-[//]: # (The use of the State Pattern in the current design allows the following benefits:)
-
-[//]: # ()
-[//]: # (- The several states that represent the character’s hability to jump become explicit in the code, instead of relying on a series of flags.)
-
-[//]: # (- We don’t need to have a long set of conditional if or switch statements associated with the various states; instead, polimorphism is used to activate the right behavior.)
-
-[//]: # (- There are now more classes and instances to manage, but still in a reasonable number.)
-
-
-#### Estrutura Geral
+#### ESTRUTURA GERAL
 
 **Contexto do Problema**
 
@@ -205,31 +136,45 @@ O uso do Padrão Abstract Factory abre caminho aos seguintes benefícios:
 - A responsabilidade de criação de novas instâncias de menus é atribuida a apenas uma classe, deixando o código das ;
 - O código para instanciar um estado do menu é reduzido a 1 método por estado.
 
-#### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
+#### LIDAR COM COMANDOS DE INPUT DO UTILIZADOR
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation, and suggest ways in which the code could be refactored to eliminate them. Each smell and refactoring suggestions should be described in its own subsection.
+**Contexto do Problema**
 
-**Example of such a subsection**:
+O programa deve conseguir lidar com a maioria dos *inputs* do utilizador. No caso do nosso projeto, comandos relacionados com o Cursor são ignorados.
 
-------
+**O Padrão**
 
-#### DATA CLASS
+Aplicamos o Padrão **Command**.
 
-The `PlatformSegment` class is a **Data Class**, as it contains only fields, and no behavior. This is problematic because […].
+Fica então atribuido ao Command a responsabilidade de lidar com o *input* do utilizador.
 
-A way to improve the code would be to move the `isPlatformSegmentSolid()` method to the `PlatformSegment` class, as this logic is purely concerned with the `PlatformSegment` class.
+**Implementação**
+
+A seguinte imagem monstra como o Padrão foi aplicado às classes da aplicação.
+
+![img](images/patterns/CommandPattern.svg)
+
+Estas Classes podem ser encontradas nos seguintes ficheiros:
+
+- [View](../src/main/java/berzerk/view/View.java)
+- [Command](../src/main/java/berzerk/control/Command.java)
+- [COMMAND](../src/main/java/berzerk/control/Command.java)
+
+**Consequências**
+
+O uso do Padrão Command abre caminho aos seguintes benefícios:
+- *Single Responsibility Principle*. Agora as classes que dependem de *inputs* estão livres destas operações.
+- *Open/Closed Principle*. É possível acrescentar comandos sem prejudicar o funcionamento do resto da aplicação.
+
+
 
 ### TESTING
 
-- Screenshot of coverage report.
-- Link to mutation testing report.
+![img](images/CoverageReportGeral.png)
+
+[//]: # (- Link to mutation testing report. - todo)
 
 ### SELF-EVALUATION
-
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-**Example**:
-
 - Catarina Canelas: 33.3%
 - Diogo Gomes: 33.3%
 - Rui Soares: 33.3%
