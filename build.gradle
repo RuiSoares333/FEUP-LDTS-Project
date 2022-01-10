@@ -5,7 +5,7 @@ plugins {
 }
 
 application {
-    mainClass.set("Application")
+    mainClass.set("berzerk/Application")
 }
 
 group 'berzerk'
