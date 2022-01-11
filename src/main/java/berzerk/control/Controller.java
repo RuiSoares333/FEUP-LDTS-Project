@@ -12,7 +12,7 @@ public class Controller {
     ControllerState<?> state;
     Soldado soldado = new Soldado();
 
-    public Controller(FactoryState factory) throws IOException, URISyntaxException, FontFormatException {
+    public Controller(FactoryState factory){
         state = factory.genMenuState(soldado);
     }
 

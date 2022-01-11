@@ -1,9 +1,8 @@
 package berzerk.control.state;
 
-import berzerk.model.Arena;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
-import berzerk.model.entity.hero.Hero;
+import berzerk.model.game.GameModel;
 import berzerk.model.menu.MenuModel;
 import berzerk.model.ranking.RankingModel;
 import berzerk.model.settings.SettingsModel;
@@ -11,6 +10,8 @@ import berzerk.view.GameView;
 import berzerk.view.menu.MenuView;
 import berzerk.view.menu.RankingView;
 import berzerk.view.menu.SettingsView;
+
+import java.io.IOException;
 
 
 public class FactoryState {
@@ -33,11 +34,9 @@ public class FactoryState {
         return new SettingsState(this, soldado, view);
     }
 
-    public GameState genGameState(Soldado soldado, int nivel){
-        Hero hero = new Hero(10,10, 10, 3);
-        Arena arena = new Arena(hero, nivel);
-        GameView view = new GameView(new Ecra(), arena);
-        arena.setView(view);
-        return new GameState(this, soldado, view, arena);
+    public GameState genGameState(Soldado soldado, int nivel) throws IOException {
+        GameModel model = new GameModel(soldado, nivel);
+        GameView view = new GameView(model, new Ecra());
+        return new GameState(this, soldado, view);
     }
 }

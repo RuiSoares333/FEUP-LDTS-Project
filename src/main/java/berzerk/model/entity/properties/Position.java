@@ -9,33 +9,26 @@ public class Position {
         this.y = y;
     }
 
+    public Position(Position position) {
+        this.x = position.getX();
+        this.y = position.getY();
+    }
 
-    /**
-     *
-     * x getters and setters
-     */
+
     public int getX() {
         return x;
     }
 
     public void setX(int x) {
-//        if(x > 78)
         this.x = x;
-//        else this.x = Math.max(x, 0);
     }
 
-    /**
-     *
-     * y getters and setters
-     */
     public int getY() {
         return y;
     }
 
     public void setY(int y) {
-//        if(y > 23)
         this.y = y;
-//        else this.y = Math.max(y, 0);
     }
 
     public void setPosition(Position position){
@@ -53,5 +46,11 @@ public class Position {
 
         Position p = (Position) o;
         return x == p.getX() && y == p.getY();
+    }
+
+
+    @Override
+    public String toString(){
+        return x + " " + y;
     }
 }

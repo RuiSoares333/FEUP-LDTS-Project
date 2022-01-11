@@ -1,11 +1,11 @@
 package berzerk.view;
 
-import berzerk.model.Arena;
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Hero;
+import berzerk.model.game.GameModel;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -14,34 +14,55 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;
 
-public class GameView extends View<Arena> {
+public class GameView extends View<GameModel> {
 
-    Arena arena;
+    String black = Constants.GAME_BACKGROUND_COLOR;
+    String blue = Constants.GAME_WALL_COLOR;
+    String green = Constants.MONSTER_COLOR;
+    String heroColor;
 
+    public GameView(GameModel model, Ecra ecra){
+        super(model, ecra);
+        heroColor = getHeroColor();
+    }
 
-    public GameView(Ecra ecra, Arena arena){
-        super(null, ecra);
-        this.arena = arena;
+    public String getHeroColor(){
+        String color = "";
+        if(heroColor==null) {
+            switch (this.getModel().getHero().getClass().getSimpleName()) {
+                case "Recruit" -> color = Constants.RECRUIT_COLOR;
+                case "Tanky" -> color = Constants.TANKY_COLOR;
+                case "Expert" -> color = Constants.EXPERT_COLOR;
+                default -> color = "#FFFF33";
+            }
+        }
+        return color;
     }
 
     public void drawHero(TextGraphics graphics, Hero hero){
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
-        graphics.enableModifiers(SGR.BOLD);
+        graphics.setForegroundColor(TextColor.Factory.fromString(heroColor));
         graphics.putString(new TerminalPosition(hero.getPosition().getX(), hero.getPosition().getY()), "}");
     }
 
-    public void drawWall(TextGraphics graphics, Wall wall){
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#5C62F7"));
-        graphics.setForegroundColor(TextColor.Factory.fromString("#5C62F7"));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(wall.getPosition().getX(), wall.getPosition().getY()), "H");
+    public void drawWalls(TextGraphics graphics){
+        graphics.setBackgroundColor(TextColor.Factory.fromString(blue));
+        graphics.setForegroundColor(TextColor.Factory.fromString(blue));
+
+        for(Wall wall : model.getWalls())
+            graphics.putString(new TerminalPosition(wall.getPosition().getX(), wall.getPosition().getY()), "H");
     }
 
-    public void drawMonster(TextGraphics graphics, Monster monster) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#24A120"));
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(monster.getPosition().getX(), monster.getPosition().getY()), "@");
+    public void drawMonsters(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(green));
+
+        for(Monster monster : model.getMonsters())
+            graphics.putString(new TerminalPosition(monster.getPosition().getX(), monster.getPosition().getY()), "@");
+
+    }
+
+    private void drawNivel(TextGraphics graphics){
+        graphics.setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
+        graphics.putString(new TerminalPosition(92, 0), "NIVEL: "+ model.getNivel());
     }
 
 
@@ -50,19 +71,21 @@ public class GameView extends View<Arena> {
     public void draw(int position) throws IOException {
         getScreen().clear();
         TextGraphics graphics = getGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
 
-        drawHero(graphics, arena.getHero());            // draw the mighty hero
+        setBackground(graphics);
 
-
-        for (Wall wall : arena.getWalls())         // draw the imposing walls
-            drawWall(graphics, wall);
-        for(Monster monster: arena.getMonsters())  // draw the fierce monsters
-            drawMonster(graphics, monster);
+        drawMonsters(graphics);
+        drawHero(graphics, model.getHero());
+        drawNivel(graphics);
+        drawWalls(graphics);
 
         getScreen().refresh();
     }
 
+    public void setBackground(TextGraphics graphics){
+        graphics.setBackgroundColor(TextColor.Factory.fromString(black));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
+    }
 
 }

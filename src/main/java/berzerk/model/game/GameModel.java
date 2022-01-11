@@ -1,0 +1,199 @@
+package berzerk.model.game;
+
+import berzerk.model.Constants;
+import berzerk.model.Model;
+import berzerk.model.Soldado;
+import berzerk.model.entity.Element;
+import berzerk.model.entity.Monster;
+import berzerk.model.entity.Wall;
+import berzerk.model.entity.hero.Expert;
+import berzerk.model.entity.hero.Hero;
+import berzerk.model.entity.hero.Recruit;
+import berzerk.model.entity.hero.Tanky;
+import berzerk.model.entity.properties.Position;
+import berzerk.view.View;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+
+public class GameModel implements Model {
+
+    private final int numMonstros = 10;
+
+    private final Position initialPosition;
+    private final int nivel;
+
+    private final Hero hero;
+
+    private final List<Wall> walls;
+    private final List<Wall> exit;
+    private List<Monster> monsters;
+
+    public GameModel(Soldado soldado, int nivel) throws IOException {
+        this.nivel = nivel;
+
+        this.initialPosition = getInitialPosition();
+        this.hero = createHero(soldado);
+
+        List<List<Wall>> wallList = createWalls();
+        walls = wallList.get(0);
+        System.out.println("Walls: " + walls.size());
+        exit = wallList.get(1);
+        monsters = createMonsters();
+        System.out.println("Monsters: " + monsters.size());
+    }
+
+
+    private void positionHero(){
+        hero.setPosition(initialPosition);
+    }
+
+    public Hero getHero(){
+        return hero;
+    }
+
+    public List<Monster> getMonsters(){
+        return monsters;
+    }
+
+    public List<Wall> getWalls(){
+        return walls;
+    }
+
+    public List<Wall> getExit() {
+        return exit;
+    }
+
+    public int getNivel(){
+        return nivel;
+    }
+
+    private Position getInitialPosition(){
+        if(nivel<=2) return new Position(50, 35);
+        else return new Position(5, 8);
+    }
+
+
+    //---------------------------------- PAREDES -----------------------------------------------------------
+
+    private List<List<Wall>> createWalls() throws IOException {
+        List<List<Wall>> paredes = new ArrayList<>();
+        List<Wall> eletrificadas = new ArrayList<>();
+        List<Wall> saida = new ArrayList<>();
+
+        BufferedReader reader = getReader();
+        int y = 0;
+        for (String line; (line = reader.readLine()) != null; y++) {
+            for(int x=0; x<line.length(); x++){
+                addToList(line.charAt(x), eletrificadas, saida, x, y);
+            }
+        }
+        paredes.add(eletrificadas);
+        paredes.add(saida);
+        return paredes;
+    }
+
+    private void addToList(char c, List<Wall> eletrificadas, List<Wall> saida, int x, int y){
+        if(c == 'p') eletrificadas.add(new Wall(x, y));
+        if(c == 'e') saida.add(new Wall(x, y));
+    }
+
+    private BufferedReader getReader(){
+        String mapa = "nivel" + nivel + ".txt";
+        InputStream is = ClassLoader.getSystemResourceAsStream(mapa);
+        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        return new BufferedReader(streamReader);
+    }
+
+
+    //------------------------------------- MONSTROS -----------------------------------------------------
+
+    private List<Monster> createMonsters(){
+        Random random = new Random();
+        int width = Constants.WIDTH, height = Constants.HEIGHT;
+
+        ArrayList<Monster> monsters = new ArrayList<>();
+
+        while(monsters.size() < numMonstros){
+            Position novaPosicao = new Position(random.nextInt(width-2), random.nextInt(height-2));
+
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters))
+                monsters.add(new Monster(novaPosicao));
+        }
+
+        return monsters;
+    }
+
+
+    //Move monster in random directions
+    public void scheduleMonsterMovement(View<GameModel> view){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                monsters = moveMonsters(monsters);
+                System.out.println(hero.getPosition());
+                try {
+                    view.draw(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 100);
+    }
+
+    public List<Monster> moveMonsters(List<Monster> monsters){
+        List<Monster> newMonsters = new ArrayList<>();
+        for (Monster monster: monsters) {
+
+            Position novaPosicao = monster.move();
+
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit)) {
+                monster.setPosition(novaPosicao);
+                newMonsters.add(monster);
+            }
+        }
+        return newMonsters;
+    }
+
+
+
+    //---------------------------------------- HEROI --------------------------------------------------------------
+
+    private Hero createHero(Soldado heroi){
+        int x = initialPosition.getX(), y = initialPosition.getY();
+        Hero hero = new Recruit(x, y);
+        if(heroi.getSelected() != null) {
+            switch (heroi.getSelected()) {
+                case TANKY -> hero = new Tanky(x, y);
+                case EXPERT -> hero = new Expert(x, y);
+                default -> hero = new Recruit(x, y);
+            }
+        }
+        return hero;
+    }
+
+
+    public void moveHero(Position position) {
+        if(!verifyCollision(position, monsters) || !verifyCollision(position, walls)){
+            System.out.println("Game Over!");
+            positionHero();
+        }
+        else hero.setPosition(position);
+    }
+
+
+    public boolean verifyCollision(Position position, List<? extends Element> elements){
+        if(position!=null && !elements.isEmpty())
+            for(Element e: elements)
+                if (position.equals(e.getPosition())) return false;
+
+        return true;
+    }
+
+
+}

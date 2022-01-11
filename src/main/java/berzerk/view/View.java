@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public abstract class View<T extends Model> {
 
-    private T model;
+    protected T model;
 
     private final Ecra ecra;
     private Screen screen;
@@ -57,7 +57,7 @@ public abstract class View<T extends Model> {
     }
 
     public void close() throws IOException {
-        if(ecra.getScreen()!=null) ecra.getScreen().close();
+        if(ecra!=null && ecra.getScreen()!=null) ecra.getScreen().close();
     }
 
     public abstract void draw(int position) throws IOException;

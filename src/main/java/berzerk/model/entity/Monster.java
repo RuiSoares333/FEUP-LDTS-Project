@@ -13,17 +13,13 @@ public class Monster extends Element{
     public Position move(){
         Random random = new Random();
         int movement = random.nextInt(4);
-        switch (movement){
-            case 0:
-                return new Position(getPosition().getX(), getPosition().getY()-1);
-            case 1:
-                return new Position(getPosition().getX()+1, getPosition().getY());
-            case 2:
-                return new Position(getPosition().getX(), getPosition().getY()+1);
-            case 3:
-                return new Position(getPosition().getX()-1, getPosition().getY());
-        }
-        return getPosition();
+        return switch (movement) {
+            case 0 -> new Position(getPosition().getX(), getPosition().getY() - 1);
+            case 1 -> new Position(getPosition().getX() + 1, getPosition().getY());
+            case 2 -> new Position(getPosition().getX(), getPosition().getY() + 1);
+            case 3 -> new Position(getPosition().getX() - 1, getPosition().getY());
+            default -> getPosition();
+        };
     }
 
     @Override

@@ -13,7 +13,7 @@ public abstract class ControllerState <T extends Model>{
     private final FactoryState state;
     private final Soldado soldado;
 
-    private final View<T> view;
+    protected final View<T> view;
 
     public ControllerState(FactoryState state, Soldado soldado, View<T> view){
         this.state = state;

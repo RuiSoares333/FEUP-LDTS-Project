@@ -1,38 +1,39 @@
 package berzerk.control.state;
 
 import berzerk.control.Command;
-import berzerk.model.Arena;
 import berzerk.model.Soldado;
+import berzerk.model.game.GameModel;
 import berzerk.view.GameView;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class GameState extends ControllerState<Arena>{
+public class GameState extends ControllerState<GameModel>{
 
-    Arena arena;
+    private final GameModel model;
 
-    public GameState(FactoryState state, Soldado soldado, GameView view, Arena arena) {
+    public GameState(FactoryState state, Soldado soldado, GameView view) {
         super(state, soldado, view);
-        this.arena = arena;
-        arena.scheduleMonsterMovement();
+        model = view.getModel();
+        model.scheduleMonsterMovement(view);
     }
 
-    @Override
     public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
-        getView().draw(0);
-        return processKey(getView().getCommand());
+        view.draw(0);
+        if(!model.verifyCollision(model.getHero().getPosition(), model.getExit())) return manageCommand(getState().genGameState(getSoldado(), view.getModel().getNivel() +1));
+        return processKey(view.getCommand());
     }
 
     public ControllerState<?> processKey(Command.COMMAND key) throws IOException {
         ControllerState<?> newState = this;
         switch (key) {
-            case LEFT -> arena.moveHero(arena.getHero().moveLeft());
-            case RIGHT -> arena.moveHero(arena.getHero().moveRight());
-            case UP -> arena.moveHero(arena.getHero().moveUp());
-            case DOWN -> arena.moveHero(arena.getHero().moveDown());
-            case SPACE -> arena.moveHero(arena.getHero().moveDown());
+            case LEFT -> model.moveHero(model.getHero().moveLeft());
+            case RIGHT -> model.moveHero(model.getHero().moveRight());
+            case UP -> model.moveHero(model.getHero().moveUp());
+            case DOWN -> model.moveHero(model.getHero().moveDown());
+            case SPACE -> model.moveHero(model.getHero().moveDown());
+            case QUIT -> newState = getState().genMenuState(getSoldado());
         }
         manageCommand(newState);
         return newState;
