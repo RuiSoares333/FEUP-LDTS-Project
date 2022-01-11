@@ -7,6 +7,7 @@ import berzerk.model.ranking.RankingModel;
 import berzerk.view.menu.RankingView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.awt.*;
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
 
 
 public class RankingStateTest {
@@ -27,13 +27,14 @@ public class RankingStateTest {
     Ecra ecra;
 
     @BeforeEach
-    public void initMenuState(){
+    public void initMenuState() throws IOException {
         factoryState = spy(new FactoryState());
         soldado = mock(Soldado.class);
         model = spy(new RankingModel());
         ecra = mock(Ecra.class);
         view = spy(new RankingView(model, ecra));
         state = new RankingState(factoryState, soldado, view);
+        Mockito.doNothing().when(view).draw(anyInt());
     }
 
     @Test

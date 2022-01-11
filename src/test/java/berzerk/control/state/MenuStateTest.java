@@ -7,6 +7,7 @@ import berzerk.model.menu.MenuModel;
 import berzerk.view.menu.MenuView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 
@@ -23,13 +24,14 @@ public class MenuStateTest {
     Ecra ecra;
 
     @BeforeEach
-    public void initMenuState(){
+    public void initMenuState() throws IOException {
         factoryState = spy(new FactoryState());
         model = spy(new MenuModel());
         ecra = mock(Ecra.class);
         view = spy(new MenuView(model, ecra));
         soldado = mock(Soldado.class);
         state = new MenuState(factoryState, soldado, view);
+        Mockito.doNothing().when(view).draw(anyInt());
     }
 
 

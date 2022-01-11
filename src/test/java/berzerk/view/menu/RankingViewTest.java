@@ -1,12 +1,10 @@
 package berzerk.view.menu;
 
-import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.ranking.RankingModel;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
