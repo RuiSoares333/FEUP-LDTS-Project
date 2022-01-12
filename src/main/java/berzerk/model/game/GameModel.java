@@ -143,7 +143,7 @@ public class GameModel implements Model {
                     e.printStackTrace();
                 }
             }
-        }, 0, 100);
+        }, 0, 3000);
     }
 
     public List<Monster> moveMonsters(List<Monster> monsters){

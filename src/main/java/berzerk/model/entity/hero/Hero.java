@@ -7,30 +7,50 @@ public class Hero extends Element {
 
     private int bulMult;
     private int hp;
+    //Orientação no sentido do relogios 1-UP 2-RIGHT 3-DOWN 4-LEFT
+    private int orientation;
 
+    //Inicializar orientação para RIGHT
     public Hero(int x, int y, int bulMult, int hp){
         super(new Position(x, y));
         this.bulMult = bulMult;
         this.hp = hp;
+        orientation = 2;
+    }
+
+    //Getters e Setter orientação
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
+    }
+
+    public int getOrientation(){
+        return orientation;
     }
 
     public void setPosition(Position position) {
         super.setPosition(position);
     }
 
+    //Mudança para fazer update da orientação
+
     public Position moveRight(){
+        setOrientation(2);
         return new Position(super.getPosition().getX()+1, super.getPosition().getY());
     }
 
     public Position moveLeft(){
+        setOrientation(4);
         return new Position(super.getPosition().getX()-1, super.getPosition().getY());
     }
 
     public Position moveUp(){
+        setOrientation(1);
         return new Position(super.getPosition().getX(), super.getPosition().getY()-1);
     }
 
     public Position moveDown(){
+        setOrientation(3);
+        System.out.println("Orientação: " + getOrientation());
         return new Position(super.getPosition().getX(), super.getPosition().getY()+1);
     }
 

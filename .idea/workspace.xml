@@ -5,62 +5,82 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="Aplicação do Padrão MVC">
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Arena$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Arena.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Controller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/control/Game.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Bullet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Element.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Brun_oLeema.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Expert.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Hero.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/OahnaramIur.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Speedy.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Tanky.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Monster.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Properties/Position.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Wall.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/control/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Bullet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/Application.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/Command$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/Command$COMMAND.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/Command.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/ControllerState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/FactoryState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/GameState$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/GameState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/MenuState$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/MenuState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/RankingState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/SettingsState$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/SettingsState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Ecra$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Ecra.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Model.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Soldado$Heroi.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Soldado.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Bullet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Element.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Monster.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Wall.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Expert.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Hero.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Recruit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Tanky.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/properties/Position.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/menu/MenuModel$Opcao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/menu/MenuModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/ranking/RankingModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/settings/SettingsModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/GameView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/IndicadorView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/View.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/menu/MenuView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/menu/RankingView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/menu/SettingsView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/Font Berzerk.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/nivel3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/nivel4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/nivel5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/berzerk/model/HeroOrientation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Arena$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Arena.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Constants/Characters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Coin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Element.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Brun_oLeema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Expert.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Hero.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/OahnaramIur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Speedy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Hero/Tanky.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Monster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Entity/Wall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Properties/Position.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/control/Arena$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/control/Arena.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/control/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/control/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Bullet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Element.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Brun_oLeema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Expert.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Hero.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/OahnaramIur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Speedy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Hero/Tanky.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Monster.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Properties/Position.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Entity/Wall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/ranking.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/ranking.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Arena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/control/Arena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/control/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Constants/Characters.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Coin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Element.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Brun_oLeema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Brun_oLeema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Expert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/OahnaramIur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/OahnaramIur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Speedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Speedy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hero/Tanky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Hero/Tanky.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Wall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Properties/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Entity/Properties/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/hero/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,11 +115,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Minesweeper-master/Minesweeper-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
@@ -111,7 +134,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.HeroOrientation.heroInitialOrientation">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Application" />
       <module name="ldts-project-assignment-g1007.main" />
@@ -125,8 +148,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HeroOrientation.heroInitialOrientation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;berzerk.model.HeroOrientation.heroInitialOrientation&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HeroOrientation.heroInitialOrientation" />
         <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
@@ -180,6 +225,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit de Estabilidade Do Projeto" />
