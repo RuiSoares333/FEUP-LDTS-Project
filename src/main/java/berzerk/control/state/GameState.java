@@ -3,6 +3,8 @@ package berzerk.control.state;
 import berzerk.control.Command;
 import berzerk.model.Soldado;
 import berzerk.model.entity.Bullet;
+import berzerk.model.entity.Stone;
+import berzerk.model.entity.Wall;
 import berzerk.model.game.GameModel;
 import berzerk.view.GameView;
 
@@ -35,6 +37,7 @@ public class GameState extends ControllerState<GameModel>{
             case UP -> model.moveHero(model.getHero().moveUp());
             case DOWN -> model.moveHero(model.getHero().moveDown());
             case SPACE -> model.addBullet(new Bullet(model.getHero().getPosition().getX(), model.getHero().getPosition().getY(), model.getHero().getOrientation()));
+            case CONSTRUCT -> model.addStone(new Stone(model.getHero().getPosition(), model.getHero().getOrientation()));
             case QUIT -> newState = getState().genMenuState(getSoldado());
         }
         manageCommand(newState);

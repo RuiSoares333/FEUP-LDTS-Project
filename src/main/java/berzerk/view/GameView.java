@@ -4,6 +4,7 @@ import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.entity.Bullet;
 import berzerk.model.entity.Monster;
+import berzerk.model.entity.Stone;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.game.GameModel;
@@ -75,6 +76,15 @@ public class GameView extends View<GameModel> {
 
     }
 
+    //Desenhar stone
+    public void drawStones(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(blue));
+
+        for(Stone stone : model.getStones())
+            graphics.putString(new TerminalPosition(stone.getPosition().getX(), stone.getPosition().getY()), "H");
+
+    }
+
     @Override
     public void draw(int position) throws IOException {
         getScreen().clear();
@@ -86,6 +96,7 @@ public class GameView extends View<GameModel> {
         drawHero(graphics, model.getHero());
         drawNivel(graphics);
         drawWalls(graphics);
+        drawStones(graphics);
 
         //Desenhar balas
         drawBullets(graphics);

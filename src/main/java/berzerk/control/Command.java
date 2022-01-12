@@ -3,7 +3,7 @@ package berzerk.control;
 import com.googlecode.lanterna.input.KeyStroke;
 
 public class Command {
-    public enum COMMAND {UP, RIGHT, DOWN, LEFT, SELECT, QUIT, NONE, SPACE}
+    public enum COMMAND {UP, RIGHT, DOWN, LEFT, SELECT, QUIT, NONE, SPACE, CONSTRUCT}
 
     private COMMAND command;
 
@@ -18,6 +18,7 @@ public class Command {
 
     public Command.COMMAND getCommand(KeyStroke key){
 
+        //Alteraçao para ter comando da tecla x para construir paredes
         switch (key.getKeyType()) {
             case EOF -> command = COMMAND.QUIT;
             case ArrowUp -> command = COMMAND.UP;
@@ -28,6 +29,9 @@ public class Command {
             case Character -> {
                 if(key.getCharacter() == ' '){
                     command = COMMAND.SPACE;
+                }
+                else if(key.getCharacter() == 'x'){
+                    command = COMMAND.CONSTRUCT;
                 }
             }
             default -> command = COMMAND.NONE;

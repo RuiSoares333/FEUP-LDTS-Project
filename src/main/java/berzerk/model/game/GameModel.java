@@ -3,10 +3,7 @@ package berzerk.model.game;
 import berzerk.model.Constants;
 import berzerk.model.Model;
 import berzerk.model.Soldado;
-import berzerk.model.entity.Element;
-import berzerk.model.entity.Monster;
-import berzerk.model.entity.Bullet;
-import berzerk.model.entity.Wall;
+import berzerk.model.entity.*;
 import berzerk.model.entity.hero.Expert;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.entity.hero.Recruit;
@@ -37,6 +34,9 @@ public class GameModel implements Model {
     //criaçao lista de bullets
     private List<Bullet> bullets;
 
+    //criaçao lista de constructed walls
+    private List<Stone> stones;
+
     public GameModel(Soldado soldado, int nivel) throws IOException {
         this.nivel = nivel;
 
@@ -50,6 +50,7 @@ public class GameModel implements Model {
         monsters = createMonsters();
 
         bullets = new ArrayList<>();
+        stones = new ArrayList<>();
 
         System.out.println("Monsters: " + monsters.size());
     }
@@ -70,6 +71,11 @@ public class GameModel implements Model {
     //Retornar lista de bullets
     public List<Bullet> getBullets(){
         return bullets;
+    }
+
+    //Retornar lista de stones
+    public List<Stone> getStones(){
+        return stones;
     }
 
     public List<Wall> getWalls(){
@@ -213,6 +219,12 @@ public class GameModel implements Model {
         return newBullets;
     }
 
+    //------------------------------------- Stones -----------------------------------------------------
+
+    public void addStone(Stone stone){
+        stones.add(stone);
+    }
+
     //---------------------------------------- HEROI --------------------------------------------------------------
 
     private Hero createHero(Soldado heroi){
@@ -243,6 +255,8 @@ public class GameModel implements Model {
 
         return true;
     }
+
+    //Eliminate monster if is hit by a bullet
 
     public void eliminateMonster(Position position, List<? extends Element> elements){
         List<Monster> newMonsters = new ArrayList<>();
