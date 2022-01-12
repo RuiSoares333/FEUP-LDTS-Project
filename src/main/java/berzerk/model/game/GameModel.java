@@ -164,7 +164,7 @@ public class GameModel implements Model {
 
             Position novaPosicao = monster.move();
 
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit)) {
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
                 monster.setPosition(novaPosicao);
                 newMonsters.add(monster);
             }
@@ -178,7 +178,7 @@ public class GameModel implements Model {
         bullets.add(bullet);
     }
 
-    //Move monster in random directions
+    //Make the bullet move in a schedule time, think 50 is the best
     public void scheduleBulletMovement(View<GameModel> view){
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -194,6 +194,7 @@ public class GameModel implements Model {
         }, 0, 50);
     }
 
+    //move the bullet in a straight line till find a monster or a wall
     public List<Bullet> moveBullet(List<Bullet> bullets){
         List<Bullet> newBullets = new ArrayList<>();
         for (Bullet bullet: bullets) {
@@ -203,6 +204,11 @@ public class GameModel implements Model {
             if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters)) {
                 bullet.setPosition(novaPosicao);
                 newBullets.add(bullet);
+            }
+
+            //Eliminar um monstro se a bala lhe bater
+            if(verifyCollision(novaPosicao, monsters)){
+
             }
         }
         return newBullets;
