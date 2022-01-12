@@ -207,9 +207,8 @@ public class GameModel implements Model {
             }
 
             //Eliminar um monstro se a bala lhe bater
-            if(verifyCollision(novaPosicao, monsters)){
+                eliminateMonster(novaPosicao, monsters);
 
-            }
         }
         return newBullets;
     }
@@ -243,6 +242,16 @@ public class GameModel implements Model {
                 if (position.equals(e.getPosition())) return false;
 
         return true;
+    }
+
+    public void eliminateMonster(Position position, List<? extends Element> elements){
+        List<Monster> newMonsters = new ArrayList<>();
+        if(position!=null && !elements.isEmpty())
+            for(Element e: elements)
+                if (!position.equals(e.getPosition())){
+                    newMonsters.add((Monster) e);
+                }
+        monsters = newMonsters;
     }
 
 

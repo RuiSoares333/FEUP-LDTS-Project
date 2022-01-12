@@ -11,10 +11,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/berzerk/model/monstersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/berzerk/model/monstersTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
