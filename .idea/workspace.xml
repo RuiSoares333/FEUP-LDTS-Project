@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="Aplicação do Padrão MVC">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/GameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Hero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/berzerk.model.HeroOrientation.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/berzerk.model.HeroOrientation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/berzerk.model.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/berzerk.model.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-berzerk.model.HeroOrientation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-berzerk.model.HeroOrientation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/control/state/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/control/state/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/hero/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/berzerk/model/HeroOrientation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/berzerk/model/HeroOrientation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/view/GameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

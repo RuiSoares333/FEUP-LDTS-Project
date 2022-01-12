@@ -2,6 +2,7 @@ package berzerk.view;
 
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
+import berzerk.model.entity.Bullet;
 import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Hero;
@@ -65,7 +66,14 @@ public class GameView extends View<GameModel> {
         graphics.putString(new TerminalPosition(92, 0), "NIVEL: "+ model.getNivel());
     }
 
+    //Desenhar balar
+    public void drawBullets(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(black));
 
+        for(Bullet bullet : model.getBullets())
+            graphics.putString(new TerminalPosition(bullet.getPosition().getX(), bullet.getPosition().getY()), ".");
+
+    }
 
     @Override
     public void draw(int position) throws IOException {

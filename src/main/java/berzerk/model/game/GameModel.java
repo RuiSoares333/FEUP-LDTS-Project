@@ -5,6 +5,7 @@ import berzerk.model.Model;
 import berzerk.model.Soldado;
 import berzerk.model.entity.Element;
 import berzerk.model.entity.Monster;
+import berzerk.model.entity.Bullet;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Expert;
 import berzerk.model.entity.hero.Hero;
@@ -33,6 +34,9 @@ public class GameModel implements Model {
     private final List<Wall> exit;
     private List<Monster> monsters;
 
+    //criaçao lista de bullets
+    private List<Bullet> bullets;
+
     public GameModel(Soldado soldado, int nivel) throws IOException {
         this.nivel = nivel;
 
@@ -58,6 +62,11 @@ public class GameModel implements Model {
 
     public List<Monster> getMonsters(){
         return monsters;
+    }
+
+    //Retornar lista de bullets
+    public List<Bullet> getBullets(){
+        return bullets;
     }
 
     public List<Wall> getWalls(){
@@ -160,6 +169,8 @@ public class GameModel implements Model {
         return newMonsters;
     }
 
+    //------------------------------------- BULLETS -----------------------------------------------------
+
 
 
     //---------------------------------------- HEROI --------------------------------------------------------------
@@ -176,7 +187,6 @@ public class GameModel implements Model {
         }
         return hero;
     }
-
 
     public void moveHero(Position position) {
         if(!verifyCollision(position, monsters) || !verifyCollision(position, walls)){
