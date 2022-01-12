@@ -66,7 +66,7 @@ public class GameView extends View<GameModel> {
         graphics.putString(new TerminalPosition(92, 0), "NIVEL: "+ model.getNivel());
     }
 
-    //Desenhar balar
+    //Desenhar bala
     public void drawBullets(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString(black));
 
@@ -87,6 +87,8 @@ public class GameView extends View<GameModel> {
         drawNivel(graphics);
         drawWalls(graphics);
 
+        //Desenhar balas
+        drawBullets(graphics);
         getScreen().refresh();
     }
 

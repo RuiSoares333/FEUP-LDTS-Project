@@ -57,11 +57,6 @@ public class Hero extends Element {
         return new Position(super.getPosition().getX(), super.getPosition().getY()+1);
     }
 
-    //Metodo usado para disparar
-    public void shoot(){
-        System.out.println("Shoot!");
-    }
-
     public double getBulMult() {
         return bulMult;
     }

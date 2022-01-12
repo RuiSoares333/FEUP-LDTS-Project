@@ -2,6 +2,7 @@ package berzerk.control.state;
 
 import berzerk.control.Command;
 import berzerk.model.Soldado;
+import berzerk.model.entity.Bullet;
 import berzerk.model.game.GameModel;
 import berzerk.view.GameView;
 
@@ -17,6 +18,7 @@ public class GameState extends ControllerState<GameModel>{
         super(state, soldado, view);
         model = view.getModel();
         model.scheduleMonsterMovement(view);
+        model.scheduleBulletMovement(view);
     }
 
     public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
@@ -32,7 +34,7 @@ public class GameState extends ControllerState<GameModel>{
             case RIGHT -> model.moveHero(model.getHero().moveRight());
             case UP -> model.moveHero(model.getHero().moveUp());
             case DOWN -> model.moveHero(model.getHero().moveDown());
-            case SPACE -> model.getHero().shoot();
+            case SPACE -> model.addBullet(new Bullet(model.getHero().getPosition().getX(), model.getHero().getPosition().getY(), model.getHero().getOrientation()));
             case QUIT -> newState = getState().genMenuState(getSoldado());
         }
         manageCommand(newState);

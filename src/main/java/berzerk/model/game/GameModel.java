@@ -48,6 +48,9 @@ public class GameModel implements Model {
         System.out.println("Walls: " + walls.size());
         exit = wallList.get(1);
         monsters = createMonsters();
+
+        bullets = new ArrayList<>();
+
         System.out.println("Monsters: " + monsters.size());
     }
 
@@ -171,7 +174,39 @@ public class GameModel implements Model {
 
     //------------------------------------- BULLETS -----------------------------------------------------
 
+    public void addBullet(Bullet bullet){
+        bullets.add(bullet);
+    }
 
+    //Move monster in random directions
+    public void scheduleBulletMovement(View<GameModel> view){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                bullets = moveBullet(bullets);
+                try {
+                    view.draw(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 50);
+    }
+
+    public List<Bullet> moveBullet(List<Bullet> bullets){
+        List<Bullet> newBullets = new ArrayList<>();
+        for (Bullet bullet: bullets) {
+
+            Position novaPosicao = bullet.move();
+
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters)) {
+                bullet.setPosition(novaPosicao);
+                newBullets.add(bullet);
+            }
+        }
+        return newBullets;
+    }
 
     //---------------------------------------- HEROI --------------------------------------------------------------
 
