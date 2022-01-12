@@ -35,25 +35,32 @@ public class Hero extends Element {
 
     public Position moveRight(){
         setOrientation(2);
+        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX()+1, super.getPosition().getY());
     }
 
     public Position moveLeft(){
         setOrientation(4);
+        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX()-1, super.getPosition().getY());
     }
 
     public Position moveUp(){
         setOrientation(1);
+        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX(), super.getPosition().getY()-1);
     }
 
     public Position moveDown(){
         setOrientation(3);
-        System.out.println("Orientação: " + getOrientation());
+        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX(), super.getPosition().getY()+1);
     }
 
+    //Metodo usado para disparar
+    public void shoot(){
+        System.out.println("Shoot!");
+    }
 
     public double getBulMult() {
         return bulMult;

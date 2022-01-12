@@ -186,7 +186,6 @@ public class GameModel implements Model {
         else hero.setPosition(position);
     }
 
-
     public boolean verifyCollision(Position position, List<? extends Element> elements){
         if(position!=null && !elements.isEmpty())
             for(Element e: elements)

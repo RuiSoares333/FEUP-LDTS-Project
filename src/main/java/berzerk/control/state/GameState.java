@@ -32,7 +32,7 @@ public class GameState extends ControllerState<GameModel>{
             case RIGHT -> model.moveHero(model.getHero().moveRight());
             case UP -> model.moveHero(model.getHero().moveUp());
             case DOWN -> model.moveHero(model.getHero().moveDown());
-            case SPACE -> model.moveHero(model.getHero().moveDown());
+            case SPACE -> model.getHero().shoot();
             case QUIT -> newState = getState().genMenuState(getSoldado());
         }
         manageCommand(newState);
