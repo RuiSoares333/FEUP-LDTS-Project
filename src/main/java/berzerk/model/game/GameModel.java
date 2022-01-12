@@ -254,5 +254,4 @@ public class GameModel implements Model {
         monsters = newMonsters;
     }
 
-
 }
