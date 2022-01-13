@@ -161,11 +161,11 @@ public class GameModel implements Model {
                     e.printStackTrace();
                 }
             }
-        }, 0, 2000);
+        }, 0, 1000);
     }
 
     public List<Monster> moveMonsters(List<Monster> monsters){
-        List<Monster> newMonsters = new ArrayList<>();
+        //List<Monster> newMonsters = new ArrayList<>();
         for (Monster monster: monsters) {
 
             Position novaPosicao = monster.move();
@@ -194,10 +194,11 @@ public class GameModel implements Model {
 
             if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
                 monster.setPosition(novaPosicao);
-                newMonsters.add(monster);
+                //newMonsters.add(monster);
             }
         }
-        return newMonsters;
+        //return newMonsters;
+        return monsters;
     }
 
     //------------------------------------- BULLETS -----------------------------------------------------
@@ -229,7 +230,7 @@ public class GameModel implements Model {
 
             Position novaPosicao = bullet.move();
 
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters)) {
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters) && verifyCollision(novaPosicao, stones)){
                 bullet.setPosition(novaPosicao);
                 newBullets.add(bullet);
             }
