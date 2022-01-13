@@ -161,7 +161,7 @@ public class GameModel implements Model {
                     e.printStackTrace();
                 }
             }
-        }, 0, 3000);
+        }, 0, 2000);
     }
 
     public List<Monster> moveMonsters(List<Monster> monsters){
@@ -170,12 +170,26 @@ public class GameModel implements Model {
 
             Position novaPosicao = monster.move();
 
-            //Disparos dos monstros apenas quando estao em linha com o heroi
+            //Disparos dos monstros apenas quando estao em linha vertical e horizontal com o heroi
             if(monster.getPosition().getX() == hero.getPosition().getX()){
+                Bullet bullet;
                 if(monster.getPosition().getY() > hero.getPosition().getY()) {
-                    Bullet bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY()-1),1);
-                    addBullet(bullet);
+                    bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() - 1), 1);
                 }
+                else{
+                    bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() + 1), 3);
+                }
+                addBullet(bullet);
+            }
+            else if(monster.getPosition().getY() == hero.getPosition().getY()){
+                Bullet bullet;
+                if(monster.getPosition().getX() > hero.getPosition().getX()) {
+                    bullet = new Bullet(monster.getPosition().getX() - 1, (monster.getPosition().getY()), 4);
+                }
+                else{
+                    bullet = new Bullet(monster.getPosition().getX() + 1, (monster.getPosition().getY()), 2);
+                }
+                addBullet(bullet);
             }
 
             if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
