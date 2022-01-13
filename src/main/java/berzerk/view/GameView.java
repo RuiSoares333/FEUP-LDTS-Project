@@ -69,11 +69,19 @@ public class GameView extends View<GameModel> {
 
     //Desenhar bala
     public void drawBullets(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString(black));
+        graphics.setBackgroundColor(TextColor.Factory.fromString(black));
+        graphics.setForegroundColor(TextColor.Factory.fromString(green));
 
-        for(Bullet bullet : model.getBullets())
-            graphics.putString(new TerminalPosition(bullet.getPosition().getX(), bullet.getPosition().getY()), ".");
-
+        for(Bullet bullet : model.getBullets()) {
+            if (bullet.getOrientation() == 1)
+                graphics.putString(new TerminalPosition(bullet.getPosition().getX(), bullet.getPosition().getY()), "(");
+            else if(bullet.getOrientation() == 2)
+                graphics.putString(new TerminalPosition(bullet.getPosition().getX(), bullet.getPosition().getY()), "-");
+            else if(bullet.getOrientation() == 3)
+                graphics.putString(new TerminalPosition(bullet.getPosition().getX(), bullet.getPosition().getY()), ")");
+            else
+                graphics.putString(new TerminalPosition(bullet.getPosition().getX(), bullet.getPosition().getY()), "*");
+        }
     }
 
     //Desenhar stone
