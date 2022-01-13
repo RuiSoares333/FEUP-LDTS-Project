@@ -37,6 +37,10 @@ public class GameModel implements Model {
     //criaçao lista de constructed walls
     private List<Stone> stones;
 
+    //score do jogador
+    private int score;
+    private int totalMonstrosMortos;
+
     public GameModel(Soldado soldado, int nivel) throws IOException {
         this.nivel = nivel;
 
@@ -51,6 +55,9 @@ public class GameModel implements Model {
 
         bullets = new ArrayList<>();
         stones = new ArrayList<>();
+
+        score = 0;
+        totalMonstrosMortos = 0;
 
         System.out.println("Monsters: " + monsters.size());
     }
@@ -93,6 +100,22 @@ public class GameModel implements Model {
     private Position getInitialPosition(){
         if(nivel<=2) return new Position(50, 35);
         else return new Position(5, 8);
+    }
+
+    public int getTotalMonstrosMortos() {
+        return totalMonstrosMortos;
+    }
+
+    public void setTotalMonstrosMortos(int totalMonstrosMortos) {
+        this.totalMonstrosMortos = totalMonstrosMortos;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
 
@@ -302,5 +325,11 @@ public class GameModel implements Model {
                 }
         monsters = newMonsters;
     }
+
+    //calcular o total do score do jogador
+    public int calculateTotalScore(){
+        return 0;
+    }
+
 
 }
