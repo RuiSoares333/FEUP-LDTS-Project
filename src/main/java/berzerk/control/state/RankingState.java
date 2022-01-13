@@ -19,11 +19,11 @@ public class RankingState extends ControllerState<RankingModel>  {
     }
 
     public ControllerState<?> run() throws IOException, URISyntaxException, FontFormatException {
-        getView().draw(0);
+        view.draw(0);
         return processKey(getView().getCommand());
     }
 
-    public ControllerState<?> processKey(Command.COMMAND key) throws IOException, URISyntaxException, FontFormatException {
+    public ControllerState<?> processKey(Command.COMMAND key) throws IOException {
         return manageCommand(getState().genMenuState(getSoldado()));
     }
 

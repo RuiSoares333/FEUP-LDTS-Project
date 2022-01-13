@@ -165,36 +165,35 @@ public class GameModel implements Model {
     }
 
     public List<Monster> moveMonsters(List<Monster> monsters){
-        //List<Monster> newMonsters = new ArrayList<>();
-        for (Monster monster: monsters) {
+        if(hero!=null) {
+            //List<Monster> newMonsters = new ArrayList<>();
+            for (Monster monster : monsters) {
 
-            Position novaPosicao = monster.move();
+                Position novaPosicao = monster.move();
 
-            //Disparos dos monstros apenas quando estao em linha vertical e horizontal com o heroi
-            if(monster.getPosition().getX() == hero.getPosition().getX()){
-                Bullet bullet;
-                if(monster.getPosition().getY() > hero.getPosition().getY()) {
-                    bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() - 1), 1);
+                //Disparos dos monstros apenas quando estao em linha vertical e horizontal com o heroi
+                if (monster.getPosition().getX() == hero.getPosition().getX()) {
+                    Bullet bullet;
+                    if (monster.getPosition().getY() > hero.getPosition().getY()) {
+                        bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() - 1), 1);
+                    } else {
+                        bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() + 1), 3);
+                    }
+                    addBullet(bullet);
+                } else if (monster.getPosition().getY() == hero.getPosition().getY()) {
+                    Bullet bullet;
+                    if (monster.getPosition().getX() > hero.getPosition().getX()) {
+                        bullet = new Bullet(monster.getPosition().getX() - 1, (monster.getPosition().getY()), 4);
+                    } else {
+                        bullet = new Bullet(monster.getPosition().getX() + 1, (monster.getPosition().getY()), 2);
+                    }
+                    addBullet(bullet);
                 }
-                else{
-                    bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() + 1), 3);
-                }
-                addBullet(bullet);
-            }
-            else if(monster.getPosition().getY() == hero.getPosition().getY()){
-                Bullet bullet;
-                if(monster.getPosition().getX() > hero.getPosition().getX()) {
-                    bullet = new Bullet(monster.getPosition().getX() - 1, (monster.getPosition().getY()), 4);
-                }
-                else{
-                    bullet = new Bullet(monster.getPosition().getX() + 1, (monster.getPosition().getY()), 2);
-                }
-                addBullet(bullet);
-            }
 
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
-                monster.setPosition(novaPosicao);
-                //newMonsters.add(monster);
+                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
+                    monster.setPosition(novaPosicao);
+                    //newMonsters.add(monster);
+                }
             }
         }
         //return newMonsters;

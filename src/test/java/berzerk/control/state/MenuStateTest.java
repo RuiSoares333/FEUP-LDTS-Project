@@ -28,6 +28,7 @@ public class MenuStateTest {
         factoryState = spy(new FactoryState());
         model = spy(new MenuModel());
         ecra = mock(Ecra.class);
+        doThrow(new RuntimeException()).when(ecra).startScreen();
         view = spy(new MenuView(model, ecra));
         soldado = mock(Soldado.class);
         state = new MenuState(factoryState, soldado, view);
@@ -59,43 +60,59 @@ public class MenuStateTest {
 
     @Test
     public void processKeyPlay() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+        try{
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
 
-        assertNotNull(state.run().getClass());
+            assertNotNull(state.run().getClass());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void processKeySettings() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
-        doRun(1);
+        try{
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            doRun(1);
 
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
-        assertNotNull(state.run().getClass());
+            assertNotNull(state.run().getClass());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void processKeyRanking() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
-        doRun(2);
+        try{
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            doRun(2);
 
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
-        assertNotNull(state.run().getClass());
+            assertNotNull(state.run().getClass());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
     @Test
     public void processKeyExit() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
-        doRun(1);
+        try {
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
+            doRun(1);
 
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-        when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
 
-        assertNull(state.run());
+            assertNull(state.run());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -57,7 +57,7 @@ public abstract class View<T extends Model> {
     }
 
     public void close() throws IOException {
-        if(ecra!=null && ecra.getScreen()!=null) ecra.getScreen().close();
+        if(ecra!=null && ecra.getScreen()!=null) screen.close();
     }
 
     public abstract void draw(int position) throws IOException;

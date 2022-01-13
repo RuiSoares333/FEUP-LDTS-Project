@@ -87,7 +87,7 @@ public class SettingsStateTest {
 
             assertNotNull(state.run().getClass());
 
-        } catch (IOException e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -19,7 +19,7 @@ import java.net.URL;
 
 public class Ecra {
 
-    private final Screen screen;
+    private Screen screen;
     private final Terminal terminal;
 
     public Ecra(){
@@ -45,9 +45,9 @@ public class Ecra {
     protected Screen initScreen(){
 
         try{
-            Screen screen = new TerminalScreen(terminal);
+            screen = new TerminalScreen(terminal);
             screen.setCursorPosition(null); // we don't need a cursor
-            screen.startScreen(); // screens must be started
+            startScreen();
             screen.doResizeIfNecessary(); // resize screen if necessary
 
             return screen;
@@ -56,6 +56,14 @@ public class Ecra {
         }
 
         return null;
+    }
+
+    public void startScreen(){
+        try {
+            screen.startScreen(); // screens must be started
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     protected Terminal initTerminal(){
