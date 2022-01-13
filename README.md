@@ -23,7 +23,7 @@ Para uma versão mais detalhada carregue [aqui](docs/README.md)
 - [x] **Movimentação dos Monstros** - Os monstros movimentam-se sozinhos. Com o avançar dos niveis, podem movimentar-se mais rapidamente.
 - [x] **Disparos do Herói** - O herói pode disparar usando o espaço do teclado.
 - [x] **Construção de paredes** - O herói pode criar paredes estilo FORTNITE em 2D usando a tecla x. Devia ser a tecla w (wall), mas é a tecla x pela jogabilidade ser aumentada desta forma - a mao esquerda pode facilmente disparar como criar uma parede.
-- [ ] **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
+- [x] **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
 - [x] **Morte dos Monstros** - Um monstro atingido por uma bala morre. Monstros em diferentes níveis podem necessitar de mais do que uma bala para morrerem.
 - [x] **Passagem de niveis** - A passagem de niveis dá-se com a chegada do herói à parte aberta do mapa. No último nivel, o objetivo é apanhar a taça do jogo.
 - [ ] **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome, e de seguida um menu com as opções TRY AGAIN e EXIT.
