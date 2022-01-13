@@ -20,7 +20,7 @@ import java.util.*;
 
 public class GameModel implements Model {
 
-    private final int numMonstros = 10;
+    private final int numMonstros = 20;
 
     private final Position initialPosition;
     private final int nivel;
@@ -238,6 +238,14 @@ public class GameModel implements Model {
             if(bullet.getPosition().equals(hero.getPosition())){
                 positionHero();
             }
+
+            //verificar colisao com stones e elimina-las
+            List<Stone> newStones = new ArrayList<>();
+                for(Stone stone: stones)
+                    if (!novaPosicao.equals(stone.getPosition())){
+                        newStones.add(stone);
+                    }
+            stones = newStones;
 
             //Eliminar um monstro se a bala lhe bater
                 eliminateMonster(novaPosicao, monsters);
