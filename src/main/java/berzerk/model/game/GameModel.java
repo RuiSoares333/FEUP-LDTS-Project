@@ -170,6 +170,14 @@ public class GameModel implements Model {
 
             Position novaPosicao = monster.move();
 
+            //Disparos dos monstros apenas quando estao em linha com o heroi
+            if(monster.getPosition().getX() == hero.getPosition().getX()){
+                if(monster.getPosition().getY() > hero.getPosition().getY()) {
+                    Bullet bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY()-1),1);
+                    addBullet(bullet);
+                }
+            }
+
             if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
                 monster.setPosition(novaPosicao);
                 newMonsters.add(monster);
