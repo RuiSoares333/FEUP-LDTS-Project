@@ -21,6 +21,7 @@ public class GameView extends View<GameModel> {
     String black = Constants.GAME_BACKGROUND_COLOR;
     String blue = Constants.GAME_WALL_COLOR;
     String green = Constants.MONSTER_COLOR;
+    String white = Constants.GAME_BULLET_COLOR;
     String heroColor;
 
     public GameView(GameModel model, Ecra ecra){
@@ -70,7 +71,7 @@ public class GameView extends View<GameModel> {
     //Desenhar bala
     public void drawBullets(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString(black));
-        graphics.setForegroundColor(TextColor.Factory.fromString(green));
+        graphics.setForegroundColor(TextColor.Factory.fromString(white));
 
         for(Bullet bullet : model.getBullets()) {
             if (bullet.getOrientation() == 1)

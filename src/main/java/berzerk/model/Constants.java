@@ -10,6 +10,8 @@ public final class Constants {
     public static final String GAME_BACKGROUND_COLOR = "#000000";
     public static final String GAME_WALL_COLOR = "#5C62F7";
 
+    public static final String GAME_BULLET_COLOR = "#FFFFFF";
+
     public static final String RECRUIT_COLOR = "#558B2F";
     public static final String TANKY_COLOR = "#781212";
     public static final String EXPERT_COLOR = "#616161";
