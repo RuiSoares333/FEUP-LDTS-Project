@@ -234,6 +234,11 @@ public class GameModel implements Model {
                 newBullets.add(bullet);
             }
 
+            //verificar colisao de balhas com monstros
+            if(bullet.getPosition().equals(hero.getPosition())){
+                positionHero();
+            }
+
             //Eliminar um monstro se a bala lhe bater
                 eliminateMonster(novaPosicao, monsters);
 
@@ -263,7 +268,7 @@ public class GameModel implements Model {
     }
 
     public void moveHero(Position position) {
-        if(!verifyCollision(position, monsters) || !verifyCollision(position, walls)){
+        if(!verifyCollision(position, monsters) || !verifyCollision(position, walls) || !verifyCollision(position, bullets)){
             System.out.println("Game Over!");
             positionHero();
         }
