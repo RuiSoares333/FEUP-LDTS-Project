@@ -47,5 +47,4 @@ public class wallCreationTests {
 
         assertEquals(stone.getPosition(), newPosition);
     }
-
 }
