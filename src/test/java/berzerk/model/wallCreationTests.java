@@ -38,6 +38,14 @@ public class wallCreationTests {
         assertEquals(stone.getPosition(), newPosition);
     }
 
+    @Test
+    public void StonePositionLeft() {
+        Position position = new Position(2, 2);
+        Position newPosition;
+        Stone stone = new Stone(position, 4);
+        newPosition = new Position(1,2);
 
+        assertEquals(stone.getPosition(), newPosition);
+    }
 
 }
