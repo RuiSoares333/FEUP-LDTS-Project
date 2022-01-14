@@ -24,4 +24,12 @@ public class HeroOrientation {
         assertEquals(3, hero.getOrientation());
     }
 
+    @Test
+    public void heroOrientationMoveLeft(){
+        Hero hero = new Hero(5,5,1,1);
+
+        hero.moveLeft();
+
+        assertEquals(4, hero.getOrientation());
+    }
 }
