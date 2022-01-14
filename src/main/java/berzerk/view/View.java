@@ -15,7 +15,7 @@ public abstract class View<T extends Model> {
     protected T model;
 
     private final Ecra ecra;
-    private Screen screen;
+    private final Screen screen;
     private TextGraphics graphics;
 
     public View(T model, Ecra ecra) {
@@ -23,9 +23,9 @@ public abstract class View<T extends Model> {
         this.ecra = ecra;
 
         screen = ecra.getScreen();
-        if (screen != null) {
-            graphics = screen.newTextGraphics();
 
+        if(screen!=null) {
+            graphics = screen.newTextGraphics();
             graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
             graphics.setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
         }
@@ -36,9 +36,6 @@ public abstract class View<T extends Model> {
         return Command.COMMAND.NONE;
     }
 
-    public void setModel(T model) {
-        this.model = model;
-    }
 
     public T getModel() {
         return model;

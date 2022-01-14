@@ -5,6 +5,7 @@ import berzerk.model.ranking.RankingModel;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -34,6 +35,10 @@ public class RankingViewTest {
         view = spy(new RankingView(model, ecra));
     }
 
+    @AfterEach
+    public void closeScreen() throws IOException {
+        view.close();
+    }
 
     @Test
     public void drawTest() throws IOException {
