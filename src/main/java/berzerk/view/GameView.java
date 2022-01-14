@@ -70,6 +70,9 @@ public class GameView extends View<GameModel> {
     }
 
     private void drawScore(TextGraphics graphics){
+        graphics.setBackgroundColor(TextColor.Factory.fromString(black));
+        graphics.setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
+        graphics.putString(new TerminalPosition(45,1), "SCORE: " + model.getScore());
     }
 
     //Desenhar bala
