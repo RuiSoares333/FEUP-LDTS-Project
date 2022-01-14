@@ -7,6 +7,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -31,6 +32,11 @@ public class SettingsViewTest {
         screen = mock(Screen.class);
         graphics = mock(TextGraphics.class);
         view = spy(new SettingsView(model, ecra));
+    }
+
+    @AfterEach
+    public void closeScreen() throws IOException {
+        view.close();
     }
 
     @Test

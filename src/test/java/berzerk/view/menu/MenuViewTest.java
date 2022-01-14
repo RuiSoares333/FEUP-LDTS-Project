@@ -3,9 +3,11 @@ package berzerk.view.menu;
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.menu.MenuModel;
+import berzerk.model.menu.MenuModelTest;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -32,6 +34,11 @@ public class MenuViewTest {
         graphics = mock(TextGraphics.class);
         view = spy(new MenuView(model, ecra));
         view.setGraphics(graphics);
+    }
+
+    @AfterEach
+    public void closeScreen() throws IOException {
+        view.close();
     }
 
     @Test

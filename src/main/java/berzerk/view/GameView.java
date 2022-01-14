@@ -90,10 +90,11 @@ public class GameView extends View<GameModel> {
 
     //Desenhar stone
     public void drawStones(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString(blue));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#b39062"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#6e522d"));
 
         for(Stone stone : model.getStones())
-            graphics.putString(new TerminalPosition(stone.getPosition().getX(), stone.getPosition().getY()), "H");
+            graphics.putString(new TerminalPosition(stone.getPosition().getX(), stone.getPosition().getY()), "z");
 
     }
 

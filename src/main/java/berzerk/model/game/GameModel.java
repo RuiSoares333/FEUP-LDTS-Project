@@ -159,7 +159,7 @@ public class GameModel implements Model {
         ArrayList<Monster> monsters = new ArrayList<>();
 
         while(monsters.size() < numMonstros){
-            Position novaPosicao = new Position(random.nextInt(width-2), random.nextInt(height-2));
+            Position novaPosicao = new Position(random.nextInt(width-2) + 2, random.nextInt(height-4) + 4);
 
             if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters))
                 monsters.add(new Monster(novaPosicao));

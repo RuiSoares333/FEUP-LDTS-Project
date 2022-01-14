@@ -5,6 +5,7 @@ import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.ranking.RankingModel;
 import berzerk.view.menu.RankingView;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 
@@ -35,11 +37,16 @@ public class RankingStateTest {
         doThrow(new RuntimeException()).when(ecra).startScreen();
         view = spy(new RankingView(model, ecra));
         state = new RankingState(factoryState, soldado, view);
-        Mockito.doNothing().when(view).draw(anyInt());
+        doNothing().when(view).draw(anyInt());
+    }
+
+    @AfterEach
+    public void closeScreen() throws IOException {
+        view.close();
     }
 
     @Test
-    public void processKeyArrows() throws IOException, URISyntaxException, FontFormatException {
+    public void processKeyArrows(){
         try {
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
             assertEquals(MenuState.class, state.run().getClass());
@@ -59,7 +66,7 @@ public class RankingStateTest {
     }
 
     @Test
-    public void processKeyOtherSpecials() throws IOException, URISyntaxException, FontFormatException {
+    public void processKeyOtherSpecials() {
         try {
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
             assertEquals(MenuState.class, state.run().getClass());
@@ -67,6 +74,16 @@ public class RankingStateTest {
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.NONE);
             assertEquals(MenuState.class, state.run().getClass());
         }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void draw() {
+        try {
+            assertNotNull(state.run().getClass());
+            verify(view, atLeast(1)).draw(anyInt());
+        } catch (Exception e){
             e.printStackTrace();
         }
     }

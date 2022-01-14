@@ -4,7 +4,10 @@ import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
+import berzerk.model.menu.MenuModelTest;
 import berzerk.view.menu.MenuView;
+import berzerk.view.menu.SettingsView;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -31,8 +34,13 @@ public class MenuStateTest {
         doThrow(new RuntimeException()).when(ecra).startScreen();
         view = spy(new MenuView(model, ecra));
         soldado = mock(Soldado.class);
-        state = new MenuState(factoryState, soldado, view);
-        Mockito.doNothing().when(view).draw(anyInt());
+        state = spy(new MenuState(factoryState, soldado, view));
+        doNothing().when(view).draw(anyInt());
+    }
+
+    @AfterEach
+    public void closeScreen() throws IOException {
+        view.close();
     }
 
 
@@ -44,22 +52,26 @@ public class MenuStateTest {
 
 
     @Test
-    public void processKey() throws IOException{
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
-        assertEquals(state, state.run());
+    public void processKey(){
+        try{
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
+            assertEquals(state, state.run());
 
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
-        assertEquals(state, state.run());
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            assertEquals(state, state.run());
 
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
-        assertEquals(state, state.run());
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            assertEquals(state, state.run());
 
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
-        assertEquals(state, state.run());
+            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            assertEquals(state, state.run());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void processKeyPlay() throws IOException {
+    public void processKeyPlay(){
         try{
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
 
@@ -70,13 +82,13 @@ public class MenuStateTest {
     }
 
     @Test
-    public void processKeySettings() throws IOException {
+    public void processKeySettings(){
         try{
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
-            doRun(1);
+            state.run();
 
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+            when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> SettingsState.class);
 
             assertNotNull(state.run().getClass());
         }catch (Exception e) {
@@ -85,13 +97,14 @@ public class MenuStateTest {
     }
 
     @Test
-    public void processKeyRanking() throws IOException {
+    public void processKeyRanking(){
         try{
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
-            doRun(2);
+            state.run();
+            state.run();
 
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+            when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> SettingsState.class);
 
             assertNotNull(state.run().getClass());
         }catch (Exception e) {
@@ -101,13 +114,13 @@ public class MenuStateTest {
 
 
     @Test
-    public void processKeyExit() throws IOException {
+    public void processKeyExit() {
         try {
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
-            doRun(1);
+            state.run();
 
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> SettingsState.class);
+            when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> SettingsState.class);
 
             assertNull(state.run());
         }catch (Exception e) {
@@ -115,10 +128,30 @@ public class MenuStateTest {
         }
     }
 
+    @Test
+    public void manageCommandTest(){
+        try {
+            ControllerState<?> expected = mock(ControllerState.class);
+            assertEquals(expected, state.manageCommand(expected));
 
-    private void doRun(int numVezes) throws IOException {
-        for(int i=0; i<numVezes; i++){
-            state.run();
+            Mockito.verify(state, times(1)).manageCommand(expected);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @Test
+    public void draw(){
+        try {
+            assertNotNull(state.run().getClass());
+            verify(view, times(1)).draw(anyInt());
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
+
+
+
 }

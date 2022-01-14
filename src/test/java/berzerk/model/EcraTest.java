@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class EcraTest {
 
@@ -22,7 +22,8 @@ public class EcraTest {
         screen = mock(Screen.class);
         graphics = mock(TextGraphics.class);
 
-        ecra = new Ecra(terminal, screen);
+        ecra = spy(new Ecra(terminal, screen));
+        doNothing().when(ecra).startScreen();
     }
 
     @Test
