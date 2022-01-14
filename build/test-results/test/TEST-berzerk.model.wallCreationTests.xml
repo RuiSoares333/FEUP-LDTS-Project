@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="berzerk.model.wallCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-14T15:52:29" hostname="DESKTOP-5S8HCDK" time="0.018">
+<testsuite name="berzerk.model.wallCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-14T15:53:17" hostname="DESKTOP-5S8HCDK" time="0.02">
   <properties/>
-  <testcase name="StonePositionRight()" classname="berzerk.model.wallCreationTests" time="0.018"/>
+  <testcase name="StonePositionDown()" classname="berzerk.model.wallCreationTests" time="0.02"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
