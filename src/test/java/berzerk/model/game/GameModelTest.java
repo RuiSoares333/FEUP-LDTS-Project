@@ -1,6 +1,7 @@
 package berzerk.model.game;
 
 import berzerk.model.Soldado;
+import berzerk.model.entity.Bullet;
 import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.hero.Expert;
@@ -288,5 +289,53 @@ public class GameModelTest {
         InputStream is = ClassLoader.getSystemResourceAsStream(mapa);
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
         return new BufferedReader(streamReader);
+    }
+
+    //--------------------------------------------- SCORE --------------------------------------------------------------
+
+    @Test
+    public void scoreTest(){
+        List<Monster> monstros = new ArrayList<>();
+        List<Bullet> balas = new ArrayList<>();
+        int expected;
+
+        monstros.add(new Monster(new Position(5, 5)));
+        monstros.add(new Monster(new Position(20, 20)));
+        monstros.add(new Monster(new Position(45, 30)));
+        monstros.add(new Monster(new Position(90, 25)));
+
+        balas.add(new Bullet(1,2,1));
+        balas.add(new Bullet(5,5,1));
+        balas.add(new Bullet(10,25,1));
+        balas.add(new Bullet(90,25,1));
+
+        model.eliminateMonster(balas.get(0).getPosition(), monstros);
+        model.eliminateMonster(balas.get(1).getPosition(), monstros);
+        model.eliminateMonster(balas.get(2).getPosition(), monstros);
+        model.eliminateMonster(balas.get(3).getPosition(), monstros);
+
+        expected = 100;
+
+        assertEquals(expected, model.getScore());
+
+    }
+
+    @Test
+    public void totalScoreTest(){
+        int numMonstrosMortos, expected;
+
+        numMonstrosMortos = 3;
+        model.setTotalMonstrosMortos(numMonstrosMortos);
+
+        expected = numMonstrosMortos * 50;
+
+        assertEquals(expected, model.calculateTotalScore());
+
+        numMonstrosMortos = 0;
+        model.setTotalMonstrosMortos(numMonstrosMortos);
+
+        expected = numMonstrosMortos * 50;
+
+        assertEquals(expected, model.calculateTotalScore());
     }
 }
