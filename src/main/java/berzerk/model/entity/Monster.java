@@ -10,6 +10,7 @@ public class Monster extends Element{
         super(position);
     }
 
+    //Random move
     public Position move(){
         Random random = new Random();
         int movement = random.nextInt(4);
@@ -21,6 +22,29 @@ public class Monster extends Element{
             default -> getPosition();
         };
     }
+
+    public Position smartMove(Position heroPosition){
+        Position novaPosicao;
+
+        if (getPosition().getX() == heroPosition.getX()) {
+            if (getPosition().getY() > heroPosition.getY()) {
+                novaPosicao = new Position(getPosition().getX(),  getPosition().getY() - 1);
+            } else {
+                novaPosicao = new Position(getPosition().getX(),  getPosition().getY() + 1);
+            }
+        } else if (getPosition().getY() == heroPosition.getY()) {
+            Bullet bullet;
+            if (getPosition().getX() > getPosition().getX()) {
+                novaPosicao = new Position(getPosition().getX() - 1, getPosition().getY());
+            } else {
+                novaPosicao = new Position(getPosition().getX() + 1, getPosition().getY());
+            }
+        }
+
+        novaPosicao = new Position(5,5);
+        return novaPosicao;
+    }
+
 
     @Override
     public void setPosition(Position position) {
