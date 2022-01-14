@@ -15,6 +15,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;
+import java.util.EnumSet;
 
 public class GameView extends View<GameModel> {
 
@@ -95,7 +96,6 @@ public class GameView extends View<GameModel> {
 
         for(Stone stone : model.getStones())
             graphics.putString(new TerminalPosition(stone.getPosition().getX(), stone.getPosition().getY()), "z");
-
     }
 
     @Override

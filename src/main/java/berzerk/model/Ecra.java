@@ -69,7 +69,7 @@ public class Ecra {
     protected Terminal initTerminal(){
 
         try {
-            URL resource = getClass().getClassLoader().getResource("Font Berzerk.ttf");
+            URL resource = getClass().getClassLoader().getResource("Berzerk.ttf");
             assert resource != null;
             File fontFile = new File(resource.toURI());
             Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);

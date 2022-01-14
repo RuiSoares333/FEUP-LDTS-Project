@@ -46,7 +46,7 @@ public class HeroOrientation {
     public void heroOrientationMoveRight(){
         Hero hero = new Hero(5,5,1,1);
 
-        hero.moveUp();
+        hero.moveRight();
 
         assertEquals(2, hero.getOrientation());
     }

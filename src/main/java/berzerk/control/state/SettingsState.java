@@ -2,42 +2,44 @@ package berzerk.control.state;
 
 
 import berzerk.control.Command;
+import berzerk.model.Ecra;
 import berzerk.model.Soldado;
+import berzerk.model.menu.MenuModel;
 import berzerk.model.settings.SettingsModel;
 import berzerk.view.View;
+import berzerk.view.menu.MenuView;
 
 import java.io.IOException;
 
 
 public class SettingsState extends ControllerState<SettingsModel> {
 
-    SettingsModel model;
+    protected SettingsModel model;
 
-    public SettingsState(FactoryState state, Soldado soldado, View view){
+    public SettingsState(FactoryState state, Soldado soldado, View<SettingsModel> view){
         super(state, soldado, view);
-        model = (SettingsModel) view.getModel();
+        model = view.getModel();
     }
 
+    @Override
     public ControllerState<?> run() throws IOException {
-
-        getView().draw(getPosition(model.getSelected()));
-        return processKey(getView().getCommand());
-
+        view.draw(getPosition(model.getSelected()));
+        return processKey(view.getCommand());
     }
 
+    @Override
     public ControllerState<?> processKey(Command.COMMAND key) throws IOException {
         ControllerState<?> newState = this;
         switch (key) {
             case LEFT -> model.previousSelected();
             case RIGHT -> model.nextSelected();
-            case SELECT, QUIT -> newState = getState().genMenuState(getSoldado());
+            case SELECT, QUIT -> newState = state.genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
         }
-        manageCommand(newState);
-        return newState;
+        return manageCommand(newState);
     }
 
 
-    private int getPosition(Soldado.Heroi selected){
+    protected int getPosition(Soldado.Heroi selected){
         if(selected!=null) {
             return switch (selected) {
                 case TANKY -> 39;

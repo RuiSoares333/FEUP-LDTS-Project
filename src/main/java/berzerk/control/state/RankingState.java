@@ -1,9 +1,12 @@
 package berzerk.control.state;
 
 import berzerk.control.Command;
+import berzerk.model.Ecra;
 import berzerk.model.Soldado;
+import berzerk.model.menu.MenuModel;
 import berzerk.model.ranking.RankingModel;
 import berzerk.view.View;
+import berzerk.view.menu.MenuView;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,20 +14,23 @@ import java.net.URISyntaxException;
 
 public class RankingState extends ControllerState<RankingModel>  {
 
-    RankingModel model;
+    protected final RankingModel model;
 
-    public RankingState(FactoryState state, Soldado soldado, View view){
+    public RankingState(FactoryState state, Soldado soldado, View<RankingModel> view){
         super(state, soldado, view);
-        model = (RankingModel) view.getModel();
+        model = view.getModel();
     }
 
-    public ControllerState<?> run() throws IOException, URISyntaxException, FontFormatException {
+    @Override
+    public ControllerState<?> run() throws IOException {
         view.draw(0);
-        return processKey(getView().getCommand());
+        processKey(view.getCommand());
+        return getState().genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
     }
 
-    public ControllerState<?> processKey(Command.COMMAND key) throws IOException {
-        return manageCommand(getState().genMenuState(getSoldado()));
+    @Override
+    public ControllerState<?> processKey(Command.COMMAND key) {
+        return null;
     }
 
 
