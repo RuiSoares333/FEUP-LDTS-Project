@@ -303,18 +303,28 @@ public class GameModelTest {
         monstros.add(new Monster(new Position(20, 20)));
         monstros.add(new Monster(new Position(45, 30)));
         monstros.add(new Monster(new Position(90, 25)));
+        monstros.add(new Monster(new Position(15, 55)));
+        monstros.add(new Monster(new Position(10, 35)));
 
         balas.add(new Bullet(1,2,1));
         balas.add(new Bullet(5,5,1));
         balas.add(new Bullet(10,25,1));
         balas.add(new Bullet(90,25,1));
+        balas.add(new Bullet(15,55,1));
 
         model.eliminateMonster(balas.get(0).getPosition(), monstros);
         model.eliminateMonster(balas.get(1).getPosition(), monstros);
         model.eliminateMonster(balas.get(2).getPosition(), monstros);
         model.eliminateMonster(balas.get(3).getPosition(), monstros);
+        model.eliminateMonster(balas.get(4).getPosition(), monstros);
 
-        expected = 100;
+        expected = 150;
+
+        assertEquals(expected, model.getScore());
+
+        model.setScore(200);
+
+        expected = 200;
 
         assertEquals(expected, model.getScore());
 
@@ -333,6 +343,13 @@ public class GameModelTest {
 
         numMonstrosMortos = 0;
         model.setTotalMonstrosMortos(numMonstrosMortos);
+
+        expected = numMonstrosMortos * 50;
+
+        assertEquals(expected, model.calculateTotalScore());
+
+        model.setTotalMonstrosMortos(10);
+        numMonstrosMortos = model.getTotalMonstrosMortos();
 
         expected = numMonstrosMortos * 50;
 
