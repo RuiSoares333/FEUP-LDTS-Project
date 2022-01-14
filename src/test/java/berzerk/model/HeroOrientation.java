@@ -16,9 +16,38 @@ public class HeroOrientation {
     }
 
     @Test
-    public void heroOrientationAfterMove(){
+    public void heroOrientationMoveDown(){
         Hero hero = new Hero(5,5,1,1);
 
+        hero.moveDown();
+
+        assertEquals(3, hero.getOrientation());
     }
 
+    @Test
+    public void heroOrientationMoveLeft(){
+        Hero hero = new Hero(5,5,1,1);
+
+        hero.moveLeft();
+
+        assertEquals(4, hero.getOrientation());
+    }
+
+    @Test
+    public void heroOrientationMoveUp(){
+        Hero hero = new Hero(5,5,1,1);
+
+        hero.moveUp();
+
+        assertEquals(1, hero.getOrientation());
+    }
+
+    @Test
+    public void heroOrientationMoveRight(){
+        Hero hero = new Hero(5,5,1,1);
+
+        hero.moveUp();
+
+        assertEquals(2, hero.getOrientation());
+    }
 }

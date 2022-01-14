@@ -150,7 +150,6 @@ public class GameModel implements Model {
         return new BufferedReader(streamReader);
     }
 
-
     //------------------------------------- MONSTROS -----------------------------------------------------
 
     private List<Monster> createMonsters(){
