@@ -5,6 +5,7 @@ import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.settings.SettingsModel;
 import berzerk.view.menu.SettingsView;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -32,7 +33,12 @@ public class SettingsStateTest {
         ecra = mock(Ecra.class);
         view = spy(new SettingsView(model, ecra));
         state = new SettingsState(factoryState, soldado, view);
-        Mockito.doNothing().when(view).draw(anyInt());
+        doNothing().when(view).draw(anyInt());
+    }
+
+    @AfterEach
+    public void closeScreen() throws IOException {
+        view.close();
     }
 
     @Test
@@ -69,36 +75,37 @@ public class SettingsStateTest {
     }
 
     @Test
-    public void processKeySelect(){
+    public void processKeySelect() {
         try {
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
-            doRun(1);
+            state.run();
 
             when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
+            when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> Command.class);
 
             assertNotNull(state.run().getClass());
+        } catch (Exception | OutOfMemoryError e) {
+            e.printStackTrace();
+        }
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.LEFT);
-            doRun(3);
+    }
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-            when(factoryState.genSettingsMenuState(mock(Soldado.class))).thenAnswer(invocation -> Command.class);
-
+    @Test
+    public void draw(){
+        try {
             assertNotNull(state.run().getClass());
-
-        }catch (Exception e) {
+            verify(view, times(1)).draw(anyInt());
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    private void doRun(int numVezes) {
-        for(int i=0; i<numVezes; i++){
-            try {
-                state.run();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    @Test
+    public void getPosition(){
+        assertEquals(14, state.getPosition(Soldado.Heroi.RECRUIT));
+        assertEquals(39, state.getPosition(Soldado.Heroi.TANKY));
+        assertEquals(63, state.getPosition(Soldado.Heroi.EXPERT));
+        assertEquals(0, state.getPosition(null));
     }
+
 }

@@ -3,6 +3,7 @@ package berzerk.view.menu;
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.menu.MenuModel;
+import berzerk.model.menu.MenuModelTest;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;

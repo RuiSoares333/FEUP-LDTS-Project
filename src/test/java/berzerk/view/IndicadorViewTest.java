@@ -39,14 +39,6 @@ public class IndicadorViewTest {
 
         Mockito.verify(graphics, Mockito.times(2*2)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
         Mockito.verify(graphics, Mockito.times(4*2)).putString(anyInt(), anyInt(), anyString());
-
-        indicador.draw(anyInt(),anyInt());
-
-        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(any(TextColor.class));
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(any(TextColor.class));
-
-        Mockito.verify(graphics, Mockito.times(2*3)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
-        Mockito.verify(graphics, Mockito.times(4*3)).putString(anyInt(), anyInt(), anyString());
     }
 
     @Test
@@ -68,14 +60,6 @@ public class IndicadorViewTest {
 
         Mockito.verify(graphics, Mockito.times(2*2)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
         Mockito.verify(graphics, Mockito.times(4*2)).putString(anyInt(), anyInt(), anyString());
-
-        indicador.draw(anyInt(),anyInt());
-
-        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(any(TextColor.class));
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(any(TextColor.class));
-
-        Mockito.verify(graphics, Mockito.times(2*3)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
-        Mockito.verify(graphics, Mockito.times(4*3)).putString(anyInt(), anyInt(), anyString());
     }
 
 
