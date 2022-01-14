@@ -19,11 +19,11 @@ public class wallCreationTests {
     }
 
     @Test
-    public void StonePositionUp() {
+    public void StonePositionRight() {
         Position position = new Position(2, 2);
         Position newPosition;
-        Stone stone = new Stone(position, 1);
-        newPosition = new Position(2,1);
+        Stone stone = new Stone(position, 2);
+        newPosition = new Position(3,2);
 
         assertEquals(stone.getPosition(), newPosition);
     }
