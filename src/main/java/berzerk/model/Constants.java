@@ -18,6 +18,8 @@ public final class Constants {
 
     public static final String MONSTER_COLOR = "#24A120";
 
+    public static final int VALOR_CADA_MONSTRO = 50;
+
 
     public static final String[] GAME_NAME= {
             ",---.    ____   _____ ______  ____   _____  _   _",

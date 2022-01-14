@@ -322,13 +322,16 @@ public class GameModel implements Model {
             for(Element e: elements)
                 if (!position.equals(e.getPosition())){
                     newMonsters.add((Monster) e);
+                } else {
+                    totalMonstrosMortos++;
+                    score += 50;
                 }
         monsters = newMonsters;
     }
 
     //calcular o total do score do jogador
     public int calculateTotalScore(){
-        return 0;
+        return totalMonstrosMortos * Constants.VALOR_CADA_MONSTRO;
     }
 
 
