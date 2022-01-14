@@ -77,28 +77,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.HeroOrientation.heroOrientationMoveLeft">
-    <configuration name="HeroOrientation.heroInitialOrientation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;berzerk.model.HeroOrientation.heroInitialOrientation&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.HeroOrientation.heroOrientationMoveUp">
     <configuration name="HeroOrientation.heroOrientationAfterMove" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -162,6 +141,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="HeroOrientation.heroOrientationMoveUp" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;berzerk.model.HeroOrientation.heroOrientationMoveUp&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="monstersTest.monsterMove" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -185,11 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HeroOrientation.heroOrientationMoveUp" />
         <item itemvalue="Gradle.HeroOrientation.heroOrientationMoveLeft" />
         <item itemvalue="Gradle.HeroOrientation.heroOrientationMoveDown" />
         <item itemvalue="Gradle.HeroOrientation.heroOrientationAfterMove" />
         <item itemvalue="Gradle.monstersTest.monsterMove" />
-        <item itemvalue="Gradle.HeroOrientation.heroInitialOrientation" />
       </list>
     </recent_temporary>
   </component>
