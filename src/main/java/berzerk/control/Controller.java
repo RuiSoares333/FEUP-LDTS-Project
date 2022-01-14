@@ -2,7 +2,10 @@ package berzerk.control;
 
 import berzerk.control.state.ControllerState;
 import berzerk.control.state.FactoryState;
+import berzerk.model.Ecra;
 import berzerk.model.Soldado;
+import berzerk.model.menu.MenuModel;
+import berzerk.view.menu.MenuView;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,7 +16,7 @@ public class Controller {
     Soldado soldado = new Soldado();
 
     public Controller(FactoryState factory){
-        state = factory.genMenuState(soldado);
+        state = factory.genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
     }
 
     public void run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {

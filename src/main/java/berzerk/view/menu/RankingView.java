@@ -23,20 +23,19 @@ public class RankingView extends View<RankingModel> {
             getScreen().clear();
 
             getGraphics().fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
-            drawTopScorers();
+            drawTopScorers(getGraphics());
 
             getScreen().refresh();
         }
     }
 
-    private void drawTopScorers(){
-        TextGraphics graphics = getGraphics();
+    private void drawTopScorers(TextGraphics graphics){
         graphics.putString(new TerminalPosition(43, 6), "TOP SCORERS");
 
         int i=15;
-        for (Map.Entry<String, String> jogador: getModel().getJogadores().entrySet()) {
+        for (Map.Entry<String, Integer> jogador: getModel().getJogadores().entrySet()) {
             String nome = jogador.getKey();
-            String pontuacao = jogador.getValue();
+            String pontuacao = String.valueOf(jogador.getValue());
             graphics.putString(new TerminalPosition(40, i), nome + numPontos(nome.length(), pontuacao.length()) + pontuacao);
             i+=3;
         }
@@ -49,9 +48,7 @@ public class RankingView extends View<RankingModel> {
     private String numPontos(int tamNome, int tamPont){
         int total = 20 - tamNome - tamPont;
         if(total>0) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(".".repeat(Math.max(0, total)));
-            return stringBuilder.toString();
+            return ".".repeat(total);
         }
         return ".....";
     }
