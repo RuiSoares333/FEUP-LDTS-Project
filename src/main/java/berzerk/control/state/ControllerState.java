@@ -1,5 +1,6 @@
 package berzerk.control.state;
 
+import berzerk.control.Command;
 import berzerk.model.Model;
 import berzerk.model.Soldado;
 import berzerk.view.View;
@@ -10,8 +11,8 @@ import java.net.URISyntaxException;
 
 public abstract class ControllerState <T extends Model>{
 
-    private final FactoryState state;
-    private final Soldado soldado;
+    protected final FactoryState state;
+    protected final Soldado soldado;
 
     protected final View<T> view;
 
@@ -28,7 +29,6 @@ public abstract class ControllerState <T extends Model>{
         return newState;
     }
 
-    public abstract ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException;
 
 
     public FactoryState getState() {
@@ -46,5 +46,7 @@ public abstract class ControllerState <T extends Model>{
     }
 
 
+    public abstract ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException;
+    abstract ControllerState<?> processKey(Command.COMMAND key) throws IOException;
 
 }
