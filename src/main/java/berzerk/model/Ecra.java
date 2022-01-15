@@ -45,12 +45,14 @@ public class Ecra {
     protected Screen initScreen(){
 
         try{
-            screen = new TerminalScreen(terminal);
-            screen.setCursorPosition(null); // we don't need a cursor
-            startScreen();
-            screen.doResizeIfNecessary(); // resize screen if necessary
+            if(terminal!=null) {
+                screen = new TerminalScreen(terminal);
+                screen.setCursorPosition(null); // we don't need a cursor
+                startScreen();
+                screen.doResizeIfNecessary(); // resize screen if necessary
 
-            return screen;
+                return screen;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,5 +100,14 @@ public class Ecra {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void close() {
+        try {
+            if(screen!=null) screen.close();
+            if(terminal!=null) terminal.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

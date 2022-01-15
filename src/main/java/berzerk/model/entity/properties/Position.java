@@ -1,5 +1,7 @@
 package berzerk.model.entity.properties;
 
+import java.util.Objects;
+
 public class Position {
     private int x;
     private int y;
@@ -34,6 +36,11 @@ public class Position {
     public void setPosition(Position position){
         setX(position.x);
         setY(position.y);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override

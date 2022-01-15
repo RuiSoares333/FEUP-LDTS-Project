@@ -24,7 +24,7 @@ public class Monster extends Element{
     }
 
     public Position smartMove(Position heroPosition){
-        Position novaPosicao;
+        Position novaPosicao = new Position(5,5);
 
         if (getPosition().getX() == heroPosition.getX()) {
             if (getPosition().getY() > heroPosition.getY()) {
@@ -34,14 +34,13 @@ public class Monster extends Element{
             }
         } else if (getPosition().getY() == heroPosition.getY()) {
             Bullet bullet;
-            if (getPosition().getX() > getPosition().getX()) {
+            if (getPosition().getX() > heroPosition.getX()) {
                 novaPosicao = new Position(getPosition().getX() - 1, getPosition().getY());
             } else {
                 novaPosicao = new Position(getPosition().getX() + 1, getPosition().getY());
             }
         }
 
-        novaPosicao = new Position(5,5);
         return novaPosicao;
     }
 
