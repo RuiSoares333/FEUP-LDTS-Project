@@ -16,6 +16,7 @@ public abstract class ControllerState <T extends Model>{
 
     protected final View<T> view;
 
+
     public ControllerState(FactoryState state, Soldado soldado, View<T> view){
         this.state = state;
         this.soldado = soldado;

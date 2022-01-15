@@ -41,7 +41,7 @@ public class GameModel implements Model {
     private int score;
     private int totalMonstrosMortos;
 
-    public GameModel(Soldado soldado, int nivel) throws IOException {
+    public GameModel(Soldado soldado, int nivel, int score) throws IOException {
         this.nivel = nivel;
 
         this.initialPosition = getInitialPosition();
@@ -56,7 +56,7 @@ public class GameModel implements Model {
         bullets = new ArrayList<>();
         stones = new ArrayList<>();
 
-        score = 0;
+        this.score = score;
         totalMonstrosMortos = 0;
 
         System.out.println("Monsters: " + monsters.size());
