@@ -355,4 +355,23 @@ public class GameModelTest {
 
         assertEquals(expected, model.calculateTotalScore());
     }
+
+    // ---------------------------------------------------- VIDAS ------------------------------------------------------
+
+    @Test
+    public void vidasTest(){
+        int expected;
+        model.getHero().setHp(3);
+
+        when(model.verifyCollision(any(Position.class),anyList())).thenReturn(false);
+        model.moveHero(new Position(2,0));
+
+
+        expected = 2;
+
+        assertEquals(expected,model.getHero().getHp());
+
+
+
+    }
 }
