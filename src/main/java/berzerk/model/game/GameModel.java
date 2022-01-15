@@ -267,6 +267,8 @@ public class GameModel implements Model {
 
             //verificar colisao de balhas com monstros
             if(bullet.getPosition().equals(hero.getPosition())){
+                System.out.println("Game Over!");
+                hero.setHp(hero.getHp()-1);
                 positionHero();
             }
 
@@ -381,6 +383,7 @@ public class GameModel implements Model {
     public void moveHero(Position position) {
         if(!verifyCollision(position, monsters) || !verifyCollision(position, walls) || !verifyCollision(position, bullets)){
             System.out.println("Game Over!");
+            hero.setHp(hero.getHp()-1);
             positionHero();
         }
         else hero.setPosition(position);
