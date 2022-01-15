@@ -20,7 +20,8 @@ import java.util.*;
 
 public class GameModel implements Model {
 
-    private final int numMonstros = 20;
+    private final int numMonstros = 10;
+    private final int numDementors = 10;
 
     private final Position initialPosition;
     private final int nivel;
@@ -30,6 +31,7 @@ public class GameModel implements Model {
     private final List<Wall> walls;
     private final List<Wall> exit;
     private List<Monster> monsters;
+    private List<Monster> dementors;
 
     //criaçao lista de bullets
     private List<Bullet> bullets;
@@ -40,6 +42,7 @@ public class GameModel implements Model {
     //score do jogador
     private int score;
     private int totalMonstrosMortos;
+    private int totalDementorsMortos;
 
     public GameModel(Soldado soldado, int nivel, int score) throws IOException {
         this.nivel = nivel;
@@ -52,12 +55,14 @@ public class GameModel implements Model {
         System.out.println("Walls: " + walls.size());
         exit = wallList.get(1);
         monsters = createMonsters();
+        dementors = createDementors();
 
         bullets = new ArrayList<>();
         stones = new ArrayList<>();
 
         this.score = score;
         totalMonstrosMortos = 0;
+        totalDementorsMortos = 0;
 
         System.out.println("Monsters: " + monsters.size());
     }
@@ -73,6 +78,10 @@ public class GameModel implements Model {
 
     public List<Monster> getMonsters(){
         return monsters;
+    }
+
+    public List<Monster> getDementors(){
+        return dementors;
     }
 
     //Retornar lista de bullets
@@ -274,6 +283,78 @@ public class GameModel implements Model {
 
         }
         return newBullets;
+    }
+
+    //------------------------------------- DEMENTORS -----------------------------------------------------
+
+    private List<Monster> createDementors(){
+        Random random = new Random();
+        int width = Constants.WIDTH, height = Constants.HEIGHT;
+
+        ArrayList<Monster> dementors = new ArrayList<>();
+
+        while(dementors.size() < numDementors){
+            Position novaPosicao = new Position(random.nextInt(width-2) + 2, random.nextInt(height-4) + 4);
+
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters) )
+                dementors.add(new Monster(novaPosicao));
+        }
+
+        return dementors;
+    }
+
+
+    //Move monster in random directions
+    public void scheduleDementorMovement(View<GameModel> view){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                dementors = moveDementors(dementors);
+                System.out.println(hero.getPosition());
+                try {
+                    view.draw(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 1000);
+    }
+
+    public List<Monster> moveDementors(List<Monster> monsters){
+        if(hero!=null) {
+            //List<Monster> newMonsters = new ArrayList<>();
+            for (Monster monster : dementors) {
+
+                Position novaPosicao = monster.move();
+
+                //Disparos dos monstros apenas quando estao em linha vertical e horizontal com o heroi
+                if (monster.getPosition().getX() == hero.getPosition().getX()) {
+                    Bullet bullet;
+                    if (monster.getPosition().getY() > hero.getPosition().getY()) {
+                        bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() - 1), 1);
+                    } else {
+                        bullet = new Bullet(monster.getPosition().getX(), (monster.getPosition().getY() + 1), 3);
+                    }
+                    addBullet(bullet);
+                } else if (monster.getPosition().getY() == hero.getPosition().getY()) {
+                    Bullet bullet;
+                    if (monster.getPosition().getX() > hero.getPosition().getX()) {
+                        bullet = new Bullet(monster.getPosition().getX() - 1, (monster.getPosition().getY()), 4);
+                    } else {
+                        bullet = new Bullet(monster.getPosition().getX() + 1, (monster.getPosition().getY()), 2);
+                    }
+                    addBullet(bullet);
+                }
+
+                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
+                    monster.setPosition(novaPosicao);
+                    //newMonsters.add(monster);
+                }
+            }
+        }
+        //return newMonsters;
+        return dementors;
     }
 
     //------------------------------------- Stones -----------------------------------------------------

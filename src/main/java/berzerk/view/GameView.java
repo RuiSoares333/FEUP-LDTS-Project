@@ -22,6 +22,7 @@ public class GameView extends View<GameModel> {
     String black = Constants.GAME_BACKGROUND_COLOR;
     String blue = Constants.GAME_WALL_COLOR;
     String green = Constants.MONSTER_COLOR;
+    String red = Constants.DEMENTOR_COLOR;
     String white = Constants.GAME_BULLET_COLOR;
     String heroColor;
 
@@ -61,6 +62,14 @@ public class GameView extends View<GameModel> {
 
         for(Monster monster : model.getMonsters())
             graphics.putString(new TerminalPosition(monster.getPosition().getX(), monster.getPosition().getY()), "@");
+
+    }
+
+    public void drawDementors(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(red));
+
+        for(Monster dementor : model.getDementors())
+            graphics.putString(new TerminalPosition(dementor.getPosition().getX(), dementor.getPosition().getY()), "@");
 
     }
 
@@ -109,6 +118,7 @@ public class GameView extends View<GameModel> {
         setBackground(graphics);
 
         drawMonsters(graphics);
+        drawDementors(graphics);
         drawHero(graphics, model.getHero());
         drawNivel(graphics);
         drawWalls(graphics);

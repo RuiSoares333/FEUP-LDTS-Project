@@ -24,6 +24,7 @@ public class GameState extends ControllerState<GameModel>{
         if(view.getModel()!=null) {
             model = view.getModel();
             model.scheduleMonsterMovement(view);
+            model.scheduleDementorMovement(view);
             model.scheduleBulletMovement(view);
         }
     }
