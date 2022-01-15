@@ -129,14 +129,14 @@ public class MenuStateTest {
     }
 
     @Test
-    public void manageCommandTest(){
+    public void manageCommandTest() throws Exception {
         try {
             ControllerState<?> expected = mock(ControllerState.class);
             assertEquals(expected, state.manageCommand(expected));
 
             Mockito.verify(state, times(1)).manageCommand(expected);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new Exception();
         }
 
     }
