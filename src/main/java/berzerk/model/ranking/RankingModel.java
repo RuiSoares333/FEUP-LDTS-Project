@@ -1,20 +1,17 @@
 package berzerk.model.ranking;
 
 import berzerk.model.Model;
+//.javaimport berzerk.model.game.GameModel;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RankingModel implements Model {
 
     Map<String, Integer> jogadores;
+//    Scanner in = new Scanner(System.in);
+
 
     public RankingModel(){
         jogadores = populateMap();
@@ -52,4 +49,16 @@ public class RankingModel implements Model {
     public Map<String, Integer> getJogadores() {
         return jogadores;
     }
+
+//    public void writeScore(GameModel model){
+//        try {
+//            FileWriter myWriter = new FileWriter("ranking.txt");
+//            System.out.println("Write your name: ");
+//            String name = in.nextLine();
+//            myWriter.write(name + " " + model.calculateTotalScore());
+//            myWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

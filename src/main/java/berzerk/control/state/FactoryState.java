@@ -4,9 +4,11 @@ import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.game.GameModel;
 import berzerk.model.menu.MenuModel;
+import berzerk.model.ranking.GameOverModel;
 import berzerk.model.ranking.RankingModel;
 import berzerk.model.settings.SettingsModel;
 import berzerk.view.GameView;
+import berzerk.view.menu.GameOverView;
 import berzerk.view.menu.MenuView;
 import berzerk.view.menu.RankingView;
 import berzerk.view.menu.SettingsView;
@@ -30,5 +32,9 @@ public class FactoryState {
 
     public GameState genGameState(Soldado soldado, GameView view){
         return new GameState(this, soldado, view);
+    }
+
+    public GameOverState genGameOverState(Soldado soldado, GameOverView view){
+        return new GameOverState(this, soldado, view);
     }
 }

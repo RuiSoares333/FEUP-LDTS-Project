@@ -7,8 +7,10 @@ import berzerk.model.entity.Bullet;
 import berzerk.model.entity.Stone;
 import berzerk.model.game.GameModel;
 import berzerk.model.menu.MenuModel;
+import berzerk.model.ranking.GameOverModel;
 import berzerk.view.GameView;
 import berzerk.view.View;
+import berzerk.view.menu.GameOverView;
 import berzerk.view.menu.MenuView;
 
 import java.awt.*;
@@ -31,6 +33,10 @@ public class GameState extends ControllerState<GameModel>{
 
     public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         view.draw(0);
+        if(model.getHero().getHp()==0){
+            GameOverView gameOverView = new GameOverView(new GameOverModel(model.getScore(), true), new Ecra());
+            return manageCommand(state.genGameOverState(soldado, gameOverView));
+        }
         if(!model.verifyCollision(model.getHero().getPosition(), model.getExit())){
             GameView newView = new GameView(new GameModel(soldado, model.getNivel()+1, model.getScore()), new Ecra());
             return manageCommand(state.genGameState(soldado, newView));
