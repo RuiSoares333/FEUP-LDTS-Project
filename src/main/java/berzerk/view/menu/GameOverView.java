@@ -21,7 +21,8 @@ public class GameOverView extends View<GameOverModel> {
             getScreen().clear();
 
             getGraphics().fillRectangle(new TerminalPosition(0, 0), new TerminalSize(Constants.WIDTH, Constants.HEIGHT), ' ');
-            getGraphics().putString(new TerminalPosition(43, 6), "Game Over");
+            getGraphics().putString(new TerminalPosition(46, 10), "GAME OVER!");
+            getGraphics().putString(new TerminalPosition(45, 15), "YOUR SCORE: " + model.getScore());
 
 
             getScreen().refresh();

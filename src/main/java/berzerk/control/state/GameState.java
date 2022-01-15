@@ -34,7 +34,7 @@ public class GameState extends ControllerState<GameModel>{
     public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         view.draw(0);
         if(model.getHero().getHp()==0){
-            GameOverView gameOverView = new GameOverView(new GameOverModel(model.getScore(), true), new Ecra());
+            GameOverView gameOverView = new GameOverView(new GameOverModel(model.calculateTotalScore(), true), new Ecra());
             return manageCommand(state.genGameOverState(soldado, gameOverView));
         }
         if(!model.verifyCollision(model.getHero().getPosition(), model.getExit())){
