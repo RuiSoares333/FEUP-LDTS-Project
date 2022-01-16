@@ -84,6 +84,16 @@ public class GameView extends View<GameModel> {
         graphics.putString(new TerminalPosition(45,1), "SCORE: " + model.getScore());
     }
 
+    private void drawLives(TextGraphics graphics){
+        graphics.setBackgroundColor(TextColor.Factory.fromString(black));
+        graphics.setForegroundColor(TextColor.Factory.fromString(heroColor));
+        graphics.putString(new TerminalPosition(5,1), "}" + ": " + model.getHero().getHp());
+
+//        for(int i = model.getHero().getHp(); i <= 0; i--){
+//            graphics.putString(new TerminalPosition(5,1), "}" + " ");
+//        }
+    }
+
     //Desenhar bala
     public void drawBullets(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString(black));
@@ -125,6 +135,7 @@ public class GameView extends View<GameModel> {
         drawStones(graphics);
 
         drawScore(graphics);
+        drawLives(graphics);
 
         //Desenhar balas
         drawBullets(graphics);
