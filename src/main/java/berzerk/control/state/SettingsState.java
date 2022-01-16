@@ -24,7 +24,7 @@ public class SettingsState extends ControllerState<SettingsModel> {
     @Override
     public ControllerState<?> run() throws IOException {
         view.draw(getPosition(model.getSelected()));
-        return processKey(view.getCommand());
+        return processKey(view.getCommand(new Command()));
     }
 
     @Override

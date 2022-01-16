@@ -18,8 +18,6 @@ import java.io.IOException;
 public class MenuState extends ControllerState<MenuModel> {
 
     private final MenuModel model;
-    private int score;
-    private int hp;
 
     public MenuState(FactoryState state, Soldado soldado, View<MenuModel> view){
         super(state, soldado, view);
@@ -29,34 +27,38 @@ public class MenuState extends ControllerState<MenuModel> {
     @Override
     public ControllerState<?> run() throws IOException {
         if(model!=null) view.draw(getPosition(model.getSelected()));
-        return processKey(view.getCommand());
+        return processKey(view.getCommand(new Command()));
     }
 
     @Override
     protected ControllerState<?> processKey(Command.COMMAND key) throws IOException{
         ControllerState<?> newState = this;
-        switch (key) {
-            case UP -> model.previousSelected();
-            case DOWN -> model.nextSelected();
-            case SELECT -> {
-                if (model.getSelected() != null) {
-                    hp = getLives(soldado.getSelected());
-                    switch (model.getSelected()) {
-                        case PLAY -> newState = state.genGameState(soldado, new GameView(new GameModel(soldado, 1, score, hp), new Ecra()));
-                        case RANKS -> newState = state.genRankingMenuState(soldado, new RankingView(new RankingModel(), new Ecra()));
-                        case SETT -> newState = state.genSettingsMenuState(soldado, new SettingsView(new SettingsModel(soldado), new Ecra()));
-                        case EXIT -> newState = null;
+        if(key!=null) {
+            switch (key) {
+                case UP -> model.previousSelected();
+                case DOWN -> model.nextSelected();
+                case SELECT -> {
+                    if (model.getSelected() != null) {
+                        int hp = 3;
+                        switch (model.getSelected()) {
+                            case PLAY -> newState = state.genGameState(soldado, new GameView(new GameModel(soldado, 1, 0, hp), new Ecra()));
+                            case RANKS -> newState = state.genRankingMenuState(soldado, new RankingView(new RankingModel(), new Ecra()));
+                            case SETT -> newState = state.genSettingsMenuState(soldado, new SettingsView(new SettingsModel(soldado), new Ecra()));
+                            case EXIT -> newState = null;
+                        }
                     }
+                    else newState = null;
                 }
+                case QUIT -> newState = null;
             }
-            case QUIT -> newState = null;
+            return manageCommand(newState);
         }
-        return manageCommand(newState);
+        else return newState;
     }
 
 
 
-    private int getPosition(MenuModel.Opcao selected){
+    public int getPosition(MenuModel.Opcao selected){
         if(selected != null)
         return switch (selected) {
             case SETT -> 12;
@@ -64,8 +66,9 @@ public class MenuState extends ControllerState<MenuModel> {
             case EXIT -> 18;
             default -> 10;
         };
-
-        return 0;
+        else {
+            return 0;
+        }
     }
 
     public int getLives(Soldado.Heroi heroi){

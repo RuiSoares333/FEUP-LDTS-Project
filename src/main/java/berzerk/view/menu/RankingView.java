@@ -45,12 +45,12 @@ public class RankingView extends View<RankingModel> {
     }
 
 
-    private String numPontos(int tamNome, int tamPont){
+    public String numPontos(int tamNome, int tamPont){
         int total = 20 - tamNome - tamPont;
         if(total>0) {
             return ".".repeat(total);
         }
-        return ".....";
+        else return ".....";
     }
 
 }

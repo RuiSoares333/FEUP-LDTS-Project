@@ -31,9 +31,9 @@ public abstract class View<T extends Model> {
         }
     }
 
-    public Command.COMMAND getCommand() throws IOException {
-        if(screen != null) return new Command().getCommand(screen.readInput());
-        return Command.COMMAND.NONE;
+    public Command.COMMAND getCommand(Command command) throws IOException {
+        if(screen != null) return command.getCommand(screen.readInput());
+        else return Command.COMMAND.NONE;
     }
 
 

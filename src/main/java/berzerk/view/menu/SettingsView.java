@@ -38,16 +38,11 @@ public class SettingsView extends View<SettingsModel> {
             if (indicador != null) indicador.draw(position, 7);
 
             getScreen().refresh();
-            try {
-                getScreen().refresh();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
     private void drawHeader(TextGraphics graphics){
-        graphics.putString(40, 1, "CHOOSE YOUR HERO");
+        graphics.putString(40, 2, "CHOOSE YOUR HERO");
     }
 
     private void drawRecruit(TextGraphics graphics) {
@@ -65,7 +60,7 @@ public class SettingsView extends View<SettingsModel> {
                     case 'b' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#FFFFFF"));
                     default -> graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
                 }
-                graphics.fillRectangle(new TerminalPosition(x+15, y+8), new TerminalSize(1, 1), ' ');
+                graphics.fillRectangle(getTerminalPositionRecruit(x, y), new TerminalSize(1, 1), ' ');
             }
         }
     }
@@ -84,7 +79,7 @@ public class SettingsView extends View<SettingsModel> {
                     case 'c' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#5ecad6"));
                     default -> graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
                 }
-                graphics.fillRectangle(new TerminalPosition(x+40, y+8), new TerminalSize(1, 1), ' ');
+                graphics.fillRectangle(getTerminalPositionTanky(x, y), new TerminalSize(1, 1), ' ');
             }
         }
     }
@@ -102,7 +97,7 @@ public class SettingsView extends View<SettingsModel> {
                     case 'r' -> graphics.setBackgroundColor(TextColor.Factory.fromString("#E91E63"));
                     default -> graphics.setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
                 }
-                graphics.fillRectangle(new TerminalPosition(x+64, y+8), new TerminalSize(1, 1), ' ');
+                graphics.fillRectangle(getTerminalPositionExpert(x, y), new TerminalSize(1, 1), ' ');
             }
         }
     }
@@ -114,6 +109,16 @@ public class SettingsView extends View<SettingsModel> {
         graphics.putString(68, 30, "EXPERT");
     }
 
+    public TerminalPosition getTerminalPositionRecruit(int x, int y){
+        return new TerminalPosition(x+15, y+8);
+    }
 
+    public TerminalPosition getTerminalPositionTanky(int x, int y){
+        return new TerminalPosition(x+40, y+8);
+    }
+
+    public TerminalPosition getTerminalPositionExpert(int x, int y){
+        return new TerminalPosition(x+64, y+8);
+    }
 
 }

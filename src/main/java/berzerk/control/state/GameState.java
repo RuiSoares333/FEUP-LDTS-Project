@@ -41,7 +41,7 @@ public class GameState extends ControllerState<GameModel>{
             GameView newView = new GameView(new GameModel(soldado, model.getNivel()+1, model.getScore(), model.getHero().getHp()), new Ecra());
             return manageCommand(state.genGameState(soldado, newView));
         }
-        return processKey(view.getCommand());
+        return processKey(view.getCommand(new Command()));
     }
 
     public ControllerState<?> processKey(Command.COMMAND key) throws IOException {

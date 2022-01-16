@@ -24,7 +24,7 @@ public class RankingState extends ControllerState<RankingModel>  {
     @Override
     public ControllerState<?> run() throws IOException {
         view.draw(0);
-        manageCommand(processKey(view.getCommand()));
+        manageCommand(processKey(view.getCommand(new Command())));
         return getState().genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
     }
 
