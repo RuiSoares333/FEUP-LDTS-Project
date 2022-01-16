@@ -44,11 +44,12 @@ public class GameModel implements Model {
     private int totalMonstrosMortos;
     private int totalDementorsMortos;
 
-    public GameModel(Soldado soldado, int nivel, int score) throws IOException {
+    public GameModel(Soldado soldado, int nivel, int score, int hp) throws IOException {
         this.nivel = nivel;
 
         this.initialPosition = getInitialPosition();
         this.hero = createHero(soldado);
+        hero.setHp(hp);
 
         List<List<Wall>> wallList = createWalls();
         walls = wallList.get(0);

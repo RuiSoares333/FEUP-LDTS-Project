@@ -38,7 +38,7 @@ public class GameState extends ControllerState<GameModel>{
             return manageCommand(state.genGameOverState(soldado, gameOverView));
         }
         if(!model.verifyCollision(model.getHero().getPosition(), model.getExit())){
-            GameView newView = new GameView(new GameModel(soldado, model.getNivel()+1, model.getScore()), new Ecra());
+            GameView newView = new GameView(new GameModel(soldado, model.getNivel()+1, model.getScore(), model.getHero().getHp()), new Ecra());
             return manageCommand(state.genGameState(soldado, newView));
         }
         return processKey(view.getCommand());
