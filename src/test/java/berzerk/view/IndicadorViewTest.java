@@ -1,14 +1,15 @@
 package berzerk.view;
 
+import berzerk.model.Constants;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class IndicadorViewTest {
 
@@ -18,48 +19,43 @@ public class IndicadorViewTest {
     @BeforeEach
     public void initIndicador(){
         graphics = mock(TextGraphics.class);
+        indicador = spy(new IndicadorView(10, 10, graphics));
     }
 
     @Test
     public void drawTest() {
-        indicador = new IndicadorView(10, 10, graphics);
+        indicador.draw(0,0);
 
-        indicador.draw(anyInt(),anyInt());
+        verify(graphics, atLeastOnce()).setBackgroundColor(TextColor.Factory.fromString(Constants.MENU_BACKGROUND_COLOR));
+        verify(graphics, atLeastOnce()).setForegroundColor(TextColor.Factory.fromString(Constants.MENU_LETTER_COLOR));
 
-        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(any(TextColor.class));
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(any(TextColor.class));
+        verify(graphics, atLeastOnce()).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
 
-        Mockito.verify(graphics, Mockito.times(2)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
-        Mockito.verify(graphics, Mockito.times(4)).putString(anyInt(), anyInt(), anyString());
-
-        indicador.draw(anyInt(),anyInt());
-
-        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(any(TextColor.class));
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(any(TextColor.class));
-
-        Mockito.verify(graphics, Mockito.times(2*2)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
-        Mockito.verify(graphics, Mockito.times(4*2)).putString(anyInt(), anyInt(), anyString());
+        verify(indicador, atLeastOnce()).drawTop(any(TerminalPosition.class), any(TerminalPosition.class));
+        verify(indicador, atLeastOnce()).drawBottom(any(TerminalPosition.class), any(TerminalPosition.class));
     }
 
     @Test
-    public void drawTestBig() {
-        indicador = new IndicadorView(1000, 1000, graphics);
+    public void positions(){
+        TerminalPosition p1 = indicador.topLeft(0, 0);
 
-        indicador.draw(anyInt(),anyInt());
+        TerminalPosition p2 = indicador.topRight(0, 0);
 
-        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(any(TextColor.class));
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(any(TextColor.class));
+        TerminalPosition p3 = indicador.botLeft(0, 0);
 
-        Mockito.verify(graphics, Mockito.times(2)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
-        Mockito.verify(graphics, Mockito.times(4)).putString(anyInt(), anyInt(), anyString());
+        TerminalPosition p4 = indicador.botRight(0, 0);
 
-        indicador.draw(anyInt(),anyInt());
+        assertEquals(0, p1.getColumn());
+        assertEquals(0, p1.getRow());
 
-        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(any(TextColor.class));
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(any(TextColor.class));
+        assertEquals(9, p2.getColumn());
+        assertEquals(0, p2.getRow());
 
-        Mockito.verify(graphics, Mockito.times(2*2)).drawLine(any(TerminalPosition.class), any(TerminalPosition.class), anyChar());
-        Mockito.verify(graphics, Mockito.times(4*2)).putString(anyInt(), anyInt(), anyString());
+        assertEquals(0, p3.getColumn());
+        assertEquals(9, p3.getRow());
+
+        assertEquals(9, p4.getColumn());
+        assertEquals(9, p4.getRow());
     }
 
 

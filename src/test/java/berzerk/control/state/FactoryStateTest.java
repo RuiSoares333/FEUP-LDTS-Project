@@ -2,6 +2,7 @@ package berzerk.control.state;
 
 import berzerk.model.Soldado;
 import berzerk.view.GameView;
+import berzerk.view.menu.GameOverView;
 import berzerk.view.menu.MenuView;
 import berzerk.view.menu.RankingView;
 import berzerk.view.menu.SettingsView;
@@ -38,5 +39,11 @@ public class FactoryStateTest {
     public void genGameState() {
         assertNotNull(factoryState.genGameState(mock(Soldado.class), mock(GameView.class)).getClass());
         assertEquals(GameState.class, factoryState.genGameState(mock(Soldado.class), mock(GameView.class)).getClass());
+    }
+
+    @Test
+    public void genGameOverState() {
+        assertNotNull(factoryState.genGameOverState(mock(Soldado.class), mock(GameOverView.class)).getClass());
+        assertEquals(GameOverState.class, factoryState.genGameOverState(mock(Soldado.class), mock(GameOverView.class)).getClass());
     }
 }

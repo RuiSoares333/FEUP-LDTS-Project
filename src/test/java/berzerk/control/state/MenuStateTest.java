@@ -4,7 +4,6 @@ import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
-import berzerk.model.menu.MenuModelTest;
 import berzerk.view.menu.MenuView;
 import berzerk.view.menu.SettingsView;
 import org.junit.jupiter.api.AfterEach;
@@ -22,17 +21,20 @@ public class MenuStateTest {
     MenuState state;
     MenuModel model;
     MenuView view;
+    Command command;
     FactoryState factoryState;
     Soldado soldado;
     Ecra ecra;
 
     @BeforeEach
     public void initMenuState() throws IOException {
+        command = mock(Command.class);
         factoryState = spy(new FactoryState());
         model = spy(new MenuModel());
         ecra = mock(Ecra.class);
         doThrow(new RuntimeException()).when(ecra).startScreen();
-        view = spy(new MenuView(model, ecra));
+        view = mock(MenuView.class);
+        when(view.getModel()).thenReturn(model);
         soldado = mock(Soldado.class);
         state = spy(new MenuState(factoryState, soldado, view));
         doNothing().when(view).draw(anyInt());
@@ -46,24 +48,25 @@ public class MenuStateTest {
 
     @Test
     public void processExit() throws IOException {
-        when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.QUIT);
-        assertNull(state.run());
+        when(command.getCommand()).thenReturn(Command.COMMAND.QUIT);
+
+        assertNull(state.processKey(command.getCommand()));
     }
 
 
     @Test
     public void processKey(){
         try{
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.UP);
             assertEquals(state, state.run());
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             assertEquals(state, state.run());
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             assertEquals(state, state.run());
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             assertEquals(state, state.run());
         }catch (Exception e) {
             e.printStackTrace();
@@ -73,7 +76,7 @@ public class MenuStateTest {
     @Test
     public void processKeyPlay(){
         try{
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.SELECT);
 
             assertNotNull(state.run().getClass());
         }catch (Exception e) {
@@ -84,10 +87,10 @@ public class MenuStateTest {
     @Test
     public void processKeySettings(){
         try{
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             state.run();
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.SELECT);
             when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> SettingsState.class);
 
             assertNotNull(state.run().getClass());
@@ -99,11 +102,11 @@ public class MenuStateTest {
     @Test
     public void processKeyRanking(){
         try{
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             state.run();
             state.run();
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.SELECT);
             when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> SettingsState.class);
 
             assertNotNull(state.run().getClass());
@@ -116,13 +119,8 @@ public class MenuStateTest {
     @Test
     public void processKeyExit() {
         try {
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
-            state.run();
-
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
-            when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> SettingsState.class);
-
-            assertNull(state.run());
+            when(model.getSelected()).thenReturn(MenuModel.Opcao.EXIT);
+            assertNull(state.processKey(Command.COMMAND.SELECT));
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -141,6 +139,15 @@ public class MenuStateTest {
 
     }
 
+    @Test
+    public void positions(){
+        assertEquals(10, state.getPosition(MenuModel.Opcao.PLAY));
+        assertEquals(12, state.getPosition(MenuModel.Opcao.SETT));
+        assertEquals(14, state.getPosition(MenuModel.Opcao.RANKS));
+        assertEquals(18, state.getPosition(MenuModel.Opcao.EXIT));
+        assertEquals(0, state.getPosition(null));
+    }
+
 
     @Test
     public void draw(){
@@ -152,6 +159,79 @@ public class MenuStateTest {
         }
     }
 
+    @Test
+    public void processKeyUp(){
+        try {
+            state.processKey(Command.COMMAND.UP);
+            verify(model, atLeastOnce()).previousSelected();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Test
+    public void processKeyDown(){
+        try {
+            state.processKey(Command.COMMAND.DOWN);
+            verify(model, atLeastOnce()).nextSelected();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void processKeySelectPlay(){
+        try {
+            when(model.getSelected()).thenReturn(MenuModel.Opcao.PLAY);
+
+            assertNotNull(state.processKey(Command.COMMAND.SELECT).getClass());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void processKeySelectSettings(){
+        try {
+            when(model.getSelected()).thenReturn(MenuModel.Opcao.SETT);
+
+            assertNotNull(state.processKey(Command.COMMAND.SELECT).getClass());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void processKeySelectRanking(){
+        try {
+            when(model.getSelected()).thenReturn(MenuModel.Opcao.RANKS);
+
+            assertNotNull(state.processKey(Command.COMMAND.SELECT).getClass());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void processKeySelectExit(){
+        try {
+            when(model.getSelected()).thenReturn(MenuModel.Opcao.EXIT);
+
+            assertNull(state.processKey(Command.COMMAND.SELECT));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void processKeySelectNull(){
+        try {
+            when(model.getSelected()).thenReturn(null);
+
+            assertNull(state.processKey(Command.COMMAND.SELECT));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

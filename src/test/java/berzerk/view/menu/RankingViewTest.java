@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
@@ -33,6 +34,8 @@ public class RankingViewTest {
         screen = mock(Screen.class);
         graphics = mock(TextGraphics.class);
         view = spy(new RankingView(model, ecra));
+        when(view.getScreen()).thenReturn(screen);
+        when(view.getGraphics()).thenReturn(graphics);
     }
 
     @AfterEach
@@ -49,8 +52,6 @@ public class RankingViewTest {
         novosJogadores.put("D", "4");
         novosJogadores.put("E", "5");
 
-        when(view.getScreen()).thenAnswer(invocation -> screen);
-        when(view.getGraphics()).thenAnswer(invocation -> graphics);
         when(view.getModel().getJogadores()).thenAnswer(invocation -> novosJogadores);
 
         view.draw(0);
@@ -66,12 +67,24 @@ public class RankingViewTest {
         novosJogadores.put("012345678901234567890123", "4");
         novosJogadores.put("0123456789012345678901234", "5");
 
-        when(view.getScreen()).thenAnswer(invocation -> screen);
-        when(view.getGraphics()).thenAnswer(invocation -> graphics);
         when(view.getModel().getJogadores()).thenAnswer(invocation -> novosJogadores);
 
         view.draw(0);
         Mockito.verify(graphics, Mockito.times(1+5+1)).putString(any(TerminalPosition.class), anyString());
     }
 
+    @Test
+    public void correctRuns() throws IOException {
+        view.draw(0);
+        verify(screen, atLeastOnce()).refresh();
+        verify(screen, atLeastOnce()).refresh();
+    }
+
+    @Test
+    public void numPontos(){
+        assertEquals("....................",view.numPontos(0, 0));
+        assertEquals("..........",view.numPontos(5, 5));
+        assertEquals(".....",view.numPontos(10, 5));
+        assertEquals(".....",view.numPontos(10, 10));
+    }
 }

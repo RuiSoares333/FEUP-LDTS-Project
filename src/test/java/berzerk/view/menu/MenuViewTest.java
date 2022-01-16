@@ -34,6 +34,8 @@ public class MenuViewTest {
         graphics = mock(TextGraphics.class);
         view = spy(new MenuView(model, ecra));
         view.setGraphics(graphics);
+        when(view.getScreen()).thenReturn(screen);
+        when(view.getGraphics()).thenReturn(graphics);
     }
 
     @AfterEach
@@ -43,9 +45,6 @@ public class MenuViewTest {
 
     @Test
     public void drawTest() throws IOException {
-        when(view.getScreen()).thenReturn(screen);
-        when(view.getGraphics()).thenReturn(graphics);
-
         view.draw(anyInt());
         verify(graphics, Mockito.times(4+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
 
@@ -55,5 +54,12 @@ public class MenuViewTest {
 
         view.draw(anyInt());
         verify(graphics, Mockito.times((4+ Constants.GAME_NAME.length)*3)).putString(any(TerminalPosition.class), anyString());
+    }
+
+    @Test
+    public void correctRuns() throws IOException {
+        view.draw(0);
+        verify(screen, atLeastOnce()).refresh();
+        verify(screen, atLeastOnce()).refresh();
     }
 }

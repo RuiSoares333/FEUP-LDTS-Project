@@ -27,6 +27,7 @@ public class RankingStateTest {
     FactoryState factoryState;
     Soldado soldado;
     Ecra ecra;
+    Command command;
 
     @BeforeEach
     public void initMenuState() throws IOException {
@@ -48,16 +49,16 @@ public class RankingStateTest {
     @Test
     public void processKeyArrows(){
         try {
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.UP);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.UP);
             assertEquals(MenuState.class, state.run().getClass());
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.RIGHT);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.RIGHT);
             assertEquals(MenuState.class, state.run().getClass());
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             assertEquals(MenuState.class, state.run().getClass());
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.RIGHT);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.RIGHT);
             assertEquals(MenuState.class, state.run().getClass());
 
         }catch (Exception e) {
@@ -68,10 +69,10 @@ public class RankingStateTest {
     @Test
     public void processKeyOtherSpecials() {
         try {
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.SELECT);
             assertEquals(MenuState.class, state.run().getClass());
 
-            when(view.getCommand()).thenAnswer(invocation -> Command.COMMAND.NONE);
+            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.NONE);
             assertEquals(MenuState.class, state.run().getClass());
         }catch (Exception e) {
             e.printStackTrace();
