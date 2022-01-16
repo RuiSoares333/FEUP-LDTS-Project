@@ -20,8 +20,8 @@ import java.util.*;
 
 public class GameModel implements Model {
 
-    private final int numMonstros = 10;
-    private final int numDementors = 10;
+    private final int numMonstros = 15;
+    private final int numDementors = 5;
 
     private final Position initialPosition;
     private final int nivel;
@@ -266,7 +266,6 @@ public class GameModel implements Model {
                 newBullets.add(bullet);
             }
 
-            //verificar colisao de balhas com monstros
             if(bullet.getPosition().equals(hero.getPosition())){
                 System.out.println("Game Over!");
                 hero.setHp(hero.getHp()-1);
@@ -282,7 +281,10 @@ public class GameModel implements Model {
             stones = newStones;
 
             //Eliminar um monstro se a bala lhe bater
-                eliminateMonster(novaPosicao, monsters);
+            eliminateMonster(novaPosicao, monsters);
+
+            //Eliminar um dementor se a bala lhe bater
+            eliminateDementor(novaPosicao, dementors);
 
         }
         return newBullets;
@@ -321,7 +323,7 @@ public class GameModel implements Model {
                     e.printStackTrace();
                 }
             }
-        }, 0, 1000);
+        }, 0, 700);
     }
 
     public List<Monster> moveDementors(List<Monster> monsters){
@@ -411,6 +413,19 @@ public class GameModel implements Model {
                     score += 50;
                 }
         monsters = newMonsters;
+    }
+
+    public void eliminateDementor(Position position, List<? extends Element> elements){
+        List<Monster> newDementors = new ArrayList<>();
+        if(position!=null && !elements.isEmpty())
+            for(Element e: elements)
+                if (!position.equals(e.getPosition())){
+                    newDementors.add((Monster) e);
+                } else {
+                    totalMonstrosMortos++;
+                    score += 100;
+                }
+        dementors = newDementors;
     }
 
     //calcular o total do score do jogador
