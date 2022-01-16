@@ -35,8 +35,23 @@ public class ControllerStateTest {
 
 
     @Test
-    public void manageCommand(){
+    public void manageCommandSame(){
+        try {
+            state.manageCommand(state);
+            verify(view, times(0)).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Test
+    public void manageCommandDifferent(){
+        try {
+            state.manageCommand(any(ControllerState.class));
+            verify(view, atLeastOnce()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

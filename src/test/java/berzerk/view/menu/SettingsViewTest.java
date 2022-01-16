@@ -64,7 +64,7 @@ public class SettingsViewTest {
     @Test
     public void correctRuns() throws IOException {
         view.draw(0);
-        verify(screen, atLeastOnce()).refresh();
+        verify(screen, atLeastOnce()).clear();
         verify(screen, atLeastOnce()).refresh();
     }
 

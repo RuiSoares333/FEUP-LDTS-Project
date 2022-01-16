@@ -74,6 +74,7 @@ public class RankingStateTest {
 
             when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.NONE);
             assertEquals(MenuState.class, state.run().getClass());
+            assertNotNull(state.run().getClass());
         }catch (Exception e) {
             e.printStackTrace();
         }
