@@ -65,4 +65,4 @@ Para uma versão mais detalhada carregue [aqui](docs/README.md)
 
 #### Exemplo do jogo completo 
 
-![This is an image](./docs/images/ExemploCompleto.jpeg)
+![This is an image](./docs/images/ExemploCompleto.png)
