@@ -31,7 +31,7 @@ public class GameModelTest {
     @BeforeEach
     public void dados() throws IOException {
         soldado = mock(Soldado.class);
-        model= spy(new GameModel(soldado, 1, 0));
+        model= spy(new GameModel(soldado, 1, 0,3));
     }
 
 
@@ -82,7 +82,7 @@ public class GameModelTest {
 
     @Test
     public void getInitialPositionTestNivel2() throws IOException {
-        model = new GameModel(soldado, 2, 0);
+        model = new GameModel(soldado, 2, 0,3);
         Position expected = new Position(50, 35);
 
         assertEquals(expected, model.getHero().getPosition());
@@ -90,7 +90,7 @@ public class GameModelTest {
 
     @Test
     public void numAtributosNivel2() throws IOException {
-        model = new GameModel(soldado, 2, 0);
+        model = new GameModel(soldado, 2, 0,3);
         int expected = 359;
 
         assertEquals(expected, model.getWalls().size());
@@ -98,7 +98,7 @@ public class GameModelTest {
 
     @Test
     public void getNivel2() throws IOException {
-        model = new GameModel(soldado, 2, 0);
+        model = new GameModel(soldado, 2, 0,3);
         int expected = 2;
 
         assertEquals(expected, model.getNivel());
@@ -106,7 +106,7 @@ public class GameModelTest {
 
     @Test
     public void createWallsNivel2() throws IOException {
-        model = new GameModel(soldado, 2, 0);
+        model = new GameModel(soldado, 2, 0,3);
         List<Wall> paredes = model.getWalls();
 
         BufferedReader reader = getReader(2);
@@ -129,7 +129,7 @@ public class GameModelTest {
 
     @Test
     public void getInitialPositionTestNivel3() throws IOException {
-        model = new GameModel(soldado, 3, 0);
+        model = new GameModel(soldado, 3, 0,3);
         Position expected = new Position(5, 8);
 
         assertEquals(expected, model.getHero().getPosition());
@@ -137,7 +137,7 @@ public class GameModelTest {
 
     @Test
     public void numAtributosNivel3() throws IOException {
-        model = new GameModel(soldado, 3, 0);
+        model = new GameModel(soldado, 3, 0,3);
         int expected = 313;
 
         assertEquals(expected, model.getWalls().size());
@@ -145,7 +145,7 @@ public class GameModelTest {
 
     @Test
     public void getNivel3() throws IOException {
-        model = new GameModel(soldado, 3, 0);
+        model = new GameModel(soldado, 3, 0,3);
         int expected = 3;
 
         assertEquals(expected, model.getNivel());
@@ -153,7 +153,7 @@ public class GameModelTest {
 
     @Test
     public void createWallsNivel3() throws IOException {
-        model = new GameModel(soldado, 3, 0);
+        model = new GameModel(soldado, 3, 0,3);
         List<Wall> paredes = model.getWalls();
 
         BufferedReader reader = getReader(3);
@@ -179,7 +179,7 @@ public class GameModelTest {
     public void createHeroRecruit() throws IOException {
         when(soldado.getSelected()).thenReturn(Soldado.Heroi.RECRUIT);
 
-        model= new GameModel(soldado, 1, 0);
+        model= new GameModel(soldado, 1, 0,3);
         Object expected = Recruit.class;
 
         assertEquals(expected, model.getHero().getClass());
@@ -189,7 +189,7 @@ public class GameModelTest {
     public void createHeroTanky() throws IOException {
         when(soldado.getSelected()).thenReturn(Soldado.Heroi.TANKY);
 
-        model= new GameModel(soldado, 1, 0);
+        model= new GameModel(soldado, 1, 0,3);
         Object expected = Tanky.class;
 
         assertEquals(expected, model.getHero().getClass());
@@ -199,7 +199,7 @@ public class GameModelTest {
     public void createHeroExpert() throws IOException {
         when(soldado.getSelected()).thenReturn(Soldado.Heroi.EXPERT);
 
-        model= new GameModel(soldado, 1, 0);
+        model= new GameModel(soldado, 1, 0,3);
         Object expected = Expert.class;
 
         assertEquals(expected, model.getHero().getClass());
@@ -366,11 +366,9 @@ public class GameModelTest {
         when(model.verifyCollision(any(Position.class),anyList())).thenReturn(false);
         model.moveHero(new Position(2,0));
 
-
         expected = 2;
 
         assertEquals(expected,model.getHero().getHp());
-
 
 
     }
