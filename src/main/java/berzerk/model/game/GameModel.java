@@ -261,7 +261,7 @@ public class GameModel implements Model {
 
             Position novaPosicao = bullet.move();
 
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters) && verifyCollision(novaPosicao, stones)){
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters) && verifyCollision(novaPosicao, stones) && verifyCollision(novaPosicao, dementors)){
                 bullet.setPosition(novaPosicao);
                 newBullets.add(bullet);
             }
