@@ -4,6 +4,7 @@ import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.menu.MenuModel;
 import berzerk.model.menu.MenuModelTest;
+import berzerk.view.IndicadorView;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -46,20 +47,23 @@ public class MenuViewTest {
     @Test
     public void drawTest() throws IOException {
         view.draw(anyInt());
-        verify(graphics, Mockito.times(4+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
+        verify(graphics, Mockito.times(3+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
 
 
         view.draw(anyInt());
-        verify(graphics, Mockito.times((4+ Constants.GAME_NAME.length)*2)).putString(any(TerminalPosition.class), anyString());
+        verify(graphics, Mockito.times((3+ Constants.GAME_NAME.length)*2)).putString(any(TerminalPosition.class), anyString());
 
         view.draw(anyInt());
-        verify(graphics, Mockito.times((4+ Constants.GAME_NAME.length)*3)).putString(any(TerminalPosition.class), anyString());
+        verify(graphics, Mockito.times((3+ Constants.GAME_NAME.length)*3)).putString(any(TerminalPosition.class), anyString());
     }
 
     @Test
     public void correctRuns() throws IOException {
-        view.draw(0);
-        verify(screen, atLeastOnce()).refresh();
+        view.draw(anyInt());
+
+        verify(screen, atLeastOnce()).clear();
         verify(screen, atLeastOnce()).refresh();
     }
+
+
 }

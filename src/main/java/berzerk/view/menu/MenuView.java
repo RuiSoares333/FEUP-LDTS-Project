@@ -28,7 +28,7 @@ public class MenuView extends View<MenuModel> implements Model {
 
             drawGameName();
             drawOptions();
-            if(indicador != null) indicador.draw(44, position);
+            drawIndicador(indicador, position);
 
             getScreen().refresh();
         }
@@ -42,11 +42,15 @@ public class MenuView extends View<MenuModel> implements Model {
     }
 
     private void drawGameName(){
-        for(int y=0; y<Constants.GAME_NAME.length; y++){
-            getGraphics().putString(new TerminalPosition(27, 1+y), Constants.GAME_NAME[y]);
+        for(int y=1; y<Constants.GAME_NAME.length; y++){
+            getGraphics().putString(new TerminalPosition(27, 1), Constants.GAME_NAME[y-1]);
         }
     }
 
+    public void drawIndicador(IndicadorView indicador, int position){
+        if(indicador!=null)
+            indicador.draw(44, position);
+    }
 
 
 }
