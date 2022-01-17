@@ -1,4 +1,4 @@
-package berzerk.model;
+package berzerk.model.entity;
 
 import berzerk.model.entity.Stone;
 import berzerk.model.entity.properties.Position;

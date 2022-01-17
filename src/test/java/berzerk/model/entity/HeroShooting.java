@@ -1,4 +1,4 @@
-package berzerk.model;
+package berzerk.model.entity;
 
 import berzerk.model.entity.hero.Hero;
 import org.junit.jupiter.api.Test;
