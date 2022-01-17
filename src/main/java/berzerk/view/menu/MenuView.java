@@ -42,8 +42,8 @@ public class MenuView extends View<MenuModel> implements Model {
     }
 
     private void drawGameName(){
-        for(int y=1; y<Constants.GAME_NAME.length; y++){
-            getGraphics().putString(new TerminalPosition(27, 1), Constants.GAME_NAME[y-1]);
+        for(int y=1; y<=Constants.GAME_NAME.length; y++){
+            getGraphics().putString(new TerminalPosition(27, y), Constants.GAME_NAME[y-1]);
         }
     }
 

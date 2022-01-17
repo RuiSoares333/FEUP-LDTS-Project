@@ -47,14 +47,14 @@ public class MenuViewTest {
     @Test
     public void drawTest() throws IOException {
         view.draw(anyInt());
-        verify(graphics, Mockito.times(3+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
+        verify(graphics, Mockito.times(4+ Constants.GAME_NAME.length)).putString(any(TerminalPosition.class), anyString());
 
 
         view.draw(anyInt());
-        verify(graphics, Mockito.times((3+ Constants.GAME_NAME.length)*2)).putString(any(TerminalPosition.class), anyString());
+        verify(graphics, Mockito.times((4+ Constants.GAME_NAME.length)*2)).putString(any(TerminalPosition.class), anyString());
 
         view.draw(anyInt());
-        verify(graphics, Mockito.times((3+ Constants.GAME_NAME.length)*3)).putString(any(TerminalPosition.class), anyString());
+        verify(graphics, Mockito.times((4+ Constants.GAME_NAME.length)*3)).putString(any(TerminalPosition.class), anyString());
     }
 
     @Test
@@ -63,6 +63,17 @@ public class MenuViewTest {
 
         verify(screen, atLeastOnce()).clear();
         verify(screen, atLeastOnce()).refresh();
+    }
+
+    @Test
+    public void correctRuns1(){
+        TextGraphics graphics = mock(TextGraphics.class);
+        IndicadorView iv = spy(new IndicadorView(0, 0, graphics));
+
+        doNothing().when(iv).draw(44, 0);
+        view.drawIndicador(iv, 0);
+
+        verify(iv, atLeastOnce()).draw(44, 0);
     }
 
 

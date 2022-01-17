@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static com.googlecode.lanterna.input.KeyType.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 public class CommandTest {
     private Command command;
@@ -103,6 +105,29 @@ public class CommandTest {
         KeyStroke key = new KeyStroke(KeyType.Enter);
 
         Command.COMMAND c = Command.COMMAND.SELECT;
+
+        assertEquals(c, command.getCommand(key));
+    }
+
+    @Test
+    public void enterSpaceBar(){
+        KeyStroke key = mock(KeyStroke.class);
+
+        doReturn(KeyType.Character).when(key).getKeyType();
+        doReturn(' ').when(key).getCharacter();
+
+        Command.COMMAND c = Command.COMMAND.SPACE;
+
+        assertEquals(c, command.getCommand(key));
+    }
+
+    @Test
+    public void enterX(){
+        KeyStroke key = mock(KeyStroke.class);
+        doReturn(KeyType.Character).when(key).getKeyType();
+        doReturn('x').when(key).getCharacter();
+
+        Command.COMMAND c = Command.COMMAND.CONSTRUCT;
 
         assertEquals(c, command.getCommand(key));
     }

@@ -22,6 +22,10 @@ public class Controller {
     public void run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         do{
             state = state.run();
-        }while (state != null);
+        }while (!isNull(state));
+    }
+
+    public boolean isNull(ControllerState<?> state){
+        return state == null;
     }
 }
