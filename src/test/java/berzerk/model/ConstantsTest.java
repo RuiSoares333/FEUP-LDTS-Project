@@ -39,4 +39,13 @@ public class ConstantsTest {
         }
     }
 
+    @Test
+    public void trophy(){
+        assertEquals(16, Constants.TROPHY.length);
+        for(String s: Constants.TROPHY){
+            char[] caracteres = s.toCharArray();
+            assertEquals(16, caracteres.length);
+        }
+    }
+
 }

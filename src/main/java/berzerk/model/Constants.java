@@ -89,4 +89,24 @@ public final class Constants {
             "      pppp      "
     };
 
+
+    public static final String[] TROPHY={
+            "  oooommmmammm  ",
+            "   oooooooooo   ",
+            "ammmooommmammmaa",
+            "a  oooommmamm  a",
+            "a  oooommmamm  m",
+            "m  oooommmamm  m",
+            "m  oooommmamm  m",
+            "mmmmooommmammmmm",
+            "   oooommmamm   ",
+            "   oooommmmmm   ",
+            "    oooooooo    ",
+            "      oooo      ",
+            "       oa       ",
+            "      ooma      ",
+            "    ooommaam    ",
+            "  oooommmmammm  "
+    };
+
 }
