@@ -33,10 +33,8 @@ public class GameModel implements Model {
     private List<Monster> monsters;
     private List<Monster> dementors;
 
-    //criaçao lista de bullets
     private List<Bullet> bullets;
 
-    //criaçao lista de constructed walls
     private List<Stone> stones;
 
     //score do jogador
@@ -85,12 +83,10 @@ public class GameModel implements Model {
         return dementors;
     }
 
-    //Retornar lista de bullets
     public List<Bullet> getBullets(){
         return bullets;
     }
 
-    //Retornar lista de stones
     public List<Stone> getStones(){
         return stones;
     }
@@ -178,8 +174,6 @@ public class GameModel implements Model {
         return monsters;
     }
 
-
-    //Move monster in random directions
     public void scheduleMonsterMovement(View<GameModel> view){
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -198,12 +192,8 @@ public class GameModel implements Model {
 
     public List<Monster> moveMonsters(List<Monster> monsters){
         if(hero!=null) {
-            //List<Monster> newMonsters = new ArrayList<>();
             for (Monster monster : monsters) {
-
                 Position novaPosicao = monster.move();
-
-                //Disparos dos monstros apenas quando estao em linha vertical e horizontal com o heroi
                 if (monster.getPosition().getX() == hero.getPosition().getX()) {
                     Bullet bullet;
                     if (monster.getPosition().getY() > hero.getPosition().getY()) {
@@ -224,70 +214,11 @@ public class GameModel implements Model {
 
                 if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
                     monster.setPosition(novaPosicao);
-                    //newMonsters.add(monster);
                 }
             }
         }
-        //return newMonsters;
+
         return monsters;
-    }
-
-    //------------------------------------- BULLETS -----------------------------------------------------
-
-    public void addBullet(Bullet bullet){
-        bullets.add(bullet);
-    }
-
-    //Make the bullet move in a schedule time, think 50 is the best
-    public void scheduleBulletMovement(View<GameModel> view){
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                bullets = moveBullet(bullets);
-                try {
-                    view.draw(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, 0, 50);
-    }
-
-    //move the bullet in a straight line till find a monster or a wall
-    public List<Bullet> moveBullet(List<Bullet> bullets){
-        List<Bullet> newBullets = new ArrayList<>();
-        for (Bullet bullet: bullets) {
-
-            Position novaPosicao = bullet.move();
-
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters) && verifyCollision(novaPosicao, stones) && verifyCollision(novaPosicao, dementors)){
-                bullet.setPosition(novaPosicao);
-                newBullets.add(bullet);
-            }
-
-            if(bullet.getPosition().equals(hero.getPosition())){
-                System.out.println("Game Over!");
-                hero.setHp(hero.getHp()-1);
-                positionHero();
-            }
-
-            //verificar colisao com stones e elimina-las
-            List<Stone> newStones = new ArrayList<>();
-                for(Stone stone: stones)
-                    if (!novaPosicao.equals(stone.getPosition())){
-                        newStones.add(stone);
-                    }
-            stones = newStones;
-
-            //Eliminar um monstro se a bala lhe bater
-            eliminateMonster(novaPosicao, monsters);
-
-            //Eliminar um dementor se a bala lhe bater
-            eliminateDementor(novaPosicao, dementors);
-
-        }
-        return newBullets;
     }
 
     //------------------------------------- DEMENTORS -----------------------------------------------------
@@ -308,8 +239,6 @@ public class GameModel implements Model {
         return dementors;
     }
 
-
-    //Move monster in random directions
     public void scheduleDementorMovement(View<GameModel> view){
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -328,12 +257,10 @@ public class GameModel implements Model {
 
     public List<Monster> moveDementors(List<Monster> monsters){
         if(hero!=null) {
-            //List<Monster> newMonsters = new ArrayList<>();
             for (Monster monster : dementors) {
 
                 Position novaPosicao = monster.move();
 
-                //Disparos dos monstros apenas quando estao em linha vertical e horizontal com o heroi
                 if (monster.getPosition().getX() == hero.getPosition().getX()) {
                     Bullet bullet;
                     if (monster.getPosition().getY() > hero.getPosition().getY()) {
@@ -354,15 +281,66 @@ public class GameModel implements Model {
 
                 if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
                     monster.setPosition(novaPosicao);
-                    //newMonsters.add(monster);
                 }
             }
         }
-        //return newMonsters;
+
         return dementors;
     }
 
-    //------------------------------------- Stones -----------------------------------------------------
+    //------------------------------------- BULLETS -----------------------------------------------------
+
+    public void addBullet(Bullet bullet){
+        bullets.add(bullet);
+    }
+
+    public void scheduleBulletMovement(View<GameModel> view){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                bullets = moveBullet(bullets);
+                try {
+                    view.draw(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 50);
+    }
+
+    public List<Bullet> moveBullet(List<Bullet> bullets){
+        List<Bullet> newBullets = new ArrayList<>();
+        for (Bullet bullet: bullets) {
+
+            Position novaPosicao = bullet.move();
+
+            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, monsters) && verifyCollision(novaPosicao, stones) && verifyCollision(novaPosicao, dementors)){
+                bullet.setPosition(novaPosicao);
+                newBullets.add(bullet);
+            }
+
+            if(bullet.getPosition().equals(hero.getPosition())){
+                System.out.println("Game Over!");
+                hero.setHp(hero.getHp()-1);
+                positionHero();
+            }
+
+            List<Stone> newStones = new ArrayList<>();
+                for(Stone stone: stones)
+                    if (!novaPosicao.equals(stone.getPosition())){
+                        newStones.add(stone);
+                    }
+            stones = newStones;
+
+            eliminateMonster(novaPosicao, monsters);
+
+            eliminateDementor(novaPosicao, dementors);
+        }
+        return newBullets;
+    }
+
+    //------------------------------------- STONES -----------------------------------------------------
 
     public void addStone(Stone stone){
         stones.add(stone);
@@ -400,7 +378,7 @@ public class GameModel implements Model {
         return true;
     }
 
-    //Eliminate monster if is hit by a bullet
+    //---------------------------------------- Eliminar monstros quando sao atingidos -------------------------------------
 
     public void eliminateMonster(Position position, List<? extends Element> elements){
         List<Monster> newMonsters = new ArrayList<>();
