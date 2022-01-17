@@ -10,7 +10,6 @@ public class Monster extends Element{
         super(position);
     }
 
-    //Random move
     public Position move(){
         Random random = new Random();
         int movement = random.nextInt(4);

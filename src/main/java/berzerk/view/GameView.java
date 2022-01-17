@@ -94,7 +94,6 @@ public class GameView extends View<GameModel> {
 //        }
     }
 
-    //Desenhar bala
     public void drawBullets(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString(black));
         graphics.setForegroundColor(TextColor.Factory.fromString(white));
@@ -111,7 +110,6 @@ public class GameView extends View<GameModel> {
         }
     }
 
-    //Desenhar stone
     public void drawStones(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#b39062"));
         graphics.setBackgroundColor(TextColor.Factory.fromString("#6e522d"));
@@ -137,7 +135,6 @@ public class GameView extends View<GameModel> {
         drawScore(graphics);
         drawLives(graphics);
 
-        //Desenhar balas
         drawBullets(graphics);
         getScreen().refresh();
     }
