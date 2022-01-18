@@ -12,11 +12,13 @@ import java.util.*;
 
 public class GameModel implements Model {
 
-    private final Hero hero; // hero
 
-    private final Terrain terrain; // terrain
-    private final Enemies enemies; // enemies
-    private final Shooter shooter; // shooter
+
+    private Hero hero; // hero
+
+    private Terrain terrain; // terrain
+    private Enemies enemies; // enemies
+    private Shooter shooter; // shooter
 
     // timers
     private final Timer MM_TIMER;
@@ -65,6 +67,22 @@ public class GameModel implements Model {
 
     public Terrain getTerrain() {
         return terrain;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
+    public void setTerrain(Terrain terrain) {
+        this.terrain = terrain;
+    }
+
+    public void setEnemies(Enemies enemies) {
+        this.enemies = enemies;
+    }
+
+    public void setShooter(Shooter shooter) {
+        this.shooter = shooter;
     }
 
     //---------------------------------- TIMERS ------------------------------------------------------------
@@ -137,9 +155,9 @@ public class GameModel implements Model {
         shooter.setBullets(shooter.moveBullets(terrain, enemies, hero));
     }
 
-    //---------------------------------------- HEROI --------------------------------------------------------------
+    //---------------------------------------- HERO --------------------------------------------------------------
 
-    private Hero createHero(Soldado heroi, Position initialPosition){
+    public Hero createHero(Soldado heroi, Position initialPosition){
         Hero hero = new Hero(initialPosition, 6);
         if(heroi.getSelected() != null) {
             switch (heroi.getSelected()) {
@@ -156,6 +174,7 @@ public class GameModel implements Model {
     }
 
     public boolean isLeaving(Hero hero, Terrain terrain){
-        return terrain.isLeaving(hero);
+        if(terrain!= null) return terrain.isLeaving(hero);
+        else return false;
     }
 }

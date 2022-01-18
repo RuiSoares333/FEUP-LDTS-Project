@@ -10,6 +10,7 @@ public abstract class Element {
     }
 
     protected Element() {
+
     }
 
     public Position getPosition() {

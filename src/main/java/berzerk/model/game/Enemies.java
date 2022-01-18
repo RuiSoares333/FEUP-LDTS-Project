@@ -91,7 +91,7 @@ public class Enemies implements Attributes{
         return condition1 && condition2 && condition3 && condition4;
     }
 
-    public List<? extends Enemy> moveEnemies(List<? extends Enemy> enemies, Terrain terrain, Shooter shooter, Hero hero){
+    public void moveEnemies(List<? extends Enemy> enemies, Terrain terrain, Shooter shooter, Hero hero){
         List<? extends Enemy> newMonsters = new ArrayList<>();
         for (Enemy e: enemies) {
             Position newPosition = e.move(hero.getPosition());
@@ -102,8 +102,6 @@ public class Enemies implements Attributes{
 
             if(playerCollision) hero.killHero();
         }
-
-        return newMonsters;
     }
 
 

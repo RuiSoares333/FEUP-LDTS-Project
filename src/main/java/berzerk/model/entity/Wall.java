@@ -8,11 +8,8 @@ public class Wall extends Element {
         super(new Position(x, y));
     }
 
-    public Wall(Position position) {
-        super(position);
-    }
-
     public Wall(Position position, int orientation){
+        super();
         int x = position.getX();
         int y = position.getY();
 

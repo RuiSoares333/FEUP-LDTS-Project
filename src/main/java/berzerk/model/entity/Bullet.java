@@ -29,9 +29,4 @@ public class Bullet extends Element{
         return newPosition;
     }
 
-    @Override
-    public void setPosition(Position position) {
-        super.setPosition(position);
-    }
-
 }
