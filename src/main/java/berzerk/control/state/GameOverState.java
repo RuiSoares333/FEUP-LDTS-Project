@@ -25,12 +25,29 @@ public class GameOverState extends ControllerState<GameOverModel> {
     @Override
     public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         view.draw(0);
-        manageCommand(processKey(view.getCommand(new Command())));
-        return state.genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
+        return processKey(view.getCommand(new Command()));
     }
 
     @Override
     ControllerState<?> processKey(Command command) throws IOException {
-        return null;
+        ControllerState<?> nextState = this;
+        switch (command.getCommand()) {
+            case DELETE -> model.deleteLastCharacter();
+
+            case SELECT -> {
+                if (model.getName().length() == 3) {
+                    model.saveScores();
+                    nextState = getState().genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
+                }
+            }
+            case TYPE -> {
+                if (model.getName().length() != 3)
+                    model.addCharacter(command.getKey());
+            }
+
+            case QUIT -> nextState = getState().genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
+        }
+
+        return manageCommand(nextState);
     }
 }

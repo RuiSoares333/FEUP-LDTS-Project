@@ -10,7 +10,6 @@ import java.util.*;
 public class RankingModel implements Model {
 
     Map<String, Integer> jogadores;
-//    Scanner in = new Scanner(System.in);
 
 
     public RankingModel(){
@@ -34,10 +33,13 @@ public class RankingModel implements Model {
     }
 
     protected BufferedReader getReader(){
-        InputStream is = ClassLoader.getSystemResourceAsStream("ranking.txt");
-        assert is != null;
-        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        return new BufferedReader(streamReader);
+        try {
+            FileReader fileWriter = new FileReader("src/main/resources/ranking.txt");
+            return new BufferedReader(fileWriter);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public LinkedHashMap<String, Integer> getOrderedMap(Map<String, Integer> novosJogadores){
@@ -50,15 +52,5 @@ public class RankingModel implements Model {
         return jogadores;
     }
 
-//    public void writeScore(GameModel model){
-//        try {
-//            FileWriter myWriter = new FileWriter("ranking.txt");
-//            System.out.println("Write your name: ");
-//            String name = in.nextLine();
-//            myWriter.write(name + " " + model.calculateTotalScore());
-//            myWriter.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 }

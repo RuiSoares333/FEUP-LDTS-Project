@@ -4,6 +4,8 @@ public final class Constants {
     public static final int WIDTH = 100;
     public static final int HEIGHT = 40;
 
+    public static final int MAX_NOME_JOGADOR = 3;
+
     public static final String MENU_BACKGROUND_COLOR = "#270F41";
     public static final String MENU_LETTER_COLOR = "#F6C370";
 
