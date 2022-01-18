@@ -17,7 +17,8 @@ public final class Constants {
     public static final String EXPERT_COLOR = "#616161";
 
     public static final String MONSTER_COLOR = "#24A120";
-    public static final String DEMENTOR_COLOR = "#ff0000";
+    public static final String DEMENTOR_COLOR = "#CC9900";
+    public static final String VOLDEMORT_COLOR = "#ff0000";
 
     public static final int VALOR_CADA_MONSTRO = 50;
 

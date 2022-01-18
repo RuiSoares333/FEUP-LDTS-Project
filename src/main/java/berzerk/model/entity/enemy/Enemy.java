@@ -1,8 +1,12 @@
 package berzerk.model.entity.enemy;
 
+import berzerk.model.Constants;
 import berzerk.model.entity.Element;
+import berzerk.model.entity.Monster;
 import berzerk.model.entity.properties.Position;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Enemy extends Element {

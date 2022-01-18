@@ -6,6 +6,9 @@ import berzerk.model.entity.Bullet;
 import berzerk.model.entity.Monster;
 import berzerk.model.entity.Stone;
 import berzerk.model.entity.Wall;
+import berzerk.model.entity.enemy.Dementor;
+import berzerk.model.entity.enemy.Dragon;
+import berzerk.model.entity.enemy.Voldemort;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.game.GameModel;
 import com.googlecode.lanterna.SGR;
@@ -22,7 +25,8 @@ public class GameView extends View<GameModel> {
     String black = Constants.GAME_BACKGROUND_COLOR;
     String blue = Constants.GAME_WALL_COLOR;
     String green = Constants.MONSTER_COLOR;
-    String red = Constants.DEMENTOR_COLOR;
+    String red = Constants.VOLDEMORT_COLOR;
+    String orange = Constants.DEMENTOR_COLOR;
     String white = Constants.GAME_BULLET_COLOR;
     String heroColor;
 
@@ -57,20 +61,22 @@ public class GameView extends View<GameModel> {
             graphics.putString(new TerminalPosition(wall.getPosition().getX(), wall.getPosition().getY()), "H");
     }
 
-    public void drawMonsters(TextGraphics graphics) {
+    public void drawDragons(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString(green));
-
-        for(Monster monster : model.getMonsters())
-            graphics.putString(new TerminalPosition(monster.getPosition().getX(), monster.getPosition().getY()), "@");
-
+        for(Dragon dragon : model.getDragons())
+            graphics.putString(new TerminalPosition(dragon.getPosition().getX(), dragon.getPosition().getY()), "@");
     }
 
     public void drawDementors(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString(red));
-
-        for(Monster dementor : model.getDementors())
+        graphics.setForegroundColor(TextColor.Factory.fromString(orange));
+        for(Dementor dementor : model.getDementors())
             graphics.putString(new TerminalPosition(dementor.getPosition().getX(), dementor.getPosition().getY()), "@");
+    }
 
+    public void drawVoldemorts(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(red));
+        for(Voldemort voldemort : model.getVoldemorts())
+            graphics.putString(new TerminalPosition(voldemort.getPosition().getX(), voldemort.getPosition().getY()), "@");
     }
 
     private void drawNivel(TextGraphics graphics){
@@ -125,8 +131,10 @@ public class GameView extends View<GameModel> {
 
         setBackground(graphics);
 
-        drawMonsters(graphics);
+        drawDragons(graphics);
         drawDementors(graphics);
+        drawVoldemorts(graphics);
+
         drawHero(graphics, model.getHero());
         drawNivel(graphics);
         drawWalls(graphics);
