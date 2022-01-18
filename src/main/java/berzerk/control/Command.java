@@ -6,6 +6,7 @@ public class Command {
     public enum COMMAND {UP, RIGHT, DOWN, LEFT, SELECT, QUIT, NONE, SPACE, CONSTRUCT}
 
     private COMMAND command;
+    private Character key;
 
     public Command() {
         this.command = COMMAND.NONE;
@@ -16,7 +17,7 @@ public class Command {
     }
 
 
-    public Command.COMMAND getCommand(KeyStroke key){
+    public Command getCommand(KeyStroke key){
 
         //Alteraçao para ter comando da tecla x para construir paredes
         switch (key.getKeyType()) {
@@ -27,6 +28,7 @@ public class Command {
             case ArrowLeft -> command = COMMAND.LEFT;
             case Enter -> command = COMMAND.SELECT;
             case Character -> {
+                this.key = key.getCharacter();
                 if(key.getCharacter() == ' '){
                     command = COMMAND.SPACE;
                 }
@@ -36,7 +38,7 @@ public class Command {
             }
             default -> command = COMMAND.NONE;
         }
-        return command;
+        return this;
     }
 
 }

@@ -28,9 +28,9 @@ public class SettingsState extends ControllerState<SettingsModel> {
     }
 
     @Override
-    public ControllerState<?> processKey(Command.COMMAND key) throws IOException {
+    public ControllerState<?> processKey(Command command) throws IOException {
         ControllerState<?> newState = this;
-        switch (key) {
+        switch (command.getCommand()) {
             case LEFT -> model.previousSelected();
             case RIGHT -> model.nextSelected();
             case SELECT, QUIT -> newState = state.genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));

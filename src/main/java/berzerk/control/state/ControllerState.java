@@ -48,6 +48,6 @@ public abstract class ControllerState <T extends Model>{
 
 
     public abstract ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException;
-    abstract ControllerState<?> processKey(Command.COMMAND key) throws IOException;
+    abstract ControllerState<?> processKey(Command command) throws IOException;
 
 }

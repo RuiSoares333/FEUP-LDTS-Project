@@ -29,7 +29,7 @@ public class RankingState extends ControllerState<RankingModel>  {
     }
 
     @Override
-    public ControllerState<?> processKey(Command.COMMAND key) {
+    public ControllerState<?> processKey(Command command) {
         return null;
     }
 

@@ -1,484 +1,161 @@
 package berzerk.model.game;
 
-import berzerk.model.Constants;
 import berzerk.model.Model;
 import berzerk.model.Soldado;
 import berzerk.model.entity.*;
-import berzerk.model.entity.enemy.Dementor;
-import berzerk.model.entity.enemy.Dragon;
-import berzerk.model.entity.enemy.Voldemort;
-import berzerk.model.entity.hero.Expert;
 import berzerk.model.entity.hero.Hero;
-import berzerk.model.entity.hero.Recruit;
-import berzerk.model.entity.hero.Tanky;
 import berzerk.model.entity.properties.Position;
 import berzerk.view.View;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class GameModel implements Model {
 
-    private final Position initialPosition;
-    private final int nivel;
+    private final Hero hero; // hero
 
-    private final Hero hero;
-    private final List<Wall> walls;
-    private final List<Wall> exit;
+    private final Terrain terrain; // terrain
+    private final Enemies enemies; // enemies
+    private final Shooter shooter; // shooter
 
-    //Número de monstros a criar
-    private final int numDragons = 15;
-    private final int numDementors = 5;
-    private final int numVoldemorts = 2;
-
-    //Criação de monstros
-    private List<Dragon> dragons;
-    private List<Dementor> dementors;
-    private List<Voldemort> voldemorts;
-
-    private List<Bullet> bullets;
-    private List<Stone> stones;
-
-    //score do jogador
-    private int score;
-    private int totalMonstrosMortos;
-    private int totalDementorsMortos;
+    // timers
+    private final Timer MM_TIMER;
+    private final Timer BM_TIMER;
+    private final Timer D_TIMER;
+    private final Timer DM_TIMER;
 
     public GameModel(Soldado soldado, int nivel, int score, int hp) throws IOException {
-        this.nivel = nivel;
+        shooter = new Shooter();
+        terrain = new Terrain(nivel);
+        enemies = new Enemies(terrain, score);
 
-        this.initialPosition = getInitialPosition();
-        this.hero = createHero(soldado);
+        hero = createHero(soldado, terrain.getInitialPosition());
         hero.setHp(hp);
 
-        List<List<Wall>> wallList = createWalls();
-        walls = wallList.get(0);
-        exit = wallList.get(1);
-
-        dragons = createDragons();
-        dementors = createDementors();
-        voldemorts = createVoldemorts();
-
-        bullets = new ArrayList<>();
-        stones = new ArrayList<>();
-
-        this.score = score;
-        totalMonstrosMortos = 0;
-        totalDementorsMortos = 0;
+        MM_TIMER = new Timer();
+        BM_TIMER = new Timer();
+        D_TIMER = new Timer();
+        DM_TIMER = new Timer();
     }
 
+    public GameModel(Soldado soldado, int nivel) throws IOException {
+        shooter = new Shooter();
+        terrain = new Terrain(nivel);
+        enemies = new Enemies(terrain);
 
-    private void positionHero(){
-        hero.setPosition(initialPosition);
+        hero = createHero(soldado, terrain.getInitialPosition());
+
+        MM_TIMER = new Timer();
+        BM_TIMER = new Timer();
+        D_TIMER = new Timer();
+        DM_TIMER = new Timer();
     }
 
     public Hero getHero(){
         return hero;
     }
 
-    public List<Dragon> getDragons(){
-        return dragons;
+    public Shooter getShooter() {
+        return shooter;
     }
 
-    public List<Dementor> getDementors(){
-        return dementors;
+    public Enemies getEnemies() {
+        return enemies;
     }
 
-    public List<Voldemort> getVoldemorts(){
-        return voldemorts;
+    public Terrain getTerrain() {
+        return terrain;
     }
 
-    public List<Bullet> getBullets(){
-        return bullets;
+    //---------------------------------- TIMERS ------------------------------------------------------------
+
+    public void initTimers(View<GameModel> view){
+        initMonsterTimer();
+        initBulletTimer();
+        initDrawTimer(view);
     }
 
-    public List<Stone> getStones(){
-        return stones;
+    public void endTimers(){
+        MM_TIMER.cancel();
+        DM_TIMER.cancel();
+        BM_TIMER.cancel();
+        D_TIMER.cancel();
     }
 
-    public List<Wall> getWalls(){
-        return walls;
-    }
-
-    public List<Wall> getExit() {
-        return exit;
-    }
-
-    public int getNivel(){
-        return nivel;
-    }
-
-    private Position getInitialPosition(){
-        if(nivel<=2) return new Position(50, 35);
-        else return new Position(5, 8);
-    }
-
-    public int getTotalMonstrosMortos() {
-        return totalMonstrosMortos;
-    }
-
-    public void setTotalMonstrosMortos(int totalMonstrosMortos) {
-        this.totalMonstrosMortos = totalMonstrosMortos;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-
-    //---------------------------------- PAREDES -----------------------------------------------------------
-
-    private List<List<Wall>> createWalls() throws IOException {
-        List<List<Wall>> paredes = new ArrayList<>();
-        List<Wall> eletrificadas = new ArrayList<>();
-        List<Wall> saida = new ArrayList<>();
-
-        BufferedReader reader = getReader();
-        int y = 0;
-        for (String line; (line = reader.readLine()) != null; y++) {
-            for(int x=0; x<line.length(); x++){
-                addToList(line.charAt(x), eletrificadas, saida, x, y);
-            }
-        }
-        paredes.add(eletrificadas);
-        paredes.add(saida);
-        return paredes;
-    }
-
-    private void addToList(char c, List<Wall> eletrificadas, List<Wall> saida, int x, int y){
-        if(c == 'p') eletrificadas.add(new Wall(x, y));
-        if(c == 'e') saida.add(new Wall(x, y));
-    }
-
-    private BufferedReader getReader(){
-        String mapa = "nivel" + nivel + ".txt";
-        InputStream is = ClassLoader.getSystemResourceAsStream(mapa);
-        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        return new BufferedReader(streamReader);
-    }
-
-    // CRIAR INIMIGOS
-
-    private List<Dragon> createDragons(){
-        Random random = new Random();
-        int width = Constants.WIDTH, height = Constants.HEIGHT;
-        ArrayList<Dragon> dragons = new ArrayList<>();
-        while(dragons.size() < numDragons){
-            Position novaPosicao = new Position(random.nextInt(width-2) + 2, random.nextInt(height-4) + 4);
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, dragons))
-                dragons.add(new Dragon(novaPosicao));
-        }
-        return dragons;
-    }
-
-    private List<Dementor> createDementors(){
-        Random random = new Random();
-        int width = Constants.WIDTH, height = Constants.HEIGHT;
-        ArrayList<Dementor> dementors = new ArrayList<>();
-        while(dementors.size() < numDementors){
-            Position novaPosicao = new Position(random.nextInt(width-2) + 2, random.nextInt(height-4) + 4);
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, dementors) )
-                dementors.add(new Dementor(novaPosicao));
-        }
-        return dementors;
-    }
-
-    private List<Voldemort> createVoldemorts(){
-        Random random = new Random();
-        int width = Constants.WIDTH, height = Constants.HEIGHT;
-        ArrayList<Voldemort> voldemorts = new ArrayList<>();
-        while(voldemorts.size() < numVoldemorts){
-            Position novaPosicao = new Position(random.nextInt(width-2) + 2, random.nextInt(height-4) + 4);
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, voldemorts) )
-                voldemorts.add(new Voldemort(novaPosicao));
-        }
-        return voldemorts;
-    }
-
-    // TEMPORIZAR MOVIMENTO INIMIGOS
-
-    public void scheduleDragonMovement(View<GameModel> view){
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+    public void initMonsterTimer(){
+        MM_TIMER.schedule(new TimerTask() {
             @Override
             public void run() {
-                dragons = moveDragons(dragons);
-                System.out.println(hero.getPosition());
-                try {
-                    view.draw(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                moveMonsters(enemies, terrain, shooter, hero);
             }
         }, 0, 1000);
-    }
 
-    public List<Dragon> moveDragons(List<Dragon> dragons){
-        if(hero!=null) {
-            for (Dragon dragon : dragons) {
-                Position novaPosicao = dragon.move();
-                if (dragon.getPosition().getX() == hero.getPosition().getX()) {
-                    Bullet bullet;
-                    if (dragon.getPosition().getY() > hero.getPosition().getY()) {
-                        bullet = new Bullet(dragon.getPosition().getX(), (dragon.getPosition().getY() - 1), 1);
-                    } else {
-                        bullet = new Bullet(dragon.getPosition().getX(), (dragon.getPosition().getY() + 1), 3);
-                    }
-                    addBullet(bullet);
-                } else if (dragon.getPosition().getY() == hero.getPosition().getY()) {
-                    Bullet bullet;
-                    if (dragon.getPosition().getX() > hero.getPosition().getX()) {
-                        bullet = new Bullet(dragon.getPosition().getX() - 1, (dragon.getPosition().getY()), 4);
-                    } else {
-                        bullet = new Bullet(dragon.getPosition().getX() + 1, (dragon.getPosition().getY()), 2);
-                    }
-                    addBullet(bullet);
-                }
-                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
-                    dragon.setPosition(novaPosicao);
-                }
-            }
-        }
-        return dragons;
-    }
-
-    public void scheduleDementorMovement(View<GameModel> view){
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        DM_TIMER.schedule(new TimerTask() {
             @Override
             public void run() {
-                dementors = moveDementors(dementors);
-                System.out.println(hero.getPosition());
-                try {
-                    view.draw(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                moveDementors(enemies, terrain, shooter, hero);
             }
         }, 0, 700);
     }
 
-    public List<Dementor> moveDementors(List<Dementor> dementors){
-        if(hero!=null) {
-            for (Dementor dementor : dementors) {
-
-                Position novaPosicao = dementor.move();
-
-                if (dementor.getPosition().getX() == hero.getPosition().getX()) {
-                    Bullet bullet;
-                    if (dementor.getPosition().getY() > hero.getPosition().getY()) {
-                        bullet = new Bullet(dementor.getPosition().getX(), (dementor.getPosition().getY() - 1), 1);
-                    } else {
-                        bullet = new Bullet(dementor.getPosition().getX(), (dementor.getPosition().getY() + 1), 3);
-                    }
-                    addBullet(bullet);
-                } else if (dementor.getPosition().getY() == hero.getPosition().getY()) {
-                    Bullet bullet;
-                    if (dementor.getPosition().getX() > hero.getPosition().getX()) {
-                        bullet = new Bullet(dementor.getPosition().getX() - 1, (dementor.getPosition().getY()), 4);
-                    } else {
-                        bullet = new Bullet(dementor.getPosition().getX() + 1, (dementor.getPosition().getY()), 2);
-                    }
-                    addBullet(bullet);
-                }
-
-                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets) && verifyCollision(novaPosicao, voldemorts) && verifyCollision(novaPosicao, dragons)) {
-                    dementor.setPosition(novaPosicao);
-                }
-            }
-        }
-        return dementors;
-    }
-
-    public void scheduleVoldemorteMovement(View<GameModel> view){
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+    public void initBulletTimer(){
+        BM_TIMER.schedule(new TimerTask() {
             @Override
             public void run() {
-                voldemorts = moveVoldemorts(voldemorts);
-                try {
-                    view.draw(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, 0, 500);
-    }
-
-    public List<Voldemort> moveVoldemorts(List<Voldemort> voldemorts){
-        if(hero!=null) {
-            for (Voldemort voldemort : voldemorts) {
-
-                Position novaPosicao = voldemort.move();
-
-                if (voldemort.getPosition().getX() == hero.getPosition().getX()) {
-                    Bullet bullet;
-                    if (voldemort.getPosition().getY() > hero.getPosition().getY()) {
-                        bullet = new Bullet(voldemort.getPosition().getX(), (voldemort.getPosition().getY() - 1), 1);
-                    } else {
-                        bullet = new Bullet(voldemort.getPosition().getX(), (voldemort.getPosition().getY() + 1), 3);
-                    }
-                    addBullet(bullet);
-                } else if (voldemort.getPosition().getY() == hero.getPosition().getY()) {
-                    Bullet bullet;
-                    if (voldemort.getPosition().getX() > hero.getPosition().getX()) {
-                        bullet = new Bullet(voldemort.getPosition().getX() - 1, (voldemort.getPosition().getY()), 4);
-                    } else {
-                        bullet = new Bullet(voldemort.getPosition().getX() + 1, (voldemort.getPosition().getY()), 2);
-                    }
-                    addBullet(bullet);
-                }
-                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)  && verifyCollision(novaPosicao, dementors)  && verifyCollision(novaPosicao, dragons)) {
-                    voldemort.setPosition(novaPosicao);
-                }
-            }
-        }
-        return voldemorts;
-    }
-
-    //------------------------------------- BULLETS -----------------------------------------------------
-
-    public void addBullet(Bullet bullet){
-        bullets.add(bullet);
-    }
-
-    public void scheduleBulletMovement(View<GameModel> view){
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                bullets = moveBullet(bullets);
-                try {
-                    view.draw(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                moveBullet(shooter, terrain, enemies, hero);
             }
         }, 0, 50);
     }
 
-    public List<Bullet> moveBullet(List<Bullet> bullets){
-        List<Bullet> newBullets = new ArrayList<>();
-        for (Bullet bullet: bullets) {
-
-            Position novaPosicao = bullet.move();
-
-            if(verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, dragons) && verifyCollision(novaPosicao, stones) && verifyCollision(novaPosicao, dementors)  && verifyCollision(novaPosicao, voldemorts)){
-                bullet.setPosition(novaPosicao);
-                newBullets.add(bullet);
+    public void initDrawTimer(View<GameModel> view){
+        D_TIMER.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    view.draw(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
-            if(bullet.getPosition().equals(hero.getPosition())){
-                System.out.println("Game Over!");
-                hero.setHp(hero.getHp()-1);
-                positionHero();
-            }
-
-            List<Stone> newStones = new ArrayList<>();
-                for(Stone stone: stones)
-                    if (!novaPosicao.equals(stone.getPosition())){
-                        newStones.add(stone);
-                    }
-            stones = newStones;
-
-            eliminateDragon(novaPosicao, dragons);
-            eliminateDementor(novaPosicao, dementors);
-            eliminateVoldemort(novaPosicao, voldemorts);
-        }
-        return newBullets;
+        }, 0, 25);
     }
 
-    //------------------------------------- STONES -----------------------------------------------------
+    //------------------------------------- MONSTERS -----------------------------------------------------
 
-    public void addStone(Stone stone){
-        stones.add(stone);
+
+    public void moveMonsters(Enemies enemies, Terrain terrain, Shooter shooter, Hero hero){
+        enemies.moveEnemies(enemies.getDragons(), terrain, shooter, hero);
+    }
+
+    public void moveDementors(Enemies enemies, Terrain terrain, Shooter shooter,  Hero hero){
+        enemies.moveEnemies(enemies.getDementors(), terrain, shooter, hero);
+    }
+
+    //------------------------------------- BULLETS -----------------------------------------------------
+
+    public void moveBullet(Shooter shooter,Terrain terrain, Enemies enemies, Hero hero){
+        shooter.setBullets(shooter.moveBullets(terrain, enemies, hero));
     }
 
     //---------------------------------------- HEROI --------------------------------------------------------------
 
-    private Hero createHero(Soldado heroi){
-        int x = initialPosition.getX(), y = initialPosition.getY();
-        Hero hero = new Recruit(x, y);
+    private Hero createHero(Soldado heroi, Position initialPosition){
+        Hero hero = new Hero(initialPosition, 6);
         if(heroi.getSelected() != null) {
             switch (heroi.getSelected()) {
-                case TANKY -> hero = new Tanky(x, y);
-                case EXPERT -> hero = new Expert(x, y);
-                default -> hero = new Recruit(x, y);
+                case TANKY -> hero = new Hero(initialPosition, 9);
+                case EXPERT -> hero = new Hero(initialPosition, 3);
+                default -> hero = new Hero(initialPosition, 6);
             }
         }
         return hero;
     }
 
-    public void moveHero(Position position) {
-        if(!verifyCollision(position, dragons) || !verifyCollision(position, dementors) || !verifyCollision(position, voldemorts) || !verifyCollision(position, walls) || !verifyCollision(position, bullets)){
-            System.out.println("Game Over!");
-            hero.setHp(hero.getHp()-1);
-            positionHero();
-        }
-        else hero.setPosition(position);
+    public void moveHero(Hero hero, Shooter shooter,Terrain terrain, Enemies enemies, Position position) {
+        hero.move(shooter, terrain, enemies, position);
     }
 
-    public boolean verifyCollision(Position position, List<? extends Element> elements){
-        if(position!=null && !elements.isEmpty())
-            for(Element e: elements)
-                if (position.equals(e.getPosition())) return false;
-
-        return true;
+    public boolean isLeaving(Hero hero, Terrain terrain){
+        return terrain.isLeaving(hero);
     }
-
-    // ELIMINAR INIMIGOD
-
-    public void eliminateDragon(Position position, List<? extends Element> elements){
-        List<Dragon> newDragons = new ArrayList<>();
-        if(position!=null && !elements.isEmpty())
-            for(Element e: elements)
-                if (!position.equals(e.getPosition())){
-                    newDragons.add((Dragon) e);
-                } else {
-                    totalMonstrosMortos++;
-                    score += 50;
-                }
-        dragons = newDragons;
-    }
-
-    public void eliminateDementor(Position position, List<? extends Element> elements){
-        List<Dementor> newDementors = new ArrayList<>();
-        if(position!=null && !elements.isEmpty())
-            for(Element e: elements)
-                if (!position.equals(e.getPosition())){
-                    newDementors.add((Dementor) e);
-                } else {
-                    totalMonstrosMortos++;
-                    score += 100;
-                }
-        dementors = newDementors;
-    }
-
-    public void eliminateVoldemort(Position position, List<? extends Element> elements){
-        List<Voldemort> newVoldemorts = new ArrayList<>();
-        if(position!=null && !elements.isEmpty())
-            for(Element e: elements)
-                if (!position.equals(e.getPosition())){
-                    newVoldemorts.add((Voldemort) e);
-                } else {
-                    totalMonstrosMortos++;
-                    score += 200;
-                }
-        voldemorts = newVoldemorts;
-    }
-
-    //calcular o total do score do jogador
-    public int calculateTotalScore(){
-        return totalMonstrosMortos * Constants.VALOR_CADA_MONSTRO;
-    }
-
-
 }

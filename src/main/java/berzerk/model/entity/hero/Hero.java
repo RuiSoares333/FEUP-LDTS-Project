@@ -2,20 +2,25 @@ package berzerk.model.entity.hero;
 
 import berzerk.model.entity.Element;
 import berzerk.model.entity.properties.Position;
+import berzerk.model.game.Attributes;
+import berzerk.model.game.Enemies;
+import berzerk.model.game.Shooter;
+import berzerk.model.game.Terrain;
 
-public class Hero extends Element {
+public class Hero extends Element implements Attributes {
 
-    private int bulMult;
+    private final Position initialPosition;
+
     private int hp;
     //Orientação no sentido do relogios 1-UP 2-RIGHT 3-DOWN 4-LEFT
     private int orientation;
 
     //Inicializar orientação para RIGHT
-    public Hero(int x, int y, int bulMult, int hp){
-        super(new Position(x, y));
-        this.bulMult = bulMult;
+    public Hero(Position initialPosition, int hp){
+        super(new Position(initialPosition.getX(), initialPosition.getY()));
         this.hp = hp;
         orientation = 2;
+        this.initialPosition = initialPosition;
     }
 
     //Getters e Setter orientação
@@ -32,37 +37,24 @@ public class Hero extends Element {
     }
 
     //Mudança para fazer update da orientação
-
     public Position moveRight(){
         setOrientation(2);
-        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX()+1, super.getPosition().getY());
     }
 
     public Position moveLeft(){
         setOrientation(4);
-        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX()-1, super.getPosition().getY());
     }
 
     public Position moveUp(){
         setOrientation(1);
-        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX(), super.getPosition().getY()-1);
     }
 
     public Position moveDown(){
         setOrientation(3);
-        System.out.println("Orientacao: " + getOrientation());
         return new Position(super.getPosition().getX(), super.getPosition().getY()+1);
-    }
-
-    public double getBulMult() {
-        return bulMult;
-    }
-
-    public void setBulMult(int bulMult) {
-        this.bulMult = bulMult;
     }
 
     public int getHp() {
@@ -71,5 +63,27 @@ public class Hero extends Element {
 
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public void move(Shooter shooter, Terrain terrain, Enemies enemies, Position position){
+        if(!condition(terrain, enemies, shooter, position))
+            killHero();
+        else{
+            if(verifyCollision(position, terrain.getStones()))
+                setPosition(position);
+        }
+    }
+
+    public boolean condition(Terrain terrain, Enemies enemies, Shooter shooter, Position pos){
+        boolean condition1 = verifyCollision(pos, terrain.getWalls());
+        boolean condition3 = verifyCollision(pos, enemies.getDragons());
+        boolean condition4 = verifyCollision(pos, enemies.getDementors());
+        boolean condition5 = verifyCollision(pos, shooter.getBullets());
+        return condition1 && condition3 && condition4 && condition5;
+    }
+
+    public void killHero(){
+        setHp(getHp()-1);
+        setPosition(initialPosition);
     }
 }

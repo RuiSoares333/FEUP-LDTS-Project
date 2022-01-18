@@ -5,11 +5,9 @@ import berzerk.model.Model;
 public class GameOverModel implements Model {
 
     private int score;
-    Boolean isScoreHigh;
 
-    public GameOverModel(int score, boolean isScoreHigh) {
+    public GameOverModel(int score) {
         this.score = score;
-        this.isScoreHigh = isScoreHigh;
     }
 
 

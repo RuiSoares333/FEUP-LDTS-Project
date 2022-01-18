@@ -26,11 +26,11 @@ public class GameOverState extends ControllerState<GameOverModel> {
     public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         view.draw(0);
         manageCommand(processKey(view.getCommand(new Command())));
-        return getState().genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
+        return state.genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
     }
 
     @Override
-    ControllerState<?> processKey(Command.COMMAND key) throws IOException {
+    ControllerState<?> processKey(Command command) throws IOException {
         return null;
     }
 }
