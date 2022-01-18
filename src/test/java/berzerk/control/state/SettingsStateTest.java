@@ -36,6 +36,7 @@ public class SettingsStateTest {
         view = spy(new SettingsView(model, ecra));
         state = new SettingsState(factoryState, soldado, view);
         doNothing().when(view).draw(anyInt());
+        command = mock(Command.class);
     }
 
     @AfterEach
@@ -45,41 +46,25 @@ public class SettingsStateTest {
 
     @Test
     public void processKey() throws IOException{
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.LEFT);
+        doReturn(command).when(view).getCommand(command);
+        doReturn(Command.COMMAND.LEFT).when(command).getCommand();
         assertEquals(state, state.run());
 
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.RIGHT);
+        doReturn(Command.COMMAND.RIGHT).when(command).getCommand();
         assertEquals(state, state.run());
 
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.RIGHT);
+        doReturn(Command.COMMAND.UP).when(command).getCommand();
         assertEquals(state, state.run());
 
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.RIGHT);
-        assertEquals(state, state.run());
-
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.UP);
-        assertEquals(state, state.run());
-
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.UP);
-        assertEquals(state, state.run());
-
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.UP);
-        assertEquals(state, state.run());
-
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
-        assertEquals(state, state.run());
-
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
-        assertEquals(state, state.run());
-
-        when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
+        doReturn(Command.COMMAND.DOWN).when(command).getCommand();
         assertEquals(state, state.run());
     }
 
     @Test
     public void processKeySelect1() {
         try {
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.LEFT);
+            doReturn(command).when(view).getCommand(command);
+            doReturn(Command.COMMAND.LEFT).when(command).getCommand();
             state.run();
 
             when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.SELECT);

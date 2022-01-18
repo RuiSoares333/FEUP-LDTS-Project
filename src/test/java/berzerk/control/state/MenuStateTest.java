@@ -4,6 +4,7 @@ import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.menu.MenuModel;
+import berzerk.view.View;
 import berzerk.view.menu.MenuView;
 import berzerk.view.menu.SettingsView;
 import org.junit.jupiter.api.AfterEach;
@@ -57,16 +58,15 @@ public class MenuStateTest {
     @Test
     public void processKey(){
         try{
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.UP);
+            doReturn(Command.COMMAND.UP).when(command).getCommand();
+            doReturn(command).when(view).getCommand(command);
             assertEquals(state, state.run());
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            doReturn(Command.COMMAND.DOWN).when(command).getCommand();
             assertEquals(state, state.run());
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             assertEquals(state, state.run());
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
             assertEquals(state, state.run());
         }catch (Exception e) {
             e.printStackTrace();
@@ -87,11 +87,13 @@ public class MenuStateTest {
     @Test
     public void processKeySettings(){
         try{
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            doReturn(Command.COMMAND.DOWN).when(command).getCommand();
+            doReturn(command).when(view).getCommand(command);
             state.run();
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.SELECT);
-            when(factoryState.genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class))).thenAnswer(invocation -> SettingsState.class);
+            doReturn(Command.COMMAND.SELECT).when(command).getCommand();
+            doReturn(command).when(view).getCommand(command);
+            doReturn(new SettingsState(mock(FactoryState.class), mock(Soldado.class), mock(View.class))).when(factoryState).genSettingsMenuState(mock(Soldado.class), mock(SettingsView.class));
 
             assertNotNull(state.run().getClass());
         }catch (Exception e) {

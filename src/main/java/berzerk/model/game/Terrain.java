@@ -80,7 +80,7 @@ public class Terrain implements Attributes{
         if(c == 'e') saida.add(new Wall(x, y));
     }
 
-    private BufferedReader getReader(){
+    public BufferedReader getReader(){
         String mapa = "nivel" + LEVEL + ".txt";
         InputStream is = ClassLoader.getSystemResourceAsStream(mapa);
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);

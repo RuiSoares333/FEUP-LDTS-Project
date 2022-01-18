@@ -1,8 +1,6 @@
 package berzerk.model.game;
 
 import berzerk.model.entity.Bullet;
-import berzerk.model.entity.enemy.Dementor;
-import berzerk.model.entity.enemy.Dragon;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.entity.properties.Position;
 

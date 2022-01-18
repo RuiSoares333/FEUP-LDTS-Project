@@ -48,10 +48,11 @@ public class ViewTest {
     public void getCommand(){
         try {
             KeyStroke a = mock(KeyStroke.class);
-            when(screen.readInput()).thenReturn(a);
-            doReturn(Command.COMMAND.DOWN).when(command).getCommand(a);
+            doReturn(a).when(screen).readInput();
 
-            assertEquals(Command.COMMAND.DOWN, view.getCommand(command));
+            doReturn(command).when(command).getCommand(a);
+
+            assertEquals(command, view.getCommand(command));
 
             verify(command, atLeastOnce()).getCommand(a);
         } catch (IOException e) {

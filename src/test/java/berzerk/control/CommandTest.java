@@ -30,29 +30,29 @@ public class CommandTest {
     public void nullCommand(){
         KeyStroke key = new KeyStroke(KeyType.Unknown);
         Command.COMMAND c = Command.COMMAND.NONE;
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
 
         key = new KeyStroke(KeyType.Backspace);
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
 
         key = new KeyStroke(KeyType.Tab);
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
 
         key = new KeyStroke(KeyType.Insert);
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
 
         key = new KeyStroke(KeyType.Delete);
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
 
         key = new KeyStroke(KeyType.PageDown);
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
 
         key = new KeyStroke(KeyType.PageUp);
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
 
         for (KeyType kt: FS) {
-            key = new KeyStroke(KeyType.PageUp);
-            assertEquals(c, command.getCommand(key));
+            key = new KeyStroke(kt);
+            assertEquals(command, command.getCommand(key));
         }
     }
 
@@ -62,7 +62,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.QUIT;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
     @Test
     public void arrowUpCommand(){
@@ -70,7 +70,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.UP;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
 
     @Test
@@ -79,7 +79,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.DOWN;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
 
     @Test
@@ -88,7 +88,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.RIGHT;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
 
     @Test
@@ -97,7 +97,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.LEFT;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.SELECT;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
 
     @Test
@@ -118,7 +118,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.SPACE;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
 
     @Test
@@ -129,7 +129,7 @@ public class CommandTest {
 
         Command.COMMAND c = Command.COMMAND.CONSTRUCT;
 
-        assertEquals(c, command.getCommand(key));
+        assertEquals(command, command.getCommand(key));
     }
 
 }
