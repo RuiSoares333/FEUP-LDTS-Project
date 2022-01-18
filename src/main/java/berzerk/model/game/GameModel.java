@@ -4,6 +4,11 @@ import berzerk.model.Constants;
 import berzerk.model.Model;
 import berzerk.model.Soldado;
 import berzerk.model.entity.*;
+import berzerk.model.entity.enemy.Dementor;
+import berzerk.model.entity.enemy.Dementors;
+import berzerk.model.entity.enemy.Dragon;
+import berzerk.model.entity.enemy.Dragons;
+import berzerk.model.entity.enemy.Voldemort;
 import berzerk.model.entity.hero.Expert;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.entity.hero.Recruit;
@@ -20,21 +25,24 @@ import java.util.*;
 
 public class GameModel implements Model {
 
+    //Número de monstros a criar
     private final int numMonstros = 15;
     private final int numDementors = 5;
+    private final int numVoldemorts = 2;
 
     private final Position initialPosition;
     private final int nivel;
 
     private final Hero hero;
-
     private final List<Wall> walls;
     private final List<Wall> exit;
-    private List<Monster> monsters;
-    private List<Monster> dementors;
+
+    //Criação de monstros
+    private List<Dragon> dragons;
+    private List<Dementor> dementors;
+    private List<Voldemort> voldemorts;
 
     private List<Bullet> bullets;
-
     private List<Stone> stones;
 
     //score do jogador
@@ -51,7 +59,6 @@ public class GameModel implements Model {
 
         List<List<Wall>> wallList = createWalls();
         walls = wallList.get(0);
-        System.out.println("Walls: " + walls.size());
         exit = wallList.get(1);
         monsters = createMonsters();
         dementors = createDementors();

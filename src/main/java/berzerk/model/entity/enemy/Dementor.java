@@ -2,9 +2,10 @@ package berzerk.model.entity.enemy;
 
 import berzerk.model.entity.properties.Position;
 
-public class Dragons extends Enemy {
+public class Dementor extends Enemy {
 
-    public Dragons(Position position) {
+    public Dementor(Position position) {
         super(position);
     }
+
 }
