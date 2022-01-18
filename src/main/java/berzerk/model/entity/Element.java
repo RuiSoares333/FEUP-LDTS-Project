@@ -20,5 +20,4 @@ public abstract class Element {
         this.position = position;
     }
 
-
 }

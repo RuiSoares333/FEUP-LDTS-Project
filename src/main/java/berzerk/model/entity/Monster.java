@@ -32,7 +32,7 @@ public class Monster extends Element{
                 novaPosicao = new Position(getPosition().getX(),  getPosition().getY() + 1);
             }
         } else if (getPosition().getY() == heroPosition.getY()) {
-            Bullet bullet;
+
             if (getPosition().getX() > heroPosition.getX()) {
                 novaPosicao = new Position(getPosition().getX() - 1, getPosition().getY());
             } else {
@@ -42,7 +42,6 @@ public class Monster extends Element{
 
         return novaPosicao;
     }
-
 
     @Override
     public void setPosition(Position position) {
