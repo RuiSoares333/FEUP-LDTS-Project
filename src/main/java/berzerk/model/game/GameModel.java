@@ -290,7 +290,7 @@ public class GameModel implements Model {
                     addBullet(bullet);
                 }
 
-                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
+                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets) && verifyCollision(novaPosicao, voldemorts) && verifyCollision(novaPosicao, dragons)) {
                     dementor.setPosition(novaPosicao);
                 }
             }
@@ -336,7 +336,7 @@ public class GameModel implements Model {
                     }
                     addBullet(bullet);
                 }
-                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)) {
+                if (verifyCollision(novaPosicao, walls) && verifyCollision(novaPosicao, exit) && verifyCollision(novaPosicao, bullets)  && verifyCollision(novaPosicao, dementors)  && verifyCollision(novaPosicao, dragons)) {
                     voldemort.setPosition(novaPosicao);
                 }
             }

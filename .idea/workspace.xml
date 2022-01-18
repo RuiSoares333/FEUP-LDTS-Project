@@ -5,38 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f3c6841-3e2a-465b-b690-34f12d44e550" name="Changes" comment="Aplicação do Padrão MVC">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/GameOverState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/GameState$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/control/state/GameState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Ecra$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/Ecra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Bullet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Element.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Monster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Stone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/Wall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Expert.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Hero.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Recruit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/entity/hero/Tanky.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/model/game/GameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/GameView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/IndicadorView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/berzerk/view/menu/GameOverView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/control/state/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/control/state/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/entity/enemy/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/model/game/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/berzerk/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/berzerk/view/GameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
