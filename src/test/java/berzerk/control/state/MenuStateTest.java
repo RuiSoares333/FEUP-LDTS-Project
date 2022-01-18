@@ -50,7 +50,7 @@ public class MenuStateTest {
     public void processExit() throws IOException {
         when(command.getCommand()).thenReturn(Command.COMMAND.QUIT);
 
-        assertNull(state.processKey(command.getCommand()));
+        assertNull(state.processKey(command));
     }
 
 
@@ -120,7 +120,8 @@ public class MenuStateTest {
     public void processKeyExit() {
         try {
             when(model.getSelected()).thenReturn(MenuModel.Opcao.EXIT);
-            assertNull(state.processKey(Command.COMMAND.SELECT));
+            when(command.getCommand()).thenReturn(Command.COMMAND.SELECT);
+            assertNull(state.processKey(command));
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -162,7 +163,8 @@ public class MenuStateTest {
     @Test
     public void processKeyUp(){
         try {
-            state.processKey(Command.COMMAND.UP);
+            when(command.getCommand()).thenReturn(Command.COMMAND.UP);
+            state.processKey(command);
             verify(model, atLeastOnce()).previousSelected();
         } catch (IOException e) {
             e.printStackTrace();
@@ -172,7 +174,8 @@ public class MenuStateTest {
     @Test
     public void processKeyDown(){
         try {
-            state.processKey(Command.COMMAND.DOWN);
+            when(command.getCommand()).thenReturn(Command.COMMAND.DOWN);
+            state.processKey(command);
             verify(model, atLeastOnce()).nextSelected();
         } catch (IOException e) {
             e.printStackTrace();
@@ -183,8 +186,9 @@ public class MenuStateTest {
     public void processKeySelectPlay(){
         try {
             when(model.getSelected()).thenReturn(MenuModel.Opcao.PLAY);
+            when(command.getCommand()).thenReturn(Command.COMMAND.SELECT);
 
-            assertNotNull(state.processKey(Command.COMMAND.SELECT).getClass());
+            assertNotNull(state.processKey(command).getClass());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -194,8 +198,9 @@ public class MenuStateTest {
     public void processKeySelectSettings(){
         try {
             when(model.getSelected()).thenReturn(MenuModel.Opcao.SETT);
+            when(command.getCommand()).thenReturn(Command.COMMAND.SELECT);
 
-            assertNotNull(state.processKey(Command.COMMAND.SELECT).getClass());
+            assertNotNull(state.processKey(command).getClass());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -205,8 +210,9 @@ public class MenuStateTest {
     public void processKeySelectRanking(){
         try {
             when(model.getSelected()).thenReturn(MenuModel.Opcao.RANKS);
+            when(command.getCommand()).thenReturn(Command.COMMAND.SELECT);
 
-            assertNotNull(state.processKey(Command.COMMAND.SELECT).getClass());
+            assertNotNull(state.processKey(command).getClass());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -216,8 +222,9 @@ public class MenuStateTest {
     public void processKeySelectExit(){
         try {
             when(model.getSelected()).thenReturn(MenuModel.Opcao.EXIT);
+            when(command.getCommand()).thenReturn(Command.COMMAND.SELECT);
 
-            assertNull(state.processKey(Command.COMMAND.SELECT));
+            assertNull(state.processKey(command));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -227,8 +234,9 @@ public class MenuStateTest {
     public void processKeySelectNull(){
         try {
             when(model.getSelected()).thenReturn(null);
+            when(command.getCommand()).thenReturn(Command.COMMAND.SELECT);
 
-            assertNull(state.processKey(Command.COMMAND.SELECT));
+            assertNull(state.processKey(command));
         } catch (IOException e) {
             e.printStackTrace();
         }

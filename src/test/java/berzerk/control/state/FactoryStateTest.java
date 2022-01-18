@@ -9,6 +9,8 @@ import berzerk.view.menu.SettingsView;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -36,7 +38,7 @@ public class FactoryStateTest {
     }
 
     @Test
-    public void genGameState() {
+    public void genGameState() throws IOException {
         assertNotNull(factoryState.genGameState(mock(Soldado.class), mock(GameView.class)).getClass());
         assertEquals(GameState.class, factoryState.genGameState(mock(Soldado.class), mock(GameView.class)).getClass());
     }

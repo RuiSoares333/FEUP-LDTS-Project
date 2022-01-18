@@ -9,11 +9,10 @@ import berzerk.model.game.Terrain;
 
 public class Hero extends Element implements Attributes {
 
-    private final Position initialPosition;
+    private final Position initialPosition; // Initial Position
 
-    private int hp;
-    //Orientação no sentido do relogios 1-UP 2-RIGHT 3-DOWN 4-LEFT
-    private int orientation;
+    private int hp; // Health Points
+    private int orientation; // 1-UP 2-RIGHT 3-DOWN 4-LEFT
 
     //Inicializar orientação para RIGHT
     public Hero(Position initialPosition, int hp){

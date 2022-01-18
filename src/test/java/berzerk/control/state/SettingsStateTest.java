@@ -114,7 +114,8 @@ public class SettingsStateTest {
     @Test
     public void processKeyLeft(){
         try {
-            state.processKey(Command.COMMAND.LEFT);
+            when(command.getCommand()).thenReturn(Command.COMMAND.LEFT);
+            state.processKey(command);
             verify(model, atLeastOnce()).previousSelected();
         } catch (IOException e) {
             e.printStackTrace();
@@ -124,7 +125,9 @@ public class SettingsStateTest {
     @Test
     public void processKeyRight(){
         try {
-            state.processKey(Command.COMMAND.RIGHT);
+            when(command.getCommand()).thenReturn(Command.COMMAND.RIGHT);
+
+            state.processKey(command);
             verify(model, atLeastOnce()).nextSelected();
         } catch (IOException e) {
             e.printStackTrace();
@@ -134,8 +137,8 @@ public class SettingsStateTest {
     @Test
     public void processKeyExit(){
         try {
-
-            assertNotNull(state.processKey(Command.COMMAND.QUIT).getClass());
+            when(command.getCommand()).thenReturn(Command.COMMAND.QUIT);
+            assertNotNull(state.processKey(command).getClass());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -144,8 +147,8 @@ public class SettingsStateTest {
     @Test
     public void processKeySelect2(){
         try {
-
-            assertNotNull(state.processKey(Command.COMMAND.SELECT).getClass());
+            when(command.getCommand()).thenReturn(Command.COMMAND.SELECT);
+            assertNotNull(state.processKey(command).getClass());
         } catch (IOException e) {
             e.printStackTrace();
         }

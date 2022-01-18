@@ -10,17 +10,23 @@ public class Dragon extends Enemy {
         super(position);
     }
 
+    public Dragon(int x, int y){
+        super(new Position(x, y));
+    }
+
     @Override
     public Position move(Position heroPosition) {
-        Random random = new Random();
-        int movement = random.nextInt(4);
-        return switch (movement) {
+        return switch (getRandInt()) {
             case 0 -> new Position(getPosition().getX(), getPosition().getY() - 1);
             case 1 -> new Position(getPosition().getX() + 1, getPosition().getY());
             case 2 -> new Position(getPosition().getX(), getPosition().getY() + 1);
-            case 3 -> new Position(getPosition().getX() - 1, getPosition().getY());
-            default -> getPosition();
+            default -> new Position(getPosition().getX() - 1, getPosition().getY());
         };
+    }
+
+    public int getRandInt(){
+        Random random = new Random();
+        return random.nextInt(4);
     }
 
     @Override

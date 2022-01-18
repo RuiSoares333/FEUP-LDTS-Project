@@ -40,16 +40,15 @@ public class EcraTest {
         assertEquals(terminal, ecra.getTerminal());
     }
 
-//
-//    @Test
-//    public void startScreen(){
-//        try {
-//            ecra.initScreen();
-//            verify(screen, atLeastOnce()).startScreen();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Test
+    public void startScreen(){
+        try {
+            ecra.startScreen();
+            verify(screen, atLeastOnce()).startScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Test
@@ -63,8 +62,4 @@ public class EcraTest {
         }
     }
 
-    @Test
-    public void initTerminal(){
-        assertNotNull(ecra.initTerminal());
-    }
 }
