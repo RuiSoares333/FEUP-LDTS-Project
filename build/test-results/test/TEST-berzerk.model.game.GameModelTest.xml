@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="berzerk.model.game.GameModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-18T10:14:26" hostname="DESKTOP-5S8HCDK" time="0.552">
+  <properties/>
+  <testcase name="verifyCollision()" classname="berzerk.model.game.GameModelTest" time="0.552"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

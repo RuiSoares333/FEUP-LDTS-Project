@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="berzerk.model.bulletsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-17T22:46:22" hostname="DESKTOP-5S8HCDK" time="0.025">
-  <properties/>
-  <testcase name="bulletPosition()" classname="berzerk.model.bulletsTest" time="0.025"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

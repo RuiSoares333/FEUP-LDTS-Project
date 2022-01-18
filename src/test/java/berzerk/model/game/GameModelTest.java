@@ -2,8 +2,9 @@ package berzerk.model.game;
 
 import berzerk.model.Soldado;
 import berzerk.model.entity.Bullet;
-import berzerk.model.entity.Monster;
 import berzerk.model.entity.Wall;
+import berzerk.model.entity.enemy.Dragon;
+import berzerk.model.entity.enemy.Enemy;
 import berzerk.model.entity.hero.Expert;
 import berzerk.model.entity.hero.Recruit;
 import berzerk.model.entity.hero.Tanky;
@@ -238,13 +239,13 @@ public class GameModelTest {
 
     @Test
     public void verifyCollision(){
-        List<Monster> monstros = new ArrayList<>();
+        List<Enemy> monstros = new ArrayList<>();
         List<Wall> paredes = new ArrayList<>();
 
-        monstros.add(new Monster(new Position(5, 5)));
-        monstros.add(new Monster(new Position(20, 20)));
-        monstros.add(new Monster(new Position(45, 30)));
-        monstros.add(new Monster(new Position(90, 25)));
+        monstros.add(new Enemy(new Position(5, 5)));
+        monstros.add(new Enemy(new Position(20, 20)));
+        monstros.add(new Enemy(new Position(45, 30)));
+        monstros.add(new Enemy(new Position(90, 25)));
 
         paredes.add(new Wall(new Position(5, 5)));
         paredes.add(new Wall(new Position(20, 20)));
@@ -295,16 +296,16 @@ public class GameModelTest {
 
     @Test
     public void scoreTest(){
-        List<Monster> monstros = new ArrayList<>();
+        List<Dragon> monstros = new ArrayList<>();
         List<Bullet> balas = new ArrayList<>();
         int expected;
 
-        monstros.add(new Monster(new Position(5, 5)));
-        monstros.add(new Monster(new Position(20, 20)));
-        monstros.add(new Monster(new Position(45, 30)));
-        monstros.add(new Monster(new Position(90, 25)));
-        monstros.add(new Monster(new Position(15, 55)));
-        monstros.add(new Monster(new Position(10, 35)));
+        monstros.add(new Dragon(new Position(5, 5)));
+        monstros.add(new Dragon(new Position(20, 20)));
+        monstros.add(new Dragon(new Position(45, 30)));
+        monstros.add(new Dragon(new Position(90, 25)));
+        monstros.add(new Dragon(new Position(15, 55)));
+        monstros.add(new Dragon(new Position(10, 35)));
 
         balas.add(new Bullet(1,2,1));
         balas.add(new Bullet(5,5,1));
@@ -312,11 +313,11 @@ public class GameModelTest {
         balas.add(new Bullet(90,25,1));
         balas.add(new Bullet(15,55,1));
 
-        model.eliminateMonster(balas.get(0).getPosition(), monstros);
-        model.eliminateMonster(balas.get(1).getPosition(), monstros);
-        model.eliminateMonster(balas.get(2).getPosition(), monstros);
-        model.eliminateMonster(balas.get(3).getPosition(), monstros);
-        model.eliminateMonster(balas.get(4).getPosition(), monstros);
+        model.eliminateDragon(balas.get(0).getPosition(), monstros);
+        model.eliminateDragon(balas.get(1).getPosition(), monstros);
+        model.eliminateDragon(balas.get(2).getPosition(), monstros);
+        model.eliminateDragon(balas.get(3).getPosition(), monstros);
+        model.eliminateDragon(balas.get(4).getPosition(), monstros);
 
         expected = 150;
 
