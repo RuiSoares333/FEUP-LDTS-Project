@@ -1,6 +1,6 @@
-package berzerk.model.entity;
+package berzerk.model.entity.enemy;
 
-import berzerk.model.entity.Monster;
+import berzerk.model.entity.enemy.Enemy;
 import berzerk.model.entity.properties.Position;
 import org.junit.jupiter.api.Test;
 
@@ -15,12 +15,12 @@ public class monstersTest {
     }
 
     @Test
-    public void monsterMove(){
+    public void enemyMove(){
 
         Position position = new Position(5,5);
         Position movedPosition;
-        Monster monster = new Monster(position);
-        movedPosition = monster.move();
+        Enemy enemy = new Enemy(position);
+        movedPosition = enemy.move();
 
         assertNotEquals(position, movedPosition);
     }
