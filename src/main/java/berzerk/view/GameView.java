@@ -3,7 +3,6 @@ package berzerk.view;
 import berzerk.model.Constants;
 import berzerk.model.Ecra;
 import berzerk.model.entity.Bullet;
-import berzerk.model.entity.Monster;
 import berzerk.model.entity.Stone;
 import berzerk.model.entity.Wall;
 import berzerk.model.entity.enemy.Dementor;

@@ -470,7 +470,7 @@ public class GameModel implements Model {
                     newVoldemorts.add((Voldemort) e);
                 } else {
                     totalMonstrosMortos++;
-                    score += 100;
+                    score += 200;
                 }
         voldemorts = newVoldemorts;
     }
