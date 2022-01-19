@@ -69,7 +69,7 @@ public class GameModelTest {
 
         model= new GameModel(soldado, 1);
 
-        assertEquals(9, model.createHero(soldado, new Position(0, 0)).getHp());
+        assertEquals(-1, model.createHero(soldado, new Position(0, 0)).getHp());
     }
 
     @Test

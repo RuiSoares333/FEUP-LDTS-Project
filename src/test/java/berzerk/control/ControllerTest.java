@@ -27,7 +27,7 @@ public class ControllerTest {
         factoryState = mock(FactoryState.class);
         menuState = new MenuState(factoryState, mock(Soldado.class), mock(MenuView.class));
         doReturn(menuState).when(factoryState).genMenuState(any(Soldado.class), any(MenuView.class));
-        controller = new Controller(factoryState);
+        controller = spy(new Controller(factoryState));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ControllerTest {
             menuState = spy(new MenuState(factoryState, mock(Soldado.class), mock(MenuView.class)));
             doReturn(menuState).when(factoryState).genMenuState(any(Soldado.class), any(MenuView.class));
             doReturn(null).when(menuState).run();
-            controller = new Controller(factoryState);
+            controller = spy(new Controller(factoryState));
 
             controller.run();
 

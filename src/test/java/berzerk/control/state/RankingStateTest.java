@@ -69,11 +69,11 @@ public class RankingStateTest {
     @Test
     public void processKeyOtherSpecials() {
         try {
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.SELECT);
+            doReturn(command).when(view).getCommand(command);
+            doReturn(Command.COMMAND.SELECT).when(command).getCommand();
             assertEquals(MenuState.class, state.run().getClass());
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.NONE);
-            assertEquals(MenuState.class, state.run().getClass());
+            doReturn(Command.COMMAND.NONE).when(command).getCommand();
             assertNotNull(state.run().getClass());
         }catch (Exception e) {
             e.printStackTrace();
