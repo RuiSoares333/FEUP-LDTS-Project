@@ -24,12 +24,15 @@ public final class Constants {
     public static final String DEMENTOR_COLOR = "#CC9900";
 
     public static TextColor getHeroColor(String heroType){
-        return switch (heroType) {
-            case "Recruit" -> TextColor.Factory.fromString(Constants.RECRUIT_COLOR);
-            case "Tanky" ->  TextColor.Factory.fromString(Constants.TANKY_COLOR);
-            case "Expert" -> TextColor.Factory.fromString(Constants.EXPERT_COLOR);
-            default -> TextColor.Factory.fromString("#FFFF33");
-        };
+        if(heroType!=null) {
+            return switch (heroType) {
+                case "Recruit" -> TextColor.Factory.fromString(Constants.RECRUIT_COLOR);
+                case "Tanky" -> TextColor.Factory.fromString(Constants.TANKY_COLOR);
+                case "Expert" -> TextColor.Factory.fromString(Constants.EXPERT_COLOR);
+                default -> TextColor.Factory.fromString("#FFFF33");
+            };
+        }
+        return TextColor.Factory.fromString("#FFFF33");
     }
 
 

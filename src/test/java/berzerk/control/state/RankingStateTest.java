@@ -39,6 +39,8 @@ public class RankingStateTest {
         view = spy(new RankingView(model, ecra));
         state = new RankingState(factoryState, soldado, view);
         doNothing().when(view).draw(anyInt());
+        command = mock(Command.class);
+        doReturn(command).when(view).getCommand(command);
     }
 
     @AfterEach
@@ -49,16 +51,16 @@ public class RankingStateTest {
     @Test
     public void processKeyArrows(){
         try {
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.UP);
+            doReturn(Command.COMMAND.UP).when(command).getCommand();
             assertNotNull(state.run().getClass());
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.RIGHT);
+            doReturn(Command.COMMAND.RIGHT).when(command).getCommand();
             assertNotNull(state.run().getClass());
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.DOWN);
+            doReturn(Command.COMMAND.DOWN).when(command).getCommand();
             assertNotNull(state.run().getClass());
 
-            when(view.getCommand(command)).thenAnswer(invocation -> Command.COMMAND.RIGHT);
+            doReturn(Command.COMMAND.LEFT).when(command).getCommand();
             assertNotNull(state.run().getClass());
 
         }catch (Exception e) {
@@ -69,7 +71,6 @@ public class RankingStateTest {
     @Test
     public void processKeyOtherSpecials() {
         try {
-            doReturn(command).when(view).getCommand(command);
             doReturn(Command.COMMAND.SELECT).when(command).getCommand();
             assertEquals(MenuState.class, state.run().getClass());
 

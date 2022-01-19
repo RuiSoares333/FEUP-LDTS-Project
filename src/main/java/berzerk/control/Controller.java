@@ -45,7 +45,7 @@ public class Controller {
 
     public Controller(FactoryState factory){
         state = factory.genMenuState(soldado, new MenuView(new MenuModel(), new Ecra()));
-//        starSound();
+        starSound();
     }
 
     public void starSound(){
@@ -53,11 +53,11 @@ public class Controller {
     }
 
     public void run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
-//        startLoop();
+        startLoop();
         do{
             state = state.run();
         }while (!isNull(state));
-//        sound.stop();
+        sound.stop();
     }
 
     public boolean isNull(ControllerState<?> state){
