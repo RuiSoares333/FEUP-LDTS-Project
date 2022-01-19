@@ -3,13 +3,13 @@ package berzerk.control.state;
 import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
-import berzerk.model.entity.Bullet;
 import berzerk.model.game.GameModel;
 import berzerk.model.menu.MenuModel;
 import berzerk.model.ranking.GameOverModel;
 import berzerk.view.GameView;
 import berzerk.view.View;
 import berzerk.view.menu.GameOverView;
+import berzerk.view.menu.LastLevelView;
 import berzerk.view.menu.MenuView;
 
 import java.awt.*;
@@ -29,22 +29,35 @@ public class GameState extends ControllerState<GameModel>{
         }
     }
 
-    public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
-        view.draw(0);
-
-        if(model.getHero().getHp()==0){
+    public ControllerState<?> newLevel() throws IOException {
+        model.endTimers();
+        if(model.getTerrain().getLevel()==4){
             GameOverView gameOverView = new GameOverView(new GameOverModel(model.getEnemies().getScore()), new Ecra());
-            model.endTimers();
             return manageCommand(state.genGameOverState(soldado, gameOverView));
         }
-        if(!model.isLeaving(model.getHero(), model.getTerrain())){
-            GameView newView = new GameView(new GameModel(soldado, model.getTerrain().getLevel()+1, model.getEnemies().getScore(), model.getHero().getHp()), new Ecra());
-            model.endTimers();
+        else if(model.getTerrain().getLevel()==3){
+            LastLevelView newView = new LastLevelView(new GameModel(soldado, model.getTerrain().getLevel() + 1, model.getEnemies().getScore(), model.getHero().getHp()), new Ecra(), soldado.toString());
+            return manageCommand(state.genGameState(soldado, newView));
+        } else {
+            GameView newView = new GameView(new GameModel(soldado, model.getTerrain().getLevel() + 1, model.getEnemies().getScore(), model.getHero().getHp()), new Ecra(), soldado.toString());
             return manageCommand(state.genGameState(soldado, newView));
         }
+    }
+
+    @Override
+    public ControllerState<?> run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
+        if(model.getHero().getHp()==0){
+            model.endTimers();
+            GameOverView gameOverView = new GameOverView(new GameOverModel(model.getEnemies().getScore()), new Ecra());
+            return manageCommand(state.genGameOverState(soldado, gameOverView));
+        }
+
+        if(!model.isLeaving(model.getHero(), model.getTerrain())) return newLevel();
+
         return processKey(view.getCommand(new Command()));
     }
 
+    @Override
     public ControllerState<?> processKey(Command command) throws IOException {
         ControllerState<?> newState = this;
         switch (command.getCommand()) {

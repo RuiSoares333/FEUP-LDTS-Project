@@ -1,7 +1,9 @@
 package berzerk.control.state;
 
 import berzerk.model.Soldado;
+import berzerk.model.game.GameModel;
 import berzerk.view.GameView;
+import berzerk.view.View;
 import berzerk.view.menu.GameOverView;
 import berzerk.view.menu.MenuView;
 import berzerk.view.menu.RankingView;
@@ -23,7 +25,7 @@ public class FactoryState {
         return new SettingsState(this, soldado, view);
     }
 
-    public GameState genGameState(Soldado soldado, GameView view) {
+    public GameState genGameState(Soldado soldado, View<GameModel> view) {
         return new GameState(this, soldado, view);
     }
 

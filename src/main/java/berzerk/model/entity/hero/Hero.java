@@ -85,4 +85,6 @@ public class Hero extends Element implements Attributes {
         setHp(getHp()-1);
         setPosition(initialPosition);
     }
+
+
 }

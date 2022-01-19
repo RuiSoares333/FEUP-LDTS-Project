@@ -2,7 +2,6 @@ package berzerk.model.game;
 
 import berzerk.model.Model;
 import berzerk.model.Soldado;
-import berzerk.model.entity.*;
 import berzerk.model.entity.hero.Hero;
 import berzerk.model.entity.properties.Position;
 import berzerk.view.View;
@@ -11,8 +10,6 @@ import java.io.IOException;
 import java.util.*;
 
 public class GameModel implements Model {
-
-
 
     private Hero hero; // hero
 
@@ -145,7 +142,7 @@ public class GameModel implements Model {
         enemies.moveEnemies(enemies.getDragons(), terrain, shooter, hero);
     }
 
-    public void moveDementors(Enemies enemies, Terrain terrain, Shooter shooter,  Hero hero){
+    public void moveDementors(Enemies enemies, Terrain terrain,Shooter shooter,  Hero hero){
         enemies.moveEnemies(enemies.getDementors(), terrain, shooter, hero);
     }
 
@@ -161,7 +158,7 @@ public class GameModel implements Model {
         Hero hero = new Hero(initialPosition, 6);
         if(heroi.getSelected() != null) {
             switch (heroi.getSelected()) {
-                case TANKY -> hero = new Hero(initialPosition, 9);
+                case TANKY -> hero = new Hero(initialPosition, -1);
                 case EXPERT -> hero = new Hero(initialPosition, 3);
                 default -> hero = new Hero(initialPosition, 6);
             }
@@ -171,10 +168,12 @@ public class GameModel implements Model {
 
     public void moveHero(Hero hero, Shooter shooter,Terrain terrain, Enemies enemies, Position position) {
         hero.move(shooter, terrain, enemies, position);
+        System.out.println(position);
     }
 
     public boolean isLeaving(Hero hero, Terrain terrain){
         if(terrain!= null) return terrain.isLeaving(hero);
         else return false;
     }
+
 }

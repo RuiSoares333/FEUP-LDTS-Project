@@ -26,5 +26,11 @@ public class Soldado {
         return herois;
     }
 
+    @Override
+    public String toString(){
+        if(selected==Heroi.TANKY) return "Tanky";
+        else if (selected==Heroi.EXPERT) return "Expert";
+        else return "Recruit";
+    }
 
 }

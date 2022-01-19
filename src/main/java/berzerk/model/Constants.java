@@ -1,10 +1,12 @@
 package berzerk.model;
 
+import com.googlecode.lanterna.TextColor;
+
 public final class Constants {
     public static final int WIDTH = 100;
     public static final int HEIGHT = 40;
-
     public static final int MAX_NOME_JOGADOR = 3;
+
 
     public static final String MENU_BACKGROUND_COLOR = "#270F41";
     public static final String MENU_LETTER_COLOR = "#F6C370";
@@ -20,9 +22,15 @@ public final class Constants {
 
     public static final String MONSTER_COLOR = "#24A120";
     public static final String DEMENTOR_COLOR = "#CC9900";
-    public static final String VOLDEMORT_COLOR = "#ff0000";
 
-    public static final int VALOR_CADA_MONSTRO = 50;
+    public static TextColor getHeroColor(String heroType){
+        return switch (heroType) {
+            case "Recruit" -> TextColor.Factory.fromString(Constants.RECRUIT_COLOR);
+            case "Tanky" ->  TextColor.Factory.fromString(Constants.TANKY_COLOR);
+            case "Expert" -> TextColor.Factory.fromString(Constants.EXPERT_COLOR);
+            default -> TextColor.Factory.fromString("#FFFF33");
+        };
+    }
 
 
     public static final String[] GAME_NAME= {

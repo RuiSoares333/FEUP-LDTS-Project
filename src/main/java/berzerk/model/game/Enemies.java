@@ -92,14 +92,14 @@ public class Enemies implements Attributes{
     }
 
     public void moveEnemies(List<? extends Enemy> enemies, Terrain terrain, Shooter shooter, Hero hero){
-        List<? extends Enemy> newMonsters = new ArrayList<>();
         for (Enemy e: enemies) {
             Position newPosition = e.move(hero.getPosition());
             boolean playerCollision = newPosition.equals(hero.getPosition());
 
-            e.setPosition(newPosition);
-            shooter.fire(newPosition, hero.getPosition());
-
+            if(condition(newPosition, terrain)) {
+                e.setPosition(newPosition);
+                shooter.fire(newPosition, hero.getPosition());
+            }
             if(playerCollision) hero.killHero();
         }
     }
@@ -107,7 +107,7 @@ public class Enemies implements Attributes{
 
     public List<Dragon> killDragon(Position pos, List<Dragon> enemies){
         List<Dragon> newMonsters = new ArrayList<>();
-        for (Dragon m: dragons){
+        for (Dragon m: enemies){
                 if (!m.getPosition().equals(pos)) newMonsters.add(m);
 
                 else score += m.kill();
@@ -118,7 +118,7 @@ public class Enemies implements Attributes{
 
     public List<Dementor> killDementor(Position pos, List<Dementor> enemies){
         List<Dementor> newMonsters = new ArrayList<>();
-        for (Dementor m: dementors){
+        for (Dementor m: enemies){
             if (!m.getPosition().equals(pos)) newMonsters.add(m);
 
             else score += m.kill();
