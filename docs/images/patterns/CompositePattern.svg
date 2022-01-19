@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="143px" preserveAspectRatio="none" style="width:562px;height:143px;background:#FFFFFF;" version="1.1" viewBox="0 0 562 143" width="562px" zoomAndPan="magnify"><defs><filter height="300%" id="f1e2eksb44maoc" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[80c532e980642ebbe770e7ed91e479d0]
+class Enemy--><rect codeLine="4" fill="#FEFECE" filter="url(#f1e2eksb44maoc)" height="61.8359" id="Enemy" style="stroke:#A80036;stroke-width:1.5;" width="99" x="449" y="67.85"/><ellipse cx="476.6" cy="83.85" fill="#A9DCDF" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M478.35,85.35 L475.0531,85.35 L474.6156,86.35 L474.6156,86.35 L475.0844,86.35 L475.6,86.975 L475.6,87.35 L475.6,87.725 L475.0844,88.35 L474.6156,88.35 L472.725,88.35 L472.1156,88.35 L471.6,87.725 L471.6,87.35 L471.6,86.975 L472.1156,86.35 L472.725,86.35 L475.0375,80.35 L474.1625,80.35 L473.1156,80.35 L472.6,79.725 L472.6,79.35 L472.6,78.975 L473.1156,78.35 L474.1625,78.35 L477.8344,78.35 L480.5219,86.35 L481.0844,86.35 L481.0844,86.35 L481.6,86.975 L481.6,87.35 L481.6,87.725 L481.0844,88.35 L480.5219,88.35 L478.6313,88.35 L478.1156,88.35 L477.6,87.725 L477.6,87.35 L477.6,86.975 L478.1156,86.35 L478.6313,86.35 L478.6313,86.35 L478.35,85.35 Z M477.8031,83.35 L476.6,79.7719 L475.5688,83.35 L477.8031,83.35 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="39" x="493.4" y="88.7602">Enemy</text><line style="stroke:#A80036;stroke-width:1.5;" x1="450" x2="547" y1="99.85" y2="99.85"/><line style="stroke:#A80036;stroke-width:1.5;" x1="450" x2="547" y1="107.85" y2="107.85"/><ellipse cx="460" cy="118.85" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="469" y="123.2689">MOVE : move()</text><!--MD5=[612ba1bd76ba2e43180f8a4c173689eb]
+class Enemies--><rect codeLine="8" fill="#FEFECE" filter="url(#f1e2eksb44maoc)" height="61.8359" id="Enemies" style="stroke:#A80036;stroke-width:1.5;" width="139" x="7" y="67.85"/><ellipse cx="47.65" cy="83.85" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M49.65,80.35 Q49.8531,79.85 50.0875,79.6 Q50.3219,79.35 50.5875,79.35 Q51.0563,79.35 51.3531,79.6313 Q51.65,79.9125 51.65,80.5688 L51.65,82.1313 Q51.65,82.7875 51.3688,83.0688 Q51.0875,83.35 50.65,83.35 Q50.2594,83.35 50.0094,83.1781 Q49.7594,83.0063 49.65,82.5531 Q49.6031,82.2406 49.4313,82.0688 Q49.1188,81.7406 48.5563,81.5531 Q47.9938,81.35 47.4313,81.35 Q46.7281,81.35 46.1344,81.6313 Q45.5563,81.9125 45.1031,82.5375 Q44.65,83.1625 44.65,84.0219 L44.65,84.9438 Q44.65,85.975 45.4938,86.6625 Q46.3375,87.35 47.8375,87.35 Q48.7281,87.35 49.3531,87.1469 Q49.7125,87.0375 50.1188,86.6781 Q50.3844,86.475 50.525,86.4125 Q50.6656,86.35 50.8375,86.35 Q51.1656,86.35 51.4,86.6156 Q51.65,86.8656 51.65,87.225 Q51.65,87.5688 51.3063,87.975 Q50.8063,88.5688 50.0094,88.8969 Q48.9625,89.35 47.6813,89.35 Q46.1813,89.35 44.9781,88.7563 Q44.0094,88.2875 43.3219,87.2719 Q42.65,86.2563 42.65,85.0531 L42.65,83.9594 Q42.65,82.7094 43.2438,81.6156 Q43.8531,80.5219 44.9,79.9438 Q45.9625,79.35 47.15,79.35 Q47.8688,79.35 48.4938,79.6 Q49.1188,79.85 49.65,80.35 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="50" x="67.35" y="88.7602">Enemies</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="145" y1="99.85" y2="99.85"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="145" y1="107.85" y2="107.85"/><ellipse cx="18" cy="118.85" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="113" x="27" y="123.2689">MOVE : moveEnemies()</text><!--MD5=[0ec5399c048466d00a31875a1c1775fc]
+class Dragon--><rect codeLine="14" fill="#FEFECE" filter="url(#f1e2eksb44maoc)" height="61.8359" id="Dragon" style="stroke:#A80036;stroke-width:1.5;" width="99" x="181" y="67.85"/><ellipse cx="207.7" cy="83.85" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M209.7,80.35 Q209.9031,79.85 210.1375,79.6 Q210.3719,79.35 210.6375,79.35 Q211.1063,79.35 211.4031,79.6313 Q211.7,79.9125 211.7,80.5688 L211.7,82.1313 Q211.7,82.7875 211.4188,83.0688 Q211.1375,83.35 210.7,83.35 Q210.3094,83.35 210.0594,83.1781 Q209.8094,83.0063 209.7,82.5531 Q209.6531,82.2406 209.4813,82.0688 Q209.1688,81.7406 208.6063,81.5531 Q208.0438,81.35 207.4813,81.35 Q206.7781,81.35 206.1844,81.6313 Q205.6063,81.9125 205.1531,82.5375 Q204.7,83.1625 204.7,84.0219 L204.7,84.9438 Q204.7,85.975 205.5438,86.6625 Q206.3875,87.35 207.8875,87.35 Q208.7781,87.35 209.4031,87.1469 Q209.7625,87.0375 210.1688,86.6781 Q210.4344,86.475 210.575,86.4125 Q210.7156,86.35 210.8875,86.35 Q211.2156,86.35 211.45,86.6156 Q211.7,86.8656 211.7,87.225 Q211.7,87.5688 211.3563,87.975 Q210.8563,88.5688 210.0594,88.8969 Q209.0125,89.35 207.7313,89.35 Q206.2313,89.35 205.0281,88.7563 Q204.0594,88.2875 203.3719,87.2719 Q202.7,86.2563 202.7,85.0531 L202.7,83.9594 Q202.7,82.7094 203.2938,81.6156 Q203.9031,80.5219 204.95,79.9438 Q206.0125,79.35 207.2,79.35 Q207.9188,79.35 208.5438,79.6 Q209.1688,79.85 209.7,80.35 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="224.3" y="88.7602">Dragon</text><line style="stroke:#A80036;stroke-width:1.5;" x1="182" x2="279" y1="99.85" y2="99.85"/><line style="stroke:#A80036;stroke-width:1.5;" x1="182" x2="279" y1="107.85" y2="107.85"/><ellipse cx="192" cy="118.85" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="201" y="123.2689">MOVE : move()</text><!--MD5=[24998ffae2356b5bf0d5b2d62def9309]
+class Dementor--><rect codeLine="20" fill="#FEFECE" filter="url(#f1e2eksb44maoc)" height="61.8359" id="Dementor" style="stroke:#A80036;stroke-width:1.5;" width="99" x="315" y="67.85"/><ellipse cx="335.4" cy="83.85" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M337.4,80.35 Q337.6031,79.85 337.8375,79.6 Q338.0719,79.35 338.3375,79.35 Q338.8063,79.35 339.1031,79.6313 Q339.4,79.9125 339.4,80.5688 L339.4,82.1313 Q339.4,82.7875 339.1188,83.0688 Q338.8375,83.35 338.4,83.35 Q338.0094,83.35 337.7594,83.1781 Q337.5094,83.0063 337.4,82.5531 Q337.3531,82.2406 337.1813,82.0688 Q336.8688,81.7406 336.3063,81.5531 Q335.7438,81.35 335.1813,81.35 Q334.4781,81.35 333.8844,81.6313 Q333.3063,81.9125 332.8531,82.5375 Q332.4,83.1625 332.4,84.0219 L332.4,84.9438 Q332.4,85.975 333.2438,86.6625 Q334.0875,87.35 335.5875,87.35 Q336.4781,87.35 337.1031,87.1469 Q337.4625,87.0375 337.8688,86.6781 Q338.1344,86.475 338.275,86.4125 Q338.4156,86.35 338.5875,86.35 Q338.9156,86.35 339.15,86.6156 Q339.4,86.8656 339.4,87.225 Q339.4,87.5688 339.0563,87.975 Q338.5563,88.5688 337.7594,88.8969 Q336.7125,89.35 335.4313,89.35 Q333.9313,89.35 332.7281,88.7563 Q331.7594,88.2875 331.0719,87.2719 Q330.4,86.2563 330.4,85.0531 L330.4,83.9594 Q330.4,82.7094 330.9938,81.6156 Q331.6031,80.5219 332.65,79.9438 Q333.7125,79.35 334.9,79.35 Q335.6188,79.35 336.2438,79.6 Q336.8688,79.85 337.4,80.35 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="55" x="350.6" y="88.7602">Dementor</text><line style="stroke:#A80036;stroke-width:1.5;" x1="316" x2="413" y1="99.85" y2="99.85"/><line style="stroke:#A80036;stroke-width:1.5;" x1="316" x2="413" y1="107.85" y2="107.85"/><ellipse cx="326" cy="118.85" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="335" y="123.2689">MOVE : move()</text><!--MD5=[65236a3712336f75a8f71512d55d6bc4]
+link Enemies to Enemy--><path codeLine="12" d="M117.93,67.85 C136.26,56 158.69,43.88 181,37.85 C280.96,10.81 315.46,6 414,37.85 C431.01,43.35 447.47,53.68 461.28,64.31 " fill="none" id="Enemies-to-Enemy" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="465.47,67.61,460.8826,58.8948,461.5449,64.5127,455.9269,65.175,465.47,67.61" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[dfdc9dd22217ec5f7e7083d9826e2bc8]
+link Dragon to Enemy--><path codeLine="18" d="M263.53,67.61 C278.13,55.87 296.23,43.92 315,37.85 C356.87,24.32 372.13,24.32 414,37.85 C431.01,43.35 447.47,53.68 461.28,64.31 " fill="none" id="Dragon-to-Enemy" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="465.47,67.61,460.8826,58.8948,461.5449,64.5127,455.9269,65.175,465.47,67.61" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9341e015503fc56a75b870d7a493147d]
+link Dementor to Enemy--><path codeLine="24" d="M414.23,98.85 C424.04,98.85 433.85,98.85 443.66,98.85 " fill="none" id="Dementor-to-Enemy" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="448.79,98.85,439.79,94.85,443.79,98.85,439.79,102.85,448.79,98.85" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7cc50135af9807b57f54db52e64bcce0]
+@startuml
+'https://plantuml.com/component-diagram
+
+
+abstract class Enemy{
++ MOVE : move()
+}
+
+class Enemies{
++ MOVE : moveEnemies()
+}
+
+Enemies -r-> Enemy
+
+class Dragon{
++ MOVE : move()
+}
+
+Dragon -r-> Enemy
+
+class Dementor{
++ MOVE : move()
+}
+
+Dementor -r-> Enemy
+
+@enduml
+
+@startuml
+
+
+abstract class Enemy{
++ MOVE : move()
+}
+
+class Enemies{
++ MOVE : moveEnemies()
+}
+
+Enemies -r-> Enemy
+
+class Dragon{
++ MOVE : move()
+}
+
+Dragon -r-> Enemy
+
+class Dementor{
++ MOVE : move()
+}
+
+Dementor -r-> Enemy
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 16:16:42 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
