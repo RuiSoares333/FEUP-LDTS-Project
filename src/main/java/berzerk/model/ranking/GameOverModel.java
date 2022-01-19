@@ -26,6 +26,10 @@ public class GameOverModel implements Model {
         return name;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public void addCharacter(Character ch){
         if(name.length() < Constants.MAX_NOME_JOGADOR && Character.isAlphabetic(ch)){
             name += Character.toUpperCase(ch);
