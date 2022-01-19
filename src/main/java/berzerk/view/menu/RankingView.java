@@ -34,6 +34,9 @@ public class RankingView extends View<RankingModel> {
 
         int i=15;
         for (Map.Entry<String, Integer> jogador: getModel().getJogadores().entrySet()) {
+            if(i==30){
+                break;
+            }
             String nome = jogador.getKey();
             String pontuacao = String.valueOf(jogador.getValue());
             graphics.putString(new TerminalPosition(40, i), nome + numPontos(nome.length(), pontuacao.length()) + pontuacao);
