@@ -166,7 +166,27 @@ O uso do Padrão Command abre caminho aos seguintes benefícios:
 - *Single Responsibility Principle*. Agora as classes que dependem de *inputs* estão livres destas operações.
 - *Open/Closed Principle*. É possível acrescentar comandos sem prejudicar o funcionamento do resto da aplicação.
 
+**O Padrão**
 
+Aplicamos o Padrão **Composite**.
+
+**Implementação**
+
+A seguinte imagem monstra como o Padrão Composite foi aplicado às classes da aplicação.
+
+-imagem a criar
+
+Estas Classes podem ser encontradas nos seguintes ficheiros:
+
+- [Enemies](../src/main/java/berzerk/model/game/Enemies.java)
+- [Dragon](../src/main/java/berzerk/model/entety/enemy/Dragon.java)
+- [Dementor](../src/main/java/berzerk/model/entety/enemy/Dementor.java)
+- [Enemy](../src/main/java/berzerk/model/entety/enemy/Enemy.java)
+
+**Consequências**
+
+O uso do Padrão Command abre caminho aos seguintes benefícios:
+- Uma só classe permite criar todos os tipos de inimigos de uma vez só
 
 ### TESTING
 
