@@ -4,6 +4,7 @@ import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
 import berzerk.model.game.GameModel;
+import berzerk.model.game.Terrain;
 import berzerk.model.ranking.GameOverModel;
 import berzerk.view.GameView;
 import berzerk.view.menu.GameOverView;
@@ -13,7 +14,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -159,13 +162,26 @@ public class GameStateTest {
 
     @Test
     public void runTest(){
-//        try {
-//            model.getHero().setHp(0);
-////            verify(model, atLeastOnce()).endTimers();
-//            assertNotNull(factoryState.genGameOverState(mock(Soldado.class), mock(GameOverView.class)).getClass());
-//            assertEquals(GameOverState.class, factoryState.genGameOverState(mock(Soldado.class), mock(GameOverView.class)).getClass());
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        try {
+            model.getHero().setHp(0);
+            assertNotNull(state.run().getClass());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void newLevelTest() throws IOException, URISyntaxException, InterruptedException, FontFormatException {
+        Terrain terrain = new Terrain(4);
+        model.setTerrain(terrain);
+        assertNotNull(state.newLevel().getClass());
+
+        Terrain terrain2 = new Terrain(3);
+        model.setTerrain(terrain2);
+        assertNotNull(state.newLevel().getClass());
+
+        Terrain terrain3 = new Terrain(2);
+        model.setTerrain(terrain3);
+        assertNotNull(state.newLevel().getClass());
     }
 }
