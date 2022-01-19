@@ -5,7 +5,9 @@ import berzerk.model.entity.Wall;
 import berzerk.model.entity.enemy.Dementor;
 import berzerk.model.entity.enemy.Dragon;
 import berzerk.model.entity.properties.Position;
+import berzerk.model.game.Enemies;
 import berzerk.model.game.GameModel;
+import berzerk.model.game.Terrain;
 import berzerk.view.GameView;
 import berzerk.view.View;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -22,6 +24,9 @@ import static org.mockito.Mockito.*;
 public class GameViewTest {
 
     GameModel model;
+    Enemies enemies;
+    Terrain terrain;
+
     GameView view;
     Ecra ecra;
     Screen screen;
@@ -41,6 +46,12 @@ public class GameViewTest {
         doNothing().when(screen).clear();
         doNothing().when(screen).refresh();
 
+
+
+    }
+
+    @Test
+    public void draw() throws IOException {
         List<Dementor> dementors = new ArrayList<>();
         dementors.add(new Dementor(new Position(5, 5)));
         List<Dragon> dragons = new ArrayList<>();
@@ -48,10 +59,8 @@ public class GameViewTest {
         List<Wall> walls = new ArrayList<>();
         walls.add(new Wall(20, 20));
 
-    }
+        doReturn(dementors).when(model).getEnemies().getDementors();
 
-    @Test
-    public void draw() throws IOException {
         view.draw(anyInt());
 
         verify(screen, atLeastOnce()).clear();
