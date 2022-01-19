@@ -174,7 +174,7 @@ Aplicamos o Padrão **Composite**.
 
 A seguinte imagem monstra como o Padrão Composite foi aplicado às classes da aplicação.
 
--imagem a criar
+![img](images/patterns/CompositePattern.svg)
 
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
@@ -186,7 +186,7 @@ Estas Classes podem ser encontradas nos seguintes ficheiros:
 **Consequências**
 
 O uso do Padrão Command abre caminho aos seguintes benefícios:
-- Uma só classe permite criar todos os tipos de inimigos de uma vez só
+- Uma só classe permite criar todos os tipos de inimigos de uma vez só assim como gerir as suas funções
 
 ### TESTING
 
