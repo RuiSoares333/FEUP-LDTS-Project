@@ -132,4 +132,10 @@ public class CommandTest {
         assertEquals(command, command.getCommand(key));
     }
 
+    @Test
+    public void keyTest(){
+        Character expected = ' ';
+        assertEquals(expected, command.getKey());
+    }
+
 }
