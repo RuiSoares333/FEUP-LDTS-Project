@@ -12,14 +12,14 @@ public class SettingsModel implements Model {
     }
 
     private int getPosicaoOpcao(Soldado.Heroi target) {
-        if(soldado.getHerois()!=null) {
-            Soldado.Heroi[] opcoes = soldado.getHerois();
-            for (int i = 0; i < opcoes.length; i++) {
-                if (opcoes[i] == target) {
-                    return i;
-                }
+//        if(soldado.getHerois()!=null) {
+        Soldado.Heroi[] opcoes = soldado.getHerois();
+        for (int i = 0; i < opcoes.length; i++) {
+            if (opcoes[i] == target) {
+                return i;
             }
         }
+//        }
         return -1;
     }
 

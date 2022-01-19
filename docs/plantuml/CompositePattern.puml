@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+abstract class Enemy{
++ MOVE : move()
+}
+
+class Enemies{
++ MOVE : moveEnemies()
+}
+
+Enemies -r-> Enemy
+
+class Dragon{
++ MOVE : move()
+}
+
+Dragon -r-> Enemy
+
+class Dementor{
++ MOVE : move()
+}
+
+Dementor -r-> Enemy
+
+@enduml
