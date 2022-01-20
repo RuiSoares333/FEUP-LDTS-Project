@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="146px" preserveAspectRatio="none" style="width:413px;height:146px;background:#FFFFFF;" version="1.1" viewBox="0 0 413 146" width="413px" zoomAndPan="magnify"><defs><filter height="300%" id="f1kbpxq19hfsai" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[80c532e980642ebbe770e7ed91e479d0]
+class Enemy--><rect codeLine="4" fill="#FEFECE" filter="url(#f1kbpxq19hfsai)" height="75.6719" id="Enemy" style="stroke:#A80036;stroke-width:1.5;" width="75" x="324.5" y="57.09"/><ellipse cx="341.3" cy="73.09" fill="#A9DCDF" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M343.05,74.59 L339.7531,74.59 L339.3156,75.59 L339.3156,75.59 L339.7844,75.59 L340.3,76.215 L340.3,76.59 L340.3,76.965 L339.7844,77.59 L339.3156,77.59 L337.425,77.59 L336.8156,77.59 L336.3,76.965 L336.3,76.59 L336.3,76.215 L336.8156,75.59 L337.425,75.59 L339.7375,69.59 L338.8625,69.59 L337.8156,69.59 L337.3,68.965 L337.3,68.59 L337.3,68.215 L337.8156,67.59 L338.8625,67.59 L342.5344,67.59 L345.2219,75.59 L345.7844,75.59 L345.7844,75.59 L346.3,76.215 L346.3,76.59 L346.3,76.965 L345.7844,77.59 L345.2219,77.59 L343.3313,77.59 L342.8156,77.59 L342.3,76.965 L342.3,76.59 L342.3,76.215 L342.8156,75.59 L343.3313,75.59 L343.3313,75.59 L343.05,74.59 Z M342.5031,72.59 L341.3,69.0119 L340.2688,72.59 L342.5031,72.59 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="39" x="355.7" y="78.0002">Enemy</text><line style="stroke:#A80036;stroke-width:1.5;" x1="325.5" x2="398.5" y1="89.09" y2="89.09"/><line style="stroke:#A80036;stroke-width:1.5;" x1="325.5" x2="398.5" y1="97.09" y2="97.09"/><ellipse cx="335.5" cy="108.09" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="48" x="344.5" y="112.5089">CREATE()</text><ellipse cx="335.5" cy="121.9259" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="344.5" y="126.3449">KILL : kill()</text><!--MD5=[0ec5399c048466d00a31875a1c1775fc]
+class Dragon--><rect codeLine="9" fill="#FEFECE" filter="url(#f1kbpxq19hfsai)" height="75.6719" id="Dragon" style="stroke:#A80036;stroke-width:1.5;" width="118" x="7" y="57.09"/><ellipse cx="42.25" cy="73.09" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M44.25,69.59 Q44.4531,69.09 44.6875,68.84 Q44.9219,68.59 45.1875,68.59 Q45.6563,68.59 45.9531,68.8713 Q46.25,69.1525 46.25,69.8088 L46.25,71.3713 Q46.25,72.0275 45.9688,72.3088 Q45.6875,72.59 45.25,72.59 Q44.8594,72.59 44.6094,72.4181 Q44.3594,72.2463 44.25,71.7931 Q44.2031,71.4806 44.0313,71.3088 Q43.7188,70.9806 43.1563,70.7931 Q42.5938,70.59 42.0313,70.59 Q41.3281,70.59 40.7344,70.8713 Q40.1563,71.1525 39.7031,71.7775 Q39.25,72.4025 39.25,73.2619 L39.25,74.1838 Q39.25,75.215 40.0938,75.9025 Q40.9375,76.59 42.4375,76.59 Q43.3281,76.59 43.9531,76.3869 Q44.3125,76.2775 44.7188,75.9181 Q44.9844,75.715 45.125,75.6525 Q45.2656,75.59 45.4375,75.59 Q45.7656,75.59 46,75.8556 Q46.25,76.1056 46.25,76.465 Q46.25,76.8088 45.9063,77.215 Q45.4063,77.8088 44.6094,78.1369 Q43.5625,78.59 42.2813,78.59 Q40.7813,78.59 39.5781,77.9963 Q38.6094,77.5275 37.9219,76.5119 Q37.25,75.4963 37.25,74.2931 L37.25,73.1994 Q37.25,71.9494 37.8438,70.8556 Q38.4531,69.7619 39.5,69.1838 Q40.5625,68.59 41.75,68.59 Q42.4688,68.59 43.0938,68.84 Q43.7188,69.09 44.25,69.59 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="60.75" y="78.0002">Dragon</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="124" y1="89.09" y2="89.09"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="124" y1="97.09" y2="97.09"/><ellipse cx="18" cy="108.09" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="27" y="112.5089">CREATE() : Dragon</text><ellipse cx="18" cy="121.9259" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="27" y="126.3449">KILL : kill()</text><!--MD5=[24998ffae2356b5bf0d5b2d62def9309]
+class Dementor--><rect codeLine="16" fill="#FEFECE" filter="url(#f1kbpxq19hfsai)" height="75.6719" id="Dementor" style="stroke:#A80036;stroke-width:1.5;" width="129" x="160.5" y="57.09"/><ellipse cx="194.4" cy="73.09" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M196.4,69.59 Q196.6031,69.09 196.8375,68.84 Q197.0719,68.59 197.3375,68.59 Q197.8063,68.59 198.1031,68.8713 Q198.4,69.1525 198.4,69.8088 L198.4,71.3713 Q198.4,72.0275 198.1188,72.3088 Q197.8375,72.59 197.4,72.59 Q197.0094,72.59 196.7594,72.4181 Q196.5094,72.2463 196.4,71.7931 Q196.3531,71.4806 196.1813,71.3088 Q195.8688,70.9806 195.3063,70.7931 Q194.7438,70.59 194.1813,70.59 Q193.4781,70.59 192.8844,70.8713 Q192.3063,71.1525 191.8531,71.7775 Q191.4,72.4025 191.4,73.2619 L191.4,74.1838 Q191.4,75.215 192.2438,75.9025 Q193.0875,76.59 194.5875,76.59 Q195.4781,76.59 196.1031,76.3869 Q196.4625,76.2775 196.8688,75.9181 Q197.1344,75.715 197.275,75.6525 Q197.4156,75.59 197.5875,75.59 Q197.9156,75.59 198.15,75.8556 Q198.4,76.1056 198.4,76.465 Q198.4,76.8088 198.0563,77.215 Q197.5563,77.8088 196.7594,78.1369 Q195.7125,78.59 194.4313,78.59 Q192.9313,78.59 191.7281,77.9963 Q190.7594,77.5275 190.0719,76.5119 Q189.4,75.4963 189.4,74.2931 L189.4,73.1994 Q189.4,71.9494 189.9938,70.8556 Q190.6031,69.7619 191.65,69.1838 Q192.7125,68.59 193.9,68.59 Q194.6188,68.59 195.2438,68.84 Q195.8688,69.09 196.4,69.59 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="55" x="212.6" y="78.0002">Dementor</text><line style="stroke:#A80036;stroke-width:1.5;" x1="161.5" x2="288.5" y1="89.09" y2="89.09"/><line style="stroke:#A80036;stroke-width:1.5;" x1="161.5" x2="288.5" y1="97.09" y2="97.09"/><ellipse cx="171.5" cy="108.09" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="180.5" y="112.5089">CREATE() : Dementor</text><ellipse cx="171.5" cy="121.9259" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="180.5" y="126.3449">KILL : kill()</text><!--MD5=[dfdc9dd22217ec5f7e7083d9826e2bc8]
+link Dragon to Enemy--><path codeLine="14" d="M107.08,57.02 C122.64,45.02 141.26,33.29 160.5,27.09 C215.07,9.5 236.19,6 289.5,27.09 C303.77,32.74 316.88,42.67 327.91,53.22 " fill="none" id="Dragon-to-Enemy" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="331.57,56.82,327.9605,47.6564,328.0061,53.3131,322.3494,53.3587,331.57,56.82" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9341e015503fc56a75b870d7a493147d]
+link Dementor to Enemy--><path codeLine="21" d="M289.75,95.09 C299.61,95.09 309.46,95.09 319.31,95.09 " fill="none" id="Dementor-to-Enemy" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="324.47,95.09,315.47,91.09,319.47,95.09,315.47,99.09,324.47,95.09" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c1114a27e5c1e804334ea705aad3f8f7]
+@startuml
+'https://plantuml.com/component-diagram
+
+
+abstract class Enemy{
++ CREATE()
++ KILL : kill()
+}
+
+class Dragon{
++ CREATE() : Dragon
++ KILL : kill()
+}
+
+Dragon -r-> Enemy
+
+class Dementor{
++ CREATE() : Dementor
++ KILL : kill()
+}
+
+Dementor -r-> Enemy
+
+@enduml
+
+@startuml
+
+
+abstract class Enemy{
++ CREATE()
++ KILL : kill()
+}
+
+class Dragon{
++ CREATE() : Dragon
++ KILL : kill()
+}
+
+Dragon -r-> Enemy
+
+class Dementor{
++ CREATE() : Dementor
++ KILL : kill()
+}
+
+Dementor -r-> Enemy
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 16:16:42 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

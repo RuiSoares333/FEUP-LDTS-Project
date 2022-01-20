@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+abstract class Enemy{
++ CREATE()
++ KILL : kill()
+}
+
+class Dragon{
++ CREATE() : Dragon
++ KILL : kill()
+}
+
+Dragon -r-> Enemy
+
+class Dementor{
++ CREATE() : Dementor
++ KILL : kill()
+}
+
+Dementor -r-> Enemy
+
+@enduml
