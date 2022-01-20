@@ -69,4 +69,4 @@ Para uma versão mais detalhada carregue [aqui](docs/README.md)
 
 #### Exemplo do final do jogo - taça
 
-![img](./docs/images/Taça.png)
+![img](./docs/images/taça.png)
