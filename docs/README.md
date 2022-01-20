@@ -210,6 +210,29 @@ Estas Classes podem ser encontradas nos seguintes ficheiros:
 O uso do Padrão Composite abre caminho aos seguintes benefícios:
 - Uma só classe permite criar todos os tipos de inimigos de uma vez só assim como gerir as suas funções
 
+**O Padrão**
+
+Aplicamos o Padrão **Observer**.
+
+**Implementação**
+
+A seguinte imagem monstra como o Padrão Observer foi aplicado às classes da aplicação.
+
+![img](images/patterns/ObserverPattern.svg)
+
+Estas Classes podem ser encontradas nos seguintes ficheiros:
+
+- [GameState](../src/main/java/berzerk/control/state/GameState.java)
+- [Hero](../src/main/java/berzerk/model/entety/hero/hero.java)
+- [Shooter](../src/main/java/berzerk/model/game/Shooter.java)
+- [Enemies](../src/main/java/berzerk/model/game/Enemies.java)
+
+**Consequências**
+
+O uso do Padrão Observer abre caminho aos seguintes benefícios:
+- Passamos a ter um mecanismo que notifica o GameState sobre as propriedades do Hero, que por sua vez estão dependentes do Shooter e Enemies.
+- Como se pode imaginar, ter ser uma função a ser chamada para confirmar as vidas do Hero é totalmente inviável e , desta forma, não temos que o fazer, estando o GameState como "observador" do Hero.
+
 ### TESTING
 
 ![img](images/CoverageReportGeral.png)
