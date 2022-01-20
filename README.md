@@ -66,3 +66,7 @@ Para uma versão mais detalhada carregue [aqui](docs/README.md)
 #### Exemplo do jogo completo 
 
 ![This is an image](./docs/images/ExemploCompleto.png)
+
+#### Exemplo do final do jogo - taça
+
+![img](./docs/images/Taça.png)
