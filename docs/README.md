@@ -136,6 +136,28 @@ O uso do Padrão Abstract Factory abre caminho aos seguintes benefícios:
 - A responsabilidade de criação de novas instâncias de menus é atribuida a apenas uma classe, deixando o código das ;
 - O código para instanciar um estado do menu é reduzido a 1 método por estado.
 
+**O Padrão**
+
+Aplicamos o Padrão **Factory Method**.
+
+**Implementação**
+
+A seguinte imagem monstra como o Padrão Factory Method foi aplicado às classes da aplicação.
+
+![img](images/patterns/FactoryMethodPattern.svg)
+
+Estas Classes podem ser encontradas nos seguintes ficheiros:
+
+- [Dragon](../src/main/java/berzerk/model/entety/enemy/Dragon.java)
+- [Dementor](../src/main/java/berzerk/model/entety/enemy/Dementor.java)
+- [Enemy](../src/main/java/berzerk/model/entety/enemy/Enemy.java)
+
+**Consequências**
+
+O uso do Padrão Factory Method abre caminho aos seguintes benefícios:
+- A possibilidade de criar tipos diferentes de inimigos com base na mesma classe mas com um construtor diferente.
+- Cada inimigo pode ter as suas especificações, como por o exemplo o metodo kill que para o Dragon retorna 50, mas para o Dementor já retorna 100.
+
 #### LIDAR COM COMANDOS DE INPUT DO UTILIZADOR
 
 **Contexto do Problema**
@@ -185,7 +207,7 @@ Estas Classes podem ser encontradas nos seguintes ficheiros:
 
 **Consequências**
 
-O uso do Padrão Command abre caminho aos seguintes benefícios:
+O uso do Padrão Composite abre caminho aos seguintes benefícios:
 - Uma só classe permite criar todos os tipos de inimigos de uma vez só assim como gerir as suas funções
 
 ### TESTING
