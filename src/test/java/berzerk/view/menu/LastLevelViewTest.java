@@ -53,7 +53,7 @@ public class LastLevelViewTest {
         doNothing().when(enemies).setDragons(any());
 
         view = spy(new LastLevelView(model, ecra, "kekw"));
-        
+
 
         screen = mock(Screen.class);
         graphics = mock(TextGraphics.class);
@@ -72,14 +72,18 @@ public class LastLevelViewTest {
 
     @Test
     public void drawStones(){
-        List<Bullet> bullets = new ArrayList<>();
-        bullets.add(new Bullet(10,11,1));
-        List<Wall> walls = new ArrayList<>();
-        walls.add(new Wall(20, 20));
+        try{
+            List<Bullet> bullets = new ArrayList<>();
+            bullets.add(new Bullet(10,11,1));
+            List<Wall> walls = new ArrayList<>();
+            walls.add(new Wall(20, 20));
 
-        view.drawStones(graphics, walls);
+            view.drawStones(graphics, walls);
 
-        verify(graphics, atLeastOnce()).putString(any(TerminalPosition.class), anyString());
+            verify(graphics, atLeastOnce()).putString(any(TerminalPosition.class), anyString());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
 }

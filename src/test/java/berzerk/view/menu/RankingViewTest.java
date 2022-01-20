@@ -56,6 +56,7 @@ public class RankingViewTest {
 
         view.draw(0);
         Mockito.verify(graphics, Mockito.times(1+5+1)).putString(any(TerminalPosition.class), anyString());
+
     }
 
     @Test
@@ -66,6 +67,42 @@ public class RankingViewTest {
         novosJogadores.put("01234567890123456789012", "3");
         novosJogadores.put("012345678901234567890123", "4");
         novosJogadores.put("0123456789012345678901234", "5");
+
+        when(view.getModel().getJogadores()).thenAnswer(invocation -> novosJogadores);
+
+        view.draw(0);
+        Mockito.verify(graphics, Mockito.times(1+5+1)).putString(any(TerminalPosition.class), anyString());
+
+
+    }
+
+    @Test
+    public void drawNamesPlusTest() throws IOException {
+        Map<String, String> novosJogadores = new HashMap<>();
+        novosJogadores.put("012345678901234567890", "1");
+        novosJogadores.put("0123456789012345678901", "2");
+        novosJogadores.put("01234567890123456789012", "3");
+        novosJogadores.put("012345678901234567890123", "4");
+        novosJogadores.put("0123456789012345678901234", "5");
+        novosJogadores.put("01234567890123456789012345", "6");
+
+        when(view.getModel().getJogadores()).thenAnswer(invocation -> novosJogadores);
+
+        view.draw(0);
+        Mockito.verify(graphics, Mockito.times(1+5+1)).putString(any(TerminalPosition.class), anyString());
+
+
+    }
+
+    @Test
+    public void drawPlusTest() throws IOException {
+        Map<String, String> novosJogadores = new HashMap<>();
+        novosJogadores.put("A", "1");
+        novosJogadores.put("B", "2");
+        novosJogadores.put("C", "3");
+        novosJogadores.put("D", "4");
+        novosJogadores.put("E", "5");
+        novosJogadores.put("F", "6");
 
         when(view.getModel().getJogadores()).thenAnswer(invocation -> novosJogadores);
 
