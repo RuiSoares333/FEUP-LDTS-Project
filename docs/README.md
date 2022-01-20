@@ -10,29 +10,30 @@ Este projeto foi desenvolvido por *Catarina Canelas* (*up202103631*@fe.up.pt), *
 
 ### IMPLEMENTED FEATURES
 
-- **Menus** - A navegação é feita através das setas do teclado e a opção a selecionar com Enter.
-    - PLAY;
-    - SETTINGS;
-    - LEADERBOARD;
-    - EXIT.
-- **Leaderboard** - Possibilidade de ver o ‘top’ 5 de melhores jogadores.
-- **Escolha de Herói** - Possibilidade de escolher o herói com que se pretende jogar, na opção 'SETTINGS'. Cada herói tem as suas particularidades.
-    - Herói Recruit - Herói com Estatisticas Básicas.
-    - Herói Tanky - Herói com pontos Extra de Vida.
-    - Herói Expert - Herói com cadência de tiro mais elevada.
-- **Movimentação do Herói** - O herói movimenta-se para os quatro sentidos usando as setas do teclado.
-- **Morte do Herói** - O herói morre se tiver contacto com as paredes eletrizadas, com os monstros ou com as balas destes.
-- **Movimentação dos Monstros** - Os monstros movimentam-se sozinhos. Com o avançar dos niveis, podem movimentar-se mais rapidamente.
+- [x] **Menus** - A navegação é feita através das setas do teclado e a opção a selecionar com Enter.
+  - PLAY;
+  - SETTINGS;
+  - LEADERBOARD;
+  - EXIT.
+- [x] **Leaderboard** - Possibilidade de ver o ‘top’ 5 de melhores jogadores.
+- [x] **Escolha de Herói** - Possibilidade de escolher o herói com que se pretende jogar, na opção 'SETTINGS'. Cada herói tem as suas particularidades.
+  - Herói Recruit - Herói com Estatisticas Básicas.
+  - Herói Tanky - Herói com pontos Extra de Vida.
+  - Herói Expert - Herói com cadência de tiro mais elevada.
+- [x] **Movimentação do Herói** - O herói movimenta-se para os quatro sentidos usando as setas do teclado.
+- [x] **Morte do Herói** - O herói morre se tiver contacto com as paredes eletrizadas, com os monstros ou com as balas destes.
+- [x] **Movimentação dos Monstros** - Os monstros movimentam-se sozinhos. Com o avançar dos niveis, podem movimentar-se mais rapidamente.
+- [x] **Disparos do Herói** - O herói pode disparar usando o espaço do teclado.
+- [x] **Construção de stones** - O herói pode criar stones estilo FORTNITE 2D usando a tecla x para se proteger dos tiros dos inimigos.
+- [x] **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
+- [x] **Morte dos Monstros** - Um monstro atingido por uma bala morre. Monstros em diferentes níveis podem necessitar de mais do que uma bala para morrerem.
+- [x] **Passagem de niveis** - A passagem de niveis dá-se com a chegada do herói à parte aberta do mapa. No último nivel, o objetivo é apanhar a taça do jogo.
+- [ ] **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome, e de seguida um menu com as opções TRY AGAIN e EXIT.
 
 
 ### PLANNED FEATURES
-- **Disparos do Herói** - O herói pode disparar usando o espaço do teclado.
-- **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
-- **Morte dos Monstros** - Um monstro atingido por uma bala morre. Monstros em diferentes níveis podem necessitar de mais do que uma bala para morrerem.
-- **Passagem de niveis** - A passagem de niveis dá-se com a chegada do herói à parte aberta do mapa. No último nivel, o objetivo é apanhar a taça do jogo.
-- **Interrupção do jogo** - Usando a tecla 'esc' do teclado é possivel parar o jogo e aceder a um Menu.
-- **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome, e de seguida um menu com as opções TRY AGAIN e EXIT.
 
+- **Interrupção do jogo** - Usando a tecla 'esc' do teclado é possivel parar o jogo e aceder a um Menu.
 
 ### DESIGN
 
@@ -136,6 +137,12 @@ O uso do Padrão Abstract Factory abre caminho aos seguintes benefícios:
 - A responsabilidade de criação de novas instâncias de menus é atribuida a apenas uma classe, deixando o código das ;
 - O código para instanciar um estado do menu é reduzido a 1 método por estado.
 
+#### CRIAR TIPOS DIFERENTES DE INIMIGOS
+
+**Contexto do Problema**
+
+O jogo deve ter tipos diferentes de inimigos com capacidades e bonus de morte diferentes.
+
 **O Padrão**
 
 Aplicamos o Padrão **Factory Method**.
@@ -188,6 +195,12 @@ O uso do Padrão Command abre caminho aos seguintes benefícios:
 - *Single Responsibility Principle*. Agora as classes que dependem de *inputs* estão livres destas operações.
 - *Open/Closed Principle*. É possível acrescentar comandos sem prejudicar o funcionamento do resto da aplicação.
 
+#### CRIAÇÃO DE TODOS OS TIPOS DE INIMIGOS NUMA SÓ CLASSE
+
+**Contexto do Problema**
+
+A classe GameModel encontrava-se com mais de 400 linha de código, sem necessidade. Aplicamos este padrão e passamos a criar todos os inimigos numa classe.
+
 **O Padrão**
 
 Aplicamos o Padrão **Composite**.
@@ -210,6 +223,12 @@ Estas Classes podem ser encontradas nos seguintes ficheiros:
 O uso do Padrão Composite abre caminho aos seguintes benefícios:
 - Uma só classe permite criar todos os tipos de inimigos de uma vez só assim como gerir as suas funções.
 - Usar o padrão Composite faz sentido apenas quando o modelo central de sua aplicação pode ser representada como uma árvore e mesmo a situação explicada não representar uma árvore com muitos ramos e uma grande altura, o padrão Composite permitiu simplificar muito o nosso projeto e facilitar a potencial opção de criar novos inimigos com diferentes caraterísticas.
+
+#### APRENSENTAR MENU QUANDO JOGADOR MORRE
+
+**Contexto do Problema**
+
+O menu de GAME OVER deve ser apresentado quando o jogador perde todas as vidas.
 
 **O Padrão**
 
@@ -234,11 +253,18 @@ O uso do Padrão Observer abre caminho aos seguintes benefícios:
 - Passamos a ter um mecanismo que notifica o GameState sobre as propriedades do Hero, que por sua vez estão dependentes do Shooter e Enemies.
 - Como se pode imaginar, ter ser uma função a ser chamada para confirmar as vidas do Hero é totalmente inviável e , desta forma, não temos que o fazer, estando o GameState como "observador" do Hero.
 
+## Code Smells
+
+#### **Possivel aplicação do padrao Strategie**
+Para a movimentação de cada tipo de inimigo podiamos ter aplicado o padrão Strategie.
+
+## Refactoring
+
 ### TESTING
 
 ![img](images/CoverageReportGeral.png)
 
-[//]: # (- Link to mutation testing report. - todo)
+![img](images/PitTests.png)
 
 ### SELF-EVALUATION
 - Catarina Canelas: 33.3%
