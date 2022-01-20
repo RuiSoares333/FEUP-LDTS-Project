@@ -208,7 +208,8 @@ Estas Classes podem ser encontradas nos seguintes ficheiros:
 **Consequências**
 
 O uso do Padrão Composite abre caminho aos seguintes benefícios:
-- Uma só classe permite criar todos os tipos de inimigos de uma vez só assim como gerir as suas funções
+- Uma só classe permite criar todos os tipos de inimigos de uma vez só assim como gerir as suas funções.
+- Usar o padrão Composite faz sentido apenas quando o modelo central de sua aplicação pode ser representada como uma árvore e mesmo a situação explicada não representar uma árvore com muitos ramos e uma grande altura, o padrão Composite permitiu simplificar muito o nosso projeto e facilitar a potencial opção de criar novos inimigos com diferentes caraterísticas.
 
 ### TESTING
 
