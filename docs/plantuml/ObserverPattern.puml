@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+
+class GameState{
++ MOVE : moveEnemies()
+}
+
+GameState .. Hero
+
+class Hero{
++ MOVE : move()
+}
+
+Hero .. Shooter
+Hero .. Enemies
+
+class Shooter{
++ MOVE : move()
+}
+
+note left of Shooter: Quanto leva um tiro
+
+class Enemies{
++ MOVE : move()
+}
+
+note right of Enemies: Quanto vai contra um inimigo
+
+@enduml
