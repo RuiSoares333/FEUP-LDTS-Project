@@ -266,6 +266,10 @@ Para a movimentação de cada tipo de inimigo podiamos ter aplicado o padrão St
 
 ![img](images/PitTests.png)
 
+### UML
+
+![img](images/g1007-uml.svg)
+
 ### SELF-EVALUATION
 - Catarina Canelas: 33.3%
 - Diogo Gomes: 33.3%
