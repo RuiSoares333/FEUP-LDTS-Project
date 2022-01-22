@@ -168,7 +168,6 @@ public class GameModel implements Model {
 
     public void moveHero(Hero hero, Shooter shooter,Terrain terrain, Enemies enemies, Position position) {
         hero.move(shooter, terrain, enemies, position);
-        System.out.println(position);
     }
 
     public boolean isLeaving(Hero hero, Terrain terrain){
