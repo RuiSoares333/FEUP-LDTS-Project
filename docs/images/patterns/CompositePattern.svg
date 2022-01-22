@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="204px" preserveAspectRatio="none" style="width:428px;height:204px;background:#FFFFFF;" version="1.1" viewBox="0 0 428 204" width="428px" zoomAndPan="magnify"><defs><filter height="300%" id="ftpf1443eb0qm" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[80c532e980642ebbe770e7ed91e479d0]
+class Enemy--><rect codeLine="4" fill="#FEFECE" filter="url(#ftpf1443eb0qm)" height="61.8359" id="Enemy" style="stroke:#A80036;stroke-width:1.5;" width="99" x="181" y="7"/><ellipse cx="208.6" cy="23" fill="#A9DCDF" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M210.35,24.5 L207.0531,24.5 L206.6156,25.5 L206.6156,25.5 L207.0844,25.5 L207.6,26.125 L207.6,26.5 L207.6,26.875 L207.0844,27.5 L206.6156,27.5 L204.725,27.5 L204.1156,27.5 L203.6,26.875 L203.6,26.5 L203.6,26.125 L204.1156,25.5 L204.725,25.5 L207.0375,19.5 L206.1625,19.5 L205.1156,19.5 L204.6,18.875 L204.6,18.5 L204.6,18.125 L205.1156,17.5 L206.1625,17.5 L209.8344,17.5 L212.5219,25.5 L213.0844,25.5 L213.0844,25.5 L213.6,26.125 L213.6,26.5 L213.6,26.875 L213.0844,27.5 L212.5219,27.5 L210.6313,27.5 L210.1156,27.5 L209.6,26.875 L209.6,26.5 L209.6,26.125 L210.1156,25.5 L210.6313,25.5 L210.6313,25.5 L210.35,24.5 Z M209.8031,22.5 L208.6,18.9219 L207.5688,22.5 L209.8031,22.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="39" x="225.4" y="27.9102">Enemy</text><line style="stroke:#A80036;stroke-width:1.5;" x1="182" x2="279" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="182" x2="279" y1="47" y2="47"/><ellipse cx="192" cy="58" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="201" y="62.4189">MOVE : move()</text><!--MD5=[612ba1bd76ba2e43180f8a4c173689eb]
+class Enemies--><rect codeLine="8" fill="#FEFECE" filter="url(#ftpf1443eb0qm)" height="61.8359" id="Enemies" style="stroke:#A80036;stroke-width:1.5;" width="139" x="7" y="129"/><ellipse cx="47.65" cy="145" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M49.65,141.5 Q49.8531,141 50.0875,140.75 Q50.3219,140.5 50.5875,140.5 Q51.0563,140.5 51.3531,140.7813 Q51.65,141.0625 51.65,141.7188 L51.65,143.2813 Q51.65,143.9375 51.3688,144.2188 Q51.0875,144.5 50.65,144.5 Q50.2594,144.5 50.0094,144.3281 Q49.7594,144.1563 49.65,143.7031 Q49.6031,143.3906 49.4313,143.2188 Q49.1188,142.8906 48.5563,142.7031 Q47.9938,142.5 47.4313,142.5 Q46.7281,142.5 46.1344,142.7813 Q45.5563,143.0625 45.1031,143.6875 Q44.65,144.3125 44.65,145.1719 L44.65,146.0938 Q44.65,147.125 45.4938,147.8125 Q46.3375,148.5 47.8375,148.5 Q48.7281,148.5 49.3531,148.2969 Q49.7125,148.1875 50.1188,147.8281 Q50.3844,147.625 50.525,147.5625 Q50.6656,147.5 50.8375,147.5 Q51.1656,147.5 51.4,147.7656 Q51.65,148.0156 51.65,148.375 Q51.65,148.7188 51.3063,149.125 Q50.8063,149.7188 50.0094,150.0469 Q48.9625,150.5 47.6813,150.5 Q46.1813,150.5 44.9781,149.9063 Q44.0094,149.4375 43.3219,148.4219 Q42.65,147.4063 42.65,146.2031 L42.65,145.1094 Q42.65,143.8594 43.2438,142.7656 Q43.8531,141.6719 44.9,141.0938 Q45.9625,140.5 47.15,140.5 Q47.8688,140.5 48.4938,140.75 Q49.1188,141 49.65,141.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="50" x="67.35" y="149.9102">Enemies</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="145" y1="161" y2="161"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="145" y1="169" y2="169"/><ellipse cx="18" cy="180" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="113" x="27" y="184.4189">MOVE : moveEnemies()</text><!--MD5=[0ec5399c048466d00a31875a1c1775fc]
+class Dragon--><rect codeLine="14" fill="#FEFECE" filter="url(#ftpf1443eb0qm)" height="61.8359" id="Dragon" style="stroke:#A80036;stroke-width:1.5;" width="99" x="181" y="129"/><ellipse cx="207.7" cy="145" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M209.7,141.5 Q209.9031,141 210.1375,140.75 Q210.3719,140.5 210.6375,140.5 Q211.1063,140.5 211.4031,140.7813 Q211.7,141.0625 211.7,141.7188 L211.7,143.2813 Q211.7,143.9375 211.4188,144.2188 Q211.1375,144.5 210.7,144.5 Q210.3094,144.5 210.0594,144.3281 Q209.8094,144.1563 209.7,143.7031 Q209.6531,143.3906 209.4813,143.2188 Q209.1688,142.8906 208.6063,142.7031 Q208.0438,142.5 207.4813,142.5 Q206.7781,142.5 206.1844,142.7813 Q205.6063,143.0625 205.1531,143.6875 Q204.7,144.3125 204.7,145.1719 L204.7,146.0938 Q204.7,147.125 205.5438,147.8125 Q206.3875,148.5 207.8875,148.5 Q208.7781,148.5 209.4031,148.2969 Q209.7625,148.1875 210.1688,147.8281 Q210.4344,147.625 210.575,147.5625 Q210.7156,147.5 210.8875,147.5 Q211.2156,147.5 211.45,147.7656 Q211.7,148.0156 211.7,148.375 Q211.7,148.7188 211.3563,149.125 Q210.8563,149.7188 210.0594,150.0469 Q209.0125,150.5 207.7313,150.5 Q206.2313,150.5 205.0281,149.9063 Q204.0594,149.4375 203.3719,148.4219 Q202.7,147.4063 202.7,146.2031 L202.7,145.1094 Q202.7,143.8594 203.2938,142.7656 Q203.9031,141.6719 204.95,141.0938 Q206.0125,140.5 207.2,140.5 Q207.9188,140.5 208.5438,140.75 Q209.1688,141 209.7,141.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="224.3" y="149.9102">Dragon</text><line style="stroke:#A80036;stroke-width:1.5;" x1="182" x2="279" y1="161" y2="161"/><line style="stroke:#A80036;stroke-width:1.5;" x1="182" x2="279" y1="169" y2="169"/><ellipse cx="192" cy="180" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="201" y="184.4189">MOVE : move()</text><!--MD5=[24998ffae2356b5bf0d5b2d62def9309]
+class Dementor--><rect codeLine="20" fill="#FEFECE" filter="url(#ftpf1443eb0qm)" height="61.8359" id="Dementor" style="stroke:#A80036;stroke-width:1.5;" width="99" x="315" y="129"/><ellipse cx="335.4" cy="145" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M337.4,141.5 Q337.6031,141 337.8375,140.75 Q338.0719,140.5 338.3375,140.5 Q338.8063,140.5 339.1031,140.7813 Q339.4,141.0625 339.4,141.7188 L339.4,143.2813 Q339.4,143.9375 339.1188,144.2188 Q338.8375,144.5 338.4,144.5 Q338.0094,144.5 337.7594,144.3281 Q337.5094,144.1563 337.4,143.7031 Q337.3531,143.3906 337.1813,143.2188 Q336.8688,142.8906 336.3063,142.7031 Q335.7438,142.5 335.1813,142.5 Q334.4781,142.5 333.8844,142.7813 Q333.3063,143.0625 332.8531,143.6875 Q332.4,144.3125 332.4,145.1719 L332.4,146.0938 Q332.4,147.125 333.2438,147.8125 Q334.0875,148.5 335.5875,148.5 Q336.4781,148.5 337.1031,148.2969 Q337.4625,148.1875 337.8688,147.8281 Q338.1344,147.625 338.275,147.5625 Q338.4156,147.5 338.5875,147.5 Q338.9156,147.5 339.15,147.7656 Q339.4,148.0156 339.4,148.375 Q339.4,148.7188 339.0563,149.125 Q338.5563,149.7188 337.7594,150.0469 Q336.7125,150.5 335.4313,150.5 Q333.9313,150.5 332.7281,149.9063 Q331.7594,149.4375 331.0719,148.4219 Q330.4,147.4063 330.4,146.2031 L330.4,145.1094 Q330.4,143.8594 330.9938,142.7656 Q331.6031,141.6719 332.65,141.0938 Q333.7125,140.5 334.9,140.5 Q335.6188,140.5 336.2438,140.75 Q336.8688,141 337.4,141.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="55" x="350.6" y="149.9102">Dementor</text><line style="stroke:#A80036;stroke-width:1.5;" x1="316" x2="413" y1="161" y2="161"/><line style="stroke:#A80036;stroke-width:1.5;" x1="316" x2="413" y1="169" y2="169"/><ellipse cx="326" cy="180" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="335" y="184.4189">MOVE : move()</text><!--MD5=[80e04caa4629a39ce392f643375d7d03]
+reverse link Enemy to Enemies--><path codeLine="12" d="M187.46,72.54 C164.74,90.24 137.1,111.78 115.08,128.94 " fill="none" id="Enemy-backto-Enemies" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="191.64,69.28,182.0819,71.6552,187.6955,72.3527,186.9981,77.9664,191.64,69.28" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3b49607319a1c3263587d45e11d6020c]
+reverse link Enemy to Dragon--><path codeLine="18" d="M230.5,74.52 C230.5,91.75 230.5,112.24 230.5,128.73 " fill="none" id="Enemy-backto-Dragon" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="230.5,69.28,226.5,78.28,230.5,74.28,234.5,78.28,230.5,69.28" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c9d5e61bf57e477ee07d208d50a48961]
+reverse link Enemy to Dementor--><path codeLine="24" d="M268.18,72.75 C287.83,90.34 311.65,111.68 330.7,128.73 " fill="none" id="Enemy-backto-Dementor" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="264.31,69.28,268.3409,78.2662,268.0328,72.6177,273.6813,72.3096,264.31,69.28" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8fd04e491f9cee658c34ae8631107484]
+@startuml
+'https://plantuml.com/component-diagram
+
+
+abstract class Enemy{
++ MOVE : move()
+}
+
+class Enemies{
++ MOVE : moveEnemies()
+}
+
+Enemy <- - Enemies
+
+class Dragon{
++ MOVE : move()
+}
+
+Enemy <- - Dragon
+
+class Dementor{
++ MOVE : move()
+}
+
+Enemy <- - Dementor
+
+@enduml
+
+@startuml
+
+
+abstract class Enemy{
++ MOVE : move()
+}
+
+class Enemies{
++ MOVE : moveEnemies()
+}
+
+Enemy <- - Enemies
+
+class Dragon{
++ MOVE : move()
+}
+
+Enemy <- - Dragon
+
+class Dementor{
++ MOVE : move()
+}
+
+Enemy <- - Dementor
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 16:16:42 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
