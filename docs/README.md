@@ -273,7 +273,7 @@ O uso do Padrão Observer abre caminho aos seguintes benefícios:
 
 - Eliminamos os comentarios nao necessarios (muitas vezes escritos para explicar aos colegas de grupo o trabalho que havia sido feito e as funções do codigo escrito) de forma a melhorar o entendimento do código.
 
-- Mantivemos os comentarios mais importantes visto que o entendimento vem da constante alteração do código, que tem como objetivo facilitar a comunicação de motivações, intenções e objetivos da nossa parte ao desenvolver o programa.
+- Mantivemos os comentarios mais importantes com vista a melhorar o entendimento do código, que tem como objetivo facilitar a comunicação de motivações, intenções e objetivos da nossa parte ao desenvolver o programa.
 
 ### TESTING
 
