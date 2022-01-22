@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+abstract class EnemyMove{
++ MOVE : moveStrategie()
+}
+
+class Dragon{
++ MOVE : moveStrategie()
+}
+
+Dragon --> EnemyMove
+
+class Dementor{
++ MOVE : moveStrategie()
+}
+
+Dementor --> EnemyMove
+
+
+@enduml

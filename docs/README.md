@@ -253,19 +253,21 @@ O uso do Padrão Observer abre caminho aos seguintes benefícios:
 - Passamos a ter um mecanismo que notifica o GameState sobre as propriedades do Hero, que por sua vez estão dependentes do Shooter e Enemies.
 - Como se pode imaginar, ter ser uma função a ser chamada para confirmar as vidas do Hero é totalmente inviável e , desta forma, não temos que o fazer, estando o GameState como "observador" do Hero.
 
-## Code Smells
+### Code Smells
 
 #### **Possivel aplicação do padrao Strategie**
 
 - Para a movimentação de cada tipo de inimigo podiamos ter aplicado o padrão Strategie. Implementamos dois tipos de inimigos e cada um deles tem a sua propria movimentação implementada.
 
+![img](images/patterns/Strategy.svg)
 
+#### **Uso de Threads em vez de Timer**
 
 - O uso de threads pdoeria ter sido uma melhor opção para a movimentação automática dos inimigos. Uma boa implementação desta funcionalidade tornaria o jogo mais fluido e dar-lhe-ia uma melhor jogabilidade.
 
-## Refactoring
+### Refactoring
 
-- Um dos grandes refactorings que foif eito passou pela modificação do ficheiro Model (de extrema importância para a funcionalidade do jogo) porque continha mais de 400 linhas de código. Uma das principais mudanças passou por gerir os inimigos de todos os tipos numa classe nova que surgiu da implementação do padrão Composite. Desta forma a estrutura interna do código foi melhorada sem alterar o comportamento externo do sistema e aprimorar o design da aplicação.
+- Um dos grandes refactorings que foi feito passou pela modificação do ficheiro Model (de extrema importância para a funcionalidade do jogo) porque continha mais de 400 linhas de código. Uma das principais mudanças passou por gerir os inimigos de todos os tipos numa classe nova que surgiu da implementação do padrão Composite. Desta forma a estrutura interna do código foi melhorada sem alterar o comportamento externo do sistema e aprimorar o design da aplicação.
 
 - Apagamos todos as chamadas à função System.out.println() porque foi uma ferramenta usada no desenvolvimento e ja não é necessária e porque trazia o lançamento de exceções em determinadas situações.
 
