@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="326px" preserveAspectRatio="none" style="width:648px;height:326px;background:#FFFFFF;" version="1.1" viewBox="0 0 648 326" width="648px" zoomAndPan="magnify"><defs><filter height="300%" id="f16t5awph6glwy" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[48e88c162c5505361c629eb6ff3812a8]
+class GameState--><rect codeLine="5" fill="#FEFECE" filter="url(#f16t5awph6glwy)" height="61.8359" id="GameState" style="stroke:#A80036;stroke-width:1.5;" width="94" x="247.5" y="7"/><ellipse cx="262.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M264.5,19.5 Q264.7031,19 264.9375,18.75 Q265.1719,18.5 265.4375,18.5 Q265.9063,18.5 266.2031,18.7813 Q266.5,19.0625 266.5,19.7188 L266.5,21.2813 Q266.5,21.9375 266.2188,22.2188 Q265.9375,22.5 265.5,22.5 Q265.1094,22.5 264.8594,22.3281 Q264.6094,22.1563 264.5,21.7031 Q264.4531,21.3906 264.2813,21.2188 Q263.9688,20.8906 263.4063,20.7031 Q262.8438,20.5 262.2813,20.5 Q261.5781,20.5 260.9844,20.7813 Q260.4063,21.0625 259.9531,21.6875 Q259.5,22.3125 259.5,23.1719 L259.5,24.0938 Q259.5,25.125 260.3438,25.8125 Q261.1875,26.5 262.6875,26.5 Q263.5781,26.5 264.2031,26.2969 Q264.5625,26.1875 264.9688,25.8281 Q265.2344,25.625 265.375,25.5625 Q265.5156,25.5 265.6875,25.5 Q266.0156,25.5 266.25,25.7656 Q266.5,26.0156 266.5,26.375 Q266.5,26.7188 266.1563,27.125 Q265.6563,27.7188 264.8594,28.0469 Q263.8125,28.5 262.5313,28.5 Q261.0313,28.5 259.8281,27.9063 Q258.8594,27.4375 258.1719,26.4219 Q257.5,25.4063 257.5,24.2031 L257.5,23.1094 Q257.5,21.8594 258.0938,20.7656 Q258.7031,19.6719 259.75,19.0938 Q260.8125,18.5 262,18.5 Q262.7188,18.5 263.3438,18.75 Q263.9688,19 264.5,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="62" x="276.5" y="27.9102">GameState</text><line style="stroke:#A80036;stroke-width:1.5;" x1="248.5" x2="340.5" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="248.5" x2="340.5" y1="47" y2="47"/><ellipse cx="258.5" cy="58" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="54" x="267.5" y="62.4189">RUN : run()</text><!--MD5=[666ab4d123c8a4db535fefed801ea066]
+class Hero--><rect codeLine="11" fill="#FEFECE" filter="url(#f16t5awph6glwy)" height="61.8359" id="Hero" style="stroke:#A80036;stroke-width:1.5;" width="103" x="243" y="129"/><ellipse cx="277.8" cy="145" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M279.8,141.5 Q280.0031,141 280.2375,140.75 Q280.4719,140.5 280.7375,140.5 Q281.2063,140.5 281.5031,140.7813 Q281.8,141.0625 281.8,141.7188 L281.8,143.2813 Q281.8,143.9375 281.5188,144.2188 Q281.2375,144.5 280.8,144.5 Q280.4094,144.5 280.1594,144.3281 Q279.9094,144.1563 279.8,143.7031 Q279.7531,143.3906 279.5813,143.2188 Q279.2688,142.8906 278.7063,142.7031 Q278.1438,142.5 277.5813,142.5 Q276.8781,142.5 276.2844,142.7813 Q275.7063,143.0625 275.2531,143.6875 Q274.8,144.3125 274.8,145.1719 L274.8,146.0938 Q274.8,147.125 275.6438,147.8125 Q276.4875,148.5 277.9875,148.5 Q278.8781,148.5 279.5031,148.2969 Q279.8625,148.1875 280.2688,147.8281 Q280.5344,147.625 280.675,147.5625 Q280.8156,147.5 280.9875,147.5 Q281.3156,147.5 281.55,147.7656 Q281.8,148.0156 281.8,148.375 Q281.8,148.7188 281.4563,149.125 Q280.9563,149.7188 280.1594,150.0469 Q279.1125,150.5 277.8313,150.5 Q276.3313,150.5 275.1281,149.9063 Q274.1594,149.4375 273.4719,148.4219 Q272.8,147.4063 272.8,146.2031 L272.8,145.1094 Q272.8,143.8594 273.3938,142.7656 Q274.0031,141.6719 275.05,141.0938 Q276.1125,140.5 277.3,140.5 Q278.0188,140.5 278.6438,140.75 Q279.2688,141 279.8,141.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="27" x="296.2" y="149.9102">Hero</text><line style="stroke:#A80036;stroke-width:1.5;" x1="244" x2="345" y1="161" y2="161"/><line style="stroke:#A80036;stroke-width:1.5;" x1="244" x2="345" y1="169" y2="169"/><ellipse cx="254" cy="180" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="263" y="184.4189">GETHP : gethp()</text><!--MD5=[d5c76b986b2f885f478a45b3e2a835e6]
+class Shooter--><rect codeLine="18" fill="#FEFECE" filter="url(#f16t5awph6glwy)" height="61.8359" id="Shooter" style="stroke:#A80036;stroke-width:1.5;" width="103" x="174" y="251"/><ellipse cx="201.6" cy="267" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M203.6,263.5 Q203.8031,263 204.0375,262.75 Q204.2719,262.5 204.5375,262.5 Q205.0063,262.5 205.3031,262.7813 Q205.6,263.0625 205.6,263.7188 L205.6,265.2813 Q205.6,265.9375 205.3188,266.2188 Q205.0375,266.5 204.6,266.5 Q204.2094,266.5 203.9594,266.3281 Q203.7094,266.1563 203.6,265.7031 Q203.5531,265.3906 203.3813,265.2188 Q203.0688,264.8906 202.5063,264.7031 Q201.9438,264.5 201.3813,264.5 Q200.6781,264.5 200.0844,264.7813 Q199.5063,265.0625 199.0531,265.6875 Q198.6,266.3125 198.6,267.1719 L198.6,268.0938 Q198.6,269.125 199.4438,269.8125 Q200.2875,270.5 201.7875,270.5 Q202.6781,270.5 203.3031,270.2969 Q203.6625,270.1875 204.0688,269.8281 Q204.3344,269.625 204.475,269.5625 Q204.6156,269.5 204.7875,269.5 Q205.1156,269.5 205.35,269.7656 Q205.6,270.0156 205.6,270.375 Q205.6,270.7188 205.2563,271.125 Q204.7563,271.7188 203.9594,272.0469 Q202.9125,272.5 201.6313,272.5 Q200.1313,272.5 198.9281,271.9063 Q197.9594,271.4375 197.2719,270.4219 Q196.6,269.4063 196.6,268.2031 L196.6,267.1094 Q196.6,265.8594 197.1938,264.7656 Q197.8031,263.6719 198.85,263.0938 Q199.9125,262.5 201.1,262.5 Q201.8188,262.5 202.4438,262.75 Q203.0688,263 203.6,263.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="43" x="218.4" y="271.9102">Shooter</text><line style="stroke:#A80036;stroke-width:1.5;" x1="175" x2="276" y1="283" y2="283"/><line style="stroke:#A80036;stroke-width:1.5;" x1="175" x2="276" y1="291" y2="291"/><ellipse cx="185" cy="302" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="194" y="306.4189">GETHP : gethp()</text><!--MD5=[612ba1bd76ba2e43180f8a4c173689eb]
+class Enemies--><rect codeLine="24" fill="#FEFECE" filter="url(#f16t5awph6glwy)" height="61.8359" id="Enemies" style="stroke:#A80036;stroke-width:1.5;" width="103" x="312" y="251"/><ellipse cx="336.45" cy="267" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M338.45,263.5 Q338.6531,263 338.8875,262.75 Q339.1219,262.5 339.3875,262.5 Q339.8563,262.5 340.1531,262.7813 Q340.45,263.0625 340.45,263.7188 L340.45,265.2813 Q340.45,265.9375 340.1688,266.2188 Q339.8875,266.5 339.45,266.5 Q339.0594,266.5 338.8094,266.3281 Q338.5594,266.1563 338.45,265.7031 Q338.4031,265.3906 338.2313,265.2188 Q337.9188,264.8906 337.3563,264.7031 Q336.7938,264.5 336.2313,264.5 Q335.5281,264.5 334.9344,264.7813 Q334.3563,265.0625 333.9031,265.6875 Q333.45,266.3125 333.45,267.1719 L333.45,268.0938 Q333.45,269.125 334.2938,269.8125 Q335.1375,270.5 336.6375,270.5 Q337.5281,270.5 338.1531,270.2969 Q338.5125,270.1875 338.9188,269.8281 Q339.1844,269.625 339.325,269.5625 Q339.4656,269.5 339.6375,269.5 Q339.9656,269.5 340.2,269.7656 Q340.45,270.0156 340.45,270.375 Q340.45,270.7188 340.1063,271.125 Q339.6063,271.7188 338.8094,272.0469 Q337.7625,272.5 336.4813,272.5 Q334.9813,272.5 333.7781,271.9063 Q332.8094,271.4375 332.1219,270.4219 Q331.45,269.4063 331.45,268.2031 L331.45,267.1094 Q331.45,265.8594 332.0438,264.7656 Q332.6531,263.6719 333.7,263.0938 Q334.7625,262.5 335.95,262.5 Q336.6688,262.5 337.2938,262.75 Q337.9188,263 338.45,263.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="50" x="352.55" y="271.9102">Enemies</text><line style="stroke:#A80036;stroke-width:1.5;" x1="313" x2="414" y1="283" y2="283"/><line style="stroke:#A80036;stroke-width:1.5;" x1="313" x2="414" y1="291" y2="291"/><ellipse cx="323" cy="302" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="332" y="306.4189">GETHP : gethp()</text><path d="M6,269 L6,295.3516 A0,0 0 0 0 6,295.3516 L139,295.3516 A0,0 0 0 0 139,295.3516 L139,287 L173.89,282 L139,279 L139,279 L129,269 L6,269 A0,0 0 0 0 6,269 " fill="#FBFB77" filter="url(#f16t5awph6glwy)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M129,269 L129,279 L139,279 L129,269 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112" x="12" y="287.4951">Quanto leva um tiro</text><path d="M450,269 L450,278 L415.11,282 L450,286 L450,295.3516 A0,0 0 0 0 450,295.3516 L639,295.3516 A0,0 0 0 0 639,295.3516 L639,279 L629,269 L450,269 A0,0 0 0 0 450,269 " fill="#FBFB77" filter="url(#f16t5awph6glwy)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M629,269 L629,279 L639,279 L629,269 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="168" x="456" y="287.4951">Quanto vai contra um inimigo</text><!--MD5=[e6d4e49f03ee2e75f0763c9048e4ea52]
+reverse link GameState to Hero--><path codeLine="9" d="M294.5,74.52 C294.5,91.75 294.5,112.24 294.5,128.73 " fill="none" id="GameState-backto-Hero" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="294.5,69.28,290.5,78.28,294.5,74.28,298.5,78.28,294.5,69.28" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b3b30db4762db14e5793e0c81c9acdb0]
+reverse link Hero to Shooter--><path codeLine="15" d="M274.59,195.63 C264.57,213.05 252.55,233.96 242.91,250.73 " fill="none" id="Hero-backto-Shooter" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="277.09,191.28,269.125,197.073,274.5893,195.6097,276.0526,201.0741,277.09,191.28" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e52af93a2b078f7a76b327a3e4d25d66]
+reverse link Hero to Enemies--><path codeLine="16" d="M314.41,195.63 C324.43,213.05 336.45,233.96 346.09,250.73 " fill="none" id="Hero-backto-Enemies" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="311.91,191.28,312.9474,201.0741,314.4107,195.6097,319.875,197.073,311.91,191.28" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[bf80ffb65e8bc0575ad42e3d6b8963c1]
+@startuml
+'https://plantuml.com/component-diagram
+
+
+
+class GameState{
++ RUN : run()
+}
+
+GameState <- - Hero
+
+class Hero{
++ GETHP : gethp()
+}
+
+Hero <- - Shooter
+Hero <- - Enemies
+
+class Shooter{
++ GETHP : gethp()
+}
+
+note left of Shooter: Quanto leva um tiro
+
+class Enemies{
++ GETHP : gethp()
+}
+
+note right of Enemies: Quanto vai contra um inimigo
+
+@enduml
+
+@startuml
+
+
+
+class GameState{
++ RUN : run()
+}
+
+GameState <- - Hero
+
+class Hero{
++ GETHP : gethp()
+}
+
+Hero <- - Shooter
+Hero <- - Enemies
+
+class Shooter{
++ GETHP : gethp()
+}
+
+note left of Shooter: Quanto leva um tiro
+
+class Enemies{
++ GETHP : gethp()
+}
+
+note right of Enemies: Quanto vai contra um inimigo
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 16:16:42 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
