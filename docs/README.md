@@ -265,6 +265,10 @@ O uso do Padrão Observer abre caminho aos seguintes benefícios:
 
 - O uso de threads pdoeria ter sido uma melhor opção para a movimentação automática dos inimigos. Uma boa implementação desta funcionalidade tornaria o jogo mais fluido e dar-lhe-ia uma melhor jogabilidade.
 
+#### **Classes com código repetido**
+
+- As classes LastLevelView.java e GameView.java contêm código duplicado. Apesar de ter sido descoberto ainda antes do final do prazo nao encontramos forma de fazer um refactoring que nao alterasse as definições da aplicação. Dessa forma acabou a tornar-se um code smell.
+
 ### Refactoring
 
 - Um dos grandes refactorings que foi feito passou pela modificação do ficheiro Model (de extrema importância para a funcionalidade do jogo) porque continha mais de 400 linhas de código. Uma das principais mudanças passou por gerir os inimigos de todos os tipos numa classe nova que surgiu da implementação do padrão Composite. Desta forma a estrutura interna do código foi melhorada sem alterar o comportamento externo do sistema e aprimorar o design da aplicação.
