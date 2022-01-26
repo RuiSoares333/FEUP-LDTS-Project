@@ -3,7 +3,11 @@ package berzerk.control.state;
 import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
+import berzerk.model.entity.hero.Hero;
+import berzerk.model.entity.properties.Position;
+import berzerk.model.game.Enemies;
 import berzerk.model.game.GameModel;
+import berzerk.model.game.Shooter;
 import berzerk.model.game.Terrain;
 import berzerk.model.ranking.GameOverModel;
 import berzerk.view.GameView;
@@ -33,6 +37,10 @@ public class GameStateTest {
     Soldado soldado;
     Ecra ecra;
     int score;
+    Hero hero;
+    Shooter shooter;
+    Enemies enemies;
+    Terrain terrain;
 
     @BeforeEach
     public void initGameOverState() throws IOException {
@@ -49,6 +57,10 @@ public class GameStateTest {
         doNothing().when(view).draw(anyInt());
         doReturn(command).when(view).getCommand(command);
 
+        hero = mock(Hero.class);
+        enemies = mock(Enemies.class);
+        terrain = mock(Terrain.class);
+        shooter = mock(Shooter.class);
     }
 
     @AfterEach
@@ -59,7 +71,8 @@ public class GameStateTest {
     @Test
     public void runAndProcessKeyTest(){
         try{
-            doReturn(command).when(view).getCommand(command);
+            doReturn(Command.COMMAND.UP).when(command).getCommand();
+            doReturn(command).when(view).getCommand(any(Command.class));
 
             assertNotNull(state.run().getClass());
         }catch (Exception e) {
@@ -67,53 +80,20 @@ public class GameStateTest {
         }
     }
 
-    @Test
-    public void processKeyLeft(){
-        try{
-            doReturn(Command.COMMAND.LEFT).when(command).getCommand();
-
-            state.processKey(command);
-
-            verify(model, atLeastOnce()).moveHero(model.getHero(), model.getShooter(), model.getTerrain(), model.getEnemies(), model.getHero().moveLeft());
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @Test
-    public void processKeyRight(){
+    public void processKeyMovement(){
         try{
-            doReturn(Command.COMMAND.RIGHT).when(command).getCommand();
-
-            state.processKey(command);
-
-            verify(model, atLeastOnce()).moveHero(model.getHero(), model.getShooter(), model.getTerrain(), model.getEnemies(),model.getHero().moveRight());
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void processKeyUp(){
-        try{
+            doNothing().when(hero).move(any(Shooter.class), any(Terrain.class), any(Enemies.class), any(Position.class));
             doReturn(Command.COMMAND.UP).when(command).getCommand();
 
             state.processKey(command);
+            doReturn(hero).when(model).getHero();
+            doReturn(terrain).when(model).getTerrain();
+            doReturn(enemies).when(model).getEnemies();
+            doReturn(shooter).when(model).getShooter();
 
-            verify(model, atLeastOnce()).moveHero(model.getHero(), model.getShooter(), model.getTerrain(), model.getEnemies(),model.getHero().moveUp());
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void processKeyDown(){
-        try{
-            doReturn(Command.COMMAND.DOWN).when(command).getCommand();
-
-            state.processKey(command);
-
-            verify(model, atLeastOnce()).moveHero(model.getHero(), model.getShooter(), model.getTerrain(), model.getEnemies(),model.getHero().moveDown());
+            verify(model, atLeastOnce()).moveHero(any(Hero.class), any(Shooter.class), any(Terrain.class), any(Enemies.class), any(Position.class));
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -123,10 +103,12 @@ public class GameStateTest {
     public void processKeySpace(){
         try{
             doReturn(Command.COMMAND.SPACE).when(command).getCommand();
+            doReturn(shooter).when(model).getShooter();
 
             state.processKey(command);
 
-            verify(model, atLeastOnce()).getShooter().heroFire(model.getHero());
+            verify(model, atLeastOnce()).getShooter();
+            verify(model.getShooter(), atLeastOnce()).heroFire(any(Hero.class));
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -136,10 +118,12 @@ public class GameStateTest {
     public void processKeyConstruct(){
         try{
             doReturn(Command.COMMAND.CONSTRUCT).when(command).getCommand();
+            doReturn(terrain).when(model).getTerrain();
 
             state.processKey(command);
 
-            verify(model, atLeastOnce()).getTerrain().placeStone(model.getHero());
+            verify(model, atLeastOnce()).getTerrain();
+            verify(model.getTerrain(), atLeastOnce()).placeStone(any(Hero.class));
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -149,7 +133,7 @@ public class GameStateTest {
     public void processKeyQuit(){
         try{
             doReturn(Command.COMMAND.QUIT).when(command).getCommand();
-
+            doReturn(command).when(view).getCommand(any(Command.class));
             state.processKey(command);
 
             when(factoryState.genMenuState(mock(Soldado.class), mock(MenuView.class))).thenAnswer(invocation -> MenuState.class);

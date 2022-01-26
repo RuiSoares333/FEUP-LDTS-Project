@@ -3,18 +3,15 @@ package berzerk.control.state;
 import berzerk.control.Command;
 import berzerk.model.Ecra;
 import berzerk.model.Soldado;
-import berzerk.model.menu.MenuModel;
 import berzerk.model.ranking.GameOverModel;
 import berzerk.view.menu.GameOverView;
 import berzerk.view.menu.MenuView;
-import berzerk.view.menu.SettingsView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;
@@ -43,7 +40,7 @@ public class GameOverStateTest {
         soldado = mock(Soldado.class);
         state = spy(new GameOverState(factoryState, soldado, view));
         doNothing().when(view).draw(anyInt());
-        doReturn(command).when(view).getCommand(command);
+        doReturn(command).when(view).getCommand(any(Command.class));
 
     }
 
@@ -55,7 +52,8 @@ public class GameOverStateTest {
     @Test
     public void runAndProcessKeyTest(){
         try{
-            doReturn(command).when(view).getCommand(command);
+            doReturn(Command.COMMAND.QUIT).when(command).getCommand();
+            doReturn(command).when(view).getCommand(any(Command.class));
 
             assertNotNull(state.run().getClass());
         }catch (Exception e) {

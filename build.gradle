@@ -20,6 +20,8 @@ test {
 pitest {
     junit5PluginVersion = '0.15'
     pitestVersion = '1.6.7'
+    excludedClasses = ['berzerk.model.Ecra', 'berzerk.Application']
+    excludedTestClasses = ['berzerk.control.state.GameStateTest']
     verbose = true
 }
 mainClassName = 'berzerk.Application'
