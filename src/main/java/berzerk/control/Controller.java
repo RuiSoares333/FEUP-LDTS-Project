@@ -24,7 +24,7 @@ public class Controller {
     private Clip loadSound() throws NullPointerException{
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
-            File musicFile = new File(rootPath+"/src/main/resources/Mick Gordon - TOTTFIY.wav");
+            File musicFile = new File(rootPath+"/src/main/resources/Royalty Free Nu Metal Instrumental - FRACTURES - DOWNLOAD.wav"); // Nu metal é um género de música Metal
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
             Clip musicClip = AudioSystem.getClip();
             musicClip.open(audioInput);
