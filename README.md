@@ -26,7 +26,7 @@ Para uma versão mais detalhada carregue [aqui](docs/README.md)
 - [x] **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
 - [x] **Morte dos Monstros** - Um monstro atingido por uma bala morre. Monstros em diferentes níveis podem necessitar de mais do que uma bala para morrerem.
 - [x] **Passagem de niveis** - A passagem de niveis dá-se com a chegada do herói à parte aberta do mapa. No último nivel, o objetivo é apanhar a taça do jogo.
-- [x] **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome, e de seguida um menu com as opções TRY AGAIN e EXIT.
+- [x] **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome.
 
 
 ## Screenshots
@@ -70,3 +70,6 @@ Para uma versão mais detalhada carregue [aqui](docs/README.md)
 #### Exemplo do final do jogo - taça
 
 ![img](./docs/images/taça.png)
+
+#### Meme Inspiracional
+![img](./docs/images/meme.png)

@@ -10,25 +10,25 @@ Este projeto foi desenvolvido por *Catarina Canelas* (*up202103631*@fe.up.pt), *
 
 ### IMPLEMENTED FEATURES
 
-- [x] **Menus** - A navegação é feita através das setas do teclado e a opção a selecionar com Enter.
+- **Menus** - A navegação é feita através das setas do teclado e a opção a selecionar com Enter.
   - PLAY;
   - SETTINGS;
   - LEADERBOARD;
   - EXIT.
-- [x] **Leaderboard** - Possibilidade de ver o ‘top’ 5 de melhores jogadores.
-- [x] **Escolha de Herói** - Possibilidade de escolher o herói com que se pretende jogar, na opção 'SETTINGS'. Cada herói tem as suas particularidades.
+- **Leaderboard** - Possibilidade de ver o ‘top’ 5 de melhores jogadores.
+- **Escolha de Herói** - Possibilidade de escolher o herói com que se pretende jogar, na opção 'SETTINGS'. Cada herói tem as suas particularidades.
   - Herói Recruit - Herói com Estatisticas Básicas.
   - Herói Tanky - Herói com pontos Extra de Vida.
   - Herói Expert - Herói com cadência de tiro mais elevada.
-- [x] **Movimentação do Herói** - O herói movimenta-se para os quatro sentidos usando as setas do teclado.
-- [x] **Morte do Herói** - O herói morre se tiver contacto com as paredes eletrizadas, com os monstros ou com as balas destes.
-- [x] **Movimentação dos Monstros** - Os monstros movimentam-se sozinhos. Com o avançar dos niveis, podem movimentar-se mais rapidamente.
-- [x] **Disparos do Herói** - O herói pode disparar usando o espaço do teclado.
-- [x] **Construção de stones** - O herói pode criar stones estilo FORTNITE 2D usando a tecla x para se proteger dos tiros dos inimigos.
-- [x] **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
-- [x] **Morte dos Monstros** - Um monstro atingido por uma bala morre. Monstros em diferentes níveis podem necessitar de mais do que uma bala para morrerem.
-- [x] **Passagem de niveis** - A passagem de niveis dá-se com a chegada do herói à parte aberta do mapa. No último nivel, o objetivo é apanhar a taça do jogo.
-- [x] **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome, e de seguida um menu com as opções TRY AGAIN e EXIT.
+- **Movimentação do Herói** - O herói movimenta-se para os quatro sentidos usando as setas do teclado.
+- **Morte do Herói** - O herói morre se tiver contacto com as paredes eletrizadas, com os monstros ou com as balas destes.
+- **Movimentação dos Monstros** - Os monstros movimentam-se sozinhos. Com o avançar dos niveis, podem movimentar-se mais rapidamente.
+- **Disparos do Herói** - O herói pode disparar usando o espaço do teclado.
+- **Construção de stones** - O herói pode criar stones estilo FORTNITE 2D usando a tecla x para se proteger dos tiros dos inimigos.
+- **Disparos dos Monstros** - Os monstros podem disparar balas a partir do nivel 2.
+- **Morte dos Monstros** - Um monstro atingido por uma bala morre. Monstros em diferentes níveis podem necessitar de mais do que uma bala para morrerem.
+- **Passagem de niveis** - A passagem de niveis dá-se com a chegada do herói à parte aberta do mapa. No último nivel, o objetivo é apanhar a taça do jogo.
+- **Menu de Fim de Jogo** - Se o heroi morrer ou chegar ao fim do jogo aparece GAME OVER e o SCORE conseguido e é-lhe permitido registar o nome.
 
 
 ### PLANNED FEATURES
@@ -88,12 +88,12 @@ A seguinte imagem monstra como o Padrão foi aplicado às classes da aplicação
 
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
-- [Controller](../src/main/java/berzerk.control/Controller.java)
-- [ControllerState](../src/main/java/berzerk.control/state/ControllerState.java)
-- [MenuState](../src/main/java/berzerk.control/state/FactoryState.java)
-- [RankingMenuState](../src/main/java/berzerk.control/state/RankingMenuState.java)
-- [SettingsMenuState](../src/main/java/berzerk.control/state/SettingsMenuState.java)
-- [GameOverState](../src/main/java/berzerk.control/state/GameOverState.java)
+- [Controller](../src/main/java/berzerk/control/Controller.java)
+- [ControllerState](../src/main/java/berzerk/control/state/ControllerState.java)
+- [MenuState](../src/main/java/berzerk/control/state/FactoryState.java)
+- [RankingMenuState](../src/main/java/berzerk/control/state/RankingState.java)
+- [SettingsMenuState](../src/main/java/berzerk/control/state/SettingsState.java)
+- [GameOverState](../src/main/java/berzerk/control/state/GameOverState.java)
 
 
 **Consequências**
@@ -126,9 +126,9 @@ A seguinte imagem monstra como o Padrão foi aplicado às classes da aplicação
 
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
-- [Controller](../src/main/java/berzerk.control/Controller.java)
-- [FactoryState](../src/main/java/berzerk.control/state/FactoryState.java)
-- [ControllerState](../src/main/java/berzerk.control/state/ControllerState.java)
+- [Controller](../src/main/java/berzerk/control/Controller.java)
+- [FactoryState](../src/main/java/berzerk/control/state/FactoryState.java)
+- [ControllerState](../src/main/java/berzerk/control/state/ControllerState.java)
 
 **Consequências**
 
@@ -155,9 +155,9 @@ A seguinte imagem monstra como o Padrão Factory Method foi aplicado às classes
 
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
-- [Dragon](../src/main/java/berzerk/model/entety/enemy/Dragon.java)
-- [Dementor](../src/main/java/berzerk/model/entety/enemy/Dementor.java)
-- [Enemy](../src/main/java/berzerk/model/entety/enemy/Enemy.java)
+- [Dragon](../src/main/java/berzerk/model/entity/enemy/Dragon.java)
+- [Dementor](../src/main/java/berzerk/model/entity/enemy/Dementor.java)
+- [Enemy](../src/main/java/berzerk/model/entity/enemy/Enemy.java)
 
 **Consequências**
 
@@ -214,9 +214,9 @@ A seguinte imagem monstra como o Padrão Composite foi aplicado às classes da a
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
 - [Enemies](../src/main/java/berzerk/model/game/Enemies.java)
-- [Dragon](../src/main/java/berzerk/model/entety/enemy/Dragon.java)
-- [Dementor](../src/main/java/berzerk/model/entety/enemy/Dementor.java)
-- [Enemy](../src/main/java/berzerk/model/entety/enemy/Enemy.java)
+- [Dragon](../src/main/java/berzerk/model/entity/enemy/Dragon.java)
+- [Dementor](../src/main/java/berzerk/model/entity/enemy/Dementor.java)
+- [Enemy](../src/main/java/berzerk/model/entity/enemy/Enemy.java)
 
 **Consequências**
 
@@ -243,7 +243,7 @@ A seguinte imagem monstra como o Padrão Observer foi aplicado às classes da ap
 Estas Classes podem ser encontradas nos seguintes ficheiros:
 
 - [GameState](../src/main/java/berzerk/control/state/GameState.java)
-- [Hero](../src/main/java/berzerk/model/entety/hero/hero.java)
+- [Hero](../src/main/java/berzerk/model/entity/hero/Hero.java)
 - [Shooter](../src/main/java/berzerk/model/game/Shooter.java)
 - [Enemies](../src/main/java/berzerk/model/game/Enemies.java)
 
@@ -267,7 +267,7 @@ O uso do Padrão Observer abre caminho aos seguintes benefícios:
 
 #### **Classes com código repetido**
 
-- As classes LastLevelView.java e GameView.java contêm código duplicado. Apesar de ter sido descoberto ainda antes do final do prazo nao encontramos forma de fazer um refactoring que nao alterasse as definições da aplicação. Dessa forma acabou a tornar-se um code smell.
+- As classes LastLevelView.java e GameView.java contêm código duplicado. Apesar de ter sido descoberto ainda antes do final do prazo não encontramos forma de fazer um refactoring que não alterasse as definições da aplicação. Dessa forma acabou a tornar-se um code smell.
 
 ### Refactoring
 
@@ -275,7 +275,7 @@ O uso do Padrão Observer abre caminho aos seguintes benefícios:
 
 - Apagamos todos as chamadas à função System.out.println() porque foi uma ferramenta usada no desenvolvimento e ja não é necessária e porque trazia o lançamento de exceções em determinadas situações.
 
-- Eliminamos os comentarios nao necessarios (muitas vezes escritos para explicar aos colegas de grupo o trabalho que havia sido feito e as funções do codigo escrito) de forma a melhorar o entendimento do código.
+- Eliminamos os comentarios não necessarios (muitas vezes escritos para explicar aos colegas de grupo o trabalho que havia sido feito e as funções do codigo escrito) de forma a melhorar o entendimento do código.
 
 - Mantivemos os comentarios mais importantes com vista a melhorar o entendimento do código, que tem como objetivo facilitar a comunicação de motivações, intenções e objetivos da nossa parte ao desenvolver o programa.
 

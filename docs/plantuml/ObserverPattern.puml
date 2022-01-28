@@ -4,28 +4,28 @@
 
 
 class GameState{
-+ MOVE : moveEnemies()
 }
 
-GameState .. Hero
 
 class Hero{
-+ MOVE : move()
++ move() : void
 }
-
-Hero .. Shooter
-Hero .. Enemies
 
 class Shooter{
-+ MOVE : move()
++ move() : void
++ killHero() : void
 }
-
-note left of Shooter: Quanto leva um tiro
 
 class Enemies{
-+ MOVE : move()
++ move() : void
++ killHero() : void
 }
 
-note right of Enemies: Quanto vai contra um inimigo
+note left of Shooter: Quando colide com um tiro
+note right of Enemies: Quando colide com um inimigo
 
+GameState <--> Hero
+
+Hero <--> Shooter
+Hero <--> Enemies
 @enduml

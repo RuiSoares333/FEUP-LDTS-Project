@@ -3,22 +3,19 @@
 
 
 abstract class Enemy{
-+ CREATE()
-+ KILL : kill()
+{abstract} + kill() : int
 }
 
 class Dragon{
-+ CREATE() : Dragon
-+ KILL : kill()
++ kill() : int
 }
 
-Dragon -r-> Enemy
 
 class Dementor{
-+ CREATE() : Dementor
-+ KILL : kill()
++ kill() : int
 }
 
-Dementor -r-> Enemy
+Dragon -u-|> Enemy
+Dementor -u-|> Enemy
 
 @enduml

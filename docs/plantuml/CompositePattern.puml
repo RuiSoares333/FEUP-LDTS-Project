@@ -3,25 +3,23 @@
 
 
 abstract class Enemy{
-+ MOVE : move()
++ move() : void
 }
 
 class Enemies{
-+ MOVE : moveEnemies()
++ moveEnemies() : void
 }
-
-Enemies -r-> Enemy
 
 class Dragon{
-+ MOVE : move()
++ move() : void
 }
-
-Dragon -r-> Enemy
 
 class Dementor{
-+ MOVE : move()
++ move() : void
 }
 
-Dementor -r-> Enemy
+Enemies *-- Enemy
+Dragon -u-|> Enemy
+Dementor -u-|> Enemy
 
 @enduml
